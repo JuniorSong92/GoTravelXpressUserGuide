@@ -1,7 +1,7 @@
 ---
-title: "Multi-Agency Management in GoTravelXpress"
+title: "Managing Multiple Agency Branches in GoTravelXpress"
 sidebarTitle: "Multi-Agency"
-description: "Run multiple agency branches from one GoTravelXpress account — configure separate agencies, share resources, and view consolidated analytics across all sites."
+description: "Run multiple agency branches from a single GoTravelXpress account — configure separate branches, share resources, and view consolidated analytics."
 ---
 
 GoTravelXpress Multi-Agency Management lets you operate several agency branches or franchises from a single platform account. Rather than juggling separate logins for each location, you control every site from one place — adding branches, assigning local administrators, and reviewing combined performance in a unified dashboard. This page walks you through creating agency branches, understanding data isolation, switching between sites, and managing branch-level administrators.
@@ -45,10 +45,10 @@ Each new branch gets its own isolated workspace — routes, vehicles, crew, and 
 By default, each agency branch operates as an independent unit. Resources created in one branch are not visible to operators in another branch.
 
 <CardGroup cols={2}>
-  <Card title="Isolated by Default" icon="lock">
+  <Card title="Isolated by Default" icon="lock" href="/agency/user-roles">
     Routes, schedules, fleet vehicles, crew members, reservations, and payment records are all scoped to the branch where they were created. Agents in one branch cannot access another branch's data unless explicitly granted cross-agency permissions.
   </Card>
-  <Card title="Optional Resource Sharing" icon="share-nodes">
+  <Card title="Optional Resource Sharing" icon="share-nodes" href="/modules/fleet-crew">
     On Enterprise licenses, a Super Admin can configure shared resource pools — for example, a shared fleet or shared driver roster — that multiple branches can draw from. Configure this under **Agency Management → Shared Resources**.
   </Card>
 </CardGroup>
@@ -104,22 +104,22 @@ Each agency branch should have at least one dedicated Branch Administrator who m
 A user assigned the **Agency Admin** role on a specific branch can:
 
 <CardGroup cols={2}>
-  <Card title="Manage Routes & Schedules" icon="route">
+  <Card title="Manage Routes & Schedules" icon="route" href="/agency/intelligent-planning">
     Create, edit, and deactivate routes and departure schedules for their branch.
   </Card>
-  <Card title="Manage Fleet & Crew" icon="bus">
+  <Card title="Manage Fleet & Crew" icon="bus" href="/modules/fleet-crew">
     Add vehicles, assign drivers, hostesses, and baggage handlers to trips.
   </Card>
-  <Card title="Handle Reservations" icon="ticket">
+  <Card title="Handle Reservations" icon="ticket" href="/modules/reservations">
     View, modify, and cancel reservations; issue refunds within payment policy limits.
   </Card>
-  <Card title="View Branch Analytics" icon="chart-bar">
+  <Card title="View Branch Analytics" icon="chart-bar" href="/modules/analytics">
     Access dashboards and reports scoped to their own branch — not other branches.
   </Card>
-  <Card title="Manage Branch Users" icon="users">
+  <Card title="Manage Branch Users" icon="users" href="/agency/user-roles">
     Add or deactivate Booking Agents, Crew Members, and Accountants within their branch.
   </Card>
-  <Card title="Configure Branch Settings" icon="gear">
+  <Card title="Configure Branch Settings" icon="gear" href="/agency/qr-checkin">
     Set branch-level preferences such as departure points, geolocation radius for crew check-in, and default payment methods.
   </Card>
 </CardGroup>

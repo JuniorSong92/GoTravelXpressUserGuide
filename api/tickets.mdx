@@ -1,7 +1,7 @@
 ---
-title: "Tickets API: Generate and Verify QR Code Tickets"
+title: "Tickets API: Generate, Verify, and Manage QR Tickets"
 sidebarTitle: "Tickets"
-description: "Use the GoTravelXpress Tickets API to retrieve QR code tickets, verify ticket validity, and mark tickets as used during boarding."
+description: "Use the GoTravelXpress Tickets API to retrieve QR code tickets, verify passenger ticket validity at boarding, and list issued tickets."
 ---
 
 The Tickets API lets you retrieve, verify, and manage the QR code tickets that GoTravelXpress automatically generates when a reservation is confirmed. At boarding, your crew app or check-in kiosk can call the verify endpoint to validate a passenger's QR code in real time — preventing duplicates, fraud, and invalid entries. This page documents every ticket endpoint including how to fetch the raw QR image for display in your own interface.
@@ -52,7 +52,7 @@ The Tickets API lets you retrieve, verify, and manage the QR code tickets that G
 
 Retrieve full details for a single ticket by its ID, including the QR code payload.
 
-```
+```text
 GET /tickets/{id}
 ```
 
@@ -89,7 +89,7 @@ curl https://gotravelxpress.wuaze.com/api/v1/tickets/tkt_xyz789 \
 
 Verify a QR code at boarding time. Post the scanned QR data to this endpoint to confirm the ticket is valid, unused, and not expired. On success, the ticket is marked as `used`.
 
-```
+```text
 POST /tickets/{id}/verify
 ```
 
@@ -163,7 +163,7 @@ curl -X POST https://gotravelxpress.wuaze.com/api/v1/tickets/tkt_xyz789/verify \
 
 Retrieve a list of tickets, filtered by trip, status, or date.
 
-```
+```text
 GET /tickets
 ```
 
@@ -218,7 +218,7 @@ curl "https://gotravelxpress.wuaze.com/api/v1/tickets?trip_id=trip_abc123&status
 
 Fetch the QR code for a ticket as a PNG image. Use this endpoint to display or print the QR code in your own application without encoding the payload yourself.
 
-```
+```text
 GET /tickets/{id}/qrcode
 ```
 

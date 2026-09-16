@@ -1,5 +1,5 @@
 ---
-title: "QR Code Tickets: Secure Digital Ticketing System"
+title: "QR Code Tickets: Boarding Verification and Security"
 sidebarTitle: "QR Tickets"
 description: "GoTravelXpress generates encrypted QR code tickets for each reservation. Verify tickets instantly at boarding with the real-time scanning system."
 ---
@@ -34,16 +34,16 @@ QR tickets follow a straightforward lifecycle that begins the instant payment is
 GoTravelXpress uses multiple layers of protection to ensure every ticket is authentic, single-use, and tamper-proof.
 
 <CardGroup cols={2}>
-  <Card title="256-Bit Encryption" icon="lock">
+  <Card title="256-Bit Encryption" icon="lock" href="/modules/qr-tickets#ticket-security">
     Every QR code is generated with 256-bit encryption. The encoded data cannot be read or altered without the platform's private key, making counterfeiting effectively impossible.
   </Card>
-  <Card title="Unique Per Reservation" icon="fingerprint">
+  <Card title="Unique Per Reservation" icon="fingerprint" href="/modules/reservations">
     No two tickets share the same QR code. Each ticket is cryptographically bound to a specific reservation ID, passenger, trip, seat, and timestamp — duplication is structurally prevented.
   </Card>
-  <Card title="Real-Time Server Verification" icon="server">
+  <Card title="Real-Time Server Verification" icon="server" href="/agency/qr-checkin">
     At scan time, the QR Check-in system sends the ticket ID to the GoTravelXpress server for live validation. The server checks the reservation status, boarding state, and code integrity before returning a result — offline screenshots and photocopies are rejected.
   </Card>
-  <Card title="Single-Use Enforcement" icon="shield-check">
+  <Card title="Single-Use Enforcement" icon="shield-check" href="/agency/qr-checkin">
     Once a ticket has been successfully scanned and the passenger marked as boarded, any subsequent scan of the same QR code is flagged as already used and denied. This prevents ticket sharing between passengers.
   </Card>
 </CardGroup>

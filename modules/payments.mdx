@@ -11,16 +11,16 @@ GoTravelXpress supports a comprehensive set of payment methods designed for both
 ## Supported Payment Methods
 
 <CardGroup cols={2}>
-  <Card title="Mobile Money" icon="mobile">
+  <Card title="Mobile Money" icon="mobile" href="/modules/payments#processing-a-payment">
     Accept payments from **MTN Mobile Money**, **Orange Money**, and **Wave** — the three leading Mobile Money networks in the region. Passengers confirm the transaction directly from their phone, and the system receives real-time confirmation.
   </Card>
-  <Card title="Bank Cards (Visa / Mastercard)" icon="credit-card">
+  <Card title="Bank Cards (Visa / Mastercard)" icon="credit-card" href="/modules/payments#processing-a-payment">
     Process **Visa** and **Mastercard** debit and credit cards. Card transactions are encrypted end-to-end and no sensitive card data is stored on GoTravelXpress servers.
   </Card>
-  <Card title="Bank Transfer" icon="building-columns">
+  <Card title="Bank Transfer" icon="building-columns" href="/modules/payments#processing-a-payment">
     Accept payments made by direct bank transfer. The agent records the transfer reference in the platform and marks the reservation as paid once the transfer is confirmed by your finance team.
   </Card>
-  <Card title="Cash" icon="money-bill">
+  <Card title="Cash" icon="money-bill" href="/modules/payments#processing-a-payment">
     Record cash payments collected at the counter. GoTravelXpress automatically generates a printed invoice for the passenger and logs the cash transaction for end-of-day reconciliation.
   </Card>
 </CardGroup>
@@ -127,16 +127,16 @@ GoTravelXpress supports partial and full refunds for cancelled reservations, sub
 GoTravelXpress treats the security of every financial transaction as a top priority.
 
 <CardGroup cols={2}>
-  <Card title="Encrypted Transactions" icon="shield">
+  <Card title="Encrypted Transactions" icon="shield" href="/account/security">
     All payment data is transmitted over encrypted connections. Card and Mobile Money transactions are processed through secure payment gateways — sensitive data never travels in plain text.
   </Card>
-  <Card title="No Card Data Storage" icon="database">
+  <Card title="No Card Data Stored" icon="lock" href="/account/security">
     GoTravelXpress does not store card numbers, CVV codes, or full Mobile Money credentials on its servers. Payment processing is handled by the respective payment processors, and only the transaction reference is retained in the platform.
   </Card>
-  <Card title="Role-Based Access" icon="user-lock">
+  <Card title="Role-Based Access" icon="user-lock" href="/agency/user-roles">
     Only users with the **Cashier** or **Manager** role can initiate or approve payment transactions. Administrators configure role permissions under **Settings → Users & Roles**, ensuring financial operations are restricted to authorised staff.
   </Card>
-  <Card title="Audit Trail" icon="clipboard-list">
+  <Card title="Audit Trail" icon="clipboard-list" href="/modules/analytics">
     Every payment action — transaction initiation, confirmation, refund, and manual override — is logged with the agent's identity, timestamp, and IP address. This full audit trail is available under **Analytics → Payment Logs**.
   </Card>
 </CardGroup>

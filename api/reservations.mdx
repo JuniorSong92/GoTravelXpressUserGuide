@@ -1,5 +1,5 @@
 ---
-title: "Reservations API: Create and Manage Bookings"
+title: "Reservations API: Create, Retrieve, and Cancel Bookings"
 sidebarTitle: "Reservations"
 description: "Use the GoTravelXpress Reservations API to create, retrieve, update, and cancel trip bookings programmatically from your application."
 ---
@@ -48,7 +48,7 @@ The Reservations API lets you manage the full booking lifecycle for your transpo
 
 Retrieve a paginated list of reservations. Use query parameters to filter results by trip, status, or date.
 
-```
+```text
 GET /reservations
 ```
 
@@ -103,7 +103,7 @@ curl "https://gotravelxpress.wuaze.com/api/v1/reservations?trip_id=trip_abc123&s
 
 Retrieve the full details of a single reservation by its ID.
 
-```
+```text
 GET /reservations/{id}
 ```
 
@@ -139,7 +139,7 @@ curl https://gotravelxpress.wuaze.com/api/v1/reservations/res_abc123 \
 
 Create a new reservation for a passenger on a specific trip.
 
-```
+```text
 POST /reservations
 ```
 
@@ -209,7 +209,7 @@ curl -X POST https://gotravelxpress.wuaze.com/api/v1/reservations \
 
 Cancel an existing reservation by its ID. Cancelled reservations cannot be reinstated — you must create a new booking.
 
-```
+```text
 DELETE /reservations/{id}
 ```
 

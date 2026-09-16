@@ -1,5 +1,5 @@
 ---
-title: "Agencies API: Manage Agency Branches and Users"
+title: "Agencies API: Manage Branches, Users, and Permissions"
 sidebarTitle: "Agencies"
 description: "Use the GoTravelXpress Agencies API to list agency branches, manage users and roles, and retrieve agency configuration from your integration."
 ---
@@ -59,7 +59,7 @@ When adding or updating users, assign one of the following roles:
 
 Retrieve all agency branches the authenticated user has access to.
 
-```
+```text
 GET /agencies
 ```
 
@@ -105,7 +105,7 @@ curl https://gotravelxpress.wuaze.com/api/v1/agencies \
 
 Retrieve full details for a single agency branch by its ID.
 
-```
+```text
 GET /agencies/{id}
 ```
 
@@ -139,7 +139,7 @@ curl https://gotravelxpress.wuaze.com/api/v1/agencies/agency_yaunde_01 \
 
 Retrieve all users assigned to a specific agency, along with their roles.
 
-```
+```text
 GET /agencies/{id}/users
 ```
 
@@ -183,7 +183,7 @@ curl https://gotravelxpress.wuaze.com/api/v1/agencies/agency_yaunde_01/users \
 
 Grant an existing GoTravelXpress account access to a specific agency branch and assign them a role.
 
-```
+```text
 POST /agencies/{id}/users
 ```
 
@@ -231,7 +231,7 @@ curl -X POST https://gotravelxpress.wuaze.com/api/v1/agencies/agency_yaunde_01/u
 
 Change the role of a user already assigned to an agency.
 
-```
+```text
 PUT /agencies/{id}/users/{user_id}
 ```
 
@@ -273,7 +273,7 @@ curl -X PUT https://gotravelxpress.wuaze.com/api/v1/agencies/agency_yaunde_01/us
 
 Revoke a user's access to an agency branch. The user's GoTravelXpress account is not deleted — they simply lose access to this specific agency.
 
-```
+```text
 DELETE /agencies/{id}/users/{user_id}
 ```
 

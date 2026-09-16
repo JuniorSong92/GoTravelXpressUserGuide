@@ -1,7 +1,7 @@
 ---
-title: "Authenticate API Requests to GoTravelXpress"
+title: "Authenticate GoTravelXpress API Requests with Bearer Tokens"
 sidebarTitle: "Authentication"
-description: "Learn how to obtain a GoTravelXpress API token and authenticate all REST API requests using the Bearer token scheme."
+description: "Learn how to obtain a GoTravelXpress Bearer token via the login endpoint, use it in API requests, and handle token expiry and renewal."
 ---
 
 All GoTravelXpress API requests must be authenticated with a Bearer token. You obtain this token by posting your account credentials to the login endpoint. Every subsequent request you make must include that token in the `Authorization` header — the API rejects any request that omits it or presents an expired token. This page walks you through obtaining a token, using it in requests, handling token expiry, and the alternative API key option for server-to-server integrations.

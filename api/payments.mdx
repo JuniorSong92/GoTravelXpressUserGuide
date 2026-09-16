@@ -1,5 +1,5 @@
 ---
-title: "Payments API: Process and Track Transactions"
+title: "Payments API: Initiate, Track, and Invoice Transactions"
 sidebarTitle: "Payments"
 description: "Use the GoTravelXpress Payments API to initiate payments, retrieve transaction history, and generate invoices for your reservations."
 ---
@@ -48,7 +48,7 @@ The Payments API lets you initiate and track payments for reservations, retrieve
 
 Start a payment for an existing reservation. For Mobile Money payments, the passenger receives a prompt on their phone to approve the transaction.
 
-```
+```text
 POST /payments
 ```
 
@@ -120,7 +120,7 @@ curl -X POST https://gotravelxpress.wuaze.com/api/v1/payments \
 
 Retrieve the current status and full details of a payment by its ID.
 
-```
+```text
 GET /payments/{id}
 ```
 
@@ -160,7 +160,7 @@ curl https://gotravelxpress.wuaze.com/api/v1/payments/pay_mn12345 \
 
 Retrieve a filtered, paginated list of payment transactions.
 
-```
+```text
 GET /payments
 ```
 
@@ -217,7 +217,7 @@ curl "https://gotravelxpress.wuaze.com/api/v1/payments?date_from=2025-06-01&date
 
 Retrieve a URL to download the PDF invoice for a completed payment. GoTravelXpress automatically generates an invoice for every `completed` transaction.
 
-```
+```text
 GET /payments/{id}/invoice
 ```
 
