@@ -11,7 +11,7 @@
     "light": "https://media.brand.dev/5c4b6fc4-856a-4d5e-a009-3f6ab4042a44.png",
     "dark": "https://media.brand.dev/5c4b6fc4-856a-4d5e-a009-3f6ab4042a44.png"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "https://media.brand.dev/5c4b6fc4-856a-4d5e-a009-3f6ab4042a44.png",
   "navbar": {
     "primary": {
       "type": "button",
