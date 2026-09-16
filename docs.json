@@ -17,7 +17,17 @@
       "type": "button",
       "label": "Commencer",
       "href": "https://gotravelxpress.wuaze.com/index.php"
-    }
+    },
+    "links": [
+      {
+        "href": "/fr",
+        "label": "🇫🇷 Français"
+      },
+      {
+        "href": "/",
+        "label": "🇬🇧 English"
+      }
+    ]
   },
   "navigation": {
     "languages": [
