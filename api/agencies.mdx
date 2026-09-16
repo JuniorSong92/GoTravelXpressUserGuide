@@ -1,0 +1,303 @@
+---
+title: "Agencies API: Manage Agency Branches and Users"
+sidebarTitle: "Agencies"
+description: "Use the GoTravelXpress Agencies API to list agency branches, manage users and roles, and retrieve agency configuration from your integration."
+---
+
+The Agencies API lets multi-agency operators manage branches, user accounts, and role-based permissions programmatically. If your organisation runs multiple transport offices or franchise locations, you can use this API to onboard new staff, adjust user permissions, and retrieve branch configuration — without logging into the GoTravelXpress dashboard for each agency individually. This page covers every agency and user management endpoint, including the full set of available role values.
+
+<Note>
+  Multi-agency endpoints require a **Premium** or **Enterprise** license. Single-agency Basic license holders can retrieve their own agency details but cannot create or manage additional branches or perform user management via the API.
+</Note>
+
+---
+
+## The Agency Object
+
+<ResponseField name="id" type="string">
+  Unique identifier for the agency branch (e.g. `agency_yaunde_01`).
+</ResponseField>
+
+<ResponseField name="name" type="string">
+  Display name of the agency branch (e.g. `Touristique Express — Yaoundé`).
+</ResponseField>
+
+<ResponseField name="location" type="string">
+  City or address where the branch operates.
+</ResponseField>
+
+<ResponseField name="contact" type="string">
+  Primary contact phone number or email for the branch.
+</ResponseField>
+
+<ResponseField name="status" type="string">
+  Branch status: `active` or `inactive`.
+</ResponseField>
+
+<ResponseField name="created_at" type="string (ISO 8601)">
+  Timestamp when the branch was registered in the platform.
+</ResponseField>
+
+---
+
+## Available Roles
+
+When adding or updating users, assign one of the following roles:
+
+| Role | Description |
+|---|---|
+| `super_admin` | Full platform access across all agencies. Can manage all branches, users, and settings. |
+| `agency_admin` | Full access within a specific agency branch. Can manage that branch's users and configuration. |
+| `booking_agent` | Can create, view, and manage reservations and tickets for their agency. |
+| `crew_member` | Can scan and verify QR tickets at boarding. Read-only access to trips and manifests. |
+| `accountant` | Can view and export payment records and invoices. No booking or fleet access. |
+| `read_only` | View-only access to all data in their assigned agency. Cannot make any changes. |
+
+---
+
+## List Agencies
+
+Retrieve all agency branches the authenticated user has access to.
+
+```
+GET /agencies
+```
+
+**Example request:**
+
+```bash
+curl https://gotravelxpress.wuaze.com/api/v1/agencies \
+  -H "Authorization: Bearer eyJhbGci..."
+```
+
+**Example response:**
+
+```json
+{
+  "success": true,
+  "data": {
+    "agencies": [
+      {
+        "id": "agency_yaunde_01",
+        "name": "Touristique Express — Yaoundé",
+        "location": "Yaoundé, Cameroon",
+        "contact": "+237695602293",
+        "status": "active",
+        "created_at": "2024-01-15T09:00:00Z"
+      },
+      {
+        "id": "agency_douala_02",
+        "name": "Touristique Express — Douala",
+        "location": "Douala, Cameroon",
+        "contact": "+237699000002",
+        "status": "active",
+        "created_at": "2024-03-10T08:30:00Z"
+      }
+    ]
+  },
+  "message": "Agencies retrieved successfully"
+}
+```
+
+---
+
+## Get an Agency
+
+Retrieve full details for a single agency branch by its ID.
+
+```
+GET /agencies/{id}
+```
+
+**Example request:**
+
+```bash
+curl https://gotravelxpress.wuaze.com/api/v1/agencies/agency_yaunde_01 \
+  -H "Authorization: Bearer eyJhbGci..."
+```
+
+**Example response:**
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": "agency_yaunde_01",
+    "name": "Touristique Express — Yaoundé",
+    "location": "Yaoundé, Cameroon",
+    "contact": "+237695602293",
+    "status": "active",
+    "created_at": "2024-01-15T09:00:00Z"
+  },
+  "message": "Agency retrieved successfully"
+}
+```
+
+---
+
+## List Agency Users
+
+Retrieve all users assigned to a specific agency, along with their roles.
+
+```
+GET /agencies/{id}/users
+```
+
+**Example request:**
+
+```bash
+curl https://gotravelxpress.wuaze.com/api/v1/agencies/agency_yaunde_01/users \
+  -H "Authorization: Bearer eyJhbGci..."
+```
+
+**Example response:**
+
+```json
+{
+  "success": true,
+  "data": {
+    "users": [
+      {
+        "user_id": "usr_001",
+        "email": "manager@tourexpress.cm",
+        "name": "Jean-Pierre Nkomo",
+        "role": "agency_admin",
+        "joined_at": "2024-01-15T09:00:00Z"
+      },
+      {
+        "user_id": "usr_002",
+        "email": "agent@tourexpress.cm",
+        "name": "Fatima Bello",
+        "role": "booking_agent",
+        "joined_at": "2024-02-01T08:00:00Z"
+      }
+    ]
+  },
+  "message": "Agency users retrieved successfully"
+}
+```
+
+---
+
+## Add a User to an Agency
+
+Grant an existing GoTravelXpress account access to a specific agency branch and assign them a role.
+
+```
+POST /agencies/{id}/users
+```
+
+**Request body parameters:**
+
+<ParamField body="email" type="string" required>
+  The email address of the GoTravelXpress account you want to add. The account must already exist on the platform.
+</ParamField>
+
+<ParamField body="role" type="string" required>
+  The role to assign. Must be one of: `super_admin`, `agency_admin`, `booking_agent`, `crew_member`, `accountant`, `read_only`.
+</ParamField>
+
+**Example request:**
+
+```bash
+curl -X POST https://gotravelxpress.wuaze.com/api/v1/agencies/agency_yaunde_01/users \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer eyJhbGci..." \
+  -d '{
+    "email": "new.agent@tourexpress.cm",
+    "role": "booking_agent"
+  }'
+```
+
+**Example response:**
+
+```json
+{
+  "success": true,
+  "data": {
+    "user_id": "usr_003",
+    "email": "new.agent@tourexpress.cm",
+    "role": "booking_agent",
+    "agency_id": "agency_yaunde_01",
+    "joined_at": "2025-06-01T12:00:00Z"
+  },
+  "message": "User added to agency successfully"
+}
+```
+
+---
+
+## Update a User's Role
+
+Change the role of a user already assigned to an agency.
+
+```
+PUT /agencies/{id}/users/{user_id}
+```
+
+**Request body parameters:**
+
+<ParamField body="role" type="string" required>
+  The new role for this user. Must be one of: `super_admin`, `agency_admin`, `booking_agent`, `crew_member`, `accountant`, `read_only`.
+</ParamField>
+
+**Example request:**
+
+```bash
+curl -X PUT https://gotravelxpress.wuaze.com/api/v1/agencies/agency_yaunde_01/users/usr_003 \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer eyJhbGci..." \
+  -d '{
+    "role": "accountant"
+  }'
+```
+
+**Example response:**
+
+```json
+{
+  "success": true,
+  "data": {
+    "user_id": "usr_003",
+    "email": "new.agent@tourexpress.cm",
+    "role": "accountant",
+    "agency_id": "agency_yaunde_01"
+  },
+  "message": "User role updated successfully"
+}
+```
+
+---
+
+## Remove a User from an Agency
+
+Revoke a user's access to an agency branch. The user's GoTravelXpress account is not deleted — they simply lose access to this specific agency.
+
+```
+DELETE /agencies/{id}/users/{user_id}
+```
+
+**Example request:**
+
+```bash
+curl -X DELETE https://gotravelxpress.wuaze.com/api/v1/agencies/agency_yaunde_01/users/usr_003 \
+  -H "Authorization: Bearer eyJhbGci..."
+```
+
+**Example response:**
+
+```json
+{
+  "success": true,
+  "data": {
+    "user_id": "usr_003",
+    "agency_id": "agency_yaunde_01",
+    "removed": true
+  },
+  "message": "User removed from agency successfully"
+}
+```
+
+<Warning>
+  Only users with the `super_admin` role can remove users from an agency. Requests from `agency_admin` or lower roles will receive a `403 Forbidden` response. If you need to remove a user and do not have Super Admin access, contact your platform administrator.
+</Warning>

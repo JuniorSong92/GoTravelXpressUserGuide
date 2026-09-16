@@ -1,0 +1,145 @@
+---
+title: "Authenticate API Requests to GoTravelXpress"
+sidebarTitle: "Authentication"
+description: "Learn how to obtain a GoTravelXpress API token and authenticate all REST API requests using the Bearer token scheme."
+---
+
+All GoTravelXpress API requests must be authenticated with a Bearer token. You obtain this token by posting your account credentials to the login endpoint. Every subsequent request you make must include that token in the `Authorization` header — the API rejects any request that omits it or presents an expired token. This page walks you through obtaining a token, using it in requests, handling token expiry, and the alternative API key option for server-to-server integrations.
+
+<Note>
+  API access is available on **Premium** and **Enterprise** licenses only. If your login succeeds in the dashboard but the API returns `403 Forbidden`, contact [contact@prozigzag.com](mailto:contact@prozigzag.com) to confirm your license tier.
+</Note>
+
+## Obtaining a Token
+
+<Steps>
+  <Step title="POST your credentials to the login endpoint">
+    Send a `POST` request to `/api/v1/auth/login` with your GoTravelXpress account email and password in the JSON body.
+
+    ```bash
+    curl -X POST https://gotravelxpress.wuaze.com/api/v1/auth/login \
+      -H "Content-Type: application/json" \
+      -d '{
+        "email": "your@email.com",
+        "password": "yourpassword"
+      }'
+    ```
+  </Step>
+
+  <Step title="Read the access_token from the response">
+    A successful login returns a JSON object containing your token, its type, and its lifetime in seconds.
+
+    ```json
+    {
+      "success": true,
+      "data": {
+        "access_token": "eyJhbGci...",
+        "token_type": "Bearer",
+        "expires_in": 3600
+      }
+    }
+    ```
+
+    | Field | Type | Description |
+    |---|---|---|
+    | `access_token` | string | The Bearer token to include in all subsequent requests |
+    | `token_type` | string | Always `"Bearer"` |
+    | `expires_in` | integer | Seconds until the token expires (e.g. `3600` = 1 hour) |
+  </Step>
+
+  <Step title="Store the token securely">
+    Save the `access_token` value in a secure location such as an environment variable, a secrets manager, or encrypted storage. Record the current timestamp alongside `expires_in` so your integration knows when to re-authenticate.
+  </Step>
+</Steps>
+
+## Using the Token
+
+Include the token in every API request using the `Authorization` header with the `Bearer` prefix.
+
+```bash
+curl https://gotravelxpress.wuaze.com/api/v1/reservations \
+  -H "Authorization: Bearer eyJhbGci..."
+```
+
+If you are using a language SDK or HTTP library, set the Authorization header at the client level so all requests inherit it automatically.
+
+<CodeGroup>
+
+```js JavaScript (fetch)
+const token = process.env.GTX_API_TOKEN;
+
+const response = await fetch(
+  'https://gotravelxpress.wuaze.com/api/v1/reservations',
+  {
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  }
+);
+
+const data = await response.json();
+```
+
+```python Python (requests)
+import os, requests
+
+token = os.environ["GTX_API_TOKEN"]
+
+response = requests.get(
+    "https://gotravelxpress.wuaze.com/api/v1/reservations",
+    headers={
+        "Authorization": f"Bearer {token}",
+        "Content-Type": "application/json",
+    },
+)
+
+data = response.json()
+```
+
+```php PHP (cURL)
+<?php
+$token = getenv('GTX_API_TOKEN');
+
+$ch = curl_init('https://gotravelxpress.wuaze.com/api/v1/reservations');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    'Authorization: Bearer ' . $token,
+    'Content-Type: application/json',
+]);
+
+$response = json_decode(curl_exec($ch), true);
+curl_close($ch);
+```
+
+</CodeGroup>
+
+## Token Expiry and Refresh
+
+Tokens are valid for the number of seconds returned in `expires_in`. Once a token expires, the API returns `401 Unauthorized` on every request that uses it.
+
+To continue making API calls after expiry, re-authenticate by posting your credentials to `/api/v1/auth/login` again and using the new `access_token` returned. GoTravelXpress does not currently issue refresh tokens — a fresh login is required each time.
+
+<Tip>
+  Track your token's expiry time in your application and proactively re-authenticate a few minutes before it expires, rather than waiting for a `401` error in production.
+</Tip>
+
+## API Key (Alternative)
+
+For server-to-server integrations where storing and rotating short-lived tokens is impractical — such as background services, webhooks, or ERP connectors — GoTravelXpress can issue a long-lived API key tied to your account.
+
+To request an API key, contact the GoTravelXpress support team:
+
+- **Email:** [contact@prozigzag.com](mailto:contact@prozigzag.com)
+- **Phone:** [+237 695 602 293](tel:+237695602293)
+
+Use the API key exactly like a Bearer token in the `Authorization` header:
+
+```bash
+curl https://gotravelxpress.wuaze.com/api/v1/reservations \
+  -H "Authorization: Bearer gtx_live_sk_xxxxxxxxxxxx"
+```
+
+<Warning>
+  Never expose your Bearer token or API key in client-side JavaScript, mobile app bundles, public repositories, or any place accessible to end users. If a credential is compromised, contact support immediately to revoke it and issue a replacement. Treat API credentials with the same care as passwords.
+</Warning>

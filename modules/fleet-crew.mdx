@@ -1,0 +1,177 @@
+---
+title: "Fleet & Crew Management: Buses, Drivers, and Staff"
+sidebarTitle: "Fleet & Crew"
+description: "Manage your entire transport fleet and crew in GoTravelXpress — assign buses, drivers, hostesses, and baggage handlers from a single dashboard."
+---
+
+The **Fleet & Crew** module is your central command for every vehicle and every person who keeps your trips running. From the moment you add a new bus to the moment a baggage handler clocks off, this module gives you a single place to configure, assign, and monitor your entire transport operation — without switching between separate tools or spreadsheets.
+
+---
+
+## Fleet Management
+
+Your vehicle roster is the foundation of every trip you operate. The Fleet section lets you build and maintain a complete, accurate record of every bus in your network.
+
+### Adding and Editing Vehicles
+
+<Steps>
+  <Step title="Open the Fleet section">
+    From the main dashboard, navigate to **Fleet & Crew → Fleet**. You will see a list of all vehicles currently registered to your agency.
+  </Step>
+  <Step title="Add a new vehicle">
+    Click **Add Vehicle**. Fill in the required fields: vehicle name or identifier, registration plate, seating capacity, and current operational status (Active, Maintenance, or Retired).
+  </Step>
+  <Step title="Save the vehicle record">
+    Click **Save**. The vehicle is now available to assign to any trip you schedule from the Reservations module.
+  </Step>
+  <Step title="Edit an existing vehicle">
+    Select any vehicle from the list and click **Edit** to update its details — for example, to change its status to **Maintenance** when it goes in for a service.
+  </Step>
+</Steps>
+
+### Vehicle Details
+
+Each vehicle record holds the following information:
+
+<AccordionGroup>
+  <Accordion title="Identity & Registration">
+    - **Vehicle name / ID** — your internal label for the bus
+    - **Registration plate** — the official plate number as it appears on the vehicle
+    - **Make / model** — optional; useful for maintenance records
+  </Accordion>
+  <Accordion title="Capacity & Configuration">
+    - **Seating capacity** — total passenger seats; the Reservations module uses this to enforce booking limits
+    - **Seat layout** — the arrangement used when displaying the interactive seat-selection map to passengers
+  </Accordion>
+  <Accordion title="Operational Status">
+    - **Active** — available for trip assignment
+    - **Maintenance** — temporarily unavailable; the system will not allow you to assign this vehicle to new trips
+    - **Retired** — permanently removed from service; kept in the record for historical reporting
+  </Accordion>
+</AccordionGroup>
+
+### Assigning Vehicles to Trips
+
+When you create or edit a trip in the Reservations module, you select a vehicle from the list of **Active** vehicles registered here. The assigned vehicle's capacity automatically sets the maximum seat count for that trip.
+
+<Note>
+  Vehicles with a status of **Maintenance** or **Retired** do not appear in the trip assignment drop-down, preventing accidental bookings on unavailable buses.
+</Note>
+
+---
+
+## Driver Management
+
+Every trip needs a qualified driver behind the wheel. The Driver section lets you build a profile for each driver, track their availability, and ensure the right person is assigned to every departure.
+
+### Adding Drivers
+
+<Steps>
+  <Step title="Navigate to Drivers">
+    Go to **Fleet & Crew → Drivers** and click **Add Driver**.
+  </Step>
+  <Step title="Fill in the driver profile">
+    Enter the driver's full name, license number, contact phone number, and any additional notes relevant to your agency (e.g., routes they are certified for).
+  </Step>
+  <Step title="Set availability status">
+    Mark the driver as **Available**, **On Trip**, or **Off Duty**. This status appears on the Staff Dashboard so dispatchers can see who is free at a glance.
+  </Step>
+  <Step title="Save the profile">
+    Click **Save**. The driver is now selectable when assigning crew to a trip.
+  </Step>
+</Steps>
+
+### Driver Profiles
+
+Each driver profile captures the key details your agency needs:
+
+| Field | Description |
+|---|---|
+| Full name | The driver's legal name as shown on their license |
+| License number | Used for compliance and verification |
+| Contact phone | Direct line for dispatch communications |
+| Current status | Available / On Trip / Off Duty |
+| Trip history | Auto-populated log of past and current assignments |
+
+### Assigning Drivers to Trips
+
+Open the trip record from the Reservations module and select a driver from the **Assign Driver** field. Only drivers with an **Available** status appear in the selection list. Once assigned, the driver's status automatically updates to **On Trip** for the duration of the journey.
+
+---
+
+## Hostess Management
+
+Hostesses are the on-board service staff who accompany passengers throughout a trip. The Hostess section works the same way as Driver Management, giving you a dedicated roster and clear assignment records.
+
+### Adding and Assigning Hostesses
+
+<Steps>
+  <Step title="Open the Hostess section">
+    Navigate to **Fleet & Crew → Hostesses** and click **Add Hostess**.
+  </Step>
+  <Step title="Complete the profile">
+    Enter the hostess's name, contact details, and availability status.
+  </Step>
+  <Step title="Assign to a trip">
+    From the trip record, use the **Assign Hostess** field to select an available hostess. You can assign one or more hostesses per trip depending on the vehicle size and your agency's policy.
+  </Step>
+</Steps>
+
+### Tracking Roles and Responsibilities
+
+Each hostess assignment record notes the trip she is covering, the departure date and time, and the vehicle she is working on. This gives supervisors a clear picture of on-board staffing for every departure without having to consult separate rosters.
+
+---
+
+## Baggage Handler Management
+
+Baggage handlers are the ground crew responsible for checking in passenger bags and loading parcels before departure. Their work is tightly linked to the **Baggage & Parcels** module — an item cannot be marked as checked in until a handler is logged on shift for that trip.
+
+### Adding Baggage Handlers
+
+<Steps>
+  <Step title="Open the Baggage Handler section">
+    Go to **Fleet & Crew → Baggage Handlers** and click **Add Handler**.
+  </Step>
+  <Step title="Enter handler details">
+    Provide the handler's name, contact number, and the terminal or station they are based at.
+  </Step>
+  <Step title="Assign to a trip">
+    Select the handler from the crew assignment panel of the relevant trip. The handler will then appear as the responsible agent in the Baggage & Parcels check-in workflow.
+  </Step>
+</Steps>
+
+<Note>
+  Baggage handler assignments feed directly into the **Baggage & Parcels** module. When a handler is assigned to a trip, they automatically appear as the available agent in the baggage check-in interface for that departure.
+</Note>
+
+---
+
+## Staff Dashboard
+
+The Staff Dashboard gives supervisors and dispatchers an at-a-glance view of every crew member's current status across all active trips.
+
+<CardGroup cols={2}>
+  <Card title="Current Assignments" icon="clipboard-list">
+    See which driver, hostess, and baggage handler is assigned to each trip departing today, including departure time and vehicle.
+  </Card>
+  <Card title="Availability Status" icon="circle-check">
+    View the real-time availability of every staff member — **Available**, **On Trip**, or **Off Duty** — so you can reassign quickly if a crew member calls in sick.
+  </Card>
+  <Card title="Trip Progress" icon="route">
+    Monitor the live status of ongoing trips and know when crew members are expected to become available again for the next departure.
+  </Card>
+  <Card title="Staff Directory" icon="address-book">
+    Access the full contact details for any driver, hostess, or baggage handler in one click — no need to leave the dashboard.
+  </Card>
+</CardGroup>
+
+---
+
+<Tip>
+  Use the **Intelligent Planning** module to automate crew assignment. When you enable smart scheduling, GoTravelXpress analyses departure times, staff availability, and route requirements to suggest the optimal driver, hostess, and baggage handler for each trip — saving your dispatcher significant manual effort during busy departure windows.
+</Tip>
+
+<Note>
+  The **QR Check-in & Crew** module integrates with Fleet & Crew for attendance tracking. When a driver or hostess scans their QR code at departure, the system records their check-in time and location, automatically updating their status on the Staff Dashboard. This gives you a verified, time-stamped attendance record for every crew member on every trip.
+</Note>

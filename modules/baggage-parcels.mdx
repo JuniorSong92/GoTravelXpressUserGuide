@@ -1,0 +1,159 @@
+---
+title: "Baggage & Parcel Tracking from Check-In to Delivery"
+sidebarTitle: "Baggage & Parcels"
+description: "Track passenger baggage and parcels end-to-end in GoTravelXpress — from check-in through transit to final delivery with full statistics."
+---
+
+The **Baggage & Parcels** module lets you track every item your agency handles — from the moment a passenger drops off their bag at the counter, all the way through transit, to confirmed delivery at the destination. Whether you are managing passenger luggage on a scheduled trip or shipping standalone parcels between cities, you get a full audit trail, a unique tracking reference for every item, and live status updates that both your agents and your customers can rely on.
+
+---
+
+## Checking In Baggage
+
+When a passenger arrives at your terminal, your check-in agent registers their luggage directly in GoTravelXpress. The system links each bag to the passenger's reservation, so there is never any ambiguity about which bag belongs to whom or which trip it travels on.
+
+<Steps>
+  <Step title="Open the Baggage Check-In screen">
+    From the main menu, navigate to **Baggage & Parcels → Check In Baggage**. Search for the passenger by name, reservation reference, or ticket QR code.
+  </Step>
+  <Step title="Confirm the reservation">
+    The system displays the passenger's booking details — route, departure time, and seat number. Verify this matches the passenger in front of you, then proceed.
+  </Step>
+  <Step title="Register each item">
+    For each piece of luggage, enter a brief description (e.g., "large blue suitcase") and the approximate weight. You can add multiple items to a single reservation.
+  </Step>
+  <Step title="Generate the baggage tag">
+    Click **Check In**. The system generates a unique baggage reference number for each item. Print or display the reference for the passenger — they can use it to track their bag online or at the destination counter.
+  </Step>
+  <Step title="Confirm check-in">
+    The bag's status is now set to **Checked In** and it is linked to the assigned trip. The baggage handler responsible for loading this trip can see all checked-in items in their loading manifest.
+  </Step>
+</Steps>
+
+<Note>
+  Each baggage reference is automatically tied to the passenger's reservation and the assigned vehicle. If a trip is rescheduled or a vehicle changes, the baggage records update accordingly so your ground crew always works from an accurate manifest.
+</Note>
+
+---
+
+## Parcel Shipping
+
+Beyond passenger luggage, GoTravelXpress supports standalone parcel shipments — items sent from one city to another independently of a passenger booking. This is a common revenue line for transport agencies operating intercity routes.
+
+### Creating a Parcel Shipment
+
+<Steps>
+  <Step title="Open Parcel Shipping">
+    Navigate to **Baggage & Parcels → Send Parcel** and click **New Shipment**.
+  </Step>
+  <Step title="Enter sender details">
+    Provide the sender's full name, phone number, and pickup location (your terminal or a designated collection point).
+  </Step>
+  <Step title="Enter recipient details">
+    Provide the recipient's full name, contact phone number, and destination terminal or address.
+  </Step>
+  <Step title="Describe the parcel">
+    Enter a content description, weight, and approximate dimensions. This information appears on the shipment label and is used to calculate any applicable handling fees.
+  </Step>
+  <Step title="Select the route and trip">
+    Choose the departure trip that will carry this parcel. The system shows available trips on the sender's selected route.
+  </Step>
+  <Step title="Confirm and generate tracking reference">
+    Click **Create Shipment**. The system generates a unique parcel tracking reference. Share this reference with both the sender and the recipient so they can monitor progress.
+  </Step>
+</Steps>
+
+### Parcel Shipment Record
+
+Each parcel record holds the following fields:
+
+<AccordionGroup>
+  <Accordion title="Sender & Recipient">
+    - Sender name and contact number
+    - Recipient name, contact number, and destination
+    - Date and time of drop-off
+  </Accordion>
+  <Accordion title="Item Details">
+    - Content description
+    - Weight (kg) and approximate dimensions
+    - Declared value (optional, for insurance or fee purposes)
+  </Accordion>
+  <Accordion title="Shipment Logistics">
+    - Assigned trip and vehicle
+    - Baggage handler responsible for loading
+    - Current status: Registered → Loaded → In Transit → Arrived → Delivered
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Tracking an Item
+
+Your agents can check the status of any bag or parcel at any time using the tracking reference generated at check-in or shipment creation.
+
+<Steps>
+  <Step title="Open the Tracking screen">
+    Go to **Baggage & Parcels → Track Item** and enter the baggage or parcel reference number.
+  </Step>
+  <Step title="View the current status">
+    The system displays the item's full status timeline. Statuses progress through the following stages:
+
+    | Status | Meaning |
+    |---|---|
+    | **Checked In / Registered** | Item logged in the system at origin terminal |
+    | **Loaded** | Item confirmed on the vehicle by the baggage handler |
+    | **In Transit** | Trip is underway; item is on the road |
+    | **Arrived at Destination** | Trip has reached the destination terminal |
+    | **Delivered** | Item handed to passenger or recipient; delivery confirmed |
+  </Step>
+  <Step title="Share status with the customer">
+    If a passenger or parcel recipient calls to ask about their item, read the current status directly from the tracking screen. For parcels, you can also share the reference number so the recipient can self-serve.
+  </Step>
+</Steps>
+
+---
+
+## Delivery Confirmation
+
+Once a bag or parcel reaches its destination, your destination-terminal agent marks it as delivered to close the tracking record.
+
+<Steps>
+  <Step title="Open the Delivery screen">
+    At the destination terminal, navigate to **Baggage & Parcels → Confirm Delivery** and search for the item by reference number or by the arriving trip.
+  </Step>
+  <Step title="Verify recipient identity">
+    For parcels, confirm the recipient's name and contact number before releasing the item.
+  </Step>
+  <Step title="Mark as delivered">
+    Click **Confirm Delivery**. The item's status updates to **Delivered**, and the timestamp and agent name are recorded in the item's history.
+  </Step>
+</Steps>
+
+<Note>
+  Delivery confirmation timestamps are stored in the item's full audit trail. This record is available for reporting in the **Analytics** module and can help resolve any customer disputes about whether or when an item was collected.
+</Note>
+
+---
+
+## Baggage Statistics
+
+The Baggage & Parcels module feeds detailed operational data into the Analytics dashboard, giving you the numbers you need to improve your ground operations.
+
+The statistics view surfaces the following metrics:
+
+- **Total items checked in** per day, week, or custom date range
+- **Items by status** — how many are in transit, arrived, or delivered at any given time
+- **Average delivery time** from check-in at origin to confirmation at destination
+- **Lost or undelivered items** — items flagged as missing or not collected within a configurable time window
+- **Parcel revenue** — total fees collected for standalone parcel shipments over a selected period
+- **Handler performance** — volumes processed per baggage handler, useful for workload balancing
+
+<Tip>
+  Connect your baggage statistics to the main **Analytics** dashboard to build a complete picture of terminal throughput. Correlating baggage volumes with passenger numbers and departure times helps you identify peak handling periods and schedule your ground crew more efficiently — reducing delays at the loading bay before busy departures.
+</Tip>
+
+---
+
+<Warning>
+  You are responsible for ensuring that all items checked in through GoTravelXpress comply with applicable transport regulations and your agency's prohibited-items policy. The system records item descriptions as provided by the agent or sender but does not perform automated screening. Before accepting any item, verify it against your agency's list of prohibited goods (e.g., hazardous materials, oversized loads) and any regulations set by transport authorities in your operating region.
+</Warning>

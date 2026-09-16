@@ -1,0 +1,238 @@
+---
+title: "Reservations API: Create and Manage Bookings"
+sidebarTitle: "Reservations"
+description: "Use the GoTravelXpress Reservations API to create, retrieve, update, and cancel trip bookings programmatically from your application."
+---
+
+The Reservations API lets you manage the full booking lifecycle for your transport agency. You can create reservations on behalf of passengers, check seat availability, retrieve existing booking details, and cancel trips — all without touching the GoTravelXpress dashboard. Every confirmed reservation automatically triggers QR ticket generation, so your passengers receive a scannable ticket as soon as the booking is complete.
+
+---
+
+## The Reservation Object
+
+<ResponseField name="id" type="string">
+  Unique identifier for the reservation (e.g. `res_abc123`).
+</ResponseField>
+
+<ResponseField name="trip_id" type="string">
+  The ID of the trip this reservation is attached to.
+</ResponseField>
+
+<ResponseField name="passenger_name" type="string">
+  Full name of the passenger.
+</ResponseField>
+
+<ResponseField name="passenger_phone" type="string">
+  Passenger's phone number, including country code (e.g. `+237691000001`).
+</ResponseField>
+
+<ResponseField name="seat_number" type="string">
+  The seat assigned to this passenger (e.g. `12A`). May be `null` if seat selection is handled at boarding.
+</ResponseField>
+
+<ResponseField name="status" type="string">
+  Current booking status. One of `pending`, `confirmed`, or `cancelled`.
+</ResponseField>
+
+<ResponseField name="ticket_id" type="string">
+  ID of the QR ticket generated for this reservation. Populated once `status` becomes `confirmed`. Use the [Tickets API](/api/tickets) to retrieve the QR code.
+</ResponseField>
+
+<ResponseField name="created_at" type="string (ISO 8601)">
+  Timestamp when the reservation was created (e.g. `2025-06-01T10:30:00Z`).
+</ResponseField>
+
+---
+
+## List Reservations
+
+Retrieve a paginated list of reservations. Use query parameters to filter results by trip, status, or date.
+
+```
+GET /reservations
+```
+
+**Query Parameters**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `trip_id` | string | No | Filter by trip ID |
+| `status` | string | No | Filter by status: `pending`, `confirmed`, or `cancelled` |
+| `date` | string | No | Filter by departure date in `YYYY-MM-DD` format |
+| `page` | integer | No | Page number for pagination (default: `1`) |
+| `limit` | integer | No | Results per page, max `100` (default: `20`) |
+
+**Example request:**
+
+```bash
+curl "https://gotravelxpress.wuaze.com/api/v1/reservations?trip_id=trip_abc123&status=confirmed&page=1&limit=20" \
+  -H "Authorization: Bearer eyJhbGci..."
+```
+
+**Example response:**
+
+```json
+{
+  "success": true,
+  "data": {
+    "reservations": [
+      {
+        "id": "res_abc123",
+        "trip_id": "trip_abc123",
+        "passenger_name": "Alice Mbarga",
+        "passenger_phone": "+237691000001",
+        "seat_number": "12A",
+        "status": "confirmed",
+        "ticket_id": "tkt_xyz789",
+        "created_at": "2025-06-01T10:30:00Z"
+      }
+    ],
+    "pagination": {
+      "page": 1,
+      "limit": 20,
+      "total": 1
+    }
+  },
+  "message": "Reservations retrieved successfully"
+}
+```
+
+---
+
+## Get a Reservation
+
+Retrieve the full details of a single reservation by its ID.
+
+```
+GET /reservations/{id}
+```
+
+**Example request:**
+
+```bash
+curl https://gotravelxpress.wuaze.com/api/v1/reservations/res_abc123 \
+  -H "Authorization: Bearer eyJhbGci..."
+```
+
+**Example response:**
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": "res_abc123",
+    "trip_id": "trip_abc123",
+    "passenger_name": "Alice Mbarga",
+    "passenger_phone": "+237691000001",
+    "seat_number": "12A",
+    "status": "confirmed",
+    "ticket_id": "tkt_xyz789",
+    "created_at": "2025-06-01T10:30:00Z"
+  },
+  "message": "Reservation retrieved successfully"
+}
+```
+
+---
+
+## Create a Reservation
+
+Create a new reservation for a passenger on a specific trip.
+
+```
+POST /reservations
+```
+
+**Request body parameters:**
+
+<ParamField body="trip_id" type="string" required>
+  The ID of the trip to book. You can find trip IDs through your trip management endpoints.
+</ParamField>
+
+<ParamField body="passenger_name" type="string" required>
+  Full name of the passenger as it should appear on the ticket.
+</ParamField>
+
+<ParamField body="passenger_phone" type="string">
+  Passenger's phone number, including country code. Required when `payment_method` is `mobile_money`.
+</ParamField>
+
+<ParamField body="seat_number" type="string">
+  Preferred seat (e.g. `12A`). If omitted, the system assigns the next available seat automatically.
+</ParamField>
+
+<ParamField body="payment_method" type="string">
+  How the passenger will pay. Accepted values: `mobile_money`, `card`, `cash`. Defaults to `cash` if omitted.
+</ParamField>
+
+**Example request:**
+
+```bash
+curl -X POST https://gotravelxpress.wuaze.com/api/v1/reservations \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer eyJhbGci..." \
+  -d '{
+    "trip_id": "trip_abc123",
+    "passenger_name": "Alice Mbarga",
+    "passenger_phone": "+237691000001",
+    "seat_number": "12A",
+    "payment_method": "mobile_money"
+  }'
+```
+
+**Example response:**
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": "res_def456",
+    "trip_id": "trip_abc123",
+    "passenger_name": "Alice Mbarga",
+    "passenger_phone": "+237691000001",
+    "seat_number": "12A",
+    "status": "pending",
+    "ticket_id": null,
+    "created_at": "2025-06-01T11:00:00Z"
+  },
+  "message": "Reservation created successfully"
+}
+```
+
+<Note>
+  A reservation starts in `pending` status. Once payment is confirmed, the status moves to `confirmed` and a QR code ticket is automatically generated. The `ticket_id` field is populated at that point and you can retrieve the ticket via the [Tickets API](/api/tickets).
+</Note>
+
+---
+
+## Cancel a Reservation
+
+Cancel an existing reservation by its ID. Cancelled reservations cannot be reinstated — you must create a new booking.
+
+```
+DELETE /reservations/{id}
+```
+
+**Example request:**
+
+```bash
+curl -X DELETE https://gotravelxpress.wuaze.com/api/v1/reservations/res_def456 \
+  -H "Authorization: Bearer eyJhbGci..."
+```
+
+**Example response:**
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": "res_def456",
+    "status": "cancelled"
+  },
+  "message": "Reservation cancelled successfully"
+}
+```
+
+<Warning>
+  Cancellation policies (refund eligibility, deadlines) are governed by your agency's own rules and are not enforced by the API. The API cancels the booking immediately upon request. Ensure your integration enforces any cut-off times before calling this endpoint.
+</Warning>

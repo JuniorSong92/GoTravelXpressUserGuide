@@ -1,0 +1,154 @@
+---
+title: "Analytics: Real-Time Dashboards and Agency Statistics"
+sidebarTitle: "Analytics"
+description: "Monitor your agency's performance in real time with GoTravelXpress analytics — occupancy rates, revenue, crew stats, and baggage volumes on one dashboard."
+---
+
+The **Analytics** module gives agency managers a real-time view of every metric that matters — how full your buses are, how much revenue you are collecting, how your crew is performing, and how efficiently your baggage operation is running. Instead of pulling figures from separate modules or building reports by hand, you get a single dashboard that aggregates data from across GoTravelXpress and updates automatically as your operations unfold.
+
+---
+
+## Dashboard Overview
+
+The Analytics dashboard is your command centre. Open it by navigating to **Analytics → Dashboard** from the main menu. The page is organised into panels that you can scan at a glance without drilling into individual modules.
+
+<CardGroup cols={2}>
+  <Card title="Daily Summary" icon="calendar-day">
+    A snapshot of today's activity: total departures scheduled, passengers booked, tickets verified at boarding, and revenue collected so far today.
+  </Card>
+  <Card title="Weekly Trends" icon="chart-line">
+    A seven-day rolling view of trip occupancy and revenue. Spot mid-week dips or weekend surges at a glance without exporting a single file.
+  </Card>
+  <Card title="Monthly KPIs" icon="chart-bar">
+    Month-to-date aggregates for all major performance indicators, displayed alongside the same period last month so you can measure progress immediately.
+  </Card>
+  <Card title="Revenue Summary" icon="circle-dollar-to-slot">
+    Total revenue broken down by payment method — Mobile Money, card, and cash — updated in real time as payments are processed.
+  </Card>
+</CardGroup>
+
+The top of the dashboard always shows the current date and time, and a banner indicates when the data was last refreshed.
+
+---
+
+## Key Metrics
+
+GoTravelXpress tracks the following metrics across all modules and surfaces them on the Analytics dashboard.
+
+<AccordionGroup>
+  <Accordion title="Reservation Volume & Occupancy Rates">
+    - **Total reservations** created over any selected period
+    - **Occupancy rate per trip** — seats sold as a percentage of total vehicle capacity
+    - **Average occupancy across all routes** — useful for identifying consistently under-booked routes
+    - **Reservation cancellations** and the rate at which cancelled seats were subsequently re-sold
+  </Accordion>
+  <Accordion title="Revenue by Route, Payment Method & Time Period">
+    - **Revenue per route** — compare the financial performance of each city pair you operate
+    - **Revenue by payment method** — see the split between MTN Mobile Money, Orange Money, Wave, Visa/Mastercard, and cash
+    - **Revenue over time** — daily, weekly, and monthly breakdowns with the ability to set a custom date range
+    - **Average ticket value** per route
+  </Accordion>
+  <Accordion title="Crew Attendance & Performance">
+    - **Driver and hostess attendance** — QR check-in records translated into attendance rates per staff member
+    - **On-time departure rate** — the percentage of trips that depart within an acceptable window of the scheduled time, correlated with the assigned crew
+    - **Trips completed per driver** over a selected period
+  </Accordion>
+  <Accordion title="Baggage & Parcel Volumes">
+    - **Items checked in and delivered** per day or period
+    - **Average delivery time** from check-in at origin to confirmed delivery at destination
+    - **Undelivered or delayed items** flagged for follow-up
+    - **Parcel revenue** collected from standalone shipments
+  </Accordion>
+  <Accordion title="Ticket Verification Rates">
+    - **QR tickets scanned at boarding** as a percentage of total tickets issued for each trip
+    - **Invalid or duplicate scan attempts** — useful for identifying fraud or duplicate-booking patterns
+    - **Trips with low verification rates** — where a significant number of ticketed passengers did not board, which may indicate no-shows or boarding issues
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Generating Reports
+
+When you need to share data with stakeholders, archive it for compliance, or analyse it in an external tool, you can export any report as a PDF or CSV file in a few steps.
+
+<Steps>
+  <Step title="Open the Reports section">
+    Navigate to **Analytics → Reports** and click **New Report**.
+  </Step>
+  <Step title="Set the date range">
+    Use the date picker to select a **start date** and **end date** for the report. You can also choose a preset range: Today, This Week, This Month, or Last Month.
+  </Step>
+  <Step title="Choose a metric category">
+    Select one or more categories to include in the report:
+
+    <Tabs>
+      <Tab title="Reservations & Occupancy">
+        Covers booking volumes, seat occupancy rates, cancellations, and no-shows for the selected period.
+      </Tab>
+      <Tab title="Revenue">
+        Covers total revenue, revenue by route, revenue by payment method, and average ticket value.
+      </Tab>
+      <Tab title="Crew & Attendance">
+        Covers driver and hostess attendance records, on-time departure rates, and trips completed per staff member.
+      </Tab>
+      <Tab title="Baggage & Parcels">
+        Covers item volumes, delivery times, parcel revenue, and any unresolved delayed items.
+      </Tab>
+      <Tab title="Tickets">
+        Covers QR ticket issuance, verification rates at boarding, and any flagged scan anomalies.
+      </Tab>
+    </Tabs>
+  </Step>
+  <Step title="Generate the report">
+    Click **Generate**. GoTravelXpress compiles the data for the selected date range and categories. A preview of the report appears on screen within a few seconds.
+  </Step>
+  <Step title="Download your report">
+    Click **Download PDF** for a formatted document suitable for presentations and filing, or **Download CSV** if you need raw data for a spreadsheet or external analytics tool.
+  </Step>
+</Steps>
+
+<Tip>
+  Schedule recurring exports by setting up a **Saved Report** with your preferred date range type (e.g., Last Month) and metric categories. On the first day of each month, open your saved report, click **Generate**, and download — no need to reconfigure the parameters each time.
+</Tip>
+
+---
+
+## Multi-Agency Analytics
+
+<Info>
+  Multi-agency analytics is available on the **Premium** and **Enterprise** plans.
+</Info>
+
+If you operate more than one agency branch — each with its own routes, fleet, and staff — the Multi-Agency Analytics view consolidates performance data across all branches into a single dashboard. This lets headquarters managers compare branches side by side without logging into each agency account separately.
+
+### What You Can See
+
+<CardGroup cols={2}>
+  <Card title="Consolidated Revenue" icon="building-columns">
+    Total revenue across all branches, with a breakdown showing each branch's contribution and how they compare to one another.
+  </Card>
+  <Card title="Branch Occupancy Comparison" icon="chart-bar">
+    Side-by-side occupancy rates for each branch, helping you identify which locations are thriving and which may need route or scheduling adjustments.
+  </Card>
+  <Card title="Cross-Branch Crew Stats" icon="users">
+    Attendance and performance figures for all staff across every branch, useful for group-level HR reviews.
+  </Card>
+  <Card title="Network-Wide Baggage Volumes" icon="boxes-stacked">
+    Parcel and baggage throughput totals across your entire network, with per-branch drill-down available on demand.
+  </Card>
+</CardGroup>
+
+### Filtering by Branch
+
+At the top of the Multi-Agency dashboard, use the **Branch** filter to toggle between viewing all branches combined or isolating a single branch. All metrics, charts, and export functions respond to this filter — so you can pull a report for one branch or for your entire network using the same workflow described in [Generating Reports](#generating-reports) above.
+
+---
+
+<Tip>
+  Use the Analytics dashboard to optimise your scheduling. Filter occupancy data by route and time of day to identify which departures consistently sell out and which run below capacity. With this insight, you can add extra services on high-demand routes, adjust departure times to match passenger demand, and retire under-performing trips — directly improving both revenue and seat utilisation across your network.
+</Tip>
+
+<Note>
+  Analytics data in GoTravelXpress updates in real time. As reservations are created, payments processed, tickets scanned at boarding, and baggage checked in, the dashboard figures refresh automatically without you needing to reload the page. What you see always reflects the current state of your operations.
+</Note>

@@ -1,0 +1,246 @@
+---
+title: "Tickets API: Generate and Verify QR Code Tickets"
+sidebarTitle: "Tickets"
+description: "Use the GoTravelXpress Tickets API to retrieve QR code tickets, verify ticket validity, and mark tickets as used during boarding."
+---
+
+The Tickets API lets you retrieve, verify, and manage the QR code tickets that GoTravelXpress automatically generates when a reservation is confirmed. At boarding, your crew app or check-in kiosk can call the verify endpoint to validate a passenger's QR code in real time — preventing duplicates, fraud, and invalid entries. This page documents every ticket endpoint including how to fetch the raw QR image for display in your own interface.
+
+---
+
+## The Ticket Object
+
+<ResponseField name="id" type="string">
+  Unique identifier for the ticket (e.g. `tkt_xyz789`).
+</ResponseField>
+
+<ResponseField name="reservation_id" type="string">
+  The ID of the reservation this ticket belongs to.
+</ResponseField>
+
+<ResponseField name="trip_id" type="string">
+  The ID of the trip associated with this ticket.
+</ResponseField>
+
+<ResponseField name="passenger_name" type="string">
+  Full name of the passenger as recorded on the reservation.
+</ResponseField>
+
+<ResponseField name="seat_number" type="string">
+  Seat assigned to the passenger (e.g. `12A`).
+</ResponseField>
+
+<ResponseField name="status" type="string">
+  Current ticket status. One of `unused`, `used`, or `invalid`.
+</ResponseField>
+
+<ResponseField name="qr_code" type="string">
+  The encrypted QR code payload string. Pass this value to the verify endpoint or encode it into a QR image.
+</ResponseField>
+
+<ResponseField name="issued_at" type="string (ISO 8601)">
+  Timestamp when the ticket was issued (e.g. `2025-06-01T11:05:00Z`).
+</ResponseField>
+
+<ResponseField name="expires_at" type="string (ISO 8601)">
+  Timestamp after which the ticket is no longer valid for boarding. Typically set to the trip's departure time.
+</ResponseField>
+
+---
+
+## Get a Ticket
+
+Retrieve full details for a single ticket by its ID, including the QR code payload.
+
+```
+GET /tickets/{id}
+```
+
+**Example request:**
+
+```bash
+curl https://gotravelxpress.wuaze.com/api/v1/tickets/tkt_xyz789 \
+  -H "Authorization: Bearer eyJhbGci..."
+```
+
+**Example response:**
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": "tkt_xyz789",
+    "reservation_id": "res_abc123",
+    "trip_id": "trip_abc123",
+    "passenger_name": "Alice Mbarga",
+    "seat_number": "12A",
+    "status": "unused",
+    "qr_code": "GTX-ENC:eyJ0aWQiOiJ0a3RfeHl6Nzg5IiwidHJpcCI6InRyaXBfYWJjMTIzIn0=",
+    "issued_at": "2025-06-01T11:05:00Z",
+    "expires_at": "2025-06-02T08:00:00Z"
+  },
+  "message": "Ticket retrieved successfully"
+}
+```
+
+---
+
+## Verify a Ticket
+
+Verify a QR code at boarding time. Post the scanned QR data to this endpoint to confirm the ticket is valid, unused, and not expired. On success, the ticket is marked as `used`.
+
+```
+POST /tickets/{id}/verify
+```
+
+**Request body parameters:**
+
+<ParamField body="qr_data" type="string" required>
+  The raw QR code string scanned from the passenger's ticket. This must match the `qr_code` value issued for the ticket.
+</ParamField>
+
+**Example request:**
+
+```bash
+curl -X POST https://gotravelxpress.wuaze.com/api/v1/tickets/tkt_xyz789/verify \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer eyJhbGci..." \
+  -d '{
+    "qr_data": "GTX-ENC:eyJ0aWQiOiJ0a3RfeHl6Nzg5IiwidHJpcCI6InRyaXBfYWJjMTIzIn0="
+  }'
+```
+
+**Possible responses:**
+
+<Tabs>
+  <Tab title="Valid (first scan)">
+    ```json
+    {
+      "success": true,
+      "data": {
+        "ticket_id": "tkt_xyz789",
+        "passenger_name": "Alice Mbarga",
+        "seat_number": "12A",
+        "trip_id": "trip_abc123",
+        "verification_result": "valid",
+        "verified_at": "2025-06-02T07:45:00Z"
+      },
+      "message": "Ticket verified successfully. Passenger may board."
+    }
+    ```
+  </Tab>
+  <Tab title="Already Used">
+    ```json
+    {
+      "success": false,
+      "error": {
+        "code": "TICKET_ALREADY_USED",
+        "message": "This ticket has already been scanned and used."
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="Invalid / Expired">
+    ```json
+    {
+      "success": false,
+      "error": {
+        "code": "TICKET_INVALID",
+        "message": "The QR data does not match a valid ticket, or the ticket has expired."
+      }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+<Warning>
+  The verify endpoint is idempotent only for the first successful scan — it marks the ticket as `used` and returns `valid`. Any further attempt to verify the same ticket returns `TICKET_ALREADY_USED`. Design your crew-facing app to display this error clearly so staff can identify and handle duplicate boarding attempts.
+</Warning>
+
+---
+
+## List Tickets
+
+Retrieve a list of tickets, filtered by trip, status, or date.
+
+```
+GET /tickets
+```
+
+**Query Parameters**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `trip_id` | string | No | Return tickets for a specific trip |
+| `status` | string | No | Filter by `unused`, `used`, or `invalid` |
+| `date` | string | No | Filter by trip departure date (`YYYY-MM-DD`) |
+| `page` | integer | No | Page number (default: `1`) |
+| `limit` | integer | No | Results per page, max `100` (default: `20`) |
+
+**Example request:**
+
+```bash
+curl "https://gotravelxpress.wuaze.com/api/v1/tickets?trip_id=trip_abc123&status=unused" \
+  -H "Authorization: Bearer eyJhbGci..."
+```
+
+**Example response:**
+
+```json
+{
+  "success": true,
+  "data": {
+    "tickets": [
+      {
+        "id": "tkt_xyz789",
+        "reservation_id": "res_abc123",
+        "trip_id": "trip_abc123",
+        "passenger_name": "Alice Mbarga",
+        "seat_number": "12A",
+        "status": "unused",
+        "issued_at": "2025-06-01T11:05:00Z",
+        "expires_at": "2025-06-02T08:00:00Z"
+      }
+    ],
+    "pagination": {
+      "page": 1,
+      "limit": 20,
+      "total": 1
+    }
+  },
+  "message": "Tickets retrieved successfully"
+}
+```
+
+---
+
+## Get QR Code Image
+
+Fetch the QR code for a ticket as a PNG image. Use this endpoint to display or print the QR code in your own application without encoding the payload yourself.
+
+```
+GET /tickets/{id}/qrcode
+```
+
+The response body is a raw PNG binary, not JSON. Set the appropriate `Accept` header.
+
+**Example request:**
+
+```bash
+curl https://gotravelxpress.wuaze.com/api/v1/tickets/tkt_xyz789/qrcode \
+  -H "Authorization: Bearer eyJhbGci..." \
+  -H "Accept: image/png" \
+  --output ticket_qr.png
+```
+
+**Response headers:**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: image/png
+Content-Disposition: inline; filename="tkt_xyz789.png"
+```
+
+<Tip>
+  To display the QR code in a web page, call this endpoint server-side and either proxy the image response or convert it to a base64 data URI. Avoid exposing your API token in a browser `<img>` src attribute.
+</Tip>

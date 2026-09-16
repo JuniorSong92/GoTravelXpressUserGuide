@@ -1,0 +1,115 @@
+---
+title: "Account Security Best Practices for GoTravelXpress"
+sidebarTitle: "Security"
+description: "Protect your GoTravelXpress agency account with strong passwords, access controls, and secure payment handling — learn the recommended security practices."
+---
+
+GoTravelXpress protects your agency data with 256-bit encryption and multiple layers of server-side security. Even with those protections in place, the steps you take on your end make a significant difference. This page outlines the practices every agency administrator and team member should follow to keep accounts, payments, and operational data safe.
+
+## Password Best Practices
+
+A strong password is your first line of defense against unauthorized access.
+
+<CardGroup cols={2}>
+  <Card title="Use a strong password" icon="lock">
+    Your password should be at least 12 characters long and include a mix of uppercase letters, lowercase letters, numbers, and special characters (e.g., `@`, `#`, `!`). Avoid dictionary words, names, or dates.
+  </Card>
+  <Card title="Use a unique password" icon="key">
+    Never reuse a password from another service. If that other service is ever breached, attackers will try the same credentials on GoTravelXpress.
+  </Card>
+  <Card title="Use a password manager" icon="shield">
+    A reputable password manager (such as Bitwarden or 1Password) generates and stores strong passwords for you, so you never have to remember them or write them down.
+  </Card>
+  <Card title="Change passwords regularly" icon="arrows-rotate">
+    Update your password periodically — especially after any suspected security incident or when a team member with account access leaves your organization.
+  </Card>
+</CardGroup>
+
+<Warning>
+  GoTravelXpress will **never** ask for your password via email, SMS, or phone call. If you receive any such request, treat it as a phishing attempt and do not respond. Report it immediately to [contact@prozigzag.com](mailto:contact@prozigzag.com).
+</Warning>
+
+## Limiting Access with Roles
+
+GoTravelXpress includes a full role-based access control (RBAC) system that lets you define exactly what each team member can see and do.
+
+**Principle of least privilege:** grant each user only the permissions they need to do their job — nothing more. An agent who handles ticket sales does not need access to financial reports or user administration screens.
+
+Recommended steps for managing access:
+
+<Steps>
+  <Step title="Create individual accounts for each team member">
+    Never share a single login among multiple people. Individual accounts give you an accurate audit trail and make it easy to revoke access when someone leaves.
+  </Step>
+  <Step title="Assign the most restrictive role that still allows the user to work">
+    Start with a limited role and expand permissions only when there is a clear business need.
+  </Step>
+  <Step title="Review user roles regularly">
+    Schedule a quarterly review of all active accounts and their assigned roles. Remove or downgrade any accounts that are no longer needed.
+  </Step>
+  <Step title="Revoke access immediately on departure">
+    When a team member leaves your agency, disable or delete their GoTravelXpress account the same day.
+  </Step>
+</Steps>
+
+<Info>
+  See the [User Roles & Permissions](/agency/user-roles) page for a full breakdown of available roles and how to configure them for your agency.
+</Info>
+
+## Secure Payment Handling
+
+GoTravelXpress supports Mobile Money (MTN Mobile Money, Orange Money, Wave), Visa/Mastercard, and cash payments. All transactions go through secured, encrypted channels.
+
+**What GoTravelXpress does to protect payments:**
+- All payment transactions are encrypted end-to-end using 256-bit encryption.
+- GoTravelXpress does **not** store full card numbers. Only tokenized or masked references are retained for reporting purposes.
+- Mobile Money transactions are processed through secured, officially certified integrations with each operator.
+- Automatic invoice generation creates a verifiable paper trail for every transaction.
+
+**What you should do:**
+- Only process payments through the official GoTravelXpress payment screens — never collect card details verbally or in writing outside the platform.
+- Ensure that devices used at payment points are locked when unattended.
+- Report any unexplained transactions to your agency administrator immediately.
+
+## Session Management
+
+Active sessions that are left unattended are a common way for unauthorized users to gain access.
+
+- **Sessions expire automatically** after a period of inactivity. You will be prompted to sign in again when your session expires.
+- **Always sign out on shared devices** — such as agency computers, kiosks, or tablets used by multiple staff members — when you finish working. Use the account menu in the top navigation to select **Sign Out**.
+- **Avoid signing in on public or untrusted devices** (hotel computers, internet cafés). If you must, make sure to sign out and clear the browser cache before leaving.
+
+<Tip>
+  If you suspect someone is using your account without authorization, change your password immediately and notify your agency administrator so they can review recent activity.
+</Tip>
+
+## Data Encryption
+
+GoTravelXpress stores all agency data — including reservations, passenger information, crew records, and financial records — in an encrypted form on dedicated servers.
+
+- **256-bit encryption** is applied to data at rest and in transit.
+- Servers are housed in facilities located in countries with strict data protection laws, providing both technical and physical controls.
+- In the unlikely event of a server-level incident, no detailed user logs or sensitive identifiable data are exposed, because GoTravelXpress minimizes the retention of such information by design.
+
+<Info>
+  GoTravelXpress is compliant with GDPR (General Data Protection Regulation) standards. Your agency's data is handled in accordance with internationally recognized data protection principles. See the [Privacy Policy](/account/privacy-policy) page for full details.
+</Info>
+
+## Reporting a Security Issue
+
+If you discover a vulnerability, suspect unauthorized access to your account, or have any security concern related to GoTravelXpress, report it promptly.
+
+<CardGroup cols={2}>
+  <Card title="Email" icon="envelope">
+    [contact@prozigzag.com](mailto:contact@prozigzag.com)
+
+    Describe the issue in as much detail as possible, including steps to reproduce if applicable.
+  </Card>
+  <Card title="Phone" icon="phone">
+    **+237 695 602 293**
+
+    For urgent issues, call the GoTravelXpress support team directly.
+  </Card>
+</CardGroup>
+
+GoTravelXpress treats all reported security issues seriously and will acknowledge your report promptly. Do not disclose potential vulnerabilities publicly before giving the team a reasonable opportunity to investigate and remediate.

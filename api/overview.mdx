@@ -1,0 +1,135 @@
+---
+title: "GoTravelXpress REST API Overview"
+sidebarTitle: "Overview"
+description: "The GoTravelXpress SaaS API lets you integrate reservations, tickets, payments, and agency management into your own applications via REST endpoints."
+---
+
+The GoTravelXpress API is a RESTful interface that lets your applications create reservations, verify QR code tickets, process payments, and manage agency data programmatically. Whether you are building a mobile app, connecting an ERP system, or automating your accounting workflows, every capability exposed in the GoTravelXpress dashboard is also available through this API. This page covers the base URL, request and response formats, HTTP status codes, rate limiting, and versioning.
+
+<Note>
+  API access requires a **Premium** or **Enterprise** license. Free, Trial, and Basic license holders cannot authenticate against the API. [Contact the GoTravelXpress team](mailto:contact@prozigzag.com) to upgrade your license.
+</Note>
+
+## Base URL
+
+All API endpoints share the following base URL. Include it as a prefix for every request you make.
+
+```
+https://gotravelxpress.wuaze.com/api/v1
+```
+
+## Request Format
+
+Every request must include two headers:
+
+- **`Content-Type: application/json`** — tells the API you are sending a JSON body.
+- **`Authorization: Bearer {token}`** — authenticates your request. See the [Authentication](/api/authentication) page to obtain a token.
+
+**Example — authenticated request with a JSON body:**
+
+```bash
+curl -X POST https://gotravelxpress.wuaze.com/api/v1/reservations \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer eyJhbGci..." \
+  -d '{
+    "trip_id": "trip_abc123",
+    "passenger_name": "Alice Mbarga",
+    "passenger_phone": "+237691000001",
+    "seat_number": "12A",
+    "payment_method": "mobile_money"
+  }'
+```
+
+## Response Format
+
+All responses return JSON. Successful responses follow this envelope:
+
+```json
+{
+  "success": true,
+  "data": { },
+  "message": "Operation successful"
+}
+```
+
+| Field | Type | Description |
+|---|---|---|
+| `success` | boolean | `true` when the operation completed without error |
+| `data` | object \| array | The returned resource or collection |
+| `message` | string | Human-readable summary of the outcome |
+
+Error responses use the same envelope with `success: false` and an `error` object in place of `data`:
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "RESERVATION_NOT_FOUND",
+    "message": "No reservation found with the given ID."
+  }
+}
+```
+
+| Field | Type | Description |
+|---|---|---|
+| `success` | boolean | Always `false` for errors |
+| `error.code` | string | Machine-readable error identifier |
+| `error.message` | string | Human-readable description of what went wrong |
+
+## HTTP Status Codes
+
+The API uses standard HTTP status codes to communicate the result of each request.
+
+| Code | Name | When you see it |
+|---|---|---|
+| `200` | OK | The request succeeded and a response body is returned |
+| `201` | Created | A new resource (reservation, ticket, etc.) was created |
+| `400` | Bad Request | Your request was malformed or missing required fields |
+| `401` | Unauthorized | No token was provided, or the token is invalid |
+| `403` | Forbidden | Your token is valid but you lack permission for this action |
+| `404` | Not Found | The requested resource does not exist |
+| `422` | Unprocessable Entity | The request was well-formed but failed validation rules |
+| `429` | Too Many Requests | You have exceeded the rate limit for your license tier |
+| `500` | Internal Server Error | An unexpected error occurred on the server side |
+
+## Rate Limiting
+
+The API enforces rate limits to ensure fair use across all customers. Your allowed request volume depends on your license tier — Premium and Enterprise plans receive higher limits than lower tiers.
+
+When you exceed your rate limit, the API returns a `429 Too Many Requests` response. The response includes a `Retry-After` header that tells you how many seconds to wait before making your next request.
+
+```http
+HTTP/1.1 429 Too Many Requests
+Retry-After: 30
+Content-Type: application/json
+
+{
+  "success": false,
+  "error": {
+    "code": "RATE_LIMIT_EXCEEDED",
+    "message": "Too many requests. Please wait 30 seconds before retrying."
+  }
+}
+```
+
+<Tip>
+  Implement exponential back-off in your integration to handle `429` responses gracefully. Always read the `Retry-After` header value rather than using a fixed wait time.
+</Tip>
+
+## Versioning
+
+The current API version is **v1**, encoded directly in the URL path:
+
+```
+https://gotravelxpress.wuaze.com/api/v1/...
+```
+
+GoTravelXpress will introduce new API versions when breaking changes are necessary. Earlier versions remain available for a deprecation window, giving you time to migrate. Breaking changes are announced in the changelog and communicated to registered developers before they take effect.
+
+<Info>
+  Non-breaking additions — such as new optional fields or new endpoints — may be added to the current version at any time without a version bump.
+</Info>
+
+---
+
+Ready to make your first call? Start by [obtaining an authentication token](/api/authentication).

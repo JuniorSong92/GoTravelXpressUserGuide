@@ -1,0 +1,171 @@
+---
+title: "Intelligent Planning: Smart Scheduling and Staff Assignment"
+sidebarTitle: "Planning"
+description: "Use GoTravelXpress Intelligent Planning to automate trip scheduling, view calendar layouts, and auto-assign drivers and crew to upcoming departures."
+---
+
+The Intelligent Planning module helps agency managers build efficient, conflict-free schedules without manual spreadsheets. You work from an interactive calendar that shows trips, vehicle assignments, crew availability, and conflicts all in one view. When you add a trip, the system suggests suitable drivers and crew based on current availability — you accept, override, or reassign with a single click. Once a schedule is published, crew members receive automatic notifications about their assignments. This page covers accessing the calendar, creating schedules, using automatic staff assignment, resolving conflicts, and publishing your schedule to the team.
+
+## Trip Calendar View
+
+The planning calendar is your primary workspace for scheduling. To open it, navigate to **Intelligent Planning** in the main menu.
+
+The calendar displays:
+
+<CardGroup cols={2}>
+  <Card title="Scheduled Trips" icon="calendar-days">
+    Every confirmed departure appears as a block on the calendar, showing the route name, departure time, and assigned vehicle.
+  </Card>
+  <Card title="Staff Assignments" icon="user-check">
+    Each trip block shows the assigned driver, hostess, and any other crew roles — colour-coded by assignment status (assigned, unassigned, conflict).
+  </Card>
+  <Card title="Vehicle Availability" icon="bus">
+    Vehicles that are already booked for another trip during a given time slot are highlighted, so you never accidentally double-book a bus.
+  </Card>
+  <Card title="Conflicts" icon="triangle-exclamation">
+    Scheduling conflicts — such as a crew member or vehicle assigned to two overlapping trips — are flagged with a warning indicator directly on the calendar block.
+  </Card>
+</CardGroup>
+
+You can switch between **Day**, **Week**, and **Month** views using the controls at the top of the calendar. Use the **Week** view for day-to-day planning and the **Month** view to review coverage at a glance.
+
+## Creating a Schedule
+
+<Steps>
+  <Step title="Open the Planning Module">
+    Go to **Intelligent Planning** and confirm you are in the correct agency branch context (visible in the top navigation bar).
+  </Step>
+  <Step title="Select a Date Range">
+    Use the date picker to navigate to the week or period you want to schedule. For a new week of departures, click on the Monday of that week in the calendar to start there.
+  </Step>
+  <Step title="Add a Trip">
+    Click the **+ Add Trip** button (or click directly on an empty calendar slot at the desired departure time). A trip creation panel opens on the right.
+
+    Fill in the trip details:
+
+    | Field | Description |
+    |---|---|
+    | **Route** | Select from your agency's configured routes |
+    | **Departure Date & Time** | The scheduled departure date and time |
+    | **Arrival Time** | Expected arrival time (used for crew assignment and conflict detection) |
+    | **Vehicle** | Select from available fleet vehicles |
+    | **Recurrence** | Set to **None**, **Daily**, or **Weekly** for repeating trips |
+  </Step>
+  <Step title="Set Recurrence (Optional)">
+    If this trip runs on a regular schedule, enable **Recurrence**:
+    - **Daily** — the trip repeats every day at the same time
+    - **Weekly** — the trip repeats on the same day(s) of the week
+
+    Set an end date or a total number of occurrences to limit how far the recurrence extends. Each occurrence is created as an individual trip record that you can edit independently.
+  </Step>
+  <Step title="Assign Vehicle and Crew">
+    Select the vehicle from the **Vehicle** dropdown — only vehicles that are free for the selected time slot appear. Then proceed to staff assignment (see the next section for automatic suggestions).
+  </Step>
+  <Step title="Save the Trip">
+    Click **Save Trip**. The trip appears on the calendar. If any conflicts are detected, a warning banner appears immediately — see [Conflict Detection](#conflict-detection) below.
+  </Step>
+</Steps>
+
+## Automatic Staff Assignment
+
+Rather than manually hunting through crew rosters, the Intelligent Planning module suggests the best-fit staff for each trip automatically.
+
+When you open a trip's assignment panel, the system evaluates all crew members and surfaces suggestions based on:
+
+- **Current availability** — crew who are not already assigned to another trip during the same time window
+- **Role match** — only drivers are suggested for the driver slot; only hostesses for the hostess slot, and so on
+- **Recent assignment history** — crew who have not recently worked the same route are given slight priority to distribute workload fairly
+
+### Accepting a Suggestion
+
+Next to each suggested crew member, click **Assign** to confirm the assignment. The crew member's name appears on the calendar block and they are immediately marked as unavailable for that time slot.
+
+### Overriding a Suggestion
+
+If you prefer a different crew member than the top suggestion:
+
+1. Click **See All Available** next to the suggestion list.
+2. A full list of available crew for that role and time slot appears.
+3. Click **Assign** next to the person you want.
+
+### Clearing an Assignment
+
+To remove a crew member from a trip, open the trip detail panel, click the **×** next to their name under the assignment section, and save the trip. The crew member becomes available again for that slot.
+
+<Note>
+  Automatic suggestions are advisory — you always have the final say. The system will never assign crew without your confirmation.
+</Note>
+
+## Conflict Detection
+
+GoTravelXpress detects two types of scheduling conflicts and flags them before they cause operational problems.
+
+<Tabs>
+  <Tab title="Double-Booked Crew">
+    If a crew member is assigned to two trips whose time windows overlap (including travel and preparation time), the system marks both trips with a **⚠ Crew Conflict** indicator on the calendar.
+
+    To resolve a crew conflict:
+
+    <Steps>
+      <Step title="Click the Conflicted Trip">
+        Click the calendar block showing the conflict warning to open the trip detail panel.
+      </Step>
+      <Step title="Review the Conflict Detail">
+        The panel shows which crew member is double-booked and which other trip is causing the conflict.
+      </Step>
+      <Step title="Reassign or Reschedule">
+        Either assign a different available crew member to one of the trips, or adjust the departure time of one trip to eliminate the overlap.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Double-Booked Vehicle">
+    If the same vehicle is assigned to two trips with overlapping time windows, both trips display a **⚠ Vehicle Conflict** indicator.
+
+    To resolve a vehicle conflict:
+
+    <Steps>
+      <Step title="Open Either Conflicted Trip">
+        Click the trip to open its detail panel.
+      </Step>
+      <Step title="Change the Vehicle">
+        In the **Vehicle** field, select a different available vehicle from the dropdown.
+      </Step>
+      <Step title="Save the Change">
+        Click **Save Trip**. If no other conflicts remain, the warning clears.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+<Warning>
+  Trips with unresolved conflicts are marked as **Draft** and will not be visible to crew members until the conflicts are resolved and the schedule is published.
+</Warning>
+
+## Publishing a Schedule
+
+Once you are satisfied that a schedule period is complete and conflict-free, you publish it to make it visible to crew.
+
+<Steps>
+  <Step title="Review the Schedule">
+    Switch to the **Week** view for the period you want to publish. Check that all trips have vehicle and crew assignments and that no conflict warnings are showing.
+  </Step>
+  <Step title="Publish the Schedule">
+    Click **Publish Schedule** at the top of the calendar. You can publish a single day, a full week, or a custom date range.
+  </Step>
+  <Step title="Confirm Publication">
+    A confirmation dialog lists how many trips will be published and how many crew members will be notified. Click **Confirm & Publish**.
+  </Step>
+  <Step title="Crew Notifications Sent">
+    GoTravelXpress automatically notifies each assigned crew member of their upcoming assignments — including trip details, departure time, route, and vehicle. Notifications are delivered via the platform's in-app notification system.
+  </Step>
+</Steps>
+
+After publishing, crew members can log in to their accounts and view their schedule under **My Assignments**. Published trips are locked from bulk edits — to make a change to an individual published trip, open it and edit it directly, then save. Affected crew are re-notified automatically.
+
+<Tip>
+  Aim to publish schedules at least **one week in advance**. This gives drivers and crew enough time to plan around their assignments and reduces last-minute coverage gaps. You can prepare multiple weeks of schedules in advance and publish them on a rolling basis.
+</Tip>
+
+<Note>
+  Before planning new schedule periods, review your **Analytics module → Route Performance** dashboard. Routes with consistently high occupancy rates may need additional departures or larger vehicles, while low-occupancy routes may be candidates for frequency reduction. Data-informed scheduling helps you allocate fleet and crew where they have the most impact.
+</Note>

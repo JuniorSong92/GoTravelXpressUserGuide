@@ -1,24 +1,11 @@
 {
-  "$schema": "https://mintlify.com/docs.json",
-  "name": "GoTravelXpress",
+  "projectType": "saas",
+  "projectName": "GoTravelXpress",
+  "projectDescription": "A complete cloud-based SaaS platform for transport and travel agencies to manage reservations, QR code tickets, payments, fleet, crew, and analytics — all under a single perpetual license.",
   "theme": "almond",
-  "colors": {
-    "primary": "#facc15",
-    "light": "#4aa9e9",
-    "dark": "#202a7f"
-  },
-  "logo": {
-    "light": "https://media.brand.dev/5c4b6fc4-856a-4d5e-a009-3f6ab4042a44.png",
-    "dark": "https://media.brand.dev/5c4b6fc4-856a-4d5e-a009-3f6ab4042a44.png"
-  },
-  "favicon": "/favicon.svg",
-  "navbar": {
-    "primary": {
-      "type": "button",
-      "label": "Get Started",
-      "href": "https://gotravelxpress.wuaze.com/index.php"
-    }
-  },
+  "primaryColor": "#facc15",
+  "lightColor": "#4aa9e9",
+  "darkColor": "#202a7f",
   "navigation": {
     "tabs": [
       {
@@ -93,9 +80,28 @@
       }
     ]
   },
-  "footer": {
-    "socials": {
-      "youtube": "https://www.youtube.com/channel/UCXoAoIQr7brw_1NChZE1uQg"
-    }
-  }
+  "keyFeatures": [
+    "Multi-agency management with user roles and granular permissions",
+    "Complete reservation management for trips, seats, and tickets",
+    "QR Code digital tickets with real-time encrypted verification",
+    "Mobile Money, Visa/Mastercard, and cash payment processing with automatic invoicing",
+    "QR check-in and crew attendance tracking with geolocation",
+    "Baggage and parcel tracking from check-in to delivery",
+    "Fleet management for buses, drivers, hostesses, and baggage handlers",
+    "Real-time analytics dashboards and statistics",
+    "Fully documented REST API (SaaS API) for third-party integrations",
+    "Intelligent scheduling with calendar views and automatic staff planning",
+    "Single perpetual license — no recurring subscriptions",
+    "Multi-language interface (English, French, Spanish, Arabic, and more)"
+  ],
+  "publicApiSurface": [
+    "REST API — Reservations endpoints",
+    "REST API — Tickets endpoints",
+    "REST API — Payments endpoints",
+    "REST API — Agency management endpoints",
+    "OAuth / Google Sign-In authentication",
+    "Phone-based authentication",
+    "Face Login (biometric)",
+    "QR Code generation and verification"
+  ]
 }

@@ -1,0 +1,137 @@
+---
+title: "Multi-Agency Management in GoTravelXpress"
+sidebarTitle: "Multi-Agency"
+description: "Run multiple agency branches from one GoTravelXpress account — configure separate agencies, share resources, and view consolidated analytics across all sites."
+---
+
+GoTravelXpress Multi-Agency Management lets you operate several agency branches or franchises from a single platform account. Rather than juggling separate logins for each location, you control every site from one place — adding branches, assigning local administrators, and reviewing combined performance in a unified dashboard. This page walks you through creating agency branches, understanding data isolation, switching between sites, and managing branch-level administrators.
+
+<Note>
+  Multi-agency management is available on **Premium** and **Enterprise** licenses. If you are on a Basic or Free license, upgrade your license key to unlock this feature. Contact [contact@prozigzag.com](mailto:contact@prozigzag.com) or call +237 695 602 293 to request an upgrade.
+</Note>
+
+## Creating an Agency Branch
+
+Each new branch gets its own isolated workspace — routes, vehicles, crew, and reservations are all scoped to that branch by default.
+
+<Steps>
+  <Step title="Open Agency Management">
+    From the main navigation, go to **Agency Management**. You will see a list of all existing branches under your account.
+  </Step>
+  <Step title="Add a New Agency">
+    Click **Add Agency** in the top-right corner of the agency list.
+  </Step>
+  <Step title="Fill in Branch Details">
+    Complete the agency profile form:
+
+    | Field | Description |
+    |---|---|
+    | **Agency Name** | The public-facing name of the branch (e.g., "Bafoussam Branch") |
+    | **Location / City** | City or town where the branch operates |
+    | **Address** | Street address for geolocation and crew check-in purposes |
+    | **Contact Phone** | Primary phone number for the branch |
+    | **Contact Email** | Branch-level support or operations email |
+  </Step>
+  <Step title="Assign an Admin User">
+    In the **Branch Administrator** field, search for an existing user or enter the email of a new user to invite. This person will have Agency Admin access scoped to the new branch.
+  </Step>
+  <Step title="Save and Activate">
+    Click **Create Agency**. The branch appears in your agency list immediately and is ready for configuration — add routes, vehicles, and crew from within the branch context.
+  </Step>
+</Steps>
+
+## Agency Isolation & Sharing
+
+By default, each agency branch operates as an independent unit. Resources created in one branch are not visible to operators in another branch.
+
+<CardGroup cols={2}>
+  <Card title="Isolated by Default" icon="lock">
+    Routes, schedules, fleet vehicles, crew members, reservations, and payment records are all scoped to the branch where they were created. Agents in one branch cannot access another branch's data unless explicitly granted cross-agency permissions.
+  </Card>
+  <Card title="Optional Resource Sharing" icon="share-nodes">
+    On Enterprise licenses, a Super Admin can configure shared resource pools — for example, a shared fleet or shared driver roster — that multiple branches can draw from. Configure this under **Agency Management → Shared Resources**.
+  </Card>
+</CardGroup>
+
+<Info>
+  Configuring shared resources is an Enterprise-only capability. On Premium licenses, each branch maintains fully separate resource pools.
+</Info>
+
+## Switching Between Agencies
+
+If your account has access to multiple branches, you can switch context without logging out.
+
+<Steps>
+  <Step title="Locate the Agency Switcher">
+    Look at the **top navigation bar**. Next to your account name you will see the name of your currently active agency branch.
+  </Step>
+  <Step title="Open the Dropdown">
+    Click the agency name to open the branch selector dropdown. All branches you have access to are listed here.
+  </Step>
+  <Step title="Select the Target Branch">
+    Click the branch you want to manage. The dashboard, navigation menus, and all data immediately reflect the selected branch. Your session context updates instantly — no page reload required.
+  </Step>
+</Steps>
+
+<Tip>
+  Pin your most-used branch as the default in **Account Settings → Preferences** so it loads automatically on each login.
+</Tip>
+
+## Consolidated View
+
+The Consolidated Dashboard gives Super Admins a bird's-eye view of all branches at once — without switching between them individually.
+
+To access it, go to **Agency Management → Consolidated Overview**. The overview displays:
+
+- **Total reservations** across all branches for the selected date range
+- **Revenue summary** broken down by branch and payment method
+- **Fleet utilisation rate** per branch
+- **Crew headcount** and attendance summary per site
+- **Top-performing routes** ranked across all branches
+
+You can filter the consolidated view by date range, region, or individual branch to focus your analysis. All figures link through to the full Analytics module for deeper drill-down.
+
+<Tip>
+  Use the Analytics module's cross-agency comparison reports to identify which branches have the highest occupancy rates and replicate their scheduling patterns across other sites. See the [Analytics documentation](/modules/analytics) for details.
+</Tip>
+
+## Branch Admins
+
+Each agency branch should have at least one dedicated Branch Administrator who manages day-to-day operations for that site.
+
+### What a Branch Admin Can Do
+
+A user assigned the **Agency Admin** role on a specific branch can:
+
+<CardGroup cols={2}>
+  <Card title="Manage Routes & Schedules" icon="route">
+    Create, edit, and deactivate routes and departure schedules for their branch.
+  </Card>
+  <Card title="Manage Fleet & Crew" icon="bus">
+    Add vehicles, assign drivers, hostesses, and baggage handlers to trips.
+  </Card>
+  <Card title="Handle Reservations" icon="ticket">
+    View, modify, and cancel reservations; issue refunds within payment policy limits.
+  </Card>
+  <Card title="View Branch Analytics" icon="chart-bar">
+    Access dashboards and reports scoped to their own branch — not other branches.
+  </Card>
+  <Card title="Manage Branch Users" icon="users">
+    Add or deactivate Booking Agents, Crew Members, and Accountants within their branch.
+  </Card>
+  <Card title="Configure Branch Settings" icon="gear">
+    Set branch-level preferences such as departure points, geolocation radius for crew check-in, and default payment methods.
+  </Card>
+</CardGroup>
+
+### What a Branch Admin Cannot Do
+
+A Branch Admin cannot:
+- View or modify data from other agency branches
+- Create or delete other Branch Admin accounts (Super Admin only)
+- Change platform-wide settings or license configuration
+- Access the Consolidated Overview dashboard
+
+### Assigning a Branch Admin
+
+To assign or change the administrator for a branch, go to **Agency Management**, click the branch name, then select **Edit → Branch Administrator** and choose a user. You can assign multiple users with Agency Admin role to the same branch for redundancy.

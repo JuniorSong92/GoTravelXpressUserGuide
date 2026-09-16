@@ -1,0 +1,247 @@
+---
+title: "Payments API: Process and Track Transactions"
+sidebarTitle: "Payments"
+description: "Use the GoTravelXpress Payments API to initiate payments, retrieve transaction history, and generate invoices for your reservations."
+---
+
+The Payments API lets you initiate and track payments for reservations, retrieve full transaction records, and generate invoices — all from your own application. GoTravelXpress supports Mobile Money (MTN Mobile Money, Orange Money, and Wave), Visa/Mastercard card payments, bank transfers, and cash, with automatic invoice generation for every completed transaction. This page covers how to initiate a payment, poll for status, list historical transactions, and download invoices.
+
+---
+
+## The Payment Object
+
+<ResponseField name="id" type="string">
+  Unique identifier for the payment transaction (e.g. `pay_mn12345`).
+</ResponseField>
+
+<ResponseField name="reservation_id" type="string">
+  The reservation this payment is associated with.
+</ResponseField>
+
+<ResponseField name="amount" type="integer">
+  Payment amount in the smallest currency unit (e.g. XAF francs — `5000` = 5 000 FCFA).
+</ResponseField>
+
+<ResponseField name="currency" type="string">
+  ISO 4217 currency code (e.g. `XAF`).
+</ResponseField>
+
+<ResponseField name="method" type="string">
+  Payment method used. One of `mobile_money`, `card`, `bank_transfer`, or `cash`.
+</ResponseField>
+
+<ResponseField name="status" type="string">
+  Transaction status. One of `pending`, `completed`, or `failed`.
+</ResponseField>
+
+<ResponseField name="reference" type="string">
+  Operator-issued transaction reference (e.g. the Mobile Money confirmation code). Useful for reconciliation.
+</ResponseField>
+
+<ResponseField name="created_at" type="string (ISO 8601)">
+  Timestamp when the payment was initiated.
+</ResponseField>
+
+---
+
+## Initiate a Payment
+
+Start a payment for an existing reservation. For Mobile Money payments, the passenger receives a prompt on their phone to approve the transaction.
+
+```
+POST /payments
+```
+
+**Request body parameters:**
+
+<ParamField body="reservation_id" type="string" required>
+  The ID of the reservation you are collecting payment for.
+</ParamField>
+
+<ParamField body="method" type="string" required>
+  Payment method. Choose one of:
+
+  | Value | Description |
+  |---|---|
+  | `mobile_money` | MTN Mobile Money, Orange Money, or Wave. Requires `phone`. |
+  | `card` | Visa or Mastercard. |
+  | `bank_transfer` | Bank wire transfer. |
+  | `cash` | In-person cash collection. Marked `completed` immediately. |
+</ParamField>
+
+<ParamField body="phone" type="string">
+  Passenger's Mobile Money phone number, including country code (e.g. `+237691000001`). **Required** when `method` is `mobile_money`.
+</ParamField>
+
+<ParamField body="amount" type="integer" required>
+  Amount to charge in the smallest currency unit (e.g. `5000` for 5 000 FCFA).
+</ParamField>
+
+**Example request — Mobile Money:**
+
+```bash
+curl -X POST https://gotravelxpress.wuaze.com/api/v1/payments \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer eyJhbGci..." \
+  -d '{
+    "reservation_id": "res_abc123",
+    "method": "mobile_money",
+    "phone": "+237691000001",
+    "amount": 5000
+  }'
+```
+
+**Example response:**
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": "pay_mn12345",
+    "reservation_id": "res_abc123",
+    "amount": 5000,
+    "currency": "XAF",
+    "method": "mobile_money",
+    "status": "pending",
+    "reference": null,
+    "created_at": "2025-06-01T11:10:00Z"
+  },
+  "message": "Payment initiated. Awaiting passenger confirmation."
+}
+```
+
+<Note>
+  Mobile Money payments require the phone number to be registered and active with MTN Mobile Money, Orange Money, or Wave. The `status` field will remain `pending` until the passenger approves the payment prompt on their handset. Poll `GET /payments/{id}` to check for completion.
+</Note>
+
+---
+
+## Get Payment Status
+
+Retrieve the current status and full details of a payment by its ID.
+
+```
+GET /payments/{id}
+```
+
+**Example request:**
+
+```bash
+curl https://gotravelxpress.wuaze.com/api/v1/payments/pay_mn12345 \
+  -H "Authorization: Bearer eyJhbGci..."
+```
+
+**Example response (completed):**
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": "pay_mn12345",
+    "reservation_id": "res_abc123",
+    "amount": 5000,
+    "currency": "XAF",
+    "method": "mobile_money",
+    "status": "completed",
+    "reference": "MTN-TXN-4892017",
+    "created_at": "2025-06-01T11:10:00Z"
+  },
+  "message": "Payment retrieved successfully"
+}
+```
+
+<Tip>
+  When polling for Mobile Money payment confirmation, use a reasonable interval (e.g. every 5 seconds) with a maximum retry count or timeout to avoid hammering the API. A payment that stays `pending` for more than 5 minutes has typically timed out — treat it as `failed` and prompt the user to retry.
+</Tip>
+
+---
+
+## List Payments
+
+Retrieve a filtered, paginated list of payment transactions.
+
+```
+GET /payments
+```
+
+**Query Parameters**
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `reservation_id` | string | No | Filter by reservation |
+| `status` | string | No | Filter by `pending`, `completed`, or `failed` |
+| `method` | string | No | Filter by `mobile_money`, `card`, `bank_transfer`, or `cash` |
+| `date_from` | string | No | Start of date range (`YYYY-MM-DD`) |
+| `date_to` | string | No | End of date range (`YYYY-MM-DD`) |
+| `page` | integer | No | Page number (default: `1`) |
+| `limit` | integer | No | Results per page, max `100` (default: `20`) |
+
+**Example request — payments between two dates:**
+
+```bash
+curl "https://gotravelxpress.wuaze.com/api/v1/payments?date_from=2025-06-01&date_to=2025-06-30&status=completed" \
+  -H "Authorization: Bearer eyJhbGci..."
+```
+
+**Example response:**
+
+```json
+{
+  "success": true,
+  "data": {
+    "payments": [
+      {
+        "id": "pay_mn12345",
+        "reservation_id": "res_abc123",
+        "amount": 5000,
+        "currency": "XAF",
+        "method": "mobile_money",
+        "status": "completed",
+        "reference": "MTN-TXN-4892017",
+        "created_at": "2025-06-01T11:10:00Z"
+      }
+    ],
+    "pagination": {
+      "page": 1,
+      "limit": 20,
+      "total": 1
+    }
+  },
+  "message": "Payments retrieved successfully"
+}
+```
+
+---
+
+## Get Invoice
+
+Retrieve a URL to download the PDF invoice for a completed payment. GoTravelXpress automatically generates an invoice for every `completed` transaction.
+
+```
+GET /payments/{id}/invoice
+```
+
+**Example request:**
+
+```bash
+curl https://gotravelxpress.wuaze.com/api/v1/payments/pay_mn12345/invoice \
+  -H "Authorization: Bearer eyJhbGci..."
+```
+
+**Example response:**
+
+```json
+{
+  "success": true,
+  "data": {
+    "payment_id": "pay_mn12345",
+    "invoice_url": "https://gotravelxpress.wuaze.com/invoices/pay_mn12345.pdf",
+    "expires_at": "2025-06-08T11:10:00Z"
+  },
+  "message": "Invoice URL generated successfully"
+}
+```
+
+<Info>
+  The `invoice_url` is a time-limited signed URL. Download or cache the PDF before `expires_at` — after that you must call this endpoint again to get a fresh URL. Invoices are only available for payments with `status: completed`.
+</Info>

@@ -1,0 +1,130 @@
+---
+title: "QR Check-In and Crew Attendance Tracking"
+sidebarTitle: "QR Check-In"
+description: "Use GoTravelXpress QR check-in to manage passenger boarding and track crew attendance with geolocation — all controlled by QR code scanning."
+---
+
+The QR Check-in & Crew module serves two distinct but complementary functions within GoTravelXpress. First, it handles **passenger boarding** — crew members scan each passenger's QR code ticket at the point of departure, and the system instantly validates whether the ticket is genuine, unused, and assigned to the correct trip. Second, it manages **crew attendance (pointage)** — each crew member carries a personal QR code, and scanning it at the start of a shift records their presence and cross-checks their GPS location against the expected departure point. This page covers both workflows in full, from the moment a crew member opens the app to generating attendance reports for management review.
+
+## Passenger Boarding (Ticket Scanning)
+
+Passenger boarding uses the GoTravelXpress Check-in view, accessible on any device with a camera — a tablet at the departure counter or a smartphone on the platform both work.
+
+<Steps>
+  <Step title="Open the Check-in View">
+    Log in to GoTravelXpress with your Crew Member or Booking Agent credentials. Navigate to **QR Check-in** in the main menu. This opens the boarding interface.
+  </Step>
+  <Step title="Select the Trip">
+    From the trip selector, choose the departure you are boarding. The list shows trips assigned to you for today (Crew Members) or all upcoming departures for the branch (Booking Agents and Agency Admins).
+
+    Confirm the route name, departure time, and vehicle before proceeding.
+  </Step>
+  <Step title="Open the Scanner">
+    Tap **Start Scanning** or the camera icon to activate the QR code scanner. Point your device's camera at the passenger's QR code ticket — printed or shown on their phone screen.
+  </Step>
+  <Step title="Read the Result">
+    The system processes the scan in real time and returns one of four responses (see [What Happens at Scan](#what-happens-at-scan) below). Confirmed passengers appear in the boarding list with a green checkmark.
+  </Step>
+  <Step title="Continue Boarding">
+    Keep the scanner active and scan each passenger in turn. The boarding count at the top of the screen updates in real time, showing **X / Y boarded** so you always know how many passengers are still expected.
+  </Step>
+</Steps>
+
+<Note>
+  The scanning device must have location permissions enabled for the Check-in module to function. If location access is blocked, the app will prompt you to enable it in your device settings. See [Geolocation Verification](#geolocation-verification) for details.
+</Note>
+
+## What Happens at Scan
+
+Every scan returns an immediate, colour-coded response on screen. The table below describes each outcome and the correct action to take.
+
+| Scan Result | Display | Meaning | Action |
+|---|---|---|---|
+| **✓ Valid Ticket** | Green banner — *"Passenger Confirmed"* | The ticket is genuine, unused, and assigned to this exact trip | Passenger boards. The ticket is marked as used. |
+| **✗ Invalid Ticket** | Red banner — *"Invalid Ticket"* | The QR code does not match any ticket in the system or has been tampered with | Do not allow boarding. Ask the passenger to contact the booking counter. |
+| **✗ Already Used** | Orange banner — *"Ticket Already Scanned"* | This ticket was scanned and validated earlier in this boarding session | Do not allow re-boarding. Alert a supervisor if the passenger insists they have not boarded. |
+| **✗ Wrong Trip** | Yellow banner — *"Wrong Trip"* | The ticket is valid but belongs to a different route, departure time, or branch | Direct the passenger to the correct departure. Do not allow boarding on this trip. |
+
+<Warning>
+  A **Ticket Already Scanned** result is a strong signal of potential ticket fraud (one ticket shared between multiple passengers). Log the incident by tapping **Report Issue** on the scan result screen — this records a timestamped entry in the trip's boarding log for supervisor review.
+</Warning>
+
+## Crew Attendance (Pointage)
+
+Every crew member in GoTravelXpress has a unique personal QR code that acts as their digital attendance card. Scanning it at the start of a shift records their check-in.
+
+<Steps>
+  <Step title="Locate Your Personal QR Code">
+    Log in to GoTravelXpress and go to **My Profile → My QR Code**. Your personal QR code is displayed here and can also be saved to your device or printed.
+  </Step>
+  <Step title="Present Your QR Code at Shift Start">
+    At the designated check-in point (the departure terminal or agency office), have a supervisor or station device scan your personal QR code. Alternatively, if your agency uses self-check-in, open the Check-in module on your own device and select **Crew Self Check-in**, then scan your own code using the front camera.
+  </Step>
+  <Step title="Allow Location Access">
+    When prompted, allow the app to access your device's location. The system checks that your current GPS coordinates fall within the configured radius of the expected departure point before confirming your attendance.
+  </Step>
+  <Step title="Receive Confirmation">
+    If the location check passes, you see a green **"Attendance Recorded"** confirmation. Your check-in time, location, and assigned trip are logged. If the location check fails, the system alerts you and the shift supervisor — see [Geolocation Verification](#geolocation-verification) below.
+  </Step>
+</Steps>
+
+## Geolocation Verification
+
+Geolocation verification prevents crew members from checking in remotely — it ensures staff are physically present at the correct departure point before their attendance is confirmed.
+
+When a crew member scans their attendance QR code, GoTravelXpress captures the device's GPS coordinates and compares them against the **designated departure point** configured for that trip's origin location. If the device is within the allowed radius, attendance is confirmed. If it falls outside, the check-in is flagged as **Location Mismatch** and held pending supervisor approval.
+
+### Configuring the Geolocation Radius
+
+<Steps>
+  <Step title="Open Agency Settings">
+    Navigate to **Agency Management → Settings → Geolocation**.
+  </Step>
+  <Step title="Set the Departure Point">
+    For each departure location (bus terminal, agency office, etc.), enter the GPS coordinates or use the map picker to set the exact point.
+  </Step>
+  <Step title="Configure the Allowed Radius">
+    Set the **Check-in Radius** in metres. A radius of **100–200 m** works well for terminal-based agencies. Increase it slightly (up to 500 m) for agencies with crew who may park nearby rather than entering the terminal.
+  </Step>
+  <Step title="Save Settings">
+    Click **Save**. The new radius takes effect immediately for the next crew attendance scan at that location.
+  </Step>
+</Steps>
+
+<Tip>
+  Start with a generous radius (300–500 m) during your first week of operation, then tighten it once you confirm that your crew's typical check-in locations fall within the zone. You can adjust the radius at any time in **Agency Settings → Geolocation** without disrupting active shifts.
+</Tip>
+
+<Note>
+  Crew attendance scanning requires the device to have **location (GPS) permissions** enabled for the GoTravelXpress app. Android and iOS both prompt for this permission the first time the Check-in module is opened. If a crew member dismisses the prompt, they can enable it later in their device's **Settings → Apps → GoTravelXpress → Permissions → Location** (exact path varies by device and OS version).
+</Note>
+
+## Attendance Reports
+
+Managers and Accountants can review and export crew attendance records from the platform at any time.
+
+<Steps>
+  <Step title="Open the Attendance Report">
+    Navigate to **QR Check-in & Crew → Attendance Reports** (or access it through **Analytics → Crew Reports**).
+  </Step>
+  <Step title="Filter the Report">
+    Use the filters to narrow the data:
+
+    | Filter | Options |
+    |---|---|
+    | **Date Range** | Single day, week, month, or custom range |
+    | **Crew Member** | All crew or a specific individual |
+    | **Trip / Route** | All trips or filter by a specific route |
+    | **Status** | All, Confirmed, Location Mismatch, or Absent |
+  </Step>
+  <Step title="Review the Records">
+    The report table shows each crew member's check-in time, GPS-verified location, assigned trip, and attendance status. **Location Mismatch** entries are highlighted in yellow — click any row to see the exact coordinates captured and the distance from the expected departure point.
+  </Step>
+  <Step title="Export the Report">
+    Click **Export** to download the attendance data as a **CSV** or **PDF** file. The export includes all rows matching your current filter selection and is ready for payroll processing or compliance records.
+  </Step>
+</Steps>
+
+<Tip>
+  Schedule a weekly attendance review every Monday morning before publishing the next schedule. Crew members with repeated **Absent** or **Location Mismatch** entries may need follow-up before being assigned to upcoming departures. Consistent attendance data also feeds into the workforce analytics available in the **Analytics module**.
+</Tip>

@@ -1,0 +1,193 @@
+---
+title: "User Roles and Permissions in GoTravelXpress"
+sidebarTitle: "User Roles"
+description: "Assign granular roles and permissions to your team in GoTravelXpress — control what each operator, agent, and manager can see and do."
+---
+
+GoTravelXpress uses a role-based access control (RBAC) system to ensure every team member has exactly the right level of access — nothing more, nothing less. You assign a role when you invite a user, and that role governs which modules they can open, which actions they can perform, and which agency branch data they can see. This page describes all built-in roles, explains how to invite and assign users, and covers custom permission configuration available on Enterprise licenses.
+
+<Warning>
+  **Limit Super Admin accounts.** The Super Admin role has unrestricted access to all agencies, all data, and all platform settings — including billing and license management. Assign this role only to the people who absolutely need it (typically one or two senior administrators). Using shared Super Admin credentials significantly increases your security exposure.
+</Warning>
+
+## Built-in Roles
+
+GoTravelXpress ships with six predefined roles. You can use these out of the box without any configuration.
+
+<Accordion title="Super Admin — Full platform access">
+  The Super Admin has complete, unrestricted access to the entire GoTravelXpress account. This includes:
+
+  - All agency branches and their data
+  - User management across all branches (create, edit, deactivate any user)
+  - Platform settings, license management, and white-label configuration (Enterprise)
+  - Consolidated analytics across all sites
+  - API credentials and webhook configuration
+  - Billing and license key management
+
+  **Intended for:** Platform owner, IT director, or senior operations manager overseeing all branches.
+</Accordion>
+
+<Accordion title="Agency Admin — Full access to one branch">
+  The Agency Admin has the same breadth of permissions as Super Admin, but scoped to a single assigned agency branch. They cannot see or modify data from other branches.
+
+  Capabilities include:
+  - Managing routes, schedules, fleet, and crew for their branch
+  - Inviting and deactivating users within their branch
+  - Viewing and exporting all branch analytics and payment reports
+  - Configuring branch-level settings (geolocation radius, departure points, payment methods)
+
+  **Intended for:** Branch manager, regional operations lead.
+</Accordion>
+
+<Accordion title="Booking Agent — Reservations and ticketing">
+  Booking Agents focus on the customer-facing side of operations. They can:
+
+  - Search available trips and seat availability
+  - Create, modify, and cancel reservations on behalf of passengers
+  - Issue QR code tickets and print or send them digitally
+  - Process payments (Mobile Money, card, cash) and generate invoices
+  - View their own sales activity and daily transaction summary
+
+  Booking Agents **cannot** access fleet management, crew scheduling, user management, or detailed analytics beyond their own activity.
+
+  **Intended for:** Ticketing staff, counter agents, sales operators.
+</Accordion>
+
+<Accordion title="Crew Member — Trip assignments and ticket scanning">
+  Crew Members have a focused, operational view tailored to on-the-ground tasks:
+
+  - View their assigned trips and departure schedules
+  - Scan passenger QR code tickets during boarding via the Check-in module
+  - Check in for their own shift using their personal QR code (with geolocation)
+  - View trip manifests and passenger lists for their assigned journeys
+
+  Crew Members cannot access reservations management, payment records, or any administrative settings.
+
+  **Intended for:** Drivers, hostesses, baggage handlers, boarding staff.
+</Accordion>
+
+<Accordion title="Accountant — Payment and invoice records">
+  Accountants have read and export access to all financial data within their assigned branch:
+
+  - View all payment transactions (Mobile Money, card, cash)
+  - Export payment reports, daily summaries, and invoices to CSV or PDF
+  - Access the Analytics module for revenue dashboards
+  - View reservation records for reconciliation purposes (read-only)
+
+  Accountants cannot create or modify reservations, manage users, or change any settings.
+
+  **Intended for:** Finance staff, auditors, accountants handling end-of-day reconciliation.
+</Accordion>
+
+<Accordion title="Read-Only — View-only for reporting">
+  Users with the Read-Only role can open and view any section of the platform they have been given branch access to, but cannot create, edit, or delete any records. This role is ideal for stakeholders who need visibility without the ability to make changes.
+
+  Capabilities:
+  - Browse all modules (reservations, fleet, crew, analytics, payments) in view mode
+  - Export reports from the Analytics module
+  - No create, edit, delete, or configuration actions available
+
+  **Intended for:** Regional supervisors, investors, compliance reviewers, consultants.
+</Accordion>
+
+## Assigning Roles
+
+Follow these steps to invite a new team member and assign their role.
+
+<Steps>
+  <Step title="Open User Management">
+    From the main navigation, go to **User Management**. You will see a list of all active users in your account (or in your branch, if you are a Branch Admin).
+  </Step>
+  <Step title="Add a New User">
+    Click **Add User** in the top-right corner.
+  </Step>
+  <Step title="Enter User Details">
+    Fill in the invitation form:
+
+    | Field | Required | Description |
+    |---|---|---|
+    | **Full Name** | Yes | The user's display name across the platform |
+    | **Email Address** | Yes | Used for the invitation email and login |
+    | **Phone Number** | Optional | Useful for crew members who may log in by phone |
+    | **Role** | Yes | Select from the six built-in roles (or a custom role on Enterprise) |
+    | **Agency Branch** | Yes | Assign the user to one or more agency branches |
+  </Step>
+  <Step title="Select Role">
+    Choose the appropriate role from the **Role** dropdown. A brief description of each role's permissions is shown inline to help you decide.
+  </Step>
+  <Step title="Assign to Agency Branch">
+    Select the branch (or branches, for Super Admin and Read-Only roles) this user should have access to. Branch Admins can only assign users to their own branch.
+  </Step>
+  <Step title="Send Invitation">
+    Click **Send Invitation**. The user receives an email with a link to set their password and activate their account. The invitation link expires after 48 hours — you can resend it from the user's profile if needed.
+  </Step>
+</Steps>
+
+## Custom Permissions
+
+On **Enterprise** licenses, you can go beyond the six built-in roles and define precisely which modules each role can access.
+
+<Tabs>
+  <Tab title="Creating a Custom Role">
+    <Steps>
+      <Step title="Go to Role Configuration">
+        Navigate to **Settings → Roles & Permissions → Create Custom Role**.
+      </Step>
+      <Step title="Name the Role">
+        Give the role a descriptive name (e.g., "Station Supervisor") and an optional description for your team's reference.
+      </Step>
+      <Step title="Set Module Permissions">
+        For each platform module, toggle one of three access levels:
+
+        | Level | Description |
+        |---|---|
+        | **No Access** | Module is hidden from this role entirely |
+        | **View** | User can read data but cannot create or modify records |
+        | **Full Access** | User can create, edit, delete, and export within this module |
+      </Step>
+      <Step title="Save and Assign">
+        Click **Save Role**. The custom role now appears in the role selector when you add or edit users.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Editing an Existing Custom Role">
+    Go to **Settings → Roles & Permissions**, find the custom role in the list, and click **Edit**. Changes apply immediately to all users currently assigned that role — no need to reassign users individually.
+  </Tab>
+  <Tab title="Cloning a Built-in Role">
+    You cannot edit built-in roles directly, but you can clone one as a starting point for a custom role. On the Roles & Permissions page, click the **⋯** menu next to any built-in role and select **Clone**. Rename the clone and adjust its module permissions as needed.
+  </Tab>
+</Tabs>
+
+<Info>
+  Custom roles are an **Enterprise-only** feature. On Premium and lower licenses, you can only assign the six built-in roles.
+</Info>
+
+## Managing Users
+
+### Editing a User's Role or Branch
+
+To change a user's role or branch assignment, go to **User Management**, click the user's name to open their profile, and select **Edit**. Update the role or branch fields and click **Save**. Changes take effect on the user's next page load.
+
+### Deactivating an Account
+
+To temporarily remove a user's access without deleting their history:
+
+1. Open the user's profile in **User Management**.
+2. Click **Deactivate Account**.
+3. Confirm the action. The user is immediately signed out of any active sessions and cannot log in until the account is reactivated.
+
+Deactivated users remain visible in the user list with a **Deactivated** badge. Reactivate them at any time by opening their profile and clicking **Reactivate**.
+
+### Resetting a Password
+
+If a user cannot access their account:
+
+1. Go to **User Management** and open the user's profile.
+2. Click **Reset Password**.
+3. The user receives an email with a password reset link valid for 24 hours.
+
+Users can also reset their own password from the login page by clicking **Forgot password?**.
+
+<Tip>
+  Use the **Analytics module → Audit Log** section to review user activity across your agency — who created reservations, processed payments, or modified settings, and when. This is especially useful for compliance reviews and investigating discrepancies.
+</Tip>

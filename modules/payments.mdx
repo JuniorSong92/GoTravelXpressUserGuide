@@ -1,0 +1,146 @@
+---
+title: "Payments: Mobile Money, Cards, and Cash Processing"
+sidebarTitle: "Payments"
+description: "Accept Mobile Money (MTN, Orange Money, Wave), Visa/Mastercard, bank transfers, and cash in GoTravelXpress — with automatic invoice and ticket generation."
+---
+
+GoTravelXpress supports a comprehensive set of payment methods designed for both the African market and international travelers. Whether your passengers pay with MTN Mobile Money on a basic phone, tap a Visa card, initiate a bank transfer, or hand over cash at the counter, the platform processes the transaction, generates an invoice automatically, and triggers ticket issuance — all within the same workflow. This page covers every payment method available, how to process a payment step by step, what the automatic invoice contains, how refunds are handled, and how the platform keeps payment data secure.
+
+---
+
+## Supported Payment Methods
+
+<CardGroup cols={2}>
+  <Card title="Mobile Money" icon="mobile">
+    Accept payments from **MTN Mobile Money**, **Orange Money**, and **Wave** — the three leading Mobile Money networks in the region. Passengers confirm the transaction directly from their phone, and the system receives real-time confirmation.
+  </Card>
+  <Card title="Bank Cards (Visa / Mastercard)" icon="credit-card">
+    Process **Visa** and **Mastercard** debit and credit cards. Card transactions are encrypted end-to-end and no sensitive card data is stored on GoTravelXpress servers.
+  </Card>
+  <Card title="Bank Transfer" icon="building-columns">
+    Accept payments made by direct bank transfer. The agent records the transfer reference in the platform and marks the reservation as paid once the transfer is confirmed by your finance team.
+  </Card>
+  <Card title="Cash" icon="money-bill">
+    Record cash payments collected at the counter. GoTravelXpress automatically generates a printed invoice for the passenger and logs the cash transaction for end-of-day reconciliation.
+  </Card>
+</CardGroup>
+
+<Note>
+  Mobile Money is fully integrated with **MTN Mobile Money**, **Orange Money**, and **Wave**. When a passenger pays by Mobile Money, they receive a push notification on their phone to approve the transaction. The platform waits for real-time network confirmation before advancing the reservation to **Confirmed** — no manual status update is required.
+</Note>
+
+---
+
+## Processing a Payment
+
+All payment methods follow the same streamlined flow inside the platform. Agents complete the entire process from the reservation detail screen without switching between modules.
+
+<Steps>
+  <Step title="Select the Reservation">
+    Open the reservation you want to collect payment for from **Reservations → [Booking]**. Verify the passenger details, trip, and seat before proceeding.
+  </Step>
+  <Step title="Choose a Payment Method">
+    Click **Collect Payment** and select the method: Mobile Money, Bank Card, Bank Transfer, or Cash. The form adapts to the chosen method — for Mobile Money, you enter the passenger's phone number; for bank card, you enter card details; for bank transfer, you enter the reference; for cash, you confirm the amount received.
+  </Step>
+  <Step title="Enter Payment Details">
+    Fill in the required fields for the selected method. For Mobile Money, the passenger's phone number must match the registered Mobile Money account. Double-check all details before confirming, as payment requests are submitted immediately.
+  </Step>
+  <Step title="Confirm and Submit">
+    Click **Confirm Payment**. The platform submits the transaction to the relevant payment processor (or records the manual payment for cash/transfer) and waits for confirmation.
+  </Step>
+  <Step title="Automatic Invoice Generated">
+    Once payment is confirmed, GoTravelXpress instantly generates a numbered invoice and attaches it to the reservation. The invoice is available for download or print from the reservation screen and is also emailed to the passenger.
+  </Step>
+  <Step title="Ticket Issued">
+    With payment confirmed and the invoice generated, the reservation status moves to **Confirmed** and the passenger's QR code ticket is automatically created and delivered. See [QR Code Tickets](/modules/qr-tickets) for details on ticket delivery and scanning.
+  </Step>
+</Steps>
+
+---
+
+## Automatic Invoicing
+
+GoTravelXpress generates a formal invoice for every confirmed payment — no manual document creation is needed. The invoice is produced in seconds and is immediately available to both the agent and the passenger.
+
+Each invoice includes:
+
+<ResponseField name="invoice_number" type="string">
+  A unique sequential reference number assigned by the platform, used for accounting and reconciliation.
+</ResponseField>
+
+<ResponseField name="agency_details" type="object">
+  Your agency's name, address, and contact information as configured in **Settings → Agency Profile**.
+</ResponseField>
+
+<ResponseField name="passenger_details" type="object">
+  Passenger full name and contact information as entered on the reservation.
+</ResponseField>
+
+<ResponseField name="trip_details" type="object">
+  Origin, destination, departure date and time, vehicle, and seat number.
+</ResponseField>
+
+<ResponseField name="payment_summary" type="object">
+  Fare breakdown, applied taxes or fees, total amount paid, payment method used, and transaction reference number.
+</ResponseField>
+
+<ResponseField name="issue_date" type="datetime">
+  Date and time the invoice was generated, which matches the payment confirmation timestamp.
+</ResponseField>
+
+### Invoice Delivery
+
+- **Email** — sent automatically to the passenger's email address on payment confirmation.
+- **Dashboard download** — available as a PDF from **Reservations → [Booking] → Invoice** at any time.
+- **Counter print** — agents can print the invoice directly from the dashboard for passengers who need a physical copy.
+
+---
+
+## Refunds & Cancellations
+
+GoTravelXpress supports partial and full refunds for cancelled reservations, subject to your agency's cancellation policy.
+
+<Accordion title="Requesting a Cancellation and Refund">
+  Passengers request cancellations through your agency's support channel (counter, phone, or email). An agent with the appropriate role permissions processes the cancellation from **Reservations → [Booking] → Cancel Reservation**. The system records the cancellation and flags the reservation for refund processing.
+</Accordion>
+
+<Accordion title="Partial Refunds for Unused Services">
+  If a passenger cancels after using part of a multi-leg journey or after additional services have been rendered, GoTravelXpress applies a partial refund calculated against the unused portion. The refund amount is displayed on the cancellation screen before the agent confirms the action.
+</Accordion>
+
+<Accordion title="Refund Processing">
+  Refunds for Mobile Money and bank card payments are processed back to the original payment method. Processing times depend on the payment network (typically within 1–5 business days). Cash refunds are handled at the counter by your finance team. All refund transactions are recorded in the platform for audit purposes.
+</Accordion>
+
+<Accordion title="Non-Refundable Fares">
+  Some fare types can be configured as non-refundable under **Settings → Fare Rules**. If a non-refundable fare is applied to a reservation, the cancellation screen will indicate that no refund will be issued before the agent confirms.
+</Accordion>
+
+<Warning>
+  Cancellation and refund rules are configured by your agency administrator. Always verify your agency's policy before communicating refund amounts to passengers. For disputes or exceptional cases, contact GoTravelXpress support at **contact@prozigzag.com** or **+237 695 602 293**.
+</Warning>
+
+---
+
+## Payment Security
+
+GoTravelXpress treats the security of every financial transaction as a top priority.
+
+<CardGroup cols={2}>
+  <Card title="Encrypted Transactions" icon="shield">
+    All payment data is transmitted over encrypted connections. Card and Mobile Money transactions are processed through secure payment gateways — sensitive data never travels in plain text.
+  </Card>
+  <Card title="No Card Data Storage" icon="database">
+    GoTravelXpress does not store card numbers, CVV codes, or full Mobile Money credentials on its servers. Payment processing is handled by the respective payment processors, and only the transaction reference is retained in the platform.
+  </Card>
+  <Card title="Role-Based Access" icon="user-lock">
+    Only users with the **Cashier** or **Manager** role can initiate or approve payment transactions. Administrators configure role permissions under **Settings → Users & Roles**, ensuring financial operations are restricted to authorised staff.
+  </Card>
+  <Card title="Audit Trail" icon="clipboard-list">
+    Every payment action — transaction initiation, confirmation, refund, and manual override — is logged with the agent's identity, timestamp, and IP address. This full audit trail is available under **Analytics → Payment Logs**.
+  </Card>
+</CardGroup>
+
+<Tip>
+  Use the **Analytics** module to run daily, weekly, or monthly payment reconciliation reports. Navigate to **Analytics → Revenue Reports** to export a full breakdown of transactions by payment method, agent, route, or date range — making end-of-period reconciliation fast and accurate.
+</Tip>
