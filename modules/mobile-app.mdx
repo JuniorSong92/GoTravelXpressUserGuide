@@ -1,0 +1,105 @@
+---
+title: "GoTravelXpress Mobile App for Drivers, Agents, and Customers"
+sidebarTitle: "Mobile App"
+description: "The GoTravelXpress mobile app equips drivers, agents, baggage handlers, hostesses, and customers with QR scanning, geolocation, and mobile payment on the go."
+---
+
+The GoTravelXpress mobile app extends the web platform to smartphones. It is available for **drivers**, **end customers**, and **agency agents** (Operator, Baggage Handler, Hostess), with role-specific interfaces. Single sign-on takes each profile straight to its own workspace after login.
+
+<CardGroup cols={3}>
+  <Card title="Driver" icon="steering-wheel">
+    GPS clock-in and clock-out, daily trips, conflict alerts.
+  </Card>
+  <Card title="Agency agent" icon="user-tie">
+    Mobile counter sales, Mobile Money collection, QR ticket printing.
+  </Card>
+  <Card title="Customer" icon="user">
+    Online booking, QR ticket on the phone, baggage/parcel tracking.
+  </Card>
+</CardGroup>
+
+## Download
+
+The app is distributed directly by GoTravelXpress:
+
+- Download link provided by the Administrator once the license is activated
+- Android (APK) and iOS support (via TestFlight or App Store where available)
+- Automatic updates on every new release
+
+<Note>
+For the install link, contact [contact@prozigzag.com](mailto:contact@prozigzag.com) or ask your Administrator.
+</Note>
+
+## Driver features
+
+<Steps>
+  <Step title="Sign in">
+    The driver opens the app and enters credentials or activates Face Login.
+  </Step>
+  <Step title="View today's trips">
+    The home screen lists every assigned departure with time, route, and vehicle.
+  </Step>
+  <Step title="Clock in">
+    The driver scans the geolocated start-of-service QR. GPS position is recorded.
+  </Step>
+  <Step title="Track the mission">
+    The app shows boarded passengers, stops, and any conflict alerts.
+  </Step>
+  <Step title="Clock out">
+    On arrival, the driver scans the end-of-service QR to close the mission.
+  </Step>
+</Steps>
+
+## Agency agent features
+
+The app lets an **Agency Operator** sell tickets from a phone or tablet:
+
+- Search trip and pick seat on the interactive map
+- Collect Mobile Money (MTN, Orange, Wave), card, or cash
+- Instant QR ticket generation
+- Automatic send via SMS or WhatsApp to the customer
+- Sales history for the workstation
+
+For the **Baggage Handler**:
+- Scan the passenger QR ticket to attach a bag
+- Record weight and description
+- Print a barcode label to a Bluetooth printer
+- Mark items Loaded / Delivered / Unclaimed
+
+For the **Hostess / Crew Chief**:
+- Scan QR tickets at boarding (status Boarded / Absent / Late)
+- Geolocated clock-in for own presence
+- Report an incident from a dedicated form
+
+## Customer features
+
+<CardGroup cols={2}>
+  <Card title="Online booking" icon="magnifying-glass">
+    Search routes, pick a seat, and pay with Mobile Money.
+  </Card>
+  <Card title="QR ticket on phone" icon="qrcode">
+    Ticket stays available offline for scanning at boarding.
+  </Card>
+  <Card title="Baggage and parcel tracking" icon="location-dot">
+    Real-time status: Registered, Loaded, Delivered.
+  </Card>
+  <Card title="Face Login" icon="camera">
+    Quick biometric sign-in on mobile.
+  </Card>
+</CardGroup>
+
+## Security and connectivity
+
+<Info>
+The app communicates with the GoTravelXpress server over TLS. Some actions (QR scan, trip lookup) work in degraded offline mode and sync as soon as the connection returns.
+</Info>
+
+<Warning>
+Geolocation must be authorized for driver, baggage handler, and hostess clock-ins to be valid. Without permission, the clock-in QR is rejected server-side.
+</Warning>
+
+## Support
+
+- Email: [contact@prozigzag.com](mailto:contact@prozigzag.com)
+- Phone: +237 695 602 293
+- Address: Yaoundé, Cameroon

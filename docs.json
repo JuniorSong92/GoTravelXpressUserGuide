@@ -20,24 +20,6 @@
     },
     "links": [
       {
-        "href": "/fr",
-        "label": "Français",
-        "icon": {
-          "style": "solid",
-          "name": "flag",
-          "library": "fontawesome"
-        }
-      },
-      {
-        "href": "/",
-        "label": "English",
-        "icon": {
-          "style": "solid",
-          "name": "flag-usa",
-          "library": "fontawesome"
-        }
-      },
-      {
         "icon": {
           "style": "solid",
           "name": "globe",
@@ -74,7 +56,8 @@
                   "fr/modules/payments",
                   "fr/modules/fleet-crew",
                   "fr/modules/baggage-parcels",
-                  "fr/modules/analytics"
+                  "fr/modules/analytics",
+                  "fr/modules/mobile-app"
                 ]
               },
               {
@@ -150,7 +133,8 @@
                   "modules/payments",
                   "modules/fleet-crew",
                   "modules/baggage-parcels",
-                  "modules/analytics"
+                  "modules/analytics",
+                  "modules/mobile-app"
                 ]
               },
               {

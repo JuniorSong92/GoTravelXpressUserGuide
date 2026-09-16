@@ -1,0 +1,105 @@
+---
+title: "Application Mobile GoTravelXpress pour Chauffeurs, Agents et Clients"
+sidebarTitle: "Application Mobile"
+description: "L'application mobile GoTravelXpress accompagne chauffeurs, agents, bagagistes, hôtesses et clients sur le terrain, avec scan QR, géolocalisation et paiement mobile."
+---
+
+L'application mobile GoTravelXpress prolonge la plateforme web sur smartphone. Elle est disponible pour les **chauffeurs**, les **utilisateurs finaux (clients)** et les **agents d'agence** (Opérateur, Bagagiste, Hôtesse), avec des interfaces adaptées à chaque rôle. L'authentification unique permet à chaque profil de retrouver ses fonctions dès la connexion.
+
+<CardGroup cols={3}>
+  <Card title="Chauffeur" icon="steering-wheel">
+    Pointage GPS début/fin de service, voyages du jour, alertes conflits.
+  </Card>
+  <Card title="Agent d'Agence" icon="user-tie">
+    Ventes au comptoir mobile, encaissement Mobile Money, impression billet QR.
+  </Card>
+  <Card title="Client" icon="user">
+    Réservation en ligne, billet QR dans le téléphone, suivi du bagage/colis.
+  </Card>
+</CardGroup>
+
+## Téléchargement
+
+L'application est distribuée directement par GoTravelXpress :
+
+- Lien de téléchargement fourni par l'Administrateur après activation de la licence
+- Compatibilité Android (APK) et iOS (via TestFlight ou App Store selon disponibilité)
+- Mise à jour automatique à chaque nouvelle version
+
+<Note>
+Pour obtenir le lien d'installation, contactez [contact@prozigzag.com](mailto:contact@prozigzag.com) ou demandez-le à votre Administrateur.
+</Note>
+
+## Fonctions pour le Chauffeur
+
+<Steps>
+  <Step title="Se connecter">
+    Le chauffeur ouvre l'application et saisit ses identifiants ou active Face Login.
+  </Step>
+  <Step title="Consulter ses voyages du jour">
+    L'écran d'accueil liste les départs qui lui sont affectés, avec heure, itinéraire et véhicule.
+  </Step>
+  <Step title="Pointer le début de service">
+    Le chauffeur scanne le QR géolocalisé de sa prise de service. La position GPS est enregistrée.
+  </Step>
+  <Step title="Suivre la mission">
+    L'app affiche le nombre de passagers embarqués, les arrêts et les alertes de conflit.
+  </Step>
+  <Step title="Pointer la fin de service">
+    À l'arrivée, le chauffeur scanne le QR de fin de service pour clôturer la mission.
+  </Step>
+</Steps>
+
+## Fonctions pour l'Agent d'Agence
+
+L'app permet à l'**Opérateur d'Agence** de vendre depuis un smartphone ou une tablette :
+
+- Recherche voyage + sélection siège sur le plan interactif
+- Encaissement Mobile Money (MTN, Orange, Wave), carte ou espèces
+- Génération instantanée du billet QR
+- Envoi automatique par SMS ou WhatsApp au client
+- Historique des ventes du poste
+
+Pour le **Bagagiste** :
+- Scan du billet QR passager pour associer un bagage
+- Enregistrement poids et description
+- Impression étiquette code-barres via imprimante Bluetooth
+- Marquage Chargé / Livré / Non réclamé
+
+Pour l'**Hôtesse / Chef de bord** :
+- Scan des billets QR à l'embarquement (statut Embarqué / Absent / Retard)
+- Pointage géolocalisé de sa propre présence
+- Signalement d'incident depuis un formulaire dédié
+
+## Fonctions pour le Client
+
+<CardGroup cols={2}>
+  <Card title="Réservation en ligne" icon="magnifying-glass">
+    Recherche d'itinéraires, sélection de siège et paiement Mobile Money.
+  </Card>
+  <Card title="Billet QR sur le téléphone" icon="qrcode">
+    Le billet reste accessible hors ligne pour être scanné à l'embarquement.
+  </Card>
+  <Card title="Suivi bagage et colis" icon="location-dot">
+    Statut en temps réel : Enregistré, Chargé, Livré.
+  </Card>
+  <Card title="Face Login" icon="camera">
+    Connexion biométrique rapide sur mobile.
+  </Card>
+</CardGroup>
+
+## Sécurité et connectivité
+
+<Info>
+L'application communique avec le serveur GoTravelXpress via TLS. Certaines actions (scan QR, consultation de voyage) fonctionnent en mode dégradé hors ligne et se synchronisent dès que la connexion revient.
+</Info>
+
+<Warning>
+La géolocalisation doit être autorisée pour que les pointages chauffeur, bagagiste et hôtesse soient valides. Sans autorisation, le QR de pointage est refusé côté serveur.
+</Warning>
+
+## Support
+
+- Email : [contact@prozigzag.com](mailto:contact@prozigzag.com)
+- Téléphone : +237 695 602 293
+- Adresse : Yaoundé, Cameroun
