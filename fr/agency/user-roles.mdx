@@ -1,10 +1,10 @@
 ---
 title: "Rôles Utilisateurs GoTravelXpress : Admin, Agents, Chauffeurs, Clients"
 sidebarTitle: "Rôles Utilisateurs"
-description: "Guide détaillé des 7 profils utilisateurs GoTravelXpress : Admin, Opérateur, Bagagiste, Hôtesse, Chauffeur, Client et Agent, avec permissions et espaces de travail."
+description: "Guide détaillé des 7 profils utilisateurs GoTravelXpress : Admin, Opérateur, Bagagiste, Hôtesse, Chauffeur, Client et Agent, avec opérations concrètes de chacun."
 ---
 
-GoTravelXpress structure ses utilisateurs autour de **7 profils clairement séparés**. Chaque profil ne voit que les modules dont il a besoin, ce qui simplifie la formation, sécurise l'exploitation et garantit une traçabilité propre. Cette page détaille les actions de chaque profil, son espace de travail (web ou mobile) et ses permissions.
+GoTravelXpress structure ses utilisateurs autour de **7 profils clairement séparés**. Chaque profil ne voit que les modules dont il a besoin, ce qui simplifie la formation, sécurise l'exploitation et garantit une traçabilité propre. Cette page détaille les opérations concrètes de chaque profil, son espace de travail (web ou mobile) et ses permissions.
 
 ## Vue d'ensemble
 
@@ -14,15 +14,15 @@ GoTravelXpress structure ses utilisateurs autour de **7 profils clairement sépa
   </Card>
 
   <Card title="Opérateur" icon="ticket" href="#opérateur">
-    Ventes comptoir et caisse.
+    Réservations, itinéraires, remboursements.
   </Card>
 
   <Card title="Bagagiste" icon="suitcase-rolling" href="#bagagiste">
-    Gestion des bagages et colis.
+    Bagages, colis et pointage.
   </Card>
 
   <Card title="Hôtesse / Chef de bord" icon="plane-departure" href="#hôtesse-chef-de-bord">
-    Contrôle embarquement et pointage.
+    Scan des billets et pointage.
   </Card>
 
   <Card title="Chauffeur" icon="steering-wheel" href="#chauffeur">
@@ -43,7 +43,7 @@ GoTravelXpress structure ses utilisateurs autour de **7 profils clairement sépa
 | Rôle | Web | Mobile | Finance | Licence | Créer utilisateurs |
 | --- | :-: | :-: | :-: | :-: | :-: |
 | **Admin / Patron** | ✅ | ✅ | Complète | ✅ | ✅ |
-| **Opérateur** | ✅ | ✅ | Sa caisse | ❌ | ❌ |
+| **Opérateur** | ✅ | ✅ | Sa caisse + remboursements | ❌ | ❌ |
 | **Bagagiste** | ✅ | ✅ | ❌ | ❌ | ❌ |
 | **Hôtesse / Chef de bord** | ✅ | ✅ | ❌ | ❌ | ❌ |
 | **Chauffeur** | ❌ | ✅ | ❌ | ❌ | ❌ |
@@ -58,19 +58,22 @@ GoTravelXpress structure ses utilisateurs autour de **7 profils clairement sépa
 
     Propriétaire de la licence. Contrôle total de la plateforme.
 
-    **Permissions clés :**
+    **Opérations effectuées par l'Admin :**
 
-    - Activer et renouveler la clé de licence.
-    - Créer, modifier ou supprimer des agences.
-    - Créer les comptes Opérateur, Bagagiste, Hôtesse et Chauffeur.
-    - Gérer la flotte (bus), les itinéraires et les grilles tarifaires.
-    - Planifier les voyages et affecter chauffeur + hôtesse.
-    - Ouvrir et clôturer les ventes.
-    - Configurer les moyens de paiement (Mobile Money, cartes, espèces).
-    - Consulter toutes les statistiques et exporter les rapports.
-    - Accéder aux logs de sécurité et aux paramètres généraux.
+    - Gère le **planning intelligent** (calendrier, affectation des voyages, résolution des conflits).
+    - Crée les comptes **Chauffeurs** et les affecte aux bus.
+    - Ajoute les **Opérateurs**, **Bagagistes** et **Hôtesses** et gère leurs permissions.
+    - Crée et gère la **flotte de bus** (immatriculation, capacité, plan des sièges).
+    - Consulte le **plan analytique** (revenus, taux de remplissage, KPI par agence).
+    - Gère l'**abonnement** et l'activation de licence (Free Trial / Plan Pro).
+    - Ajoute et met à jour la **FAQ** et les **facilités** visibles par les clients.
+    - Crée et gère les **agences** (configuration multi-agence).
+    - Configure les **moyens de paiement** (Mobile Money, cartes, espèces) et les tarifs.
+    - Définit les règles de billetterie (annulation, remboursement, délai de blocage siège).
+    - Consulte les **logs de sécurité** et les journaux d'audit.
+    - Exporte les rapports (CSV, PDF).
 
-    **Espace de travail :** Tableau de bord global avec KPI (voyages, billets, revenus, taux de remplissage), alertes, activité récente et graphiques par agence.
+    **Espace de travail :** Tableau de bord global avec KPI en temps réel, alertes, activité récente, graphiques par agence et menu de paramètres complet.
 
     <Note>
       Seul le compte Admin voit **Paramètres > Licence**. L'activation de licence n'est jamais déléguée.
@@ -79,112 +82,121 @@ GoTravelXpress structure ses utilisateurs autour de **7 profils clairement sépa
   <Tab title="Opérateur">
     ### <Icon icon="ticket" iconType="solid" /> Opérateur d'Agence
 
-    Le rôle comptoir. Ouvre les ventes et encaisse.
+    Rôle comptoir. Gère les ventes, les itinéraires et les finances clients.
 
-    **Permissions clés :**
+    **Opérations effectuées par l'Opérateur :**
 
-    - Voir les voyages ouverts de son agence.
-    - Réserver un siège pour un client (au comptoir ou par téléphone).
-    - Émettre un billet avec QR code.
-    - Encaisser Mobile Money, carte ou espèces.
-    - Générer une facture ou un reçu.
-    - Annuler ou reprogrammer un billet selon les règles fixées par l'Admin.
-    - Consulter son propre historique de ventes.
+    - **Effectue des réservations** pour les clients (comptoir, téléphone ou pour le compte de).
+    - **Crée et modifie les itinéraires** (départ, arrivée, arrêts intermédiaires).
+    - **Crée les points de dépôt et de ramassage** sur chaque itinéraire.
+    - Émet les billets avec QR code et les envoie par SMS, email ou WhatsApp.
+    - Encaisse les paiements (**Mobile Money, carte, espèces**).
+    - **Gère les finances et les remboursements** de son agence (annulations, remboursements partiels).
+    - **Gère les colis** au nom des clients (envoi, suivi).
+    - Génère les factures et les reçus.
+    - Reprogramme ou annule un billet selon les règles fixées par l'Admin.
+    - Consulte son propre historique de ventes et le solde de sa caisse.
 
-    **Espace de travail :** Voyages du jour, plan des sièges en temps réel, caisse ouverte, ventes récentes.
+    **Espace de travail :** Voyages du jour, plan des sièges en temps réel, caisse ouverte, historique des ventes, comptoir colis.
 
     <Tip>
-      Un Opérateur ne peut pas changer les prix, créer un itinéraire, ni débloquer un module. Ces actions restent chez l'Administrateur.
+      L'Opérateur n'active pas la licence, ne crée pas de personnel, et ne peut pas modifier les règles tarifaires globales. Ces actions restent chez l'Administrateur.
     </Tip>
   </Tab>
   <Tab title="Bagagiste">
     ### <Icon icon="suitcase-rolling" iconType="solid" /> Bagagiste
 
-    Responsable des bagages et colis à l'enregistrement et à la livraison.
+    Responsable des bagages et colis de chaque voyage.
 
-    **Permissions clés :**
+    **Opérations effectuées par le Bagagiste :**
 
-    - Scanner le QR du billet passager pour l'associer au bagage.
-    - Enregistrer chaque bagage ou colis (poids, description, destinataire).
-    - Générer et imprimer une étiquette code-barres ou QR.
-    - Voir la liste des bagages par voyage.
-    - Marquer un bagage **Chargé**, **Livré** ou **Non réclamé**.
-    - Rechercher un bagage par numéro de tag ou de billet.
+    - **Gère les bagages** : enregistre chaque bagage (poids, description, propriétaire) associé au QR du billet passager.
+    - **Gère les colis** : rattache un colis à un itinéraire, enregistre le destinataire, imprime l'étiquette.
+    - Génère et imprime les étiquettes code-barres ou QR de chaque article.
+    - Marque chaque article **Chargé**, **Livré** ou **Non réclamé**.
+    - Recherche un bagage ou un colis par numéro de tag, de billet ou de destinataire.
+    - Effectue son **pointage début et fin de service** selon son planning (QR géolocalisé).
+    - Signale à l'Administrateur les articles perdus ou endommagés.
 
-    **Espace de travail :** Voyages en cours d'enregistrement, compteur de bagages, scanner intégré.
+    **Espace de travail :** Voyages en cours d'enregistrement, compteur bagages/colis par voyage, scanner intégré, planning personnel.
   </Tab>
   <Tab title="Hôtesse / Chef de bord">
     ### <Icon icon="plane-departure" iconType="solid" /> Hôtesse / Chef de bord
 
-    Le rôle à bord. Contrôle les billets et pointe l'équipage.
+    Rôle à bord. Contrôle les billets et pointe.
 
-    **Permissions clés :**
+    **Opérations effectuées par l'Hôtesse :**
 
-    - Scanner chaque QR à l'embarquement.
-    - Marquer un passager **Embarqué**, **Absent** ou **Retard**.
-    - Pointer sa propre présence via QR géolocalisé.
-    - Voir la liste des passagers du voyage affecté.
-    - Signaler un incident à bord (alerte vers l'Admin).
-    - Confirmer la clôture du voyage à l'arrivée.
+    - **Scanne et valide les billets QR** à l'embarquement.
+    - Marque chaque passager **Embarqué**, **Absent** ou **Retard**.
+    - Effectue son **pointage début et fin de service** selon son planning (QR géolocalisé).
+    - Consulte la liste des passagers du voyage affecté en temps réel.
+    - Signale un incident à bord (alerte transmise à l'Admin).
+    - Confirme la clôture du voyage à l'arrivée.
+    - Vérifie l'occupation des sièges pendant le voyage.
 
-    **Espace de travail :** Voyage courant, plan des sièges avec statuts, scanner, bouton d'alerte.
+    **Espace de travail :** Voyage courant, plan des sièges avec statuts, module scanner, bouton d'alerte, planning personnel.
   </Tab>
   <Tab title="Chauffeur">
     ### <Icon icon="steering-wheel" iconType="solid" /> Chauffeur
 
     Conducteur du bus. Interface mobile uniquement.
 
-    **Permissions clés :**
+    **Opérations effectuées par le Chauffeur :**
 
-    - Se connecter à l'app mobile (identifiants ou Face Login).
-    - Consulter ses voyages du jour.
-    - Scanner le **QR de prise de service** (géolocalisé).
-    - Suivre les passagers embarqués, les arrêts et les alertes conflits.
-    - Scanner le **QR de fin de service** à l'arrivée.
-    - Recevoir les alertes de conflit de planning.
+    - Se connecte à l'app mobile (identifiants ou Face Login).
+    - Consulte ses voyages du jour.
+    - Scanne le **QR de prise de service** (pointage géolocalisé).
+    - Suit les passagers embarqués, les arrêts et les alertes conflits en temps réel.
+    - Scanne le **QR de fin de service** à l'arrivée (pointage géolocalisé).
+    - Reçoit les alertes de conflit de planning.
+    - Signale un incident mécanique ou routier via un formulaire dédié.
+    - Consulte l'historique de ses propres voyages.
 
-    **Espace de travail :** App mobile exclusivement. Aucun accès web à la comptabilité.
+    **Espace de travail :** App mobile exclusivement, aucun accès web à la comptabilité.
 
     <Warning>
-      Le profil Chauffeur n'a **pas de tableau de bord web**. Toute son activité passe par l'app mobile avec GPS obligatoire.
+      Le profil Chauffeur n'a **pas de tableau de bord web**. Toute son activité passe par l'app mobile avec autorisation GPS obligatoire.
     </Warning>
   </Tab>
   <Tab title="Client">
     ### <Icon icon="user" iconType="solid" /> Client (Passager)
 
-    L'utilisateur final. Public.
+    Utilisateur final du service. Public.
 
-    **Accès web :**
+    **Opérations effectuées par le Client :**
 
-    - Rechercher un itinéraire.
-    - Choisir son siège sur le plan interactif.
-    - Payer en ligne (Mobile Money, carte).
-    - Recevoir le billet QR par email/SMS/WhatsApp.
+    - Recherche un itinéraire (départ, arrivée, date).
+    - Choisit un siège sur le plan interactif.
+    - Réserve un ou plusieurs sièges en une seule commande.
+    - Paie en ligne (**Mobile Money, Visa/Mastercard**).
+    - Reçoit son billet QR par email, SMS ou WhatsApp.
+    - Suit son **bagage ou son colis** en temps réel (Enregistré → Chargé → Livré).
+    - Consulte son historique de réservations et de reçus.
+    - Annule ou reprogramme un billet selon la politique de l'agence.
+    - Contacte le support directement depuis son compte.
+    - Consulte la **FAQ** et les facilités proposées par l'agence.
+    - Se connecte via Face Login sur mobile.
 
-    **Accès app mobile :**
-
-    - Réservation directe depuis le téléphone.
-    - Billet QR stocké hors ligne pour le scan à l'embarquement.
-    - Suivi bagage/colis en temps réel (Enregistré → Chargé → Livré).
-    - Face Login pour se reconnecter rapidement.
-
-    **Espace de travail :** Compte personnel avec historique des réservations, billets actifs et reçus.
+    **Espace de travail :** Compte personnel (web ou mobile) avec historique des réservations, billets actifs, reçus et suivi des colis.
   </Tab>
   <Tab title="Agent">
     ### <Icon icon="users" iconType="solid" /> Agent (polyvalent)
 
     Profil générique qui regroupe **Opérateur + Bagagiste + Hôtesse** pour un employé polyvalent.
 
-    **Fonctionnement :** Dans l'app mobile, "Agent d'Agence" est un hub qui bascule entre trois activités selon les permissions accordées par l'Admin :
+    **Fonctionnement :**
 
-    - Vente au comptoir mobile (mode Opérateur)
-    - Enregistrement bagage (mode Bagagiste)
-    - Contrôle embarquement (mode Hôtesse)
+    Dans l'app mobile, "Agent d'Agence" est un hub qui bascule entre trois activités selon les permissions accordées par l'Admin :
+
+    - **Mode Opérateur** : vente au comptoir mobile, encaissement, gestion des colis.
+    - **Mode Bagagiste** : enregistrement bagage/colis, impression étiquettes, pointage.
+    - **Mode Hôtesse** : scan à l'embarquement, validation passagers, pointage.
 
     Les onglets visibles pour l'Agent dépendent directement du mélange de permissions attribuées dans sa fiche utilisateur.
 
     <Tip>
-      Utilisez le profil Agent dans les petites agences où la même personne gère plusieurs étapes du voyage. Dans les grosses agences, préférez les rôles spécialisés (Opérateur, Bagagiste, Hôtesse) pour une traçabilité claire.
+      Utilisez le profil Agent dans les petites agences où la même personne gère plusieurs étapes du voyage. Dans les grosses agences, préférez les rôles spécialisés pour une traçabilité claire.
     </Tip>
   </Tab>
 </Tabs>

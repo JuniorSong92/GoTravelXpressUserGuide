@@ -1,10 +1,10 @@
 ---
 title: "GoTravelXpress User Roles: Admin, Agents, Drivers, Clients"
 sidebarTitle: "User Roles"
-description: "Detailed guide to the 7 GoTravelXpress user profiles: Admin, Operator, Baggage Handler, Hostess, Driver, Client, and Agent, with permissions and workspaces."
+description: "Detailed guide to the 7 GoTravelXpress user profiles: Admin, Operator, Baggage Handler, Hostess, Driver, Client, and Agent, with concrete operations for each."
 ---
 
-GoTravelXpress organizes its users around **7 clearly separated profiles**. Each profile only sees the modules it needs, which simplifies training, secures operations, and delivers a clean audit trail. This page explains what each profile can do, where it works (web or mobile), and which permissions it holds.
+GoTravelXpress organizes its users around **7 clearly separated profiles**. Each profile only sees the modules it needs, which simplifies training, secures operations, and delivers a clean audit trail. This page details the concrete operations each profile performs, its workspace (web or mobile), and its permissions.
 
 ## Overview
 
@@ -14,15 +14,15 @@ GoTravelXpress organizes its users around **7 clearly separated profiles**. Each
   </Card>
 
   <Card title="Operator" icon="ticket" href="#operator">
-    Counter sales and cash desk.
+    Reservations, routes, refunds.
   </Card>
 
   <Card title="Baggage Handler" icon="suitcase-rolling" href="#baggage-handler">
-    Baggage and parcel management.
+    Baggage, parcels and clock-in.
   </Card>
 
   <Card title="Hostess / Crew Chief" icon="plane-departure" href="#hostess-crew-chief">
-    Boarding control and crew clock-in.
+    Ticket scanning and clock-in.
   </Card>
 
   <Card title="Driver" icon="steering-wheel" href="#driver">
@@ -33,7 +33,7 @@ GoTravelXpress organizes its users around **7 clearly separated profiles**. Each
     Online booking and mobile ticket.
   </Card>
 
-  <Card title="Agent (polyvalent)" icon="users" href="#agent-polyvalent">
+  <Card title="Agent (versatile)" icon="users" href="#agent-versatile">
     Multi-hat field employee.
   </Card>
 </CardGroup>
@@ -43,12 +43,12 @@ GoTravelXpress organizes its users around **7 clearly separated profiles**. Each
 | Role | Web | Mobile | Finance | License | Create users |
 | --- | :-: | :-: | :-: | :-: | :-: |
 | **Admin / Owner** | ✅ | ✅ | Full | ✅ | ✅ |
-| **Operator** | ✅ | ✅ | Own cash desk | ❌ | ❌ |
+| **Operator** | ✅ | ✅ | Own cash desk + refunds | ❌ | ❌ |
 | **Baggage Handler** | ✅ | ✅ | ❌ | ❌ | ❌ |
 | **Hostess / Crew Chief** | ✅ | ✅ | ❌ | ❌ | ❌ |
 | **Driver** | ❌ | ✅ | ❌ | ❌ | ❌ |
 | **Client** | ✅ | ✅ | Own purchases | ❌ | ❌ |
-| **Agent (polyvalent)** | ✅ | ✅ | Variable | ❌ | ❌ |
+| **Agent (versatile)** | ✅ | ✅ | Variable | ❌ | ❌ |
 
 ## Detailed role breakdown
 
@@ -56,135 +56,147 @@ GoTravelXpress organizes its users around **7 clearly separated profiles**. Each
   <Tab title="Admin / Owner">
     ### <Icon icon="key" iconType="solid" /> Administrator / Owner
 
-    The license-owner role. Full control over the platform.
+    License holder. Full control over the platform.
 
-    **Key permissions:**
+    **Operations performed by the Admin:**
 
-    - Activate and renew the license key.
-    - Create, edit, or delete agencies.
-    - Create Operator, Baggage Handler, Hostess, and Driver accounts.
-    - Manage the fleet (buses), routes, and pricing tables.
-    - Plan trips and assign driver + hostess.
-    - Open and close sales.
-    - Configure payment methods (Mobile Money, cards, cash).
-    - Access all statistics and export reports.
-    - Access security logs and general settings.
+    - Manages the **intelligent planning** (calendar, trip assignment, conflict resolution).
+    - Creates **Driver** accounts and assigns them to buses.
+    - Adds **Operators**, **Baggage Handlers**, **Hostesses** and manages their permissions.
+    - Creates and manages the **bus fleet** (registration, capacity, seat plan).
+    - Consults the **analytics dashboard** (revenue, load factor, per-agency KPIs).
+    - Manages the **subscription** and license activation (Free Trial / Pro Plan).
+    - Adds and updates the **FAQ** and **facilities** shown to customers.
+    - Creates and manages **agencies** (multi-agency setup).
+    - Configures **payment methods** (Mobile Money, cards, cash) and pricing.
+    - Sets ticketing rules (cancellation, refund policy, seat lock time).
+    - Reviews **security logs** and audit trails.
+    - Exports reports (CSV, PDF).
 
-    **Workspace:** Global dashboard with KPIs (trips, tickets, revenue, load factor), alerts, recent activity, and per-agency charts.
+    **Workspace:** Global dashboard with real-time KPIs, alerts, recent activity, per-agency charts, and complete settings menu.
 
     <Note>
-      Only Admin accounts see **Settings > License**. License activation is never delegated.
+      Only the Admin account sees **Settings > License**. License activation is never delegated.
     </Note>
   </Tab>
   <Tab title="Operator">
     ### <Icon icon="ticket" iconType="solid" /> Agency Operator
 
-    The counter role. Opens sales and collects payments.
+    Counter role. Handles sales, routes, and customer finances.
 
-    **Key permissions:**
+    **Operations performed by the Operator:**
 
-    - View open trips for their agency.
-    - Reserve a seat for a customer (counter or phone).
-    - Issue a QR-coded ticket.
-    - Collect Mobile Money, card, or cash payments.
-    - Generate an invoice or receipt.
-    - Cancel or reschedule a ticket per Admin policy.
-    - View their own sales history.
+    - **Books reservations** for customers (counter, phone, or on behalf).
+    - Creates and edits **routes** (departure, arrival, intermediate stops).
+    - Creates **drop-off and pick-up points** on each route.
+    - Issues QR-coded tickets and sends them by SMS, email, or WhatsApp.
+    - Collects payments (**Mobile Money, card, cash**).
+    - Manages **finance operations and refunds** for own agency (cancellations, partial refunds).
+    - Manages **parcel shipments** on behalf of the customer.
+    - Generates invoices and receipts.
+    - Reschedules or cancels a ticket according to Admin policy.
+    - Views own sales history and cash desk balance.
 
-    **Workspace:** Today's trips, real-time seat map, open cash register, recent sales.
+    **Workspace:** Today's trips, real-time seat map, open cash register, sales history, parcel counter.
 
     <Tip>
-      An Operator cannot change prices, create a route, or unlock a module. Those actions stay with the Administrator.
+      The Operator does not activate the license, does not create staff, and cannot change global pricing rules. Those actions stay with the Administrator.
     </Tip>
   </Tab>
   <Tab title="Baggage Handler">
     ### <Icon icon="suitcase-rolling" iconType="solid" /> Baggage Handler
 
-    In charge of bags and parcels at check-in and delivery.
+    In charge of bags and parcels for every trip.
 
-    **Key permissions:**
+    **Operations performed by the Baggage Handler:**
 
-    - Scan the passenger's QR ticket to link it to their baggage.
-    - Register each bag or parcel (weight, description, recipient).
-    - Generate and print a barcode or QR label.
-    - View the baggage list for a trip.
-    - Mark a bag as **Loaded**, **Delivered**, or **Unclaimed**.
-    - Search a bag by tag number or ticket.
+    - **Manages baggage**: registers each bag (weight, description, owner) with the passenger's QR ticket.
+    - **Manages parcels**: attaches parcels to a route, records the recipient, prints the label.
+    - Generates and prints barcode or QR labels for each item.
+    - Marks each item as **Loaded**, **Delivered**, or **Unclaimed**.
+    - Searches a bag or parcel by tag, ticket number, or recipient.
+    - Performs **clock-in and clock-out** according to their planning (geolocated QR).
+    - Reports lost or damaged items to the Administrator.
 
-    **Workspace:** Trips in check-in, bag counter per trip, integrated scanner.
+    **Workspace:** Trips in check-in, bag/parcel counter per trip, integrated scanner, personal planning.
   </Tab>
   <Tab title="Hostess / Crew Chief">
     ### <Icon icon="plane-departure" iconType="solid" /> Hostess / Crew Chief
 
-    The on-board role. Controls tickets and clocks in the crew.
+    On-board role. Controls tickets and clocks in.
 
-    **Key permissions:**
+    **Operations performed by the Hostess:**
 
-    - Scan each QR ticket at boarding.
-    - Mark a passenger as **Boarded**, **No-show**, or **Late**.
-    - Clock in own attendance with geolocated QR.
-    - View the passenger list of the assigned trip.
-    - Report an on-board incident (alert to Admin).
-    - Confirm trip closure on arrival.
+    - **Scans and validates QR tickets** at boarding.
+    - Marks each passenger as **Boarded**, **No-show**, or **Late**.
+    - Performs **clock-in and clock-out** according to their planning (geolocated QR).
+    - Views the passenger list of the assigned trip in real time.
+    - Reports an on-board incident (alert forwarded to the Admin).
+    - Confirms trip closure on arrival.
+    - Verifies seat occupancy during the trip.
 
-    **Workspace:** Current trip, seat map with statuses, scanner module, alert button.
+    **Workspace:** Current trip, seat map with statuses, scanner module, alert button, personal planning.
   </Tab>
   <Tab title="Driver">
     ### <Icon icon="steering-wheel" iconType="solid" /> Driver
 
     Bus operator. Mobile app only.
 
-    **Key permissions:**
+    **Operations performed by the Driver:**
 
-    - Sign in to the mobile app (credentials or Face Login).
-    - View assigned trips of the day.
-    - Scan the **start-of-service QR** (geolocated).
-    - Track boarded passengers, stops, and conflict alerts.
-    - Scan the **end-of-service QR** on arrival.
-    - Receive planning conflict alerts.
+    - Signs in to the mobile app (credentials or Face Login).
+    - Views assigned trips of the day.
+    - Scans the **start-of-service QR** (geolocated clock-in).
+    - Tracks boarded passengers, stops, and conflict alerts in real time.
+    - Scans the **end-of-service QR** on arrival (geolocated clock-out).
+    - Receives planning conflict alerts.
+    - Reports a mechanical or road incident from a dedicated form.
+    - Views own trip history.
 
-    **Workspace:** Mobile app only. No web access to accounting.
+    **Workspace:** Mobile app exclusively, no web accounting access.
 
     <Warning>
-      The Driver profile has **no web dashboard**. All activity runs through the mobile app with mandatory GPS.
+      The Driver profile has **no web dashboard**. All activity runs through the mobile app with mandatory GPS authorization.
     </Warning>
   </Tab>
   <Tab title="Client">
     ### <Icon icon="user" iconType="solid" /> Client (Passenger)
 
-    The end user of the service. Public-facing.
+    End user of the service. Public-facing.
 
-    **Web access:**
+    **Operations performed by the Client:**
 
-    - Search a route.
-    - Pick a seat on the interactive map.
-    - Pay online (Mobile Money, card).
-    - Receive the QR ticket by email/SMS/WhatsApp.
+    - Searches a route (departure, arrival, date).
+    - Picks a seat on the interactive plan.
+    - Books one or several seats in a single order.
+    - Pays online (**Mobile Money, Visa/Mastercard**).
+    - Receives the QR ticket by email, SMS, or WhatsApp.
+    - Tracks their **baggage or parcel** in real time (Registered → Loaded → Delivered).
+    - Consults own reservation and receipt history.
+    - Cancels or reschedules a ticket according to the agency policy.
+    - Contacts support directly from the account.
+    - Consults the **FAQ** and browses agency facilities.
+    - Signs in with Face Login on mobile.
 
-    **Mobile app access:**
-
-    - Book directly from the phone.
-    - QR ticket stored offline for scanning at boarding.
-    - Real-time baggage/parcel tracking (Registered → Loaded → Delivered).
-    - Face Login for quick sign-in.
-
-    **Workspace:** Personal account with reservation history, active tickets, and receipts.
+    **Workspace:** Personal account (web or mobile) with reservation history, active tickets, receipts, and parcel tracking.
   </Tab>
   <Tab title="Agent">
-    ### <Icon icon="users" iconType="solid" /> Agent (polyvalent)
+    ### <Icon icon="users" iconType="solid" /> Agent (versatile)
 
-    A generic profile bundling **Operator + Baggage Handler + Hostess** for versatile field employees.
+    Generic profile that bundles **Operator + Baggage Handler + Hostess** for versatile field employees.
 
-    **How it works:** In the mobile app, "Agency Agent" is a hub that switches between three activities according to the permissions the Admin grants:
+    **How it works:**
 
-    - Mobile counter sale (Operator mode)
-    - Baggage check-in (Baggage Handler mode)
-    - Boarding control (Hostess mode)
+    In the mobile app, "Agency Agent" is a hub that switches between three activities according to the permissions the Admin grants:
 
-    The tabs displayed to the Agent depend directly on the mix of permissions assigned in their user record.
+    - **Operator mode**: mobile counter sale, encashment, parcel management.
+    - **Baggage Handler mode**: baggage/parcel registration, label printing, clock-in.
+    - **Hostess mode**: boarding scan, passenger validation, clock-in.
+
+    The tabs shown to the Agent depend directly on the mix of permissions assigned in their user record.
 
     <Tip>
-      Use the Agent profile in small agencies where the same person handles several stages of the journey. In large agencies, prefer specialized roles (Operator, Baggage Handler, Hostess) for clean traceability.
+      Use the Agent profile in small agencies where the same person handles several stages of the journey. In larger agencies, prefer specialized roles for clean traceability.
     </Tip>
   </Tab>
 </Tabs>
@@ -199,7 +211,7 @@ GoTravelXpress organizes its users around **7 clearly separated profiles**. Each
     Full name, business email, phone, and home agency.
   </Step>
   <Step title="Pick the role">
-    Select **Admin**, **Operator**, **Baggage Handler**, **Hostess**, **Driver**, or **Agent (polyvalent)**. Permissions apply automatically.
+    Select **Admin**, **Operator**, **Baggage Handler**, **Hostess**, **Driver**, or **Agent (versatile)**. Permissions apply automatically.
   </Step>
   <Step title="Set the initial password">
     The account receives an activation email with a temporary password to change on first sign-in.
