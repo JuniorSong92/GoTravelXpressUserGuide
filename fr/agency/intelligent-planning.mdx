@@ -1,0 +1,345 @@
+---
+title: "Planification Intelligente : Programmation et Assignation du Personnel"
+sidebarTitle: "Planification"
+description: "Utilisez la Planification Intelligente de GoTravelXpress pour automatiser la programmation des voyages, afficher les calendriers et assigner automatiquement chauffeurs et équipage aux départs à venir."
+---
+
+Le module de Planification Intelligente aide les responsables d'agence à construire des plannings efficaces et sans conflit sans tableurs manuels. Vous travaillez depuis un calendrier interactif qui affiche les voyages, les assignations de véhicules, la disponibilité de l'équipage et les conflits, le tout dans une seule vue. Lorsque vous ajoutez un voyage, le système suggère des chauffeurs et membres d'équipage adaptés en fonction de la disponibilité actuelle : vous acceptez, remplacez ou réassignez en un seul clic. Une fois le planning publié, les membres d'équipage reçoivent des notifications automatiques concernant leurs assignations. Cette page couvre l'accès au calendrier, la création de plannings, l'utilisation de l'assignation automatique du personnel, la résolution de conflits et la publication du planning vers l'équipe.
+
+## Vue Calendrier des Voyages
+
+Le calendrier de planification est votre espace de travail principal pour la programmation. Pour l'ouvrir, naviguez vers **Planification Intelligente** dans le menu principal.
+
+Le calendrier affiche :
+
+<CardGroup cols={2}>
+  <Card title="Voyages Programmés" icon="calendar-days" href="/fr/modules/reservations">
+    Chaque départ confirmé apparaît comme un bloc sur le calendrier, montrant le nom de l'itinéraire, l'heure de départ et le véhicule assigné.
+  </Card>
+
+  <Card title="Assignations du Personnel" icon="user-check" href="/fr/modules/fleet-crew">
+    Chaque bloc de voyage montre le chauffeur assigné, l'hôtesse et tout autre rôle d'équipage : codé par couleur selon le statut d'assignation (assigné, non assigné, conflit).
+  </Card>
+
+  <Card title="Disponibilité des Véhicules" icon="bus" href="/fr/modules/fleet-crew">
+    Les véhicules déjà réservés pour un autre voyage pendant un créneau horaire donné sont mis en évidence, afin que vous ne double-réserviez jamais un bus par inadvertance.
+  </Card>
+
+  <Card title="Conflits" icon="triangle-exclamation" href="/fr/agency/intelligent-planning">
+    Les conflits de programmation : comme un membre d'équipage ou un véhicule assigné à deux voyages qui se chevauchent : sont signalés par un indicateur d'avertissement directement sur le bloc du calendrier.
+  </Card>
+</CardGroup>
+
+Vous pouvez basculer entre les vues **Jour**, **Semaine** et **Mois** en utilisant les contrôles en haut du calendrier. Utilisez la vue **Semaine** pour la planification quotidienne et la vue **Mois** pour examiner la couverture d'un coup d'oeil.
+
+## Créer un Planning
+
+<Steps>
+  <Step title="Ouvrir le Module de Planification">
+    Allez dans **Planification Intelligente** et confirmez que vous êtes dans le bon contexte de succursale d'agence (visible dans la barre de navigation supérieure).
+  </Step>
+  <Step title="Sélectionner une Plage de Dates">
+    Utilisez le sélecteur de dates pour naviguer vers la semaine ou la période que vous souhaitez programmer. Pour une nouvelle semaine de départs, cliquez sur le lundi de cette semaine dans le calendrier pour commencer là.
+  </Step>
+  <Step title="Ajouter un Voyage">
+    Cliquez sur le bouton **\+ Ajouter un Voyage** (ou cliquez directement sur un créneau vide du calendrier à l'heure de départ souhaitée). Un panneau de création de voyage s'ouvre sur la droite.
+
+    Remplissez les détails du voyage :
+
+    | Champ | Description |
+    | --- | --- |
+    | **Itinéraire** | Sélectionnez parmi les itinéraires configurés de votre agence |
+    | **Date & Heure de Départ** | La date et l'heure de départ programmées |
+    | **Heure d'Arrivée** | L'heure d'arrivée prévue (utilisée pour l'assignation de l'équipage et la détection de conflits) |
+    | **Véhicule** | Sélectionnez parmi les véhicules de flotte disponibles |
+    | **Récurrence** | Définissez sur **Aucune**, **Quotidienne** ou **Hebdomadaire** pour les voyages récurrents |
+  </Step>
+  <Step title="Définir la Récurrence (Optionnel)">
+    Si ce voyage fonctionne sur un planning régulier, activez la **Récurrence** :
+
+    - **Quotidienne** : le voyage se répète tous les jours à la même heure
+    - **Hebdomadaire** : le voyage se répète le(s) même(s) jour(s) de la semaine
+
+    Définissez une date de fin ou un nombre total d'occurrences pour limiter l'étendue de la récurrence. Chaque occurrence est créée comme un enregistrement de voyage individuel que vous pouvez modifier indépendamment.
+  </Step>
+  <Step title="Assigner le Véhicule et l'Équipage">
+    Sélectionnez le véhicule dans le menu déroulant **Véhicule** : seuls les véhicules libres pour le créneau horaire sélectionné apparaissent. Passez ensuite à l'assignation du personnel (voir la section suivante pour les suggestions automatiques).
+  </Step>
+  <Step title="Enregistrer le Voyage">
+    Cliquez sur **Enregistrer le Voyage**. Le voyage apparaît sur le calendrier. Si des conflits sont détectés, une bannière d'avertissement apparaît immédiatement : voir [Détection de Conflits](#détection-de-conflits) ci-dessous.
+  </Step>
+</Steps>
+
+## Assignation Automatique du Personnel
+
+Au lieu de rechercher manuellement dans les registres d'équipage, le module de Planification Intelligente suggère automatiquement le personnel le mieux adapté pour chaque voyage.
+
+Lorsque vous ouvrez le panneau d'assignation d'un voyage, le système évalue tous les membres d'équipage et présente des suggestions basées sur :
+
+- **Disponibilité actuelle** : membres d'équipage qui ne sont pas déjà assignés à un autre voyage pendant la même fenêtre horaire
+- **Correspondance de rôle** : seuls les chauffeurs sont suggérés pour le poste de chauffeur : seules les hôtesses pour le poste d'hôtesse, etc.
+- **Historique récent d'assignations** : les membres d'équipage qui n'ont pas récemment travaillé sur le même itinéraire reçoivent une légère priorité pour distribuer la charge de travail équitablement
+
+### Accepter une Suggestion
+
+À côté de chaque membre d'équipage suggéré, cliquez sur **Assigner** pour confirmer l'assignation. Le nom du membre d'équipage apparaît sur le bloc du calendrier et il est immédiatement marqué comme indisponible pour ce créneau horaire.
+
+### Remplacer une Suggestion
+
+Si vous préférez un autre membre d'équipage que la première suggestion :
+
+1. Cliquez sur **Voir Tous les Disponibles** à côté de la liste des suggestions.
+2. Une liste complète des membres d'équipage disponibles pour ce rôle et ce créneau horaire apparaît.
+3. Cliquez sur **Assigner** à côté de la personne souhaitée.
+
+### Supprimer une Assignation
+
+Pour retirer un membre d'équipage d'un voyage, ouvrez le panneau de détail du voyage, cliquez sur le **×** à côté de son nom dans la section d'assignation, et enregistrez le voyage. Le membre d'équipage redevient disponible pour ce créneau.
+
+<Note>
+  Les suggestions automatiques sont consultatives : vous avez toujours le dernier mot. Le système n'assignera jamais d'équipage sans votre confirmation.
+</Note>
+
+## Détection de Conflits
+
+GoTravelXpress détecte deux types de conflits de programmation et les signale avant qu'ils ne causent des problèmes opérationnels.
+
+<Tabs>
+  <Tab title="Équipage Double-Réservé">
+    Si un membre d'équipage est assigné à deux voyages dont les fenêtres horaires se chevauchent (y compris le temps de voyage et de préparation), le système marque les deux voyages avec un indicateur **⚠ Conflit d'Équipage** sur le calendrier.
+
+    Pour résoudre un conflit d'équipage :
+
+    <Steps>
+      <Step title="Cliquer sur le Voyage en Conflit">
+        Cliquez sur le bloc du calendrier affichant l'avertissement de conflit pour ouvrir le panneau de détail du voyage.
+      </Step>
+      <Step title="Examiner le Détail du Conflit">
+        Le panneau montre quel membre d'équipage est double-réservé et quel autre voyage cause le conflit.
+      </Step>
+      <Step title="Réassigner ou Reprogrammer">
+        Assignez un autre membre d'équipage disponible à l'un des voyages, ou ajustez l'heure de départ de l'un des voyages pour éliminer le chevauchement.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Véhicule Double-Réservé">
+    Si le même véhicule est assigné à deux voyages avec des fenêtres horaires qui se chevauchent, les deux voyages affichent un indicateur **⚠ Conflit de Véhicule**.
+
+    Pour résoudre un conflit de véhicule :
+
+    <Steps>
+      <Step title="Ouvrir l'un des Voyages en Conflit">
+        Cliquez sur le voyage pour ouvrir son panneau de détail.
+      </Step>
+      <Step title="Changer le Véhicule">
+        Dans le champ **Véhicule**, sélectionnez un autre véhicule disponible dans le menu déroulant.
+      </Step>
+      <Step title="Enregistrer le Changement">
+        Cliquez sur **Enregistrer le Voyage**. Si aucun autre conflit ne subsiste, l'avertissement disparaît.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+<Warning>
+  Les voyages avec des conflits non résolus sont marqués comme **Brouillon** et ne seront pas visibles par les membres d'équipage tant que les conflits ne seront pas résolus et le planning publié.
+</Warning>
+
+## Publier un Planning
+
+Une fois que vous êtes satisfait qu'une période de planning est complète et sans conflit, vous la publiez pour la rendre visible à l'équipage.
+
+<Steps>
+  <Step title="Examiner le Planning">
+    Passez à la vue **Semaine** pour la période que vous souhaitez publier. Vérifiez que tous les voyages ont des assignations de véhicule et d'équipage et qu'aucun avertissement de conflit n'est affiché.
+  </Step>
+  <Step title="Publier le Planning">
+    Cliquez sur **Publier le Planning** en haut du calendrier. Vous pouvez publier un seul jour, une semaine entière ou une plage de dates personnalisée.
+  </Step>
+  <Step title="Confirmer la Publication">
+    Une boîte de dialogue de confirmation liste le nombre de voyages qui seront publiés et le nombre de membres d'équipage qui seront notifiés. Cliquez sur **Confirmer & Publier**.
+  </Step>
+  <Step title="Notifications Envoyées à l'Équipage">
+    GoTravelXpress notifie automatiquement chaque membre d'équipage assigné de ses assignations à venir : y compris les détails du voyage, l'heure de départ, l'itinéraire et le véhicule. Les notifications sont envoyées via le système de notification intégré à la plateforme.
+  </Step>
+</Steps>
+
+Après publication, les membres d'équipage peuvent se connecter à leurs comptes et consulter leur planning sous **Mes Assignations**. Les voyages publiés sont verrouillés contre les modifications en masse : pour apporter une modification à un voyage publié individuel, ouvrez-le et modifiez-le directement, puis enregistrez. Les membres d'équipage affectés sont re-notifiés automatiquement.
+
+<Tip>
+  Visez à publier les plannings au moins **une semaine à l'avance**. Cela donne aux chauffeurs et à l'équipage suffisamment de temps pour planifier autour de leurs assignations et réduit les lacunes de couverture de dernière minute. Vous pouvez préparer plusieurs semaines de plannings à l'avance et les publier de manière continue.
+</Tip>
+
+<Note>
+  Avant de planifier de nouvelles périodes de planning, examinez votre tableau de bord **Module Analytics : Performance des Itinéraires**. Les itinéraires avec des taux d'occupation constamment élevés peuvent nécessiter des départs supplémentaires ou des véhicules plus grands, tandis que les itinéraires à faible occupation peuvent être des candidats à une réduction de fréquence. Une programmation fondée sur les données vous aide à allouer la flotte et l'équipage où ils ont le plus d'impact.
+</Note>
+
+Le module de Planification Intelligente aide les responsables d'agence à construire des plannings efficaces et sans conflit sans tableurs manuels. Vous travaillez depuis un calendrier interactif qui affiche les voyages, les assignations de véhicules, la disponibilité de l'équipage et les conflits, le tout dans une seule vue. Lorsque vous ajoutez un voyage, le système suggère des chauffeurs et membres d'équipage adaptés en fonction de la disponibilité actuelle : vous acceptez, remplacez ou réassignez en un seul clic. Une fois le planning publié, les membres d'équipage reçoivent des notifications automatiques concernant leurs assignations. Cette page couvre l'accès au calendrier, la création de plannings, l'utilisation de l'assignation automatique du personnel, la résolution de conflits et la publication du planning vers l'équipe.
+
+## Vue Calendrier des Voyages
+
+Le calendrier de planification est votre espace de travail principal pour la programmation. Pour l'ouvrir, naviguez vers **Planification Intelligente** dans le menu principal.
+
+Le calendrier affiche :
+
+<CardGroup cols={2}>
+  <Card title="Voyages Programmés" icon="calendar-days" href="/fr/modules/reservations">
+    Chaque départ confirmé apparaît comme un bloc sur le calendrier, montrant le nom de l'itinéraire, l'heure de départ et le véhicule assigné.
+  </Card>
+
+  <Card title="Assignations du Personnel" icon="user-check" href="/fr/modules/fleet-crew">
+    Chaque bloc de voyage montre le chauffeur assigné, l'hôtesse et tout autre rôle d'équipage : codé par couleur selon le statut d'assignation (assigné, non assigné, conflit).
+  </Card>
+
+  <Card title="Disponibilité des Véhicules" icon="bus" href="/fr/modules/fleet-crew">
+    Les véhicules déjà réservés pour un autre voyage pendant un créneau horaire donné sont mis en évidence, afin que vous ne double-réserviez jamais un bus par inadvertance.
+  </Card>
+
+  <Card title="Conflits" icon="triangle-exclamation" href="/fr/agency/intelligent-planning">
+    Les conflits de programmation : comme un membre d'équipage ou un véhicule assigné à deux voyages qui se chevauchent : sont signalés par un indicateur d'avertissement directement sur le bloc du calendrier.
+  </Card>
+</CardGroup>
+
+Vous pouvez basculer entre les vues **Jour**, **Semaine** et **Mois** en utilisant les contrôles en haut du calendrier. Utilisez la vue **Semaine** pour la planification quotidienne et la vue **Mois** pour examiner la couverture d'un coup d'oeil.
+
+## Créer un Planning
+
+<Steps>
+  <Step title="Ouvrir le Module de Planification">
+    Allez dans **Planification Intelligente** et confirmez que vous êtes dans le bon contexte de succursale d'agence (visible dans la barre de navigation supérieure).
+  </Step>
+  <Step title="Sélectionner une Plage de Dates">
+    Utilisez le sélecteur de dates pour naviguer vers la semaine ou la période que vous souhaitez programmer. Pour une nouvelle semaine de départs, cliquez sur le lundi de cette semaine dans le calendrier pour commencer là.
+  </Step>
+  <Step title="Ajouter un Voyage">
+    Cliquez sur le bouton **\+ Ajouter un Voyage** (ou cliquez directement sur un créneau vide du calendrier à l'heure de départ souhaitée). Un panneau de création de voyage s'ouvre sur la droite.
+
+    Remplissez les détails du voyage :
+
+    | Champ | Description |
+    | --- | --- |
+    | **Itinéraire** | Sélectionnez parmi les itinéraires configurés de votre agence |
+    | **Date & Heure de Départ** | La date et l'heure de départ programmées |
+    | **Heure d'Arrivée** | L'heure d'arrivée prévue (utilisée pour l'assignation de l'équipage et la détection de conflits) |
+    | **Véhicule** | Sélectionnez parmi les véhicules de flotte disponibles |
+    | **Récurrence** | Définissez sur **Aucune**, **Quotidienne** ou **Hebdomadaire** pour les voyages récurrents |
+  </Step>
+  <Step title="Définir la Récurrence (Optionnel)">
+    Si ce voyage fonctionne sur un planning régulier, activez la **Récurrence** :
+
+    - **Quotidienne** : le voyage se répète tous les jours à la même heure
+    - **Hebdomadaire** : le voyage se répète le(s) même(s) jour(s) de la semaine
+
+    Définissez une date de fin ou un nombre total d'occurrences pour limiter l'étendue de la récurrence. Chaque occurrence est créée comme un enregistrement de voyage individuel que vous pouvez modifier indépendamment.
+  </Step>
+  <Step title="Assigner le Véhicule et l'Équipage">
+    Sélectionnez le véhicule dans le menu déroulant **Véhicule** : seuls les véhicules libres pour le créneau horaire sélectionné apparaissent. Passez ensuite à l'assignation du personnel (voir la section suivante pour les suggestions automatiques).
+  </Step>
+  <Step title="Enregistrer le Voyage">
+    Cliquez sur **Enregistrer le Voyage**. Le voyage apparaît sur le calendrier. Si des conflits sont détectés, une bannière d'avertissement apparaît immédiatement : voir [Détection de Conflits](#détection-de-conflits) ci-dessous.
+  </Step>
+</Steps>
+
+## Assignation Automatique du Personnel
+
+Au lieu de rechercher manuellement dans les registres d'équipage, le module de Planification Intelligente suggère automatiquement le personnel le mieux adapté pour chaque voyage.
+
+Lorsque vous ouvrez le panneau d'assignation d'un voyage, le système évalue tous les membres d'équipage et présente des suggestions basées sur :
+
+- **Disponibilité actuelle** : membres d'équipage qui ne sont pas déjà assignés à un autre voyage pendant la même fenêtre horaire
+- **Correspondance de rôle** : seuls les chauffeurs sont suggérés pour le poste de chauffeur : seules les hôtesses pour le poste d'hôtesse, etc.
+- **Historique récent d'assignations** : les membres d'équipage qui n'ont pas récemment travaillé sur le même itinéraire reçoivent une légère priorité pour distribuer la charge de travail équitablement
+
+### Accepter une Suggestion
+
+À côté de chaque membre d'équipage suggéré, cliquez sur **Assigner** pour confirmer l'assignation. Le nom du membre d'équipage apparaît sur le bloc du calendrier et il est immédiatement marqué comme indisponible pour ce créneau horaire.
+
+### Remplacer une Suggestion
+
+Si vous préférez un autre membre d'équipage que la première suggestion :
+
+1. Cliquez sur **Voir Tous les Disponibles** à côté de la liste des suggestions.
+2. Une liste complète des membres d'équipage disponibles pour ce rôle et ce créneau horaire apparaît.
+3. Cliquez sur **Assigner** à côté de la personne souhaitée.
+
+### Supprimer une Assignation
+
+Pour retirer un membre d'équipage d'un voyage, ouvrez le panneau de détail du voyage, cliquez sur le **×** à côté de son nom dans la section d'assignation, et enregistrez le voyage. Le membre d'équipage redevient disponible pour ce créneau.
+
+<Note>
+  Les suggestions automatiques sont consultatives : vous avez toujours le dernier mot. Le système n'assignera jamais d'équipage sans votre confirmation.
+</Note>
+
+## Détection de Conflits
+
+GoTravelXpress détecte deux types de conflits de programmation et les signale avant qu'ils ne causent des problèmes opérationnels.
+
+<Tabs>
+  <Tab title="Équipage Double-Réservé">
+    Si un membre d'équipage est assigné à deux voyages dont les fenêtres horaires se chevauchent (y compris le temps de voyage et de préparation), le système marque les deux voyages avec un indicateur **⚠ Conflit d'Équipage** sur le calendrier.
+
+    Pour résoudre un conflit d'équipage :
+
+    <Steps>
+      <Step title="Cliquer sur le Voyage en Conflit">
+        Cliquez sur le bloc du calendrier affichant l'avertissement de conflit pour ouvrir le panneau de détail du voyage.
+      </Step>
+      <Step title="Examiner le Détail du Conflit">
+        Le panneau montre quel membre d'équipage est double-réservé et quel autre voyage cause le conflit.
+      </Step>
+      <Step title="Réassigner ou Reprogrammer">
+        Assignez un autre membre d'équipage disponible à l'un des voyages, ou ajustez l'heure de départ de l'un des voyages pour éliminer le chevauchement.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Véhicule Double-Réservé">
+    Si le même véhicule est assigné à deux voyages avec des fenêtres horaires qui se chevauchent, les deux voyages affichent un indicateur **⚠ Conflit de Véhicule**.
+
+    Pour résoudre un conflit de véhicule :
+
+    <Steps>
+      <Step title="Ouvrir l'un des Voyages en Conflit">
+        Cliquez sur le voyage pour ouvrir son panneau de détail.
+      </Step>
+      <Step title="Changer le Véhicule">
+        Dans le champ **Véhicule**, sélectionnez un autre véhicule disponible dans le menu déroulant.
+      </Step>
+      <Step title="Enregistrer le Changement">
+        Cliquez sur **Enregistrer le Voyage**. Si aucun autre conflit ne subsiste, l'avertissement disparaît.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+<Warning>
+  Les voyages avec des conflits non résolus sont marqués comme **Brouillon** et ne seront pas visibles par les membres d'équipage tant que les conflits ne seront pas résolus et le planning publié.
+</Warning>
+
+## Publier un Planning
+
+Une fois que vous êtes satisfait qu'une période de planning est complète et sans conflit, vous la publiez pour la rendre visible à l'équipage.
+
+<Steps>
+  <Step title="Examiner le Planning">
+    Passez à la vue **Semaine** pour la période que vous souhaitez publier. Vérifiez que tous les voyages ont des assignations de véhicule et d'équipage et qu'aucun avertissement de conflit n'est affiché.
+  </Step>
+  <Step title="Publier le Planning">
+    Cliquez sur **Publier le Planning** en haut du calendrier. Vous pouvez publier un seul jour, une semaine entière ou une plage de dates personnalisée.
+  </Step>
+  <Step title="Confirmer la Publication">
+    Une boîte de dialogue de confirmation liste le nombre de voyages qui seront publiés et le nombre de membres d'équipage qui seront notifiés. Cliquez sur **Confirmer & Publier**.
+  </Step>
+  <Step title="Notifications Envoyées à l'Équipage">
+    GoTravelXpress notifie automatiquement chaque membre d'équipage assigné de ses assignations à venir : y compris les détails du voyage, l'heure de départ, l'itinéraire et le véhicule. Les notifications sont envoyées via le système de notification intégré à la plateforme.
+  </Step>
+</Steps>
+
+Après publication, les membres d'équipage peuvent se connecter à leurs comptes et consulter leur planning sous **Mes Assignations**. Les voyages publiés sont verrouillés contre les modifications en masse : pour apporter une modification à un voyage publié individuel, ouvrez-le et modifiez-le directement, puis enregistrez. Les membres d'équipage affectés sont re-notifiés automatiquement.
+
+<Tip>
+  Visez à publier les plannings au moins **une semaine à l'avance**. Cela donne aux chauffeurs et à l'équipage suffisamment de temps pour planifier autour de leurs assignations et réduit les lacunes de couverture de dernière minute. Vous pouvez préparer plusieurs semaines de plannings à l'avance et les publier de manière continue.
+</Tip>
+
+<Note>
+  Avant de planifier de nouvelles périodes de planning, examinez votre tableau de bord **Module Analytics : Performance des Itinéraires**. Les itinéraires avec des taux d'occupation constamment élevés peuvent nécessiter des départs supplémentaires ou des véhicules plus grands, tandis que les itinéraires à faible occupation peuvent être des candidats à une réduction de fréquence. Une programmation fondée sur les données vous aide à allouer la flotte et l'équipage où ils ont le plus d'impact.
+</Note>

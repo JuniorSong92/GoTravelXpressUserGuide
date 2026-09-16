@@ -1,0 +1,144 @@
+---
+title: "Gestion des Succursales d'Agences Multiples dans GoTravelXpress"
+sidebarTitle: "Multi-Agence"
+description: "Gérez plusieurs succursales d'agences depuis un seul compte GoTravelXpress : configurez des branches distinctes, partagez les ressources et consultez des analyses consolidées."
+---
+
+La Gestion Multi-Agence de GoTravelXpress vous permet d'exploiter plusieurs succursales ou franchises d'agence depuis un seul compte de plateforme. Au lieu de jongler avec des identifiants séparés pour chaque emplacement, vous contrôlez chaque site depuis un seul endroit : ajout de succursales, assignation d'administrateurs locaux et consultation des performances combinées dans un tableau de bord unifié. Cette page vous guide dans la création de succursales d'agence, la compréhension de l'isolation des données, le basculement entre sites et la gestion des administrateurs au niveau des branches.
+
+<Note>
+  La gestion multi-agence est disponible sur les licences **Premium** et **Entreprise**. Si vous disposez d'une licence Basic ou Gratuite, mettez à jour votre clé de licence pour débloquer cette fonctionnalité. Contactez [contact@prozigzag.com](mailto:contact@prozigzag.com) ou appelez le +237 695 602 293 pour demander une mise à niveau.
+</Note>
+
+## Créer une Succursale d'Agence
+
+Chaque nouvelle succursale obtient son propre espace de travail isolé : itinéraires, véhicules, équipage et réservations sont tous limités à cette succursale par défaut.
+
+<Steps>
+  <Step title="Ouvrir la Gestion d'Agence">
+    Dans la navigation principale, accédez à **Gestion d'Agence**. Vous verrez la liste de toutes les succursales existantes sous votre compte.
+  </Step>
+  <Step title="Ajouter une Nouvelle Agence">
+    Cliquez sur **Ajouter une Agence** dans le coin supérieur droit de la liste des agences.
+  </Step>
+  <Step title="Remplir les Détails de la Succursale">
+    Complétez le formulaire de profil de l'agence :
+
+    | Champ | Description |
+    | --- | --- |
+    | **Nom de l'Agence** | Le nom public de la succursale (par exemple, "Succursale de Bafoussam") |
+    | **Localisation / Ville** | Ville ou localité où la succursale opère |
+    | **Adresse** | Adresse postale pour la géolocalisation et l'enregistrement de l'équipage |
+    | **Téléphone de Contact** | Numéro de téléphone principal de la succursale |
+    | **Email de Contact** | Email d'assistance ou d'opérations au niveau de la succursale |
+  </Step>
+  <Step title="Assigner un Utilisateur Administrateur">
+    Dans le champ **Administrateur de Succursale**, recherchez un utilisateur existant ou saisissez l'email d'un nouvel utilisateur à inviter. Cette personne aura un accès Admin d'Agence limité à la nouvelle succursale.
+  </Step>
+  <Step title="Enregistrer et Activer">
+    Cliquez sur **Créer l'Agence**. La succursale apparaît immédiatement dans votre liste d'agences et est prête à être configurée : ajoutez des itinéraires, des véhicules et de l'équipage depuis le contexte de la succursale.
+  </Step>
+</Steps>
+
+## Isolation et Partage d'Agence
+
+Par défaut, chaque succursale d'agence fonctionne comme une unité indépendante. Les ressources créées dans une succursale ne sont pas visibles par les opérateurs d'une autre succursale.
+
+<CardGroup cols={2}>
+  <Card title="Isolé par Défaut" icon="lock" href="/fr/agency/user-roles">
+    Les itinéraires, horaires, véhicules de flotte, membres d'équipage, réservations et enregistrements de paiement sont tous limités à la succursale où ils ont été créés. Les agents d'une succursale ne peuvent pas accéder aux données d'une autre succursale sauf si des permissions inter-agences leur sont explicitement accordées.
+  </Card>
+
+  <Card title="Partage de Ressources Optionnel" icon="share-nodes" href="/fr/modules/fleet-crew">
+    Sur les licences Entreprise, un Super Admin peut configurer des pools de ressources partagés : par exemple, une flotte partagée ou un registre de chauffeurs partagé, que plusieurs succursales peuvent utiliser. Configurez ceci sous **Gestion d'Agence : Ressources Partagées**.
+  </Card>
+</CardGroup>
+
+<Info>
+  La configuration des ressources partagées est une capacité réservée aux licences Entreprise. Sur les licences Premium, chaque succursale maintient des pools de ressources entièrement séparés.
+</Info>
+
+## Basculement Entre Agences
+
+Si votre compte a accès à plusieurs succursales, vous pouvez changer de contexte sans vous déconnecter.
+
+<Steps>
+  <Step title="Localiser le Sélecteur d'Agence">
+    Regardez la **barre de navigation supérieure**. À côté de votre nom de compte, vous verrez le nom de votre succursale d'agence actuellement active.
+  </Step>
+  <Step title="Ouvrir le Menu Déroulant">
+    Cliquez sur le nom de l'agence pour ouvrir le menu déroulant de sélection de succursale. Toutes les succursales auxquelles vous avez accès sont listées ici.
+  </Step>
+  <Step title="Sélectionner la Succursale Cible">
+    Cliquez sur la succursale que vous souhaitez gérer. Le tableau de bord, les menus de navigation et toutes les données reflètent immédiatement la succursale sélectionnée. Le contexte de votre session se met à jour instantanément : aucun rechargement de page n'est nécessaire.
+  </Step>
+</Steps>
+
+<Tip>
+  Épinglez votre succursale la plus utilisée comme défaut dans **Paramètres du Compte : Préférences** pour qu'elle se charge automatiquement à chaque connexion.
+</Tip>
+
+## Vue Consolidée
+
+Le Tableau de Bord Consolidé offre aux Super Admins une vue d'ensemble de toutes les succursales à la fois, sans avoir à basculer entre elles individuellement.
+
+Pour y accéder, allez dans **Gestion d'Agence : Vue Consolidée**. La vue d'ensemble affiche :
+
+- **Total des réservations** pour toutes les succursales sur la période sélectionnée
+- **Résumé des revenus** ventilé par succursale et mode de paiement
+- **Taux d'utilisation de la flotte** par succursale
+- **Effectif de l'équipage** et résumé de présence par site
+- **Itinéraires les plus performants** classés sur toutes les succursales
+
+Vous pouvez filtrer la vue consolidée par plage de dates, région ou succursale individuelle pour affiner votre analyse. Tous les chiffres sont liés au module Analytics complet pour un examen approfondi.
+
+<Tip>
+  Utilisez les rapports de comparaison inter-agences du module Analytics pour identifier les succursales ayant les taux d'occupation les plus élevés et reproduire leurs modèles de programmation sur d'autres sites. Consultez la [documentation Analytics](/fr/modules/analytics) pour plus de détails.
+</Tip>
+
+## Administrateurs de Succursale
+
+Chaque succursale d'agence devrait avoir au moins un Administrateur de Succursale dédié qui gère les opérations quotidiennes de ce site.
+
+### Ce qu'un Admin de Succursale Peut Faire
+
+Un utilisateur assigné au rôle **Admin d'Agence** sur une succursale spécifique peut :
+
+<CardGroup cols={2}>
+  <Card title="Gérer les Itinéraires et Horaires" icon="route" href="/fr/agency/intelligent-planning">
+    Créer, modifier et désactiver les itinéraires et horaires de départ pour leur succursale.
+  </Card>
+
+  <Card title="Gérer la Flotte et l'Équipage" icon="bus" href="/fr/modules/fleet-crew">
+    Ajouter des véhicules, assigner des chauffeurs, hôtesses et manutentionnaires de bagages aux voyages.
+  </Card>
+
+  <Card title="Gérer les Réservations" icon="ticket" href="/fr/modules/reservations">
+    Consulter, modifier et annuler les réservations : émettre des remboursements dans les limites de la politique de paiement.
+  </Card>
+
+  <Card title="Consulter les Analyses de Succursale" icon="chart-bar" href="/fr/modules/analytics">
+    Accéder aux tableaux de bord et rapports limités à leur propre succursale, pas aux autres succursales.
+  </Card>
+
+  <Card title="Gérer les Utilisateurs de la Succursale" icon="users" href="/fr/agency/user-roles">
+    Ajouter ou désactiver des Agents de Réservation, des Membres d'Équipage et des Comptables au sein de leur succursale.
+  </Card>
+
+  <Card title="Configurer les Paramètres de Succursale" icon="gear" href="/fr/agency/qr-checkin">
+    Définir les préférences au niveau de la succursale telles que les points de départ, le rayon de géolocalisation pour l'enregistrement de l'équipage et les modes de paiement par défaut.
+  </Card>
+</CardGroup>
+
+### Ce qu'un Admin de Succursale Ne Peut Pas Faire
+
+Un Admin de Succursale ne peut pas :
+
+- Consulter ou modifier les données d'autres succursales d'agence
+- Créer ou supprimer d'autres comptes Admin de Succursale (réservé au Super Admin)
+- Modifier les paramètres à l'échelle de la plateforme ou la configuration de la licence
+- Accéder au tableau de bord Vue Consolidée
+
+### Assigner un Admin de Succursale
+
+Pour assigner ou changer l'administrateur d'une succursale, allez dans **Gestion d'Agence**, cliquez sur le nom de la succursale, puis sélectionnez **Modifier : Administrateur de Succursale** et choisissez un utilisateur. Vous pouvez assigner plusieurs utilisateurs avec le rôle Admin d'Agence à la même succursale pour plus de redondance.

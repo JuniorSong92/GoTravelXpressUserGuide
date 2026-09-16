@@ -15,78 +15,161 @@
   "navbar": {
     "primary": {
       "type": "button",
-      "label": "Get Started",
+      "label": "Commencer",
       "href": "https://gotravelxpress.wuaze.com/index.php"
     }
   },
   "navigation": {
-    "tabs": [
+    "languages": [
       {
-        "tab": "Documentation",
-        "groups": [
+        "language": "fr",
+        "default": true,
+        "tabs": [
           {
-            "group": "Getting Started",
-            "pages": [
-              "introduction",
-              "quickstart",
-              "license-types"
+            "tab": "Documentation",
+            "groups": [
+              {
+                "group": "Démarrage",
+                "pages": [
+                  "fr/index",
+                  "fr/introduction",
+                  "fr/quickstart",
+                  "fr/license-types"
+                ]
+              },
+              {
+                "group": "Modules Principaux",
+                "pages": [
+                  "fr/modules/reservations",
+                  "fr/modules/qr-tickets",
+                  "fr/modules/payments",
+                  "fr/modules/fleet-crew",
+                  "fr/modules/baggage-parcels",
+                  "fr/modules/analytics"
+                ]
+              },
+              {
+                "group": "Gestion d'Agence",
+                "pages": [
+                  "fr/agency/multi-agency",
+                  "fr/agency/user-roles",
+                  "fr/agency/intelligent-planning",
+                  "fr/agency/qr-checkin"
+                ]
+              },
+              {
+                "group": "Compte et Sécurité",
+                "pages": [
+                  "fr/account/login",
+                  "fr/account/security",
+                  "fr/account/privacy-policy",
+                  "fr/account/terms-of-service"
+                ]
+              },
+              {
+                "group": "Assistance",
+                "pages": [
+                  "fr/support/faq",
+                  "fr/support/contact"
+                ]
+              }
             ]
           },
           {
-            "group": "Core Modules",
-            "pages": [
-              "modules/reservations",
-              "modules/qr-tickets",
-              "modules/payments",
-              "modules/fleet-crew",
-              "modules/baggage-parcels",
-              "modules/analytics"
-            ]
-          },
-          {
-            "group": "Agency Management",
-            "pages": [
-              "agency/multi-agency",
-              "agency/user-roles",
-              "agency/intelligent-planning",
-              "agency/qr-checkin"
-            ]
-          },
-          {
-            "group": "Account & Security",
-            "pages": [
-              "account/login",
-              "account/security",
-              "account/privacy-policy",
-              "account/terms-of-service"
-            ]
-          },
-          {
-            "group": "Support",
-            "pages": [
-              "support/faq",
-              "support/contact"
+            "tab": "Référence API",
+            "groups": [
+              {
+                "group": "Aperçu",
+                "pages": [
+                  "fr/api/overview",
+                  "fr/api/authentication"
+                ]
+              },
+              {
+                "group": "Points de Terminaison",
+                "pages": [
+                  "fr/api/reservations",
+                  "fr/api/tickets",
+                  "fr/api/payments",
+                  "fr/api/agencies"
+                ]
+              }
             ]
           }
         ]
       },
       {
-        "tab": "API Reference",
-        "groups": [
+        "language": "en",
+        "tabs": [
           {
-            "group": "Overview",
-            "pages": [
-              "api/overview",
-              "api/authentication"
+            "tab": "Documentation",
+            "groups": [
+              {
+                "group": "Getting Started",
+                "pages": [
+                  "index",
+                  "introduction",
+                  "quickstart",
+                  "license-types"
+                ]
+              },
+              {
+                "group": "Core Modules",
+                "pages": [
+                  "modules/reservations",
+                  "modules/qr-tickets",
+                  "modules/payments",
+                  "modules/fleet-crew",
+                  "modules/baggage-parcels",
+                  "modules/analytics"
+                ]
+              },
+              {
+                "group": "Agency Management",
+                "pages": [
+                  "agency/multi-agency",
+                  "agency/user-roles",
+                  "agency/intelligent-planning",
+                  "agency/qr-checkin"
+                ]
+              },
+              {
+                "group": "Account & Security",
+                "pages": [
+                  "account/login",
+                  "account/security",
+                  "account/privacy-policy",
+                  "account/terms-of-service"
+                ]
+              },
+              {
+                "group": "Support",
+                "pages": [
+                  "support/faq",
+                  "support/contact"
+                ]
+              }
             ]
           },
           {
-            "group": "Endpoints",
-            "pages": [
-              "api/reservations",
-              "api/tickets",
-              "api/payments",
-              "api/agencies"
+            "tab": "API Reference",
+            "groups": [
+              {
+                "group": "Overview",
+                "pages": [
+                  "api/overview",
+                  "api/authentication"
+                ]
+              },
+              {
+                "group": "Endpoints",
+                "pages": [
+                  "api/reservations",
+                  "api/tickets",
+                  "api/payments",
+                  "api/agencies"
+                ]
+              }
             ]
           }
         ]

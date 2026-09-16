@@ -1,0 +1,130 @@
+---
+title: "Enregistrement QR GoTravelXpress et Suivi de Présence de l'Équipage"
+sidebarTitle: "Enregistrement QR"
+description: "Utilisez l'enregistrement QR de GoTravelXpress pour gérer l'embarquement des passagers et suivre la présence de l'équipage par géolocalisation : le tout contrôlé par scan de code QR."
+---
+
+Le module Enregistrement QR & Équipage remplit deux fonctions distinctes mais complémentaires au sein de GoTravelXpress. Premièrement, il gère **l'embarquement des passagers** : les membres d'équipage scannent le billet avec code QR de chaque passager au point de départ, et le système valide instantanément si le billet est authentique, non utilisé et assigné au bon voyage. Deuxièmement, il gère **la présence de l'équipage (pointage)** : chaque membre d'équipage dispose d'un code QR personnel, et le scanner au début d'un shift enregistre sa présence et vérifie sa localisation GPS par rapport au point de départ attendu. Cette page couvre les deux flux de travail en détail, depuis le moment où un membre d'équipage ouvre l'application jusqu'à la génération de rapports de présence pour l'examen par la direction.
+
+## Embarquement des Passagers (Scan de Billets)
+
+L'embarquement des passagers utilise la vue Enregistrement de GoTravelXpress, accessible sur tout appareil avec une caméra : une tablette au comptoir de départ ou un smartphone sur le quai fonctionnent tous les deux.
+
+<Steps>
+  <Step title="Ouvrir la Vue d'Enregistrement">
+    Connectez-vous à GoTravelXpress avec vos identifiants de Membre d'Équipage ou d'Agent de Réservation. Naviguez vers **Enregistrement QR** dans le menu principal. Cela ouvre l'interface d'embarquement.
+  </Step>
+  <Step title="Sélectionner le Voyage">
+    Depuis le sélecteur de voyage, choisissez le départ que vous embarquez. La liste affiche les voyages qui vous sont assignés pour aujourd'hui (Membres d'Équipage) ou tous les départs à venir pour la succursale (Agents de Réservation et Admins d'Agence).
+
+    Confirmez le nom de l'itinéraire, l'heure de départ et le véhicule avant de continuer.
+  </Step>
+  <Step title="Ouvrir le Scanner">
+    Appuyez sur **Commencer le Scan** ou sur l'icône caméra pour activer le scanner de code QR. Pointez la caméra de votre appareil vers le billet avec code QR du passager : imprimé ou affiché sur l'écran de son téléphone.
+  </Step>
+  <Step title="Lire le Résultat">
+    Le système traite le scan en temps réel et retourne l'une des quatre réponses (voir [Ce qui se Passe au Scan](#ce-qui-se-passe-au-scan) ci-dessous). Les passagers confirmés apparaissent dans la liste d'embarquement avec une coche verte.
+  </Step>
+  <Step title="Continuer l'Embarquement">
+    Gardez le scanner actif et scannez chaque passager à tour de rôle. Le compteur d'embarquement en haut de l'écran se met à jour en temps réel, affichant **X / Y embarqués** pour que vous sachiez toujours combien de passagers sont encore attendus.
+  </Step>
+</Steps>
+
+<Note>
+  L'appareil de scan doit avoir les permissions de localisation activées pour que le module d'Enregistrement fonctionne. Si l'accès à la localisation est bloqué, l'application vous invitera à l'activer dans les paramètres de votre appareil. Voir [Vérification de Géolocalisation](#vérification-de-géolocalisation) pour plus de détails.
+</Note>
+
+## Ce qui se Passe au Scan
+
+Chaque scan retourne une réponse immédiate codée par couleur à l'écran. Le tableau ci-dessous décrit chaque résultat et l'action correcte à prendre.
+
+| Résultat du Scan | Affichage | Signification | Action |
+| --- | --- | --- | --- |
+| **✓ Billet Valide** | Bannière verte : *"Passager Confirmé"* | Le billet est authentique, non utilisé et assigné à ce voyage exact | Le passager embarque. Le billet est marqué comme utilisé. |
+| **✗ Billet Invalide** | Bannière rouge : *"Billet Invalide"* | Le code QR ne correspond à aucun billet dans le système ou a été altéré | Ne permettez pas l'embarquement. Demandez au passager de contacter le comptoir de réservation. |
+| **✗ Déjà Utilisé** | Bannière orange : *"Billet Déjà Scanné"* | Ce billet a été scanné et validé plus tôt dans cette session d'embarquement | Ne permettez pas un ré-embarquement. Alertez un superviseur si le passager insiste sur le fait qu'il n'a pas embarqué. |
+| **✗ Mauvais Voyage** | Bannière jaune : *"Mauvais Voyage"* | Le billet est valide mais appartient à un itinéraire, une heure de départ ou une succursale différente | Dirigez le passager vers le bon départ. Ne permettez pas l'embarquement sur ce voyage. |
+
+<Warning>
+  Un résultat **Billet Déjà Scanné** est un signal fort de fraude potentielle de billet (un billet partagé entre plusieurs passagers). Enregistrez l'incident en appuyant sur **Signaler un Problème** sur l'écran de résultat du scan : cela crée une entrée horodatée dans le journal d'embarquement du voyage pour l'examen par le superviseur.
+</Warning>
+
+## Présence de l'Équipage (Pointage)
+
+Chaque membre d'équipage dans GoTravelXpress possède un code QR personnel unique qui sert de carte de présence digitale. Le scanner au début d'un shift enregistre son enregistrement.
+
+<Steps>
+  <Step title="Localiser Votre Code QR Personnel">
+    Connectez-vous à GoTravelXpress et allez dans **Mon Profil : Mon Code QR**. Votre code QR personnel est affiché ici et peut également être enregistré sur votre appareil ou imprimé.
+  </Step>
+  <Step title="Présenter Votre Code QR au Début du Shift">
+    Au point d'enregistrement désigné (le terminal de départ ou le bureau de l'agence), faites scanner votre code QR personnel par un superviseur ou un appareil de gare. Alternativement, si votre agence utilise l'auto-enregistrement, ouvrez le module d'Enregistrement sur votre propre appareil et sélectionnez **Auto-Enregistrement Équipage**, puis scannez votre propre code avec la caméra frontale.
+  </Step>
+  <Step title="Autoriser l'Accès à la Localisation">
+    Lorsque vous y êtes invité, autorisez l'application à accéder à la localisation de votre appareil. Le système vérifie que vos coordonnées GPS actuelles se situent dans le rayon configuré du point de départ attendu avant de confirmer votre présence.
+  </Step>
+  <Step title="Recevoir la Confirmation">
+    Si la vérification de localisation réussit, vous voyez une confirmation verte **"Présence Enregistrée"**. Votre heure d'enregistrement, votre localisation et votre voyage assigné sont enregistrés. Si la vérification de localisation échoue, le système vous alerte ainsi que le superviseur du shift : voir [Vérification de Géolocalisation](#vérification-de-géolocalisation) ci-dessous.
+  </Step>
+</Steps>
+
+## Vérification de Géolocalisation
+
+La vérification de géolocalisation empêche les membres d'équipage de s'enregistrer à distance : elle garantit que le personnel est physiquement présent au bon point de départ avant que leur présence ne soit confirmée.
+
+Lorsqu'un membre d'équipage scanne son code QR de présence, GoTravelXpress capture les coordonnées GPS de l'appareil et les compare au **point de départ désigné** configuré pour la localisation d'origine de ce voyage. Si l'appareil se trouve dans le rayon autorisé, la présence est confirmée. S'il se trouve en dehors, l'enregistrement est signalé comme **Non-Concordance de Localisation** et est mis en attente d'approbation du superviseur.
+
+### Configurer le Rayon de Géolocalisation
+
+<Steps>
+  <Step title="Ouvrir les Paramètres d'Agence">
+    Naviguez vers **Gestion d'Agence : Paramètres : Géolocalisation**.
+  </Step>
+  <Step title="Définir le Point de Départ">
+    Pour chaque lieu de départ (terminus de bus, bureau d'agence, etc.), saisissez les coordonnées GPS ou utilisez le sélecteur de carte pour définir le point exact.
+  </Step>
+  <Step title="Configurer le Rayon Autorisé">
+    Définissez le **Rayon d'Enregistrement** en mètres. Un rayon de **100–200 m** convient bien aux agences basées sur un terminal. Augmentez-le légèrement (jusqu'à 500 m) pour les agences dont l'équipage peut se garer à proximité plutôt que d'entrer dans le terminal.
+  </Step>
+  <Step title="Enregistrer les Paramètres">
+    Cliquez sur **Enregistrer**. Le nouveau rayon prend effet immédiatement pour le prochain scan de présence de l'équipage à cette localisation.
+  </Step>
+</Steps>
+
+<Tip>
+  Commencez avec un rayon généreux (300–500 m) pendant votre première semaine d'opération, puis resserrez-le une fois que vous avez confirmé que les lieux d'enregistrement typiques de votre équipage se situent dans la zone. Vous pouvez ajuster le rayon à tout moment dans **Paramètres d'Agence : Géolocalisation** sans perturber les shifts actifs.
+</Tip>
+
+<Note>
+  Le scan de présence de l'équipage nécessite que l'appareil ait les **permissions de localisation (GPS)** activées pour l'application GoTravelXpress. Android et iOS demandent tous deux cette permission la première fois que le module d'Enregistrement est ouvert. Si un membre d'équipage ignore l'invitation, il peut l'activer plus tard dans les **Paramètres de son appareil : Applications : GoTravelXpress : Permissions : Localisation** (le chemin exact varie selon l'appareil et la version du système d'exploitation).
+</Note>
+
+## Rapports de Présence
+
+Les managers et les Comptables peuvent consulter et exporter les enregistrements de présence de l'équipage depuis la plateforme à tout moment.
+
+<Steps>
+  <Step title="Ouvrir le Rapport de Présence">
+    Naviguez vers **Enregistrement QR & Équipage : Rapports de Présence** (ou accédez-y via **Analytics : Rapports d'Équipage**).
+  </Step>
+  <Step title="Filtrer le Rapport">
+    Utilisez les filtres pour affiner les données :
+
+    | Filtre | Options |
+    | --- | --- |
+    | **Plage de Dates** | Jour unique, semaine, mois ou plage personnalisée |
+    | **Membre d'Équipage** | Tout l'équipage ou un individu spécifique |
+    | **Voyage / Itinéraire** | Tous les voyages ou filtre par un itinéraire spécifique |
+    | **Statut** | Tous, Confirmé, Non-Concordance de Localisation, ou Absent |
+  </Step>
+  <Step title="Examiner les Enregistrements">
+    Le tableau de rapport montre l'heure d'enregistrement de chaque membre d'équipage, la localisation vérifiée par GPS, le voyage assigné et le statut de présence. Les entrées **Non-Concordance de Localisation** sont mises en évidence en jaune : cliquez sur n'importe quelle ligne pour voir les coordonnées exactes capturées et la distance depuis le point de départ attendu.
+  </Step>
+  <Step title="Exporter le Rapport">
+    Cliquez sur **Exporter** pour télécharger les données de présence sous la forme d'un fichier **CSV** ou **PDF**. L'export inclut toutes les lignes correspondant à votre sélection de filtres actuelle et est prêt pour le traitement de la paie ou les enregistrements de conformité.
+  </Step>
+</Steps>
+
+<Tip>
+  Planifiez un examen hebdomadaire de la présence chaque lundi matin avant de publier le prochain planning. Les membres d'équipage avec des entrées répétées **Absent** ou **Non-Concordance de Localisation** peuvent nécessiter un suivi avant d'être assignés aux départs à venir. Des données de présence cohérentes alimentent également les analyses de main-d'oeuvre disponibles dans le **module Analytics**.
+</Tip>

@@ -1,0 +1,143 @@
+---
+title: "Authentifier les requêtes API GoTravelXpress avec des jetons Bearer"
+sidebarTitle: "Authentification"
+description: "Apprenez à obtenir un jeton Bearer GoTravelXpress via le point de terminaison de connexion, à l’utiliser dans vos requêtes API et à gérer l’expiration et le renouvellement du jeton."
+---
+
+Toutes les requêtes API GoTravelXpress doivent être authentifiées avec un jeton Bearer. Vous obtenez ce jeton en envoyant les identifiants de votre compte au point de terminaison de connexion. Chaque requête ultérieure doit inclure ce jeton dans l’en-tête `Authorization` : l’API rejette toute requête qui l’omet ou qui présente un jeton expiré. Cette page vous guide pour obtenir un jeton, l’utiliser dans les requêtes, gérer l’expiration du jeton et l’option de clé API alternative pour les intégrations serveur à serveur.
+
+<Note>
+  L’accès à l’API est disponible uniquement avec les licences **Premium** et **Enterprise**. Si votre connexion au tableau de bord réussit mais que l’API retourne `403 Forbidden`, contactez [contact@prozigzag.com](mailto:contact@prozigzag.com) pour confirmer votre niveau de licence.
+</Note>
+
+## Obtenir un jeton
+
+<Steps>
+  <Step title="Envoyez vos identifiants au point de terminaison de connexion">
+    Envoyez une requête `POST` à `/api/v1/auth/login` avec l’email et le mot de passe de votre compte GoTravelXpress dans le corps JSON.
+
+    ```bash
+    curl -X POST https://gotravelxpress.wuaze.com/api/v1/auth/login \
+      -H "Content-Type: application/json" \
+      -d '{
+        "email": "your@email.com",
+        "password": "yourpassword"
+      }'
+    ```
+  </Step>
+  <Step title="Lisez le access_token de la réponse">
+    Une connexion réussie retourne un objet JSON contenant votre jeton, son type et sa durée de vie en secondes.
+
+    ```json
+    {
+      "success": true,
+      "data": {
+        "access_token": "eyJhbGci...",
+        "token_type": "Bearer",
+        "expires_in": 3600
+      }
+    }
+    ```
+
+    | Champ | Type | Description |
+    | --- | --- | --- |
+    | `access_token` | string | Le jeton Bearer à inclure dans toutes les requêtes ultérieures |
+    | `token_type` | string | Toujours `"Bearer"` |
+    | `expires_in` | integer | Secondes avant l’expiration du jeton (ex. `3600` = 1 heure) |
+  </Step>
+  <Step title="Stockez le jeton en toute sécurité">
+    Enregistrez la valeur de `access_token` dans un endroit sécurisé tel qu’une variable d’environnement, un gestionnaire de secrets ou un stockage chiffré. Notez l’horodatage actuel avec `expires_in` pour que votre intégration sache quand se réauthentifier.
+  </Step>
+</Steps>
+
+## Utiliser le jeton
+
+Incluez le jeton dans chaque requête API en utilisant l’en-tête `Authorization` avec le préfixe `Bearer`.
+
+```bash
+curl https://gotravelxpress.wuaze.com/api/v1/reservations \
+  -H "Authorization: Bearer eyJhbGci..."
+```
+
+Si vous utilisez un SDK ou une bibliothèque HTTP, définissez l’en-tête Authorization au niveau du client afin que toutes les requêtes l’héritent automatiquement.
+
+<CodeGroup>
+
+```js JavaScript (fetch)
+const token = process.env.GTX_API_TOKEN;
+
+const response = await fetch(
+  'https://gotravelxpress.wuaze.com/api/v1/reservations',
+  {
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  }
+);
+
+const data = await response.json();
+```
+
+```python Python (requests)
+import os, requests
+
+token = os.environ["GTX_API_TOKEN"]
+
+response = requests.get(
+    "https://gotravelxpress.wuaze.com/api/v1/reservations",
+    headers={
+        "Authorization": f"Bearer {token}",
+        "Content-Type": "application/json",
+    },
+)
+
+data = response.json()
+```
+
+```php PHP (cURL)
+<?php
+$token = getenv('GTX_API_TOKEN');
+
+$ch = curl_init('https://gotravelxpress.wuaze.com/api/v1/reservations');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    'Authorization: Bearer ' . $token,
+    'Content-Type: application/json',
+]);
+
+$response = json_decode(curl_exec($ch), true);
+curl_close($ch);
+```
+
+</CodeGroup>
+
+## Expiration et renouvellement du jeton
+
+Les jetons sont valides pendant le nombre de secondes retourné dans `expires_in`. Une fois le jeton expiré, l’API retourne `401 Unauthorized` sur chaque requête qui l’utilise.
+
+Pour continuer à effectuer des appels API après expiration, réauthentifiez-vous en envoyant à nouveau vos identifiants à `/api/v1/auth/login` et utilisez le nouveau `access_token` retourné. GoTravelXpress ne délivre actuellement pas de jetons de rafraîchissement : une nouvelle connexion est nécessaire à chaque fois.
+
+<Tip>
+  Suivez l’heure d’expiration de votre jeton dans votre application et réauthentifiez-vous proactivement quelques minutes avant l’expiration, plutôt que d’attendre une erreur `401` en production.
+</Tip>
+
+## Clé API (alternative)
+
+Pour les intégrations serveur à serveur où stocker et faire tourner des jetons à durée de vie courte est impraticable, tels que les services en arrière-plan, les webhooks ou les connecteurs ERP, GoTravelXpress peut délivrer une clé API à longue durée de vie liée à votre compte.
+
+Pour demander une clé API, contactez l’équipe d’assistance GoTravelXpress :
+
+- **Email :** [contact@prozigzag.com](mailto:contact@prozigzag.com)
+- **Téléphone :** [+237 695 602 293](tel:+237695602293)
+
+Utilisez la clé API exactement comme un jeton Bearer dans l’en-tête `Authorization` :
+
+```bash
+curl https://gotravelxpress.wuaze.com/api/v1/reservations \
+  -H "Authorization: Bearer gtx_live_sk_xxxxxxxxxxxx"
+```
+
+<Warning>
+  N’exposez jamais votre jeton Bearer ou votre clé API dans du JavaScript côté client, des bundles d’applications mobiles, des dépôts publics ou tout endroit accessible aux utilisateurs finaux. Si un identifiant est compromis, contactez immédiatement l’assistance pour le révoquer et en émettre un nouveau. Traitez les identifiants API avec le même soin que les mots de passe.
+</Warning>

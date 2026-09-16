@@ -1,0 +1,152 @@
+---
+title: "Paiements : Mobile Money, Cartes et Traitement en Espèces"
+sidebarTitle: "Paiements"
+description: "Acceptez Mobile Money (MTN, Orange Money, Wave), Visa/Mastercard, virements bancaires et espèces dans GoTravelXpress, avec facturation et émission de billets automatiques."
+---
+
+GoTravelXpress prend en charge un large éventail de méthodes de paiement conçues pour le marché africain comme pour les voyageurs internationaux. Que vos passagers paient avec MTN Mobile Money sur un téléphone basique, tapent une carte Visa, initient un virement bancaire ou remettent des espèces au comptoir, la plateforme traite la transaction, génère une facture automatiquement et déclenche l'émission du billet, le tout dans le même flux de travail. Cette page couvre toutes les méthodes de paiement disponibles, comment traiter un paiement étape par étape, le contenu de la facture automatique, la gestion des remboursements, et la sécurité des données de paiement.
+
+---
+
+## Méthodes de Paiement Prises en Charge
+
+<CardGroup cols={2}>
+  <Card title="Mobile Money" icon="mobile" href="/fr/modules/payments#traiter-un-paiement">
+    Acceptez les paiements de **MTN Mobile Money**, **Orange Money** et **Wave**, les trois principaux réseaux Mobile Money de la région. Les passagers confirment la transaction directement depuis leur téléphone, et le système reçoit la confirmation en temps réel.
+  </Card>
+
+  <Card title="Cartes Bancaires (Visa / Mastercard)" icon="credit-card" href="/fr/modules/payments#traiter-un-paiement">
+    Traitez les cartes de débit et de crédit **Visa** et **Mastercard**. Les transactions par carte sont chiffrées de bout en bout et aucune donnée sensible de carte n'est stockée sur les serveurs de GoTravelXpress.
+  </Card>
+
+  <Card title="Virement Bancaire" icon="building-columns" href="/fr/modules/payments#traiter-un-paiement">
+    Acceptez les paiements par virement bancaire direct. L'agent enregistre la référence du virement dans la plateforme et marque la réservation comme payée une fois le virement confirmé par votre équipe financière.
+  </Card>
+
+  <Card title="Espèces" icon="money-bill" href="/fr/modules/payments#traiter-un-paiement">
+    Enregistrez les paiements en espèces collectés au comptoir. GoTravelXpress génère automatiquement une facture imprimée pour le passager et consigne la transaction en espèces pour le rapprochement de fin de journée.
+  </Card>
+</CardGroup>
+
+<Note>
+  Mobile Money est entièrement intégré avec **MTN Mobile Money**, **Orange Money** et **Wave**. Lorsqu'un passager paie par Mobile Money, il reçoit une notification push sur son téléphone pour approuver la transaction. La plateforme attend la confirmation en temps réel du réseau avant de passer la réservation au statut **Confirmée** : aucune mise à jour manuelle du statut n'est requise.
+</Note>
+
+---
+
+## Traiter un Paiement
+
+Toutes les méthodes de paiement suivent le même flux simplifié dans la plateforme. Les agents effectuent l'ensemble du processus depuis l'écran de détail de la réservation, sans changer de module.
+
+<Steps>
+  <Step title="Sélectionner la Réservation">
+    Ouvrez la réservation pour laquelle vous souhaitez encaisser le paiement depuis **Réservations : [Réservation]**. Vérifiez les détails du passager, le voyage et le siège avant de continuer.
+  </Step>
+  <Step title="Choisir une Méthode de Paiement">
+    Cliquez sur **Encaisser le Paiement** et sélectionnez la méthode : Mobile Money, Carte Bancaire, Virement Bancaire ou Espèces. Le formulaire s'adapte à la méthode choisie : pour Mobile Money, vous saisissez le numéro de téléphone du passager ; pour la carte bancaire, vous saisissez les détails de la carte ; pour le virement bancaire, vous saisissez la référence ; pour les espèces, vous confirmez le montant reçu.
+  </Step>
+  <Step title="Saisir les Détails du Paiement">
+    Remplissez les champs requis pour la méthode sélectionnée. Pour Mobile Money, le numéro de téléphone du passager doit correspondre au compte Mobile Money enregistré. Vérifiez tous les détails avant de confirmer, car les demandes de paiement sont soumises immédiatement.
+  </Step>
+  <Step title="Confirmer et Soumettre">
+    Cliquez sur **Confirmer le Paiement**. La plateforme soumet la transaction au processeur de paiement concerné (ou enregistre le paiement manuel pour les espèces/virements) et attend la confirmation.
+  </Step>
+  <Step title="Facture Générée Automatiquement">
+    Une fois le paiement confirmé, GoTravelXpress génère instantanément une facture numérotée et l'attache à la réservation. La facture est disponible pour téléchargement ou impression depuis l'écran de la réservation et est également envoyée par e-mail au passager.
+  </Step>
+  <Step title="Billet Émis">
+    Avec le paiement confirmé et la facture générée, le statut de la réservation passe à **Confirmée** et le billet à code QR du passager est automatiquement créé et livré. Voir [Billets QR](/fr/modules/qr-tickets) pour les détails sur la livraison et le scan des billets.
+  </Step>
+</Steps>
+
+---
+
+## Facturation Automatique
+
+GoTravelXpress génère une facture officielle pour chaque paiement confirmé : aucune création manuelle de document n'est nécessaire. La facture est produite en quelques secondes et est immédiatement disponible pour l'agent comme pour le passager.
+
+Chaque facture comprend :
+
+<ResponseField name="invoice_number" type="string">
+  Un numéro de référence séquentiel unique attribué par la plateforme, utilisé pour la comptabilité et le rapprochement.
+</ResponseField>
+
+<ResponseField name="agency_details" type="object">
+  Le nom, l'adresse et les informations de contact de votre agence tels que configurés dans **Paramètres : Profil de l'Agence**.
+</ResponseField>
+
+<ResponseField name="passenger_details" type="object">
+  Le nom complet et les coordonnées du passager tels que saisis lors de la réservation.
+</ResponseField>
+
+<ResponseField name="trip_details" type="object">
+  Origine, destination, date et heure de départ, véhicule et numéro de siège.
+</ResponseField>
+
+<ResponseField name="payment_summary" type="object">
+  Décomposition du tarif, taxes ou frais appliqués, montant total payé, méthode de paiement utilisée et numéro de référence de la transaction.
+</ResponseField>
+
+<ResponseField name="issue_date" type="datetime">
+  Date et heure de génération de la facture, correspondant à l'horodatage de confirmation du paiement.
+</ResponseField>
+
+### Livraison de la Facture
+
+- **E-mail** : envoyée automatiquement à l'adresse e-mail du passager à la confirmation du paiement.
+- **Téléchargement depuis le tableau de bord** : disponible en PDF depuis **Réservations : [Réservation] : Facture** à tout moment.
+- **Impression au comptoir** : les agents peuvent imprimer la facture directement depuis le tableau de bord pour les passagers qui ont besoin d'une copie physique.
+
+---
+
+## Remboursements et Annulations
+
+GoTravelXpress prend en charge les remboursements partiels et complets pour les réservations annulées, sous réserve de la politique d'annulation de votre agence.
+
+<Accordion title="Demander une Annulation et un Remboursement">
+  Les passagers demandent des annulations via le canal d'assistance de votre agence (comptoir, téléphone ou e-mail). Un agent disposant des permissions de rôle appropriées traite l'annulation depuis **Réservations : [Réservation] : Annuler la Réservation**. Le système enregistre l'annulation et marque la réservation pour le traitement du remboursement.
+</Accordion>
+
+<Accordion title="Remboursements Partiels pour Services Non Utilisés">
+  Si un passager annule après avoir utilisé une partie d'un trajet multi-étapes ou après que des services supplémentaires ont été rendus, GoTravelXpress applique un remboursement partiel calculé sur la portion non utilisée. Le montant du remboursement est affiché sur l'écran d'annulation avant que l'agent ne confirme l'action.
+</Accordion>
+
+<Accordion title="Traitement des Remboursements">
+  Les remboursements pour les paiements Mobile Money et par carte bancaire sont traités vers la méthode de paiement d'origine. Les délais de traitement dépendent du réseau de paiement (généralement de 1 à 5 jours ouvrables). Les remboursements en espèces sont gérés au comptoir par votre équipe financière. Toutes les transactions de remboursement sont enregistrées dans la plateforme à des fins d'audit.
+</Accordion>
+
+<Accordion title="Tarifs Non Remboursables">
+  Certains types de tarifs peuvent être configurés comme non remboursables sous **Paramètres : Règles Tarifaires**. Si un tarif non remboursable est appliqué à une réservation, l'écran d'annulation indiquera qu'aucun remboursement ne sera émis avant que l'agent ne confirme.
+</Accordion>
+
+<Warning>
+  Les règles d'annulation et de remboursement sont configurées par l'administrateur de votre agence. Vérifiez toujours la politique de votre agence avant de communiquer les montants de remboursement aux passagers. Pour les litiges ou les cas exceptionnels, contactez l'assistance GoTravelXpress à [**contact@prozigzag.com**](mailto:contact@prozigzag.com) ou au **+237 695 602 293**.
+</Warning>
+
+---
+
+## Sécurité des Paiements
+
+GoTravelXpress considère la sécurité de chaque transaction financière comme une priorité absolue.
+
+<CardGroup cols={2}>
+  <Card title="Transactions Chiffrées" icon="shield" href="/fr/account/security">
+    Toutes les données de paiement sont transmises via des connexions chiffrées. Les transactions par carte et Mobile Money sont traitées via des passerelles de paiement sécurisées : les données sensibles ne circulent jamais en clair.
+  </Card>
+
+  <Card title="Aucune Donnée de Carte Stockée" icon="lock" href="/fr/account/security">
+    GoTravelXpress ne stocke pas les numéros de carte, les codes CVV ni les identifiants Mobile Money complets sur ses serveurs. Le traitement du paiement est géré par les processeurs de paiement respectifs, et seule la référence de la transaction est conservée dans la plateforme.
+  </Card>
+
+  <Card title="Accès Basé sur les Rôles" icon="user-lock" href="/fr/agency/user-roles">
+    Seuls les utilisateurs ayant le rôle **Caissier** ou **Manager** peuvent initier ou approuver des transactions de paiement. Les administrateurs configurent les permissions de rôle sous **Paramètres : Utilisateurs et Rôles**, garantissant que les opérations financières sont restreintes au personnel autorisé.
+  </Card>
+
+  <Card title="Piste d'Audit" icon="clipboard-list" href="/fr/modules/analytics">
+    Chaque action de paiement (initiation de transaction, confirmation, remboursement et remplacement manuel) est enregistrée avec l'identité de l'agent, l'horodatage et l'adresse IP. Cette piste d'audit complète est disponible sous **Analytique : Journaux de Paiement**.
+  </Card>
+</CardGroup>
+
+<Tip>
+  Utilisez le module **Analytique** pour exécuter des rapports de rapprochement de paiement quotidiens, hebdomadaires ou mensuels. Naviguez vers **Analytique : Rapports de Revenus** pour exporter une répartition complète des transactions par méthode de paiement, agent, itinéraire ou plage de dates, rendant le rapprochement de fin de période rapide et précis.
+</Tip>

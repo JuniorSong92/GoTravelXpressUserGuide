@@ -1,0 +1,164 @@
+---
+title: "Analytique : Tableaux de Bord en Temps Réel et Statistiques"
+sidebarTitle: "Analytique"
+description: "Suivez les performances de votre agence en temps réel avec l'analytique GoTravelXpress : taux d'occupation, revenus, stats équipage et volumes de bagages."
+---
+
+Le module **Analytique** offre aux gestionnaires d'agence une vue en temps réel de chaque métrique importante : le taux de remplissage de vos bus, les revenus collectés, les performances de votre équipage et l'efficacité de votre opération bagages. Au lieu d'extraire des chiffres depuis des modules séparés ou de construire des rapports à la main, vous obtenez un tableau de bord unique qui agrège les données de tout GoTravelXpress et se met à jour automatiquement à mesure que vos opérations se déroulent.
+
+---
+
+## Aperçu du Tableau de Bord
+
+Le tableau de bord Analytique est votre centre de commande. Ouvrez-le en naviguant vers **Analytique : Tableau de Bord** depuis le menu principal. La page est organisée en panneaux que vous pouvez consulter en un coup d'oeil sans plonger dans les modules individuels.
+
+<CardGroup cols={2}>
+  <Card title="Résumé Quotidien" icon="calendar-day" href="/fr/modules/analytics#métriques-clés">
+    Un aperçu de l'activité du jour : total des départs planifiés, passagers réservés, billets vérifiés à l'embarquement et revenus collectés jusqu'à présent aujourd'hui.
+  </Card>
+
+  <Card title="Tendances Hebdomadaires" icon="chart-line" href="/fr/modules/analytics#métriques-clés">
+    Une vue glissante sur sept jours de l'occupation des voyages et des revenus. Repérez les baisses de milieu de semaine ou les pics de week-end en un coup d'oeil sans exporter un seul fichier.
+  </Card>
+
+  <Card title="KPI Mensuels" icon="chart-bar" href="/fr/modules/analytics#générer-des-rapports">
+    Agrégats du début du mois à ce jour pour tous les indicateurs de performance majeurs, affichés à côté de la même période du mois dernier pour que vous puissiez mesurer les progrès immédiatement.
+  </Card>
+
+  <Card title="Résumé des Revenus" icon="circle-dollar-to-slot" href="/fr/modules/payments">
+    Revenus totaux ventilés par méthode de paiement (Mobile Money, carte et espèces) mis à jour en temps réel à mesure que les paiements sont traités.
+  </Card>
+</CardGroup>
+
+Le haut du tableau de bord affiche toujours la date et l'heure actuelles, et une bannière indique quand les données ont été actualisées pour la dernière fois.
+
+---
+
+## Métriques Clés
+
+GoTravelXpress suit les métriques suivantes à travers tous les modules et les met en avant sur le tableau de bord Analytique.
+
+<AccordionGroup>
+  <Accordion title="Volume de Réservations et Taux d'Occupation">
+    - **Réservations totales** créées sur toute période sélectionnée
+    - **Taux d'occupation par voyage** : sièges vendus en pourcentage de la capacité totale du véhicule
+    - **Occupation moyenne sur tous les itinéraires** : utile pour identifier les itinéraires constamment sous-réservés
+    - **Annulations de réservations** et taux auquel les sièges annulés ont été revendus par la suite
+  </Accordion>
+
+  <Accordion title="Revenus par Itinéraire, Méthode de Paiement et Période">
+    - **Revenus par itinéraire** : comparez la performance financière de chaque paire de villes que vous exploitez
+    - **Revenus par méthode de paiement** : voyez la répartition entre MTN Mobile Money, Orange Money, Wave, Visa/Mastercard et espèces
+    - **Revenus dans le temps** : ventilations quotidiennes, hebdomadaires et mensuelles avec possibilité de définir une plage de dates personnalisée
+    - **Valeur moyenne du billet** par itinéraire
+  </Accordion>
+
+  <Accordion title="Présence et Performance de l'Équipage">
+    - **Présence chauffeur et hôtesse** : enregistrements d'enregistrement QR traduits en taux de présence par membre du personnel
+    - **Taux de départ à l'heure** : le pourcentage de voyages qui partent dans une fenêtre acceptable de l'heure prévue, corrélé avec l'équipage assigné
+    - **Voyages effectués par chauffeur** sur une période sélectionnée
+  </Accordion>
+
+  <Accordion title="Volumes de Bagages et Colis">
+    - **Articles enregistrés et livrés** par jour ou période
+    - **Délai moyen de livraison** depuis l'enregistrement à l'origine jusqu'à la livraison confirmée à destination
+    - **Articles non livrés ou retardés** signalés pour suivi
+    - **Revenus des colis** collectés à partir des expéditions autonomes
+  </Accordion>
+
+  <Accordion title="Taux de Vérification des Billets">
+    - **Billets QR scannés à l'embarquement** en pourcentage du total des billets émis pour chaque voyage
+    - **Tentatives de scan invalides ou en doublon** : utile pour identifier la fraude ou les schémas de double réservation
+    - **Voyages avec faibles taux de vérification** : où un nombre important de passagers avec billet n'ont pas embarqué, ce qui peut indiquer des absences ou des problèmes d'embarquement
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Générer des Rapports
+
+Lorsque vous devez partager des données avec les parties prenantes, les archiver pour la conformité ou les analyser dans un outil externe, vous pouvez exporter n'importe quel rapport en PDF ou CSV en quelques étapes.
+
+<Steps>
+  <Step title="Ouvrir la section Rapports">
+    Naviguez vers **Analytique : Rapports** et cliquez sur **Nouveau Rapport**.
+  </Step>
+  <Step title="Définir la plage de dates">
+    Utilisez le sélecteur de dates pour choisir une **date de début** et une **date de fin** pour le rapport. Vous pouvez aussi choisir une plage prédéfinie : Aujourd'hui, Cette Semaine, Ce Mois-ci ou Le Mois Dernier.
+  </Step>
+  <Step title="Choisir une catégorie de métriques">
+    Sélectionnez une ou plusieurs catégories à inclure dans le rapport :
+
+    <Tabs>
+      <Tab title="Réservations et Occupation">
+        Couvre les volumes de réservations, taux d'occupation des sièges, annulations et absences pour la période sélectionnée.
+      </Tab>
+      <Tab title="Revenus">
+        Couvre les revenus totaux, revenus par itinéraire, revenus par méthode de paiement et valeur moyenne du billet.
+      </Tab>
+      <Tab title="Équipage et Présence">
+        Couvre les enregistrements de présence des chauffeurs et hôtesses, taux de départ à l'heure et voyages effectués par membre du personnel.
+      </Tab>
+      <Tab title="Bagages et Colis">
+        Couvre les volumes d'articles, délais de livraison, revenus des colis et tous les articles retardés non résolus.
+      </Tab>
+      <Tab title="Billets">
+        Couvre l'émission des billets QR, taux de vérification à l'embarquement et toutes les anomalies de scan signalées.
+      </Tab>
+    </Tabs>
+  </Step>
+  <Step title="Générer le rapport">
+    Cliquez sur **Générer**. GoTravelXpress compile les données pour la plage de dates et catégories sélectionnées. Un aperçu du rapport apparaît à l'écran en quelques secondes.
+  </Step>
+  <Step title="Télécharger votre rapport">
+    Cliquez sur **Télécharger PDF** pour un document formaté adapté aux présentations et au classement, ou sur **Télécharger CSV** si vous avez besoin de données brutes pour un tableur ou un outil d'analyse externe.
+  </Step>
+</Steps>
+
+<Tip>
+  Planifiez des exports récurrents en configurant un **Rapport Enregistré** avec votre type de plage de dates préféré (par exemple, Le Mois Dernier) et vos catégories de métriques. Le premier jour de chaque mois, ouvrez votre rapport enregistré, cliquez sur **Générer** et téléchargez : pas besoin de reconfigurer les paramètres à chaque fois.
+</Tip>
+
+---
+
+## Analytique Multi-Agences
+
+<Info>
+  L'analytique multi-agences est disponible sur les plans **Premium** et **Entreprise**.
+</Info>
+
+Si vous exploitez plus d'une succursale (chacune avec ses propres itinéraires, flotte et personnel), la vue Analytique Multi-Agences consolide les données de performance de toutes les succursales dans un tableau de bord unique. Cela permet aux managers du siège de comparer les succursales côte à côte sans se connecter à chaque compte d'agence séparément.
+
+### Ce que Vous Pouvez Voir
+
+<CardGroup cols={2}>
+  <Card title="Revenus Consolidés" icon="building-columns" href="/fr/agency/multi-agency">
+    Revenus totaux sur toutes les succursales, avec une ventilation montrant la contribution de chaque succursale et leur comparaison mutuelle.
+  </Card>
+
+  <Card title="Comparaison d'Occupation par Succursale" icon="chart-bar" href="/fr/agency/multi-agency">
+    Taux d'occupation côte à côte pour chaque succursale, vous aidant à identifier les emplacements qui prospèrent et ceux qui peuvent nécessiter des ajustements d'itinéraire ou de planification.
+  </Card>
+
+  <Card title="Statistiques d'Équipage Inter-Succursales" icon="users" href="/fr/agency/multi-agency">
+    Chiffres de présence et de performance pour l'ensemble du personnel dans chaque succursale, utile pour les revues RH au niveau du groupe.
+  </Card>
+
+  <Card title="Volumes de Bagages sur l'Ensemble du Réseau" icon="boxes-stacked" href="/fr/modules/baggage-parcels">
+    Totaux de débit de colis et bagages sur l'ensemble de votre réseau, avec exploration par succursale disponible à la demande.
+  </Card>
+</CardGroup>
+
+### Filtrer par Succursale
+
+En haut du tableau de bord Multi-Agences, utilisez le filtre **Succursale** pour basculer entre l'affichage de toutes les succursales combinées ou l'isolement d'une seule succursale. Toutes les métriques, graphiques et fonctions d'export répondent à ce filtre, vous pouvez ainsi extraire un rapport pour une succursale ou pour l'ensemble de votre réseau en utilisant le même flux décrit dans [Générer des Rapports](#générer-des-rapports) ci-dessus.
+
+---
+
+<Tip>
+  Utilisez le tableau de bord Analytique pour optimiser votre planification. Filtrez les données d'occupation par itinéraire et heure de la journée pour identifier quels départs se remplissent systématiquement et lesquels tournent en dessous de la capacité. Avec ces informations, vous pouvez ajouter des services supplémentaires sur les itinéraires à forte demande, ajuster les horaires de départ pour correspondre à la demande passagers et retirer les voyages sous-performants, améliorant directement les revenus et l'utilisation des sièges sur votre réseau.
+</Tip>
+
+<Note>
+  Les données analytiques de GoTravelXpress se mettent à jour en temps réel. À mesure que les réservations sont créées, les paiements traités, les billets scannés à l'embarquement et les bagages enregistrés, les chiffres du tableau de bord s'actualisent automatiquement sans que vous ayez besoin de recharger la page. Ce que vous voyez reflète toujours l'état actuel de vos opérations.
+</Note>

@@ -1,0 +1,303 @@
+---
+title: "API Agences : Gérer les Succursales, Utilisateurs et Permissions"
+sidebarTitle: "Agences"
+description: "Utilisez l'API Agences GoTravelXpress pour lister les succursales, gérer utilisateurs et rôles, et récupérer la configuration d'agence depuis votre intégration."
+---
+
+L'API Agences permet aux opérateurs multi-agences de gérer les succursales, les comptes utilisateurs et les permissions basées sur les rôles de manière programmatique. Si votre organisation exploite plusieurs bureaux de transport ou emplacements de franchise, vous pouvez utiliser cette API pour intégrer de nouveaux membres du personnel, ajuster les permissions utilisateurs et récupérer la configuration des succursales, sans vous connecter au tableau de bord GoTravelXpress pour chaque agence individuellement. Cette page couvre chaque point de terminaison de gestion d'agence et d'utilisateur, y compris l'ensemble complet des valeurs de rôle disponibles.
+
+<Note>
+  Les points de terminaison multi-agences nécessitent une licence **Premium** ou **Entreprise**. Les détenteurs d'une licence Basique mono-agence peuvent récupérer les détails de leur propre agence, mais ne peuvent pas créer ou gérer des succursales supplémentaires ni effectuer de gestion d'utilisateurs via l'API.
+</Note>
+
+---
+
+## L'Objet Agency
+
+<ResponseField name="id" type="string">
+  Identifiant unique pour la succursale d'agence (ex. `agency_yaunde_01`).
+</ResponseField>
+
+<ResponseField name="name" type="string">
+  Nom d'affichage de la succursale (ex. `Touristique Express : Yaoundé`).
+</ResponseField>
+
+<ResponseField name="location" type="string">
+  Ville ou adresse où la succursale opère.
+</ResponseField>
+
+<ResponseField name="contact" type="string">
+  Numéro de téléphone ou e-mail de contact principal pour la succursale.
+</ResponseField>
+
+<ResponseField name="status" type="string">
+  Statut de la succursale : `active` ou `inactive`.
+</ResponseField>
+
+<ResponseField name="created_at" type="string (ISO 8601)">
+  Horodatage du moment où la succursale a été enregistrée dans la plateforme.
+</ResponseField>
+
+---
+
+## Rôles Disponibles
+
+Lors de l'ajout ou de la mise à jour d'utilisateurs, assignez l'un des rôles suivants :
+
+| Rôle | Description |
+| --- | --- |
+| `super_admin` | Accès complet à la plateforme sur toutes les agences. Peut gérer toutes les succursales, utilisateurs et paramètres. |
+| `agency_admin` | Accès complet au sein d'une succursale spécifique. Peut gérer les utilisateurs et la configuration de cette succursale. |
+| `booking_agent` | Peut créer, consulter et gérer les réservations et billets pour son agence. |
+| `crew_member` | Peut scanner et vérifier les billets QR à l'embarquement. Accès en lecture seule aux voyages et manifestes. |
+| `accountant` | Peut consulter et exporter les enregistrements de paiement et les factures. Pas d'accès aux réservations ou à la flotte. |
+| `read_only` | Accès en lecture seule à toutes les données de son agence assignée. Ne peut effectuer aucune modification. |
+
+---
+
+## Lister les Agences
+
+Récupérez toutes les succursales d'agence auxquelles l'utilisateur authentifié a accès.
+
+```text
+GET /agencies
+```
+
+**Exemple de requête :**
+
+```bash
+curl https://gotravelxpress.wuaze.com/api/v1/agencies \
+  -H "Authorization: Bearer eyJhbGci..."
+```
+
+**Exemple de réponse :**
+
+```json
+{
+  "success": true,
+  "data": {
+    "agencies": [
+      {
+        "id": "agency_yaunde_01",
+        "name": "Touristique Express — Yaoundé",
+        "location": "Yaoundé, Cameroon",
+        "contact": "+237695602293",
+        "status": "active",
+        "created_at": "2024-01-15T09:00:00Z"
+      },
+      {
+        "id": "agency_douala_02",
+        "name": "Touristique Express — Douala",
+        "location": "Douala, Cameroon",
+        "contact": "+237699000002",
+        "status": "active",
+        "created_at": "2024-03-10T08:30:00Z"
+      }
+    ]
+  },
+  "message": "Agencies retrieved successfully"
+}
+```
+
+---
+
+## Obtenir une Agence
+
+Récupérez les détails complets d'une seule succursale d'agence par son ID.
+
+```text
+GET /agencies/{id}
+```
+
+**Exemple de requête :**
+
+```bash
+curl https://gotravelxpress.wuaze.com/api/v1/agencies/agency_yaunde_01 \
+  -H "Authorization: Bearer eyJhbGci..."
+```
+
+**Exemple de réponse :**
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": "agency_yaunde_01",
+    "name": "Touristique Express — Yaoundé",
+    "location": "Yaoundé, Cameroon",
+    "contact": "+237695602293",
+    "status": "active",
+    "created_at": "2024-01-15T09:00:00Z"
+  },
+  "message": "Agency retrieved successfully"
+}
+```
+
+---
+
+## Lister les Utilisateurs d'une Agence
+
+Récupérez tous les utilisateurs assignés à une agence spécifique, avec leurs rôles.
+
+```text
+GET /agencies/{id}/users
+```
+
+**Exemple de requête :**
+
+```bash
+curl https://gotravelxpress.wuaze.com/api/v1/agencies/agency_yaunde_01/users \
+  -H "Authorization: Bearer eyJhbGci..."
+```
+
+**Exemple de réponse :**
+
+```json
+{
+  "success": true,
+  "data": {
+    "users": [
+      {
+        "user_id": "usr_001",
+        "email": "manager@tourexpress.cm",
+        "name": "Jean-Pierre Nkomo",
+        "role": "agency_admin",
+        "joined_at": "2024-01-15T09:00:00Z"
+      },
+      {
+        "user_id": "usr_002",
+        "email": "agent@tourexpress.cm",
+        "name": "Fatima Bello",
+        "role": "booking_agent",
+        "joined_at": "2024-02-01T08:00:00Z"
+      }
+    ]
+  },
+  "message": "Agency users retrieved successfully"
+}
+```
+
+---
+
+## Ajouter un Utilisateur à une Agence
+
+Accordez à un compte GoTravelXpress existant l'accès à une succursale spécifique et attribuez-lui un rôle.
+
+```text
+POST /agencies/{id}/users
+```
+
+**Paramètres du corps de la requête :**
+
+<ParamField body="email" type="string" required>
+  L'adresse e-mail du compte GoTravelXpress que vous souhaitez ajouter. Le compte doit déjà exister sur la plateforme.
+</ParamField>
+
+<ParamField body="role" type="string" required>
+  Le rôle à attribuer. Doit être l'un de : `super_admin`, `agency_admin`, `booking_agent`, `crew_member`, `accountant`, `read_only`.
+</ParamField>
+
+**Exemple de requête :**
+
+```bash
+curl -X POST https://gotravelxpress.wuaze.com/api/v1/agencies/agency_yaunde_01/users \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer eyJhbGci..." \
+  -d '{
+    "email": "new.agent@tourexpress.cm",
+    "role": "booking_agent"
+  }'
+```
+
+**Exemple de réponse :**
+
+```json
+{
+  "success": true,
+  "data": {
+    "user_id": "usr_003",
+    "email": "new.agent@tourexpress.cm",
+    "role": "booking_agent",
+    "agency_id": "agency_yaunde_01",
+    "joined_at": "2025-06-01T12:00:00Z"
+  },
+  "message": "User added to agency successfully"
+}
+```
+
+---
+
+## Mettre à Jour le Rôle d'un Utilisateur
+
+Modifiez le rôle d'un utilisateur déjà assigné à une agence.
+
+```text
+PUT /agencies/{id}/users/{user_id}
+```
+
+**Paramètres du corps de la requête :**
+
+<ParamField body="role" type="string" required>
+  Le nouveau rôle pour cet utilisateur. Doit être l'un de : `super_admin`, `agency_admin`, `booking_agent`, `crew_member`, `accountant`, `read_only`.
+</ParamField>
+
+**Exemple de requête :**
+
+```bash
+curl -X PUT https://gotravelxpress.wuaze.com/api/v1/agencies/agency_yaunde_01/users/usr_003 \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer eyJhbGci..." \
+  -d '{
+    "role": "accountant"
+  }'
+```
+
+**Exemple de réponse :**
+
+```json
+{
+  "success": true,
+  "data": {
+    "user_id": "usr_003",
+    "email": "new.agent@tourexpress.cm",
+    "role": "accountant",
+    "agency_id": "agency_yaunde_01"
+  },
+  "message": "User role updated successfully"
+}
+```
+
+---
+
+## Retirer un Utilisateur d'une Agence
+
+Révoquez l'accès d'un utilisateur à une succursale d'agence. Le compte GoTravelXpress de l'utilisateur n'est pas supprimé : il perd simplement l'accès à cette agence spécifique.
+
+```text
+DELETE /agencies/{id}/users/{user_id}
+```
+
+**Exemple de requête :**
+
+```bash
+curl -X DELETE https://gotravelxpress.wuaze.com/api/v1/agencies/agency_yaunde_01/users/usr_003 \
+  -H "Authorization: Bearer eyJhbGci..."
+```
+
+**Exemple de réponse :**
+
+```json
+{
+  "success": true,
+  "data": {
+    "user_id": "usr_003",
+    "agency_id": "agency_yaunde_01",
+    "removed": true
+  },
+  "message": "User removed from agency successfully"
+}
+```
+
+<Warning>
+  Seuls les utilisateurs ayant le rôle `super_admin` peuvent retirer des utilisateurs d'une agence. Les requêtes provenant des rôles `agency_admin` ou inférieurs recevront une réponse `403 Forbidden`. Si vous avez besoin de retirer un utilisateur et n'avez pas d'accès Super Admin, contactez votre administrateur de plateforme.
+</Warning>

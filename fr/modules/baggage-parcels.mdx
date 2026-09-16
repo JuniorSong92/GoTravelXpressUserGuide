@@ -1,0 +1,161 @@
+---
+title: "Suivi des Bagages et Colis, de l'Enregistrement à la Livraison"
+sidebarTitle: "Bagages et Colis"
+description: "Suivez les bagages et colis de bout en bout dans GoTravelXpress : de l'enregistrement au transit jusqu'à la livraison finale, avec statistiques complètes."
+---
+
+Le module **Bagages et Colis** vous permet de suivre chaque article que votre agence manipule, du moment où un passager dépose son sac au comptoir, à travers le transit, jusqu'à la livraison confirmée à destination. Que vous gériez les bagages des passagers sur un voyage régulier ou que vous expédiiez des colis autonomes entre villes, vous obtenez une piste d'audit complète, une référence de suivi unique pour chaque article et des mises à jour de statut en direct fiables tant pour vos agents que pour vos clients.
+
+---
+
+## Enregistrer les Bagages
+
+Lorsqu'un passager arrive à votre terminal, votre agent d'enregistrement enregistre ses bagages directement dans GoTravelXpress. Le système lie chaque sac à la réservation du passager, éliminant toute ambiguïté sur l'appartenance du sac ou le voyage sur lequel il voyage.
+
+<Steps>
+  <Step title="Ouvrir l'écran Enregistrement des Bagages">
+    Depuis le menu principal, naviguez vers **Bagages et Colis : Enregistrer un Bagage**. Recherchez le passager par nom, référence de réservation ou code QR du billet.
+  </Step>
+  <Step title="Confirmer la réservation">
+    Le système affiche les détails de la réservation du passager : itinéraire, heure de départ et numéro de siège. Vérifiez que cela correspond au passager devant vous, puis continuez.
+  </Step>
+  <Step title="Enregistrer chaque article">
+    Pour chaque bagage, saisissez une brève description (par exemple, « grande valise bleue ») et le poids approximatif. Vous pouvez ajouter plusieurs articles à une même réservation.
+  </Step>
+  <Step title="Générer l'étiquette du bagage">
+    Cliquez sur **Enregistrer**. Le système génère un numéro de référence unique pour chaque article. Imprimez ou affichez la référence pour le passager : il peut l'utiliser pour suivre son sac en ligne ou au comptoir de destination.
+  </Step>
+  <Step title="Confirmer l'enregistrement">
+    Le statut du sac est maintenant défini sur **Enregistré** et il est lié au voyage assigné. Le manutentionnaire responsable du chargement de ce voyage peut voir tous les articles enregistrés dans son manifeste de chargement.
+  </Step>
+</Steps>
+
+<Note>
+  Chaque référence de bagage est automatiquement liée à la réservation du passager et au véhicule assigné. Si un voyage est reprogrammé ou si un véhicule change, les enregistrements de bagages sont mis à jour en conséquence afin que votre équipe au sol travaille toujours à partir d'un manifeste précis.
+</Note>
+
+---
+
+## Expédition de Colis
+
+Au-delà des bagages des passagers, GoTravelXpress prend en charge les expéditions de colis autonomes : des articles envoyés d'une ville à une autre indépendamment d'une réservation passager. C'est une source de revenus courante pour les agences de transport exploitant des itinéraires interurbains.
+
+### Créer une Expédition de Colis
+
+<Steps>
+  <Step title="Ouvrir Expédition de Colis">
+    Naviguez vers **Bagages et Colis : Envoyer un Colis** et cliquez sur **Nouvelle Expédition**.
+  </Step>
+  <Step title="Saisir les détails de l'expéditeur">
+    Fournissez le nom complet, le numéro de téléphone et le lieu de dépôt de l'expéditeur (votre terminal ou un point de collecte désigné).
+  </Step>
+  <Step title="Saisir les détails du destinataire">
+    Fournissez le nom complet, le numéro de téléphone de contact et le terminal ou l'adresse de destination du destinataire.
+  </Step>
+  <Step title="Décrire le colis">
+    Saisissez une description du contenu, le poids et les dimensions approximatives. Ces informations apparaissent sur l'étiquette d'expédition et sont utilisées pour calculer les frais de manutention applicables.
+  </Step>
+  <Step title="Sélectionner l'itinéraire et le voyage">
+    Choisissez le voyage de départ qui transportera ce colis. Le système affiche les voyages disponibles sur l'itinéraire sélectionné par l'expéditeur.
+  </Step>
+  <Step title="Confirmer et générer la référence de suivi">
+    Cliquez sur **Créer l'Expédition**. Le système génère une référence de suivi unique pour le colis. Partagez cette référence avec l'expéditeur et le destinataire afin qu'ils puissent suivre la progression.
+  </Step>
+</Steps>
+
+### Fiche d'Expédition de Colis
+
+Chaque fiche de colis contient les champs suivants :
+
+<AccordionGroup>
+  <Accordion title="Expéditeur et Destinataire">
+    - Nom et numéro de contact de l'expéditeur
+    - Nom, numéro de contact et destination du destinataire
+    - Date et heure de dépôt
+  </Accordion>
+
+  <Accordion title="Détails de l'Article">
+    - Description du contenu
+    - Poids (kg) et dimensions approximatives
+    - Valeur déclarée (facultatif, pour assurance ou frais)
+  </Accordion>
+
+  <Accordion title="Logistique de l'Expédition">
+    - Voyage et véhicule assignés
+    - Manutentionnaire responsable du chargement
+    - Statut actuel : Enregistré : Chargé : En Transit : Arrivé : Livré
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Suivre un Article
+
+Vos agents peuvent vérifier le statut de n'importe quel sac ou colis à tout moment en utilisant la référence de suivi générée à l'enregistrement ou à la création de l'expédition.
+
+<Steps>
+  <Step title="Ouvrir l'écran de Suivi">
+    Allez dans **Bagages et Colis : Suivre un Article** et saisissez le numéro de référence du bagage ou du colis.
+  </Step>
+  <Step title="Voir le statut actuel">
+    Le système affiche la chronologie complète du statut de l'article. Les statuts progressent selon les étapes suivantes :
+
+    | Statut | Signification |
+    | --- | --- |
+    | **Enregistré** | Article consigné dans le système au terminal d'origine |
+    | **Chargé** | Article confirmé dans le véhicule par le manutentionnaire |
+    | **En Transit** | Le voyage est en cours ; l'article est sur la route |
+    | **Arrivé à Destination** | Le voyage a atteint le terminal de destination |
+    | **Livré** | Article remis au passager ou au destinataire ; livraison confirmée |
+  </Step>
+  <Step title="Partager le statut avec le client">
+    Si un passager ou un destinataire de colis appelle pour connaître son article, lisez le statut actuel directement depuis l'écran de suivi. Pour les colis, vous pouvez également partager le numéro de référence afin que le destinataire puisse le consulter lui-même.
+  </Step>
+</Steps>
+
+---
+
+## Confirmation de Livraison
+
+Une fois qu'un sac ou un colis atteint sa destination, votre agent du terminal de destination le marque comme livré pour clôturer la fiche de suivi.
+
+<Steps>
+  <Step title="Ouvrir l'écran de Livraison">
+    Au terminal de destination, naviguez vers **Bagages et Colis : Confirmer la Livraison** et recherchez l'article par numéro de référence ou par voyage arrivant.
+  </Step>
+  <Step title="Vérifier l'identité du destinataire">
+    Pour les colis, confirmez le nom et le numéro de contact du destinataire avant de libérer l'article.
+  </Step>
+  <Step title="Marquer comme livré">
+    Cliquez sur **Confirmer la Livraison**. Le statut de l'article passe à **Livré**, et l'horodatage ainsi que le nom de l'agent sont enregistrés dans l'historique de l'article.
+  </Step>
+</Steps>
+
+<Note>
+  Les horodatages de confirmation de livraison sont stockés dans la piste d'audit complète de l'article. Cet enregistrement est disponible pour les rapports dans le module **Analytique** et peut aider à résoudre les litiges clients concernant la date ou la collecte d'un article.
+</Note>
+
+---
+
+## Statistiques des Bagages
+
+Le module Bagages et Colis alimente le tableau de bord Analytique avec des données opérationnelles détaillées, vous fournissant les chiffres nécessaires pour améliorer vos opérations au sol.
+
+La vue statistique met en avant les métriques suivantes :
+
+- **Total d'articles enregistrés** par jour, semaine ou plage de dates personnalisée
+- **Articles par statut** : combien sont en transit, arrivés ou livrés à un moment donné
+- **Délai moyen de livraison** depuis l'enregistrement à l'origine jusqu'à la confirmation à destination
+- **Articles perdus ou non livrés** : articles signalés comme manquants ou non récupérés dans une fenêtre de temps configurable
+- **Revenus de colis** : total des frais collectés pour les expéditions de colis autonomes sur une période sélectionnée
+- **Performance des manutentionnaires** : volumes traités par manutentionnaire, utile pour équilibrer la charge de travail
+
+<Tip>
+  Connectez vos statistiques de bagages au tableau de bord principal **Analytique** pour construire une image complète du débit du terminal. Corréler les volumes de bagages avec le nombre de passagers et les heures de départ vous aide à identifier les périodes de manutention de pointe et à planifier votre équipe au sol plus efficacement, réduisant les retards à la zone de chargement avant les départs chargés.
+</Tip>
+
+---
+
+<Warning>
+  Vous êtes responsable de vous assurer que tous les articles enregistrés via GoTravelXpress respectent les réglementations de transport applicables et la politique d'articles interdits de votre agence. Le système enregistre les descriptions d'articles telles que fournies par l'agent ou l'expéditeur, mais n'effectue pas de contrôle automatisé. Avant d'accepter un article, vérifiez-le par rapport à la liste des biens interdits de votre agence (par exemple, matières dangereuses, charges surdimensionnées) et à toute réglementation fixée par les autorités de transport de votre région d'opération.
+</Warning>

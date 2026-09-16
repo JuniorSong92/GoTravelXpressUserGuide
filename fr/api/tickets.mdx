@@ -1,0 +1,246 @@
+---
+title: "API Billets : générer, vérifier et gérer les billets QR"
+sidebarTitle: "Billets"
+description: "Utilisez l’API Billets de GoTravelXpress pour récupérer les billets QR code, vérifier la validité des billets des passagers à l’embarquement et lister les billets émis."
+---
+
+L’API Billets vous permet de récupérer, vérifier et gérer les billets QR code que GoTravelXpress génère automatiquement lorsqu’une réservation est confirmée. À l’embarquement, votre application équipage ou borne d’enregistrement peut appeler le point de terminaison de vérification pour valider le QR code d’un passager en temps réel, évitant ainsi les doublons, la fraude et les entrées invalides. Cette page documente chaque point de terminaison de billet, y compris comment récupérer l’image QR brute pour l’afficher dans votre propre interface.
+
+---
+
+## L’objet Billet
+
+<ResponseField name="id" type="string">
+  Identifiant unique du billet (ex. `tkt_xyz789`).
+</ResponseField>
+
+<ResponseField name="reservation_id" type="string">
+  L’identifiant de la réservation à laquelle ce billet appartient.
+</ResponseField>
+
+<ResponseField name="trip_id" type="string">
+  L’identifiant du voyage associé à ce billet.
+</ResponseField>
+
+<ResponseField name="passenger_name" type="string">
+  Nom complet du passager tel qu’enregistré sur la réservation.
+</ResponseField>
+
+<ResponseField name="seat_number" type="string">
+  Siège attribué au passager (ex. `12A`).
+</ResponseField>
+
+<ResponseField name="status" type="string">
+  Statut actuel du billet. Valeurs possibles : `unused`, `used`, ou `invalid`.
+</ResponseField>
+
+<ResponseField name="qr_code" type="string">
+  La chaîne de charge utile du QR code chiffré. Transmettez cette valeur au point de terminaison de vérification ou encodez-la dans une image QR.
+</ResponseField>
+
+<ResponseField name="issued_at" type="string (ISO 8601)">
+  Horodatage de l’émission du billet (ex. `2025-06-01T11:05:00Z`).
+</ResponseField>
+
+<ResponseField name="expires_at" type="string (ISO 8601)">
+  Horodatage après lequel le billet n’est plus valide pour l’embarquement. Généralement fixé à l’heure de départ du voyage.
+</ResponseField>
+
+---
+
+## Récupérer un billet
+
+Récupérez les détails complets d’un billet unique par son identifiant, y compris la charge utile du QR code.
+
+```text
+GET /tickets/{id}
+```
+
+**Exemple de requête :**
+
+```bash
+curl https://gotravelxpress.wuaze.com/api/v1/tickets/tkt_xyz789 \
+  -H "Authorization: Bearer eyJhbGci..."
+```
+
+**Exemple de réponse :**
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": "tkt_xyz789",
+    "reservation_id": "res_abc123",
+    "trip_id": "trip_abc123",
+    "passenger_name": "Alice Mbarga",
+    "seat_number": "12A",
+    "status": "unused",
+    "qr_code": "GTX-ENC:eyJ0aWQiOiJ0a3RfeHl6Nzg5IiwidHJpcCI6InRyaXBfYWJjMTIzIn0=",
+    "issued_at": "2025-06-01T11:05:00Z",
+    "expires_at": "2025-06-02T08:00:00Z"
+  },
+  "message": "Ticket retrieved successfully"
+}
+```
+
+---
+
+## Vérifier un billet
+
+Vérifiez un QR code au moment de l’embarquement. Envoyez les données QR scannées à ce point de terminaison pour confirmer que le billet est valide, non utilisé et non expiré. En cas de succès, le billet est marqué comme `used`.
+
+```text
+POST /tickets/{id}/verify
+```
+
+**Paramètres du corps de requête :**
+
+<ParamField body="qr_data" type="string" required>
+  La chaîne QR code brute scannée depuis le billet du passager. Elle doit correspondre à la valeur `qr_code` émise pour le billet.
+</ParamField>
+
+**Exemple de requête :**
+
+```bash
+curl -X POST https://gotravelxpress.wuaze.com/api/v1/tickets/tkt_xyz789/verify \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer eyJhbGci..." \
+  -d '{
+    "qr_data": "GTX-ENC:eyJ0aWQiOiJ0a3RfeHl6Nzg5IiwidHJpcCI6InRyaXBfYWJjMTIzIn0="
+  }'
+```
+
+**Réponses possibles :**
+
+<Tabs>
+  <Tab title="Valide (premier scan)">
+    ```json
+    {
+      "success": true,
+      "data": {
+        "ticket_id": "tkt_xyz789",
+        "passenger_name": "Alice Mbarga",
+        "seat_number": "12A",
+        "trip_id": "trip_abc123",
+        "verification_result": "valid",
+        "verified_at": "2025-06-02T07:45:00Z"
+      },
+      "message": "Ticket verified successfully. Passenger may board."
+    }
+    ```
+  </Tab>
+  <Tab title="Déjà utilisé">
+    ```json
+    {
+      "success": false,
+      "error": {
+        "code": "TICKET_ALREADY_USED",
+        "message": "This ticket has already been scanned and used."
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="Invalide / Expiré">
+    ```json
+    {
+      "success": false,
+      "error": {
+        "code": "TICKET_INVALID",
+        "message": "The QR data does not match a valid ticket, or the ticket has expired."
+      }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+<Warning>
+  Le point de terminaison de vérification est idempotent uniquement pour le premier scan réussi : il marque le billet comme `used` et retourne `valid`. Toute tentative ultérieure de vérifier le même billet retourne `TICKET_ALREADY_USED`. Concevez votre application destinée à l’équipage pour afficher clairement cette erreur afin que le personnel puisse identifier et gérer les tentatives d’embarquement en double.
+</Warning>
+
+---
+
+## Lister les billets
+
+Récupérez une liste de billets, filtrée par voyage, statut ou date.
+
+```text
+GET /tickets
+```
+
+**Paramètres de requête**
+
+| Paramètre | Type | Obligatoire | Description |
+| --- | --- | --- | --- |
+| `trip_id` | string | Non | Retourne les billets pour un voyage spécifique |
+| `status` | string | Non | Filtrer par `unused`, `used`, ou `invalid` |
+| `date` | string | Non | Filtrer par date de départ du voyage (`YYYY-MM-DD`) |
+| `page` | integer | Non | Numéro de page (défaut : `1`) |
+| `limit` | integer | Non | Résultats par page, maximum `100` (défaut : `20`) |
+
+**Exemple de requête :**
+
+```bash
+curl "https://gotravelxpress.wuaze.com/api/v1/tickets?trip_id=trip_abc123&status=unused" \
+  -H "Authorization: Bearer eyJhbGci..."
+```
+
+**Exemple de réponse :**
+
+```json
+{
+  "success": true,
+  "data": {
+    "tickets": [
+      {
+        "id": "tkt_xyz789",
+        "reservation_id": "res_abc123",
+        "trip_id": "trip_abc123",
+        "passenger_name": "Alice Mbarga",
+        "seat_number": "12A",
+        "status": "unused",
+        "issued_at": "2025-06-01T11:05:00Z",
+        "expires_at": "2025-06-02T08:00:00Z"
+      }
+    ],
+    "pagination": {
+      "page": 1,
+      "limit": 20,
+      "total": 1
+    }
+  },
+  "message": "Tickets retrieved successfully"
+}
+```
+
+---
+
+## Récupérer l’image QR code
+
+Récupérez le QR code d’un billet sous forme d’image PNG. Utilisez ce point de terminaison pour afficher ou imprimer le QR code dans votre propre application sans avoir à encoder la charge utile vous-même.
+
+```text
+GET /tickets/{id}/qrcode
+```
+
+Le corps de la réponse est un binaire PNG brut, pas du JSON. Définissez l’en-tête `Accept` approprié.
+
+**Exemple de requête :**
+
+```bash
+curl https://gotravelxpress.wuaze.com/api/v1/tickets/tkt_xyz789/qrcode \
+  -H "Authorization: Bearer eyJhbGci..." \
+  -H "Accept: image/png" \
+  --output ticket_qr.png
+```
+
+**En-têtes de réponse :**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: image/png
+Content-Disposition: inline; filename="tkt_xyz789.png"
+```
+
+<Tip>
+  Pour afficher le QR code dans une page web, appelez ce point de terminaison côté serveur et faites soit un proxy de la réponse image, soit convertissez-la en URI de données base64. Évitez d’exposer votre jeton API dans un attribut src de balise `<img>` du navigateur.
+</Tip>

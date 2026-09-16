@@ -1,0 +1,182 @@
+---
+title: "Gestion de la Flotte et de l'Équipage : Bus, Chauffeurs, Personnel"
+sidebarTitle: "Flotte et Équipage"
+description: "Gérez l'ensemble de votre flotte et de votre équipage dans GoTravelXpress : assignez bus, chauffeurs, hôtesses et manutentionnaires depuis un tableau de bord unique."
+---
+
+Le module **Flotte et Équipage** est votre centre de commande pour chaque véhicule et chaque personne qui fait tourner vos voyages. Du moment où vous ajoutez un nouveau bus jusqu'à l'heure où un manutentionnaire de bagages termine son service, ce module vous offre un espace unique pour configurer, assigner et surveiller l'ensemble de votre opération de transport, sans jamais passer d'un outil ou d'un tableur à l'autre.
+
+---
+
+## Gestion de la Flotte
+
+Votre parc de véhicules constitue la base de chaque voyage que vous opérez. La section Flotte vous permet de construire et de maintenir un registre complet et précis de chaque bus de votre réseau.
+
+### Ajouter et Modifier des Véhicules
+
+<Steps>
+  <Step title="Ouvrir la section Flotte">
+    Depuis le tableau de bord principal, naviguez vers **Flotte et Équipage : Flotte**. Vous verrez la liste de tous les véhicules actuellement enregistrés dans votre agence.
+  </Step>
+  <Step title="Ajouter un nouveau véhicule">
+    Cliquez sur **Ajouter un Véhicule**. Remplissez les champs requis : nom ou identifiant du véhicule, plaque d'immatriculation, capacité en sièges et statut opérationnel actuel (Actif, Maintenance ou Retiré).
+  </Step>
+  <Step title="Enregistrer la fiche du véhicule">
+    Cliquez sur **Enregistrer**. Le véhicule est désormais disponible pour être assigné à tout voyage planifié depuis le module Réservations.
+  </Step>
+  <Step title="Modifier un véhicule existant">
+    Sélectionnez n'importe quel véhicule de la liste et cliquez sur **Modifier** pour mettre à jour ses détails : par exemple, changer son statut en **Maintenance** lorsqu'il part en révision.
+  </Step>
+</Steps>
+
+### Détails du Véhicule
+
+Chaque fiche de véhicule contient les informations suivantes :
+
+<AccordionGroup>
+  <Accordion title="Identité et Immatriculation">
+    - **Nom / ID du véhicule** : votre étiquette interne pour le bus
+    - **Plaque d'immatriculation** : le numéro officiel tel qu'il apparaît sur le véhicule
+    - **Marque / modèle** : facultatif, utile pour les dossiers de maintenance
+  </Accordion>
+
+  <Accordion title="Capacité et Configuration">
+    - **Capacité en sièges** : total de sièges passagers ; le module Réservations l'utilise pour imposer les limites de réservation
+    - **Plan des sièges** : la disposition utilisée pour afficher la carte interactive de sélection des sièges aux passagers
+  </Accordion>
+
+  <Accordion title="Statut Opérationnel">
+    - **Actif** : disponible pour l'assignation à un voyage
+    - **Maintenance** : temporairement indisponible ; le système ne vous permettra pas d'assigner ce véhicule à de nouveaux voyages
+    - **Retiré** : définitivement retiré du service ; conservé dans le registre pour l'historique
+  </Accordion>
+</AccordionGroup>
+
+### Assigner des Véhicules aux Voyages
+
+Lorsque vous créez ou modifiez un voyage dans le module Réservations, vous sélectionnez un véhicule dans la liste des véhicules **Actifs** enregistrés ici. La capacité du véhicule assigné définit automatiquement le nombre maximal de sièges pour ce voyage.
+
+<Note>
+  Les véhicules avec un statut **Maintenance** ou **Retiré** n'apparaissent pas dans le menu déroulant d'assignation de voyage, empêchant les réservations accidentelles sur des bus indisponibles.
+</Note>
+
+---
+
+## Gestion des Chauffeurs
+
+Chaque voyage a besoin d'un chauffeur qualifié au volant. La section Chauffeurs vous permet de créer un profil pour chaque chauffeur, de suivre sa disponibilité et de vous assurer que la bonne personne est assignée à chaque départ.
+
+### Ajouter des Chauffeurs
+
+<Steps>
+  <Step title="Naviguer vers Chauffeurs">
+    Allez dans **Flotte et Équipage : Chauffeurs** et cliquez sur **Ajouter un Chauffeur**.
+  </Step>
+  <Step title="Remplir le profil du chauffeur">
+    Saisissez le nom complet du chauffeur, son numéro de permis, son numéro de téléphone et toute note supplémentaire pertinente pour votre agence (par exemple, les itinéraires pour lesquels il est certifié).
+  </Step>
+  <Step title="Définir le statut de disponibilité">
+    Marquez le chauffeur comme **Disponible**, **En Voyage** ou **Hors Service**. Ce statut apparaît sur le Tableau de Bord du Personnel afin que les répartiteurs puissent voir en un coup d'oeil qui est libre.
+  </Step>
+  <Step title="Enregistrer le profil">
+    Cliquez sur **Enregistrer**. Le chauffeur peut désormais être sélectionné lors de l'assignation d'un équipage à un voyage.
+  </Step>
+</Steps>
+
+### Profils de Chauffeur
+
+Chaque profil de chauffeur capture les détails clés dont votre agence a besoin :
+
+| Champ | Description |
+| --- | --- |
+| Nom complet | Le nom légal du chauffeur tel qu'il figure sur son permis |
+| Numéro de permis | Utilisé pour la conformité et la vérification |
+| Téléphone de contact | Ligne directe pour les communications de répartition |
+| Statut actuel | Disponible / En Voyage / Hors Service |
+| Historique des voyages | Journal auto-alimenté des assignations passées et en cours |
+
+### Assigner des Chauffeurs aux Voyages
+
+Ouvrez la fiche du voyage depuis le module Réservations et sélectionnez un chauffeur dans le champ **Assigner un Chauffeur**. Seuls les chauffeurs avec un statut **Disponible** apparaissent dans la liste de sélection. Une fois assigné, le statut du chauffeur passe automatiquement à **En Voyage** pour la durée du trajet.
+
+---
+
+## Gestion des Hôtesses
+
+Les hôtesses sont le personnel de service à bord qui accompagne les passagers tout au long d'un voyage. La section Hôtesses fonctionne de la même manière que la Gestion des Chauffeurs, vous offrant une liste dédiée et des enregistrements d'assignation clairs.
+
+### Ajouter et Assigner des Hôtesses
+
+<Steps>
+  <Step title="Ouvrir la section Hôtesses">
+    Naviguez vers **Flotte et Équipage : Hôtesses** et cliquez sur **Ajouter une Hôtesse**.
+  </Step>
+  <Step title="Compléter le profil">
+    Saisissez le nom de l'hôtesse, ses coordonnées et son statut de disponibilité.
+  </Step>
+  <Step title="Assigner à un voyage">
+    Depuis la fiche du voyage, utilisez le champ **Assigner une Hôtesse** pour sélectionner une hôtesse disponible. Vous pouvez assigner une ou plusieurs hôtesses par voyage selon la taille du véhicule et la politique de votre agence.
+  </Step>
+</Steps>
+
+### Suivi des Rôles et Responsabilités
+
+Chaque enregistrement d'assignation d'hôtesse note le voyage qu'elle couvre, la date et l'heure de départ, et le véhicule sur lequel elle travaille. Cela donne aux superviseurs une image claire de l'équipage à bord pour chaque départ sans avoir à consulter des listes séparées.
+
+---
+
+## Gestion des Manutentionnaires de Bagages
+
+Les manutentionnaires de bagages sont l'équipe au sol responsable de l'enregistrement des bagages des passagers et du chargement des colis avant le départ. Leur travail est étroitement lié au module **Bagages et Colis** : un article ne peut pas être marqué comme enregistré tant qu'un manutentionnaire n'est pas en service pour ce voyage.
+
+### Ajouter des Manutentionnaires
+
+<Steps>
+  <Step title="Ouvrir la section Manutentionnaires">
+    Allez dans **Flotte et Équipage : Manutentionnaires** et cliquez sur **Ajouter un Manutentionnaire**.
+  </Step>
+  <Step title="Saisir les détails du manutentionnaire">
+    Fournissez le nom du manutentionnaire, son numéro de contact et le terminal ou la gare où il est basé.
+  </Step>
+  <Step title="Assigner à un voyage">
+    Sélectionnez le manutentionnaire dans le panneau d'assignation d'équipage du voyage concerné. Le manutentionnaire apparaîtra alors comme l'agent responsable dans le flux d'enregistrement des Bagages et Colis.
+  </Step>
+</Steps>
+
+<Note>
+  Les assignations des manutentionnaires alimentent directement le module **Bagages et Colis**. Lorsqu'un manutentionnaire est assigné à un voyage, il apparaît automatiquement comme l'agent disponible dans l'interface d'enregistrement des bagages pour ce départ.
+</Note>
+
+---
+
+## Tableau de Bord du Personnel
+
+Le Tableau de Bord du Personnel offre aux superviseurs et répartiteurs une vue d'ensemble du statut actuel de chaque membre d'équipage à travers tous les voyages actifs.
+
+<CardGroup cols={2}>
+  <Card title="Assignations en Cours" icon="clipboard-list" href="/fr/modules/fleet-crew#tableau-de-bord-du-personnel">
+    Voyez quel chauffeur, hôtesse et manutentionnaire est assigné à chaque voyage partant aujourd'hui, y compris l'heure de départ et le véhicule.
+  </Card>
+
+  <Card title="Statut de Disponibilité" icon="circle-check" href="/fr/modules/fleet-crew#gestion-des-chauffeurs">
+    Consultez la disponibilité en temps réel de chaque membre du personnel (**Disponible**, **En Voyage** ou **Hors Service**) pour pouvoir réassigner rapidement si un membre d'équipage se déclare malade.
+  </Card>
+
+  <Card title="Progression du Voyage" icon="route" href="/fr/modules/reservations">
+    Surveillez le statut en direct des voyages en cours et sachez quand les membres d'équipage devraient être à nouveau disponibles pour le prochain départ.
+  </Card>
+
+  <Card title="Répertoire du Personnel" icon="address-book" href="/fr/agency/user-roles">
+    Accédez aux coordonnées complètes de tout chauffeur, hôtesse ou manutentionnaire en un clic, sans quitter le tableau de bord.
+  </Card>
+</CardGroup>
+
+---
+
+<Tip>
+  Utilisez le module [Planification Intelligente](/fr/agency/intelligent-planning) pour automatiser l'assignation de l'équipage. Lorsque vous activez la planification intelligente, GoTravelXpress analyse les heures de départ, la disponibilité du personnel et les exigences des itinéraires pour suggérer le chauffeur, l'hôtesse et le manutentionnaire optimaux pour chaque voyage, économisant un effort manuel significatif à votre répartiteur pendant les périodes de départs chargées.
+</Tip>
+
+<Note>
+  Le module **Enregistrement QR et Équipage** s'intègre à Flotte et Équipage pour le suivi de la présence. Lorsqu'un chauffeur ou une hôtesse scanne son code QR au départ, le système enregistre son heure d'arrivée et sa localisation, mettant automatiquement à jour son statut sur le Tableau de Bord du Personnel. Cela vous donne un enregistrement de présence vérifié et horodaté pour chaque membre d'équipage sur chaque voyage.
+</Note>
