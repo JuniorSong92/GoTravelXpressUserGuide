@@ -1,113 +1,117 @@
 ---
-title: "Démarrer avec GoTravelXpress : De la Licence au Billet QR"
+title: "Démarrage Rapide GoTravelXpress : Licence, Rôles et Premier Voyage"
 sidebarTitle: "Démarrage Rapide"
-description: "Apprenez à demander une licence, vous connecter, configurer votre agence, et émettre votre premier billet QR avec GoTravelXpress en quelques étapes simples."
+description: "Activez votre licence, configurez votre agence et lancez votre premier voyage avec les rôles Administrateur, Opérateur, Bagagiste et Hôtesse."
 ---
 
-Ce guide vous accompagne de zéro jusqu'à l'émission de votre premier billet QR. Vous allez demander une clé de licence, vous connecter à votre compte, configurer les itinéraires et véhicules de votre agence, créer votre premier voyage, puis effectuer une réservation de test et générer un billet QR chiffré en direct, le tout en une seule session. À la fin, vous disposerez d'un espace de travail GoTravelXpress entièrement opérationnel, prêt pour votre équipe.
+Ce démarrage rapide vous mène de la demande de licence à l'émission de votre premier billet QR : demande de clé sur la landing publique, activation par l'Administrateur, création des comptes Opérateur, Bagagiste et Hôtesse, puis ouverture d'un premier voyage.
 
-<Tip>
-  Pas encore prêt à vous engager ? Demandez une licence **d'Évaluation de 14 jours** pour explorer chaque fonctionnalité de la plateforme sans frais avant de choisir un plan payant. Consultez [Types de Licence](/fr/license-types) pour plus de détails.
-</Tip>
+## Aperçu des rôles
+
+GoTravelXpress est un système multi-rôles. Chaque profil a un tableau de bord dédié avec des permissions strictes.
+
+<CardGroup cols={2}>
+  <Card title="Administrateur / Responsable" icon="user-shield">
+    Active la licence, crée les agences, gère les utilisateurs, les itinéraires, la tarification et voit toutes les statistiques.
+  </Card>
+
+  <Card title="Opérateur d'Agence" icon="ticket">
+    Ouvre les ventes de billets au comptoir, encaisse les paiements et imprime les billets QR pour les clients.
+  </Card>
+
+  <Card title="Bagagiste" icon="suitcase-rolling">
+    Enregistre les bagages et colis, scanne les QR à l'embarquement et à la livraison.
+  </Card>
+
+  <Card title="Hôtesse / Chef de bord" icon="user-check">
+    Scanne les billets QR à bord, valide la présence et pointe l'équipage avec géolocalisation.
+  </Card>
+</CardGroup>
+
+## Étape 1 : Demander votre licence
 
 <Steps>
-  <Step title="Demander Votre Licence">
-    Avant de pouvoir vous connecter, vous avez besoin d'une clé de licence. GoTravelXpress utilise un modèle de licence perpétuelle : vous demandez le type adapté à votre agence, recevez une clé par email, et l'activez une seule fois.
-
-    1. Rendez-vous sur [gotravelxpress.wuaze.com](https://gotravelxpress.wuaze.com).
-    2. Faites défiler jusqu'à la section **Demander une Licence** en bas de la page.
-    3. Remplissez le formulaire de demande de licence avec les informations suivantes :
-
-    | Champ | Description |
-    | --- | --- |
-    | **Votre Nom** | Votre nom complet |
-    | **Votre Email** | L'adresse où vous souhaitez recevoir votre clé |
-    | **Votre Entreprise** | Le nom de votre agence ou entreprise |
-    | **Besoins Spécifiques** | Tout besoin particulier (par exemple, multi-agence, accès API) |
-    | **Message** | Notes facultatives pour l'équipe GoTravelXpress |
-    | **Type de Licence** | Choisissez parmi Gratuite, Évaluation 14 jours, Basique, Premium ou Entreprise |
-
-    4. Cliquez sur **Soumettre la Demande**.
-
-    Vous recevrez votre clé de licence par email après validation. Vérifiez votre dossier spam si elle n'arrive pas dans les minutes qui suivent.
-
-    <Info>
-      Si vous évaluez la plateforme pour la première fois, sélectionnez **Évaluation de 14 jours** pour débloquer chaque module et fonctionnalité, y compris l'API SaaS, pendant 14 jours sans frais.
-    </Info>
+  <Step title="Ouvrir la page de découverte">
+    Rendez-vous sur [gotravelxpress.wuaze.com/welcome.php](https://gotravelxpress.wuaze.com/welcome.php) et cliquez sur **Obtenir ma licence**.
   </Step>
-  <Step title="Se Connecter à Votre Compte">
-    Une fois votre clé de licence en main, accédez au portail de connexion GoTravelXpress.
-
-    1. Rendez-vous sur [gotravelxpress.wuaze.com/index.php](https://gotravelxpress.wuaze.com/index.php).
-    2. Connectez-vous en utilisant l'une des méthodes suivantes :
-
-    <Tabs>
-      <Tab title="Nom d'utilisateur / Email / Téléphone">
-        Saisissez votre **nom d'utilisateur**, votre **adresse email** ou votre **numéro de téléphone** dans le premier champ, puis votre **mot de passe**. Cliquez sur **Se connecter**.
-      </Tab>
-      <Tab title="Google">
-        Cliquez sur le bouton **Google** sous le formulaire de connexion pour vous authentifier avec votre compte Google en un clic. Aucun mot de passe requis.
-      </Tab>
-      <Tab title="Connexion par Téléphone">
-        Cliquez sur **Phone Login** pour recevoir un code à usage unique sur votre numéro de mobile enregistré et vous connecter sans mot de passe.
-      </Tab>
-      <Tab title="Connexion Faciale">
-        Cliquez sur **Face Login** pour vous authentifier par reconnaissance faciale. Assurez-vous d'être dans un environnement bien éclairé avec votre visage clairement visible par la caméra.
-      </Tab>
-    </Tabs>
-
-    3. S'il s'agit de votre première connexion et qu'on vous demande d'entrer une clé de licence, collez la clé reçue par email et confirmez l'activation.
-
-    <Tip>
-      Utilisez le **sélecteur de langue** en haut de la page de connexion pour basculer l'interface dans votre langue préférée avant de vous connecter. GoTravelXpress prend en charge English, Français, Español, العربية, Italiano, Português, Русский, Deutsch et 中文.
-    </Tip>
+  <Step title="Choisir le type de licence">
+    Sélectionnez **Gratuit**, **Essai 14 jours**, **Basique**, **Premium** ou **Entreprise**. Consultez [Types de Licence](/fr/license-types) pour comparer.
   </Step>
-  <Step title="Configurer Votre Agence">
-    Après votre première connexion, prenez quelques minutes pour configurer le profil de votre agence afin que la plateforme reflète vos opérations réelles.
-
-    1. **Définissez le nom et les détails de votre agence** : allez dans **Gestion d'Agence** dans la navigation principale et saisissez le nom de votre agence, les coordonnées et le lieu.
-    2. **Ajoutez vos itinéraires et destinations** : allez dans **Itinéraires** et créez les paires origine-destination que votre agence exploite. Par exemple : _Yaoundé → Douala_ ou _Bafoussam → Ngaoundéré_.
-    3. **Configurez les plans de sièges** : allez dans **Flotte** et ajoutez chaque véhicule de votre parc. Pour chaque véhicule, configurez le plan de sièges (nombre de rangées, sièges par rangée, disposition par classe) pour que le système de réservation sache exactement quels sièges sont disponibles à la vente.
-
-    <Note>
-      Si vous gérez plusieurs succursales ou agences, vous pouvez ajouter des profils d'agence supplémentaires sous **Gestion d'Agence** et assigner des rôles et permissions distincts à chaque site.
-    </Note>
+  <Step title="Soumettre la demande">
+    Renseignez votre nom, email, entreprise et besoins spécifiques, puis validez. Vous recevez votre clé de licence par email après validation.
   </Step>
-  <Step title="Ajouter Votre Premier Voyage">
-    Avec vos itinéraires et véhicules configurés, vous êtes prêt à planifier un voyage et l'ouvrir aux réservations.
+</Steps>
 
-    1. Allez dans **Voyages** dans le menu principal et cliquez sur **Nouveau Voyage**.
-    2. Remplissez les détails du voyage :
+## Étape 2 : Activer la licence côté Administrateur
 
-    | Champ | Description |
-    | --- | --- |
-    | **Itinéraire** | Sélectionnez les destinations de départ et d'arrivée créées à l'étape 3 |
-    | **Date et Heure de Départ** | La date et l'heure de départ prévues |
-    | **Date et Heure d'Arrivée** | La date et l'heure d'arrivée estimées |
-    | **Véhicule** | Assignez un véhicule de votre flotte |
-    | **Capacité de Sièges** | Confirmez ou ajustez le nombre de sièges disponibles pour ce voyage |
+L'activation de la clé se fait **uniquement dans l'espace Administrateur**. C'est le premier compte à créer.
 
-    3. Enregistrez le voyage. Il apparaîtra désormais comme un voyage actif dans votre tableau de bord des réservations, prêt à accepter des réservations.
+<Steps>
+  <Step title="Se connecter">
+    Ouvrez [gotravelxpress.wuaze.com/index.php](https://gotravelxpress.wuaze.com/index.php) et connectez-vous avec vos identifiants Administrateur (email + mot de passe, Google ou téléphone).
   </Step>
-  <Step title="Émettre Votre Premier Billet QR">
-    Avec un voyage actif en place, vous pouvez maintenant effectuer une réservation de test et générer votre premier billet QR chiffré.
-
-    1. Allez dans **Réservations** et cliquez sur **Nouvelle Réservation**.
-    2. Sélectionnez le voyage que vous venez de créer, choisissez un ou plusieurs sièges, et saisissez le nom et les coordonnées du passager.
-    3. Passez à l'étape **Paiement**. Choisissez un mode de paiement :
-       - **Mobile Money** : MTN, Orange Money ou Wave
-       - **Visa / Mastercard** : paiement par carte
-       - **Espèces** : saisie manuelle d'espèces avec génération automatique de facture
-    4. Confirmez le paiement. GoTravelXpress génère automatiquement un **billet à code QR chiffré** et l'attache à la réservation.
-    5. Imprimez ou envoyez le billet QR au passager par email ou SMS.
-    6. Pour vérifier le billet, ouvrez l'outil de **Vérification QR** (disponible sur le tableau de bord de l'équipage ou sur un appareil mobile) et scannez le code QR. Le système confirme l'authenticité du billet en temps réel, évitant la fraude et les embarquements en double.
-
-    <Note>
-      Chaque billet QR contient un code chiffré unique lié au voyage, au siège et au passager spécifiques. Le même code ne peut pas être scanné deux fois sur le même voyage, rendant la duplication impossible.
-    </Note>
+  <Step title="Ouvrir Paramètres > Licence">
+    Dans le tableau de bord Admin, ouvrez le menu **Paramètres**, puis **Licence**.
+  </Step>
+  <Step title="Coller la clé de licence">
+    Collez la clé reçue par email dans le champ **Clé d'activation** et cliquez sur **Activer**. Le type de licence, la date d'expiration et les modules débloqués s'affichent immédiatement.
   </Step>
 </Steps>
 
 <Note>
-  L'équipe d'assistance GoTravelXpress est disponible **24h/24 et 7j/7** pour vous aider pendant la configuration. Si vous rencontrez le moindre problème lors de la configuration de votre agence ou de l'émission de votre premier billet, contactez [**contact@prozigzag.com**](mailto:contact@prozigzag.com) ou appelez le **+237 695 602 293**.
+  La licence est verrouillée sur l'agence Administrateur qui l'a activée. Toute création d'agence, d'utilisateur ou de voyage héritera de ses limites (nombre d'agences, opérateurs, véhicules, etc.).
 </Note>
+
+## Étape 3 : Configurer votre agence
+
+<Steps>
+  <Step title="Créer votre agence principale">
+    Menu **Agences > Nouvelle agence** : nom, ville, pays, logo, coordonnées, devise et fuseau horaire.
+  </Step>
+  <Step title="Ajouter les itinéraires et véhicules">
+    Menu **Flotte** : ajoutez vos bus (immatriculation, capacité, catégorie). Menu **Itinéraires** : définissez les liaisons villes de départ / d'arrivée et les prix.
+  </Step>
+  <Step title="Créer les comptes des rôles opérationnels">
+    Menu **Utilisateurs > Nouveau** : créez un compte pour chaque **Opérateur d'agence**, **Bagagiste** et **Hôtesse**. Attribuez le rôle correspondant : les permissions se déduisent automatiquement.
+  </Step>
+</Steps>
+
+## Étape 4 : Créer votre premier voyage
+
+<Steps>
+  <Step title="Planifier le voyage">
+    Menu **Planification** : choisissez un itinéraire, une date, un horaire de départ, un véhicule et affectez chauffeur + hôtesse. Le plan de sièges se génère automatiquement.
+  </Step>
+  <Step title="Ouvrir les ventes">
+    Cliquez sur **Publier**. Les opérateurs peuvent alors vendre des billets au comptoir et les clients peuvent réserver en ligne.
+  </Step>
+  <Step title="Émettre un billet QR">
+    Dans l'espace **Opérateur**, sélectionnez le voyage, choisissez un siège libre, enregistrez le client, encaissez (Mobile Money, carte, espèces) : le billet avec QR code est généré et imprimable.
+  </Step>
+  <Step title="Enregistrer les bagages">
+    L'espace **Bagagiste** permet de scanner le billet, enregistrer bagages et colis et générer les étiquettes.
+  </Step>
+  <Step title="Contrôler l'embarquement">
+    À bord, l'**Hôtesse** scanne le QR de chaque passager pour valider l'accès et pointer sa propre présence par QR géolocalisé.
+  </Step>
+</Steps>
+
+## Étapes suivantes
+
+<CardGroup cols={2}>
+  <Card title="Rôles utilisateur" icon="users" href="/fr/agency/user-roles">
+    Comprendre chaque rôle et ses permissions détaillées.
+  </Card>
+
+  <Card title="Multi-agence" icon="building" href="/fr/agency/multi-agency">
+    Ajouter plusieurs agences sous une même licence.
+  </Card>
+
+  <Card title="Types de licence" icon="key" href="/fr/license-types">
+    Limites, quotas et modules par type de licence.
+  </Card>
+
+  <Card title="Référence API" icon="code" href="/fr/api/overview">
+    Intégrer GoTravelXpress à vos autres systèmes.
+  </Card>
+</CardGroup>

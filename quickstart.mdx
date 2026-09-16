@@ -1,119 +1,121 @@
 ---
-title: "Get Started with GoTravelXpress: From License to QR Ticket"
-sidebarTitle: "Quick Start"
-description: "Learn how to request a license, sign in, configure your agency, and issue your first QR ticket with GoTravelXpress in a few simple steps."
+title: "GoTravelXpress Quickstart: License, Roles, and First Trip"
+sidebarTitle: "Quickstart"
+description: "Activate your license, configure your agency, and launch your first trip with the Admin, Operator, Baggage Handler, and Hostess roles."
 ---
 
-This guide walks you through everything you need to go from zero to your first issued QR ticket. You will request a license key, sign in to your account, configure your agency's routes and vehicles, create your first trip, and then make a test reservation and generate a live encrypted QR ticket — all in one sitting. By the end, you will have a fully operational GoTravelXpress workspace ready for your team.
+This quickstart takes you from license request to your first QR ticket: request a key on the public landing page, activate it in the Admin space, create Operator, Baggage Handler, and Hostess accounts, then open your first trip.
 
-<Tip>
-  Not ready to commit? Request a **14-day Trial** license to explore every feature of the platform at no cost before choosing a paid plan. See [License Types](/license-types) for details.
-</Tip>
+## Role overview
+
+GoTravelXpress is a multi-role system. Each profile has a dedicated dashboard with strict permissions.
+
+<CardGroup cols={2}>
+  <Card title="Administrator / Manager" icon="user-shield">
+    Activates the license, creates agencies, manages users, routes, pricing, and sees all statistics.
+  </Card>
+
+  <Card title="Agency Operator" icon="ticket">
+    Opens counter ticket sales, collects payments, and prints QR tickets for customers.
+  </Card>
+
+  <Card title="Baggage Handler" icon="suitcase-rolling">
+    Registers bags and parcels, scans QR codes at boarding and delivery.
+  </Card>
+
+  <Card title="Hostess / Crew Chief" icon="user-check">
+    Scans QR tickets on board, validates attendance, and clocks in crew with geolocation.
+  </Card>
+</CardGroup>
+
+## Step 1: Request your license
 
 <Steps>
 
-  <Step title="Request Your License">
-    Before you can sign in, you need a license key. GoTravelXpress uses a perpetual license model — you request the type that fits your agency, receive a key by email, and activate it once.
-
-    1. Go to [gotravelxpress.wuaze.com](https://gotravelxpress.wuaze.com).
-    2. Scroll to the **Request a License** section at the bottom of the page.
-    3. Fill out the license request form with the following details:
-
-    | Field | Description |
-    |---|---|
-    | **Your Name** | Your full name |
-    | **Your Email** | The address where you want to receive your key |
-    | **Your Company** | Your agency or business name |
-    | **Specific Requirements** | Any special needs (e.g., multi-agency, API access) |
-    | **Message** | Optional notes for the GoTravelXpress team |
-    | **License Type** | Choose from Free, 14-day Trial, Basic, Premium, or Enterprise |
-
-    4. Click **Submit Request**.
-
-    You will receive your license key by email after validation. Check your spam folder if it does not arrive within a few minutes.
-
-    <Info>
-      If you are evaluating the platform for the first time, select **14-day Trial** to unlock every module and feature, including the SaaS API, for 14 days at no charge.
-    </Info>
+  <Step title="Open the discovery page">
+    Go to [gotravelxpress.wuaze.com/welcome.php](https://gotravelxpress.wuaze.com/welcome.php) and click **Get my license**.
   </Step>
 
-  <Step title="Sign In to Your Account">
-    Once you have your license key, navigate to the GoTravelXpress login portal.
-
-    1. Go to [gotravelxpress.wuaze.com/index.php](https://gotravelxpress.wuaze.com/index.php).
-    2. Sign in using any of the following methods:
-
-    <Tabs>
-      <Tab title="Username / Email / Phone">
-        Enter your **username**, **email address**, or **phone number** in the first field, then enter your **password**. Click **Sign in**.
-      </Tab>
-      <Tab title="Google">
-        Click the **Google** button below the sign-in form to authenticate with your Google account in one click. No password required.
-      </Tab>
-      <Tab title="Phone Login">
-        Click **Phone Login** to receive a one-time code on your registered mobile number and sign in without a password.
-      </Tab>
-      <Tab title="Face Login">
-        Click **Face Login** to authenticate using facial recognition. Make sure you are in a well-lit environment with your face clearly visible to the camera.
-      </Tab>
-    </Tabs>
-
-    3. If this is your first login and you were prompted to enter a license key, paste the key you received by email and confirm activation.
-
-    <Tip>
-      Use the **language selector** at the top of the login page to switch the interface to your preferred language before signing in. GoTravelXpress supports English, Français, Español, العربية, Italiano, Português, Русский, Deutsch, and 中文.
-    </Tip>
+  <Step title="Choose a license type">
+    Select **Free**, **14-day Trial**, **Basic**, **Premium**, or **Enterprise**. See [License Types](/license-types) to compare.
   </Step>
 
-  <Step title="Configure Your Agency">
-    After signing in for the first time, take a few minutes to set up your agency profile so the platform reflects your real operations.
-
-    1. **Set your agency name and details** — Go to **Agency Management** in the main navigation and enter your agency name, contact information, and location.
-    2. **Add your routes and destinations** — Navigate to **Routes** and create the origin–destination pairs your agency operates. For example: *Yaoundé → Douala* or *Bafoussam → Ngaoundéré*.
-    3. **Configure seat layouts** — Go to **Fleet** and add each vehicle in your fleet. For each vehicle, configure the seat map (number of rows, seats per row, class layout) so the reservation system knows exactly which seats are available for sale.
-
-    <Note>
-      If you manage multiple branches or agencies, you can add additional agency profiles under **Agency Management** and assign separate user roles and permissions to each location.
-    </Note>
-  </Step>
-
-  <Step title="Add Your First Trip">
-    With your routes and vehicles configured, you are ready to schedule a trip and open it for reservations.
-
-    1. Navigate to **Trips** in the main menu and click **New Trip**.
-    2. Fill in the trip details:
-
-    | Field | Description |
-    |---|---|
-    | **Route** | Select the departure and arrival destinations you created in Step 3 |
-    | **Departure Date & Time** | The scheduled departure datetime |
-    | **Arrival Date & Time** | The estimated arrival datetime |
-    | **Vehicle** | Assign a vehicle from your fleet |
-    | **Seat Capacity** | Confirm or adjust the number of available seats for this trip |
-
-    3. Save the trip. It will now appear as an active trip in your reservations dashboard, ready to accept bookings.
-  </Step>
-
-  <Step title="Issue Your First QR Ticket">
-    With a live trip in place, you can now make a test reservation and generate your first encrypted QR ticket.
-
-    1. Go to **Reservations** and click **New Reservation**.
-    2. Select the trip you just created, choose one or more seats, and enter the passenger's name and contact details.
-    3. Proceed to **Payment**. Choose a payment method:
-       - **Mobile Money** — MTN, Orange Money, or Wave
-       - **Visa / Mastercard** — card payment
-       - **Cash** — manual cash entry with automatic invoice generation
-    4. Confirm the payment. GoTravelXpress automatically generates an **encrypted QR code ticket** and attaches it to the reservation.
-    5. Print or send the QR ticket to the passenger by email or SMS.
-    6. To verify the ticket, open the **QR Verification** tool (available on the crew dashboard or mobile device) and scan the QR code. The system confirms the ticket's authenticity in real time, preventing fraud and duplicate boarding.
-
-    <Note>
-      Every QR ticket contains a unique encrypted code tied to the specific trip, seat, and passenger. The same code cannot be scanned twice on the same trip, making duplication impossible.
-    </Note>
+  <Step title="Submit the request">
+    Fill in your name, email, company, and specific requirements, then submit. You will receive your license key by email after validation.
   </Step>
 
 </Steps>
 
+## Step 2: Activate the license in the Admin space
+
+License activation happens **only in the Administrator space**. This is the first account to create.
+
+<Steps>
+  <Step title="Sign in">
+    Open [gotravelxpress.wuaze.com/index.php](https://gotravelxpress.wuaze.com/index.php) and sign in with your Administrator credentials (email + password, Google, or phone).
+  </Step>
+  <Step title="Open Settings > License">
+    In the Admin dashboard, open the **Settings** menu, then **License**.
+  </Step>
+  <Step title="Paste the license key">
+    Paste the key you received by email into the **Activation key** field and click **Activate**. The license type, expiry date, and unlocked modules appear immediately.
+  </Step>
+</Steps>
+
 <Note>
-  The GoTravelXpress support team is available **24/7** to help you during setup. If you run into any issues while configuring your agency or issuing your first ticket, reach out at **contact@prozigzag.com** or call **+237 695 602 293**.
+  The license is bound to the Administrator agency that activated it. Every agency, user, or trip you create inherits its limits (agency count, operators, vehicles, etc.).
 </Note>
+
+## Step 3: Configure your agency
+
+<Steps>
+  <Step title="Create your main agency">
+    **Agencies > New agency**: name, city, country, logo, contact details, currency, and time zone.
+  </Step>
+  <Step title="Add routes and vehicles">
+    **Fleet** menu: add your buses (license plate, capacity, category). **Routes** menu: define origin / destination pairs and pricing.
+  </Step>
+  <Step title="Create accounts for operational roles">
+    **Users > New**: create an account for each **Agency Operator**, **Baggage Handler**, and **Hostess**. Assign the matching role; permissions are set automatically.
+  </Step>
+</Steps>
+
+## Step 4: Create your first trip
+
+<Steps>
+  <Step title="Plan the trip">
+    **Planning** menu: pick a route, date, departure time, vehicle, and assign driver + hostess. The seat map is generated automatically.
+  </Step>
+  <Step title="Open sales">
+    Click **Publish**. Operators can start selling tickets at the counter and customers can book online.
+  </Step>
+  <Step title="Issue a QR ticket">
+    In the **Operator** space, pick the trip, choose an available seat, record the customer, collect payment (Mobile Money, card, cash): the ticket with QR code is generated and printable.
+  </Step>
+  <Step title="Register baggage">
+    The **Baggage Handler** space scans the ticket, registers bags and parcels, and prints tags.
+  </Step>
+  <Step title="Control boarding">
+    On board, the **Hostess** scans each passenger's QR to validate access and clocks in their own attendance with a geolocated QR scan.
+  </Step>
+</Steps>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="User roles" icon="users" href="/agency/user-roles">
+    Understand each role and its detailed permissions.
+  </Card>
+
+  <Card title="Multi-agency" icon="building" href="/agency/multi-agency">
+    Add multiple agencies under one license.
+  </Card>
+
+  <Card title="License types" icon="key" href="/license-types">
+    Limits, quotas, and modules per license type.
+  </Card>
+
+  <Card title="API reference" icon="code" href="/api/overview">
+    Integrate GoTravelXpress with your other systems.
+  </Card>
+</CardGroup>

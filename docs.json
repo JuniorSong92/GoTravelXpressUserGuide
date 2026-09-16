@@ -15,17 +15,36 @@
   "navbar": {
     "primary": {
       "type": "button",
-      "label": "Commencer",
+      "label": "Se Connecter",
       "href": "https://gotravelxpress.wuaze.com/index.php"
     },
     "links": [
       {
         "href": "/fr",
-        "label": "🇫🇷 Français"
+        "label": "Français",
+        "icon": {
+          "style": "solid",
+          "name": "flag",
+          "library": "fontawesome"
+        }
       },
       {
         "href": "/",
-        "label": "🇬🇧 English"
+        "label": "English",
+        "icon": {
+          "style": "solid",
+          "name": "flag-usa",
+          "library": "fontawesome"
+        }
+      },
+      {
+        "icon": {
+          "style": "solid",
+          "name": "globe",
+          "library": "fontawesome"
+        },
+        "href": "https://gotravelxpress.wuaze.com/welcome.php",
+        "label": "Découvrir"
       }
     ]
   },

@@ -1,193 +1,121 @@
 ---
-title: "User Roles and Permissions — GoTravelXpress Access Control"
+title: "GoTravelXpress User Roles: Admin, Operator, Baggage Handler, Hostess"
 sidebarTitle: "User Roles"
-description: "Assign granular roles and permissions to your team in GoTravelXpress — control what each operator, agent, and manager can see and do."
+description: "Detail of the four GoTravelXpress roles: Administrator, Agency Operator, Baggage Handler, and Hostess, with their permissions and dashboards."
 ---
 
-GoTravelXpress uses a role-based access control (RBAC) system to ensure every team member has exactly the right level of access — nothing more, nothing less. You assign a role when you invite a user, and that role governs which modules they can open, which actions they can perform, and which agency branch data they can see. This page describes all built-in roles, explains how to invite and assign users, and covers custom permission configuration available on Enterprise licenses.
+GoTravelXpress runs on a strict four-role model. Each account only accesses the modules it needs, which simplifies training, secures operations, and cleanly separates responsibilities.
 
-<Warning>
-  **Limit Super Admin accounts.** The Super Admin role has unrestricted access to all agencies, all data, and all platform settings — including billing and license management. Assign this role only to the people who absolutely need it (typically one or two senior administrators). Using shared Super Admin credentials significantly increases your security exposure.
-</Warning>
+## Overview
 
-## Built-in Roles
+| Role | Scope | License access | Finance access |
+| --- | --- | --- | --- |
+| Administrator / Manager | Whole platform and all agencies | Yes — activates the key | Full |
+| Agency Operator | Sales, reservations, payments | No | Own agency cash desk |
+| Baggage Handler | Baggage, parcels, labels | No | None |
+| Hostess / Crew Chief | Boarding, crew clock-in | No | None |
 
-GoTravelXpress ships with six predefined roles. You can use these out of the box without any configuration.
+## Administrator / Manager
 
-<Accordion title="Super Admin — Full platform access">
-  The Super Admin has complete, unrestricted access to the entire GoTravelXpress account. This includes:
+The license-owner role. It configures the whole platform.
 
-  - All agency branches and their data
-  - User management across all branches (create, edit, deactivate any user)
-  - Platform settings, license management, and white-label configuration (Enterprise)
-  - Consolidated analytics across all sites
-  - API credentials and webhook configuration
-  - Billing and license key management
+**Key permissions:**
 
-  **Intended for:** Platform owner, IT director, or senior operations manager overseeing all branches.
-</Accordion>
+- Activate and renew the license key.
+- Create, edit, or delete agencies.
+- Create Operator, Baggage Handler, and Hostess accounts and assign their role.
+- Manage the fleet (buses), routes, and pricing tables.
+- Plan trips and assign driver + hostess.
+- Open and close sales.
+- View all statistics and export reports.
+- Configure payment methods (Mobile Money, cards, cash).
+- Access security logs and general settings.
 
-<Accordion title="Agency Admin — Full access to one branch">
-  The Agency Admin has the same breadth of permissions as Super Admin, but scoped to a single assigned agency branch. They cannot see or modify data from other branches.
+**Dashboard:** global view with KPIs (trips, tickets, revenue, load factor), alerts, recent activity, and per-agency charts.
 
-  Capabilities include:
-  - Managing routes, schedules, fleet, and crew for their branch
-  - Inviting and deactivating users within their branch
-  - Viewing and exporting all branch analytics and payment reports
-  - Configuring branch-level settings (geolocation radius, departure points, payment methods)
+## Agency Operator
 
-  **Intended for:** Branch manager, regional operations lead.
-</Accordion>
+The counter role. Opens sales and collects payments from customers.
 
-<Accordion title="Booking Agent — Reservations and ticketing">
-  Booking Agents focus on the customer-facing side of operations. They can:
+**Key permissions:**
 
-  - Search available trips and seat availability
-  - Create, modify, and cancel reservations on behalf of passengers
-  - Issue QR code tickets and print or send them digitally
-  - Process payments (Mobile Money, card, cash) and generate invoices
-  - View their own sales activity and daily transaction summary
+- View open trips for their agency.
+- Reserve a seat for a customer (at the counter or by phone).
+- Issue a ticket with QR code.
+- Collect Mobile Money, card, or cash payments.
+- Generate an invoice or receipt.
+- Cancel or reschedule a ticket per the policy set by the Admin.
+- View sales history for their post.
 
-  Booking Agents **cannot** access fleet management, crew scheduling, user management, or detailed analytics beyond their own activity.
+**Dashboard:** today's trips, real-time seat map, open cash register, recent sales.
 
-  **Intended for:** Ticketing staff, counter agents, sales operators.
-</Accordion>
+<Tip>
+  An operator cannot change prices, create a route, or unlock a module. Those actions stay with the Administrator.
+</Tip>
 
-<Accordion title="Crew Member — Trip assignments and ticket scanning">
-  Crew Members have a focused, operational view tailored to on-the-ground tasks:
+## Baggage Handler
 
-  - View their assigned trips and departure schedules
-  - Scan passenger QR code tickets during boarding via the Check-in module
-  - Check in for their own shift using their personal QR code (with geolocation)
-  - View trip manifests and passenger lists for their assigned journeys
+The role in charge of bags and parcels at check-in and delivery.
 
-  Crew Members cannot access reservations management, payment records, or any administrative settings.
+**Key permissions:**
 
-  **Intended for:** Drivers, hostesses, baggage handlers, boarding staff.
-</Accordion>
+- Scan the passenger's QR ticket to link it to their baggage.
+- Register each bag or parcel with weight, description, and recipient.
+- Generate and print a label with barcode or QR.
+- View the baggage list for a trip.
+- Mark a bag as **Loaded**, **Delivered**, or **Unclaimed**.
+- Search a bag by tag number or ticket.
 
-<Accordion title="Accountant — Payment and invoice records">
-  Accountants have read and export access to all financial data within their assigned branch:
+**Dashboard:** trips in check-in, bag counter per trip, integrated scanner.
 
-  - View all payment transactions (Mobile Money, card, cash)
-  - Export payment reports, daily summaries, and invoices to CSV or PDF
-  - Access the Analytics module for revenue dashboards
-  - View reservation records for reconciliation purposes (read-only)
+## Hostess / Crew Chief
 
-  Accountants cannot create or modify reservations, manage users, or change any settings.
+The on-board role. Controls tickets and clocks in the crew.
 
-  **Intended for:** Finance staff, auditors, accountants handling end-of-day reconciliation.
-</Accordion>
+**Key permissions:**
 
-<Accordion title="Read-Only — View-only for reporting">
-  Users with the Read-Only role can open and view any section of the platform they have been given branch access to, but cannot create, edit, or delete any records. This role is ideal for stakeholders who need visibility without the ability to make changes.
+- Scan each QR ticket at boarding to validate access.
+- Mark a passenger as **Boarded**, **No-show**, or **Late**.
+- Clock in their own attendance with a geolocated QR.
+- View the passenger list for the assigned trip.
+- Report an on-board incident (alert button forwarded to the Admin).
+- Confirm trip closure on arrival.
 
-  Capabilities:
-  - Browse all modules (reservations, fleet, crew, analytics, payments) in view mode
-  - Export reports from the Analytics module
-  - No create, edit, delete, or configuration actions available
+**Dashboard:** current trip, seat map with passenger status, scanner module, alert button.
 
-  **Intended for:** Regional supervisors, investors, compliance reviewers, consultants.
-</Accordion>
-
-## Assigning Roles
-
-Follow these steps to invite a new team member and assign their role.
+## Create a user account
 
 <Steps>
-  <Step title="Open User Management">
-    From the main navigation, go to **User Management**. You will see a list of all active users in your account (or in your branch, if you are a Branch Admin).
+  <Step title="Open user management">
+    In the Admin dashboard, go to **Users > New**.
   </Step>
-  <Step title="Add a New User">
-    Click **Add User** in the top-right corner.
+  <Step title="Fill in the identity">
+    Full name, business email, phone, and home agency.
   </Step>
-  <Step title="Enter User Details">
-    Fill in the invitation form:
-
-    | Field | Required | Description |
-    |---|---|---|
-    | **Full Name** | Yes | The user's display name across the platform |
-    | **Email Address** | Yes | Used for the invitation email and login |
-    | **Phone Number** | Optional | Useful for crew members who may log in by phone |
-    | **Role** | Yes | Select from the six built-in roles (or a custom role on Enterprise) |
-    | **Agency Branch** | Yes | Assign the user to one or more agency branches |
+  <Step title="Pick the role">
+    Select **Administrator**, **Agency Operator**, **Baggage Handler**, or **Hostess**. Permissions are applied automatically.
   </Step>
-  <Step title="Select Role">
-    Choose the appropriate role from the **Role** dropdown. A brief description of each role's permissions is shown inline to help you decide.
-  </Step>
-  <Step title="Assign to Agency Branch">
-    Select the branch (or branches, for Super Admin and Read-Only roles) this user should have access to. Branch Admins can only assign users to their own branch.
-  </Step>
-  <Step title="Send Invitation">
-    Click **Send Invitation**. The user receives an email with a link to set their password and activate their account. The invitation link expires after 48 hours — you can resend it from the user's profile if needed.
+  <Step title="Set the initial password">
+    The account receives an activation email with a temporary password to change on first sign-in.
   </Step>
 </Steps>
 
-## Custom Permissions
+## Best practices
 
-On **Enterprise** licenses, you can go beyond the six built-in roles and define precisely which modules each role can access.
+<CardGroup cols={2}>
+  <Card title="Principle of least privilege" icon="lock">
+    Only assign the Administrator role to people who actually need to manage the platform and license.
+  </Card>
 
-<Tabs>
-  <Tab title="Creating a Custom Role">
-    <Steps>
-      <Step title="Go to Role Configuration">
-        Navigate to **Settings → Roles & Permissions → Create Custom Role**.
-      </Step>
-      <Step title="Name the Role">
-        Give the role a descriptive name (e.g., "Station Supervisor") and an optional description for your team's reference.
-      </Step>
-      <Step title="Set Module Permissions">
-        For each platform module, toggle one of three access levels:
+  <Card title="One account per person" icon="user">
+    Avoid shared accounts: per-user traceability is essential for incident or financial audits.
+  </Card>
 
-        | Level | Description |
-        |---|---|
-        | **No Access** | Module is hidden from this role entirely |
-        | **View** | User can read data but cannot create or modify records |
-        | **Full Access** | User can create, edit, delete, and export within this module |
-      </Step>
-      <Step title="Save and Assign">
-        Click **Save Role**. The custom role now appears in the role selector when you add or edit users.
-      </Step>
-    </Steps>
-  </Tab>
-  <Tab title="Editing an Existing Custom Role">
-    Go to **Settings → Roles & Permissions**, find the custom role in the list, and click **Edit**. Changes apply immediately to all users currently assigned that role — no need to reassign users individually.
-  </Tab>
-  <Tab title="Cloning a Built-in Role">
-    You cannot edit built-in roles directly, but you can clone one as a starting point for a custom role. On the Roles & Permissions page, click the **⋯** menu next to any built-in role and select **Clone**. Rename the clone and adjust its module permissions as needed.
-  </Tab>
-</Tabs>
+  <Card title="Revoke quickly" icon="user-slash">
+    Immediately disable an account when an employee leaves the agency, without deleting their history.
+  </Card>
 
-<Info>
-  Custom roles are an **Enterprise-only** feature. On Premium and lower licenses, you can only assign the six built-in roles.
-</Info>
-
-## Managing Users
-
-### Editing a User's Role or Branch
-
-To change a user's role or branch assignment, go to **User Management**, click the user's name to open their profile, and select **Edit**. Update the role or branch fields and click **Save**. Changes take effect on the user's next page load.
-
-### Deactivating an Account
-
-To temporarily remove a user's access without deleting their history:
-
-1. Open the user's profile in **User Management**.
-2. Click **Deactivate Account**.
-3. Confirm the action. The user is immediately signed out of any active sessions and cannot log in until the account is reactivated.
-
-Deactivated users remain visible in the user list with a **Deactivated** badge. Reactivate them at any time by opening their profile and clicking **Reactivate**.
-
-### Resetting a Password
-
-If a user cannot access their account:
-
-1. Go to **User Management** and open the user's profile.
-2. Click **Reset Password**.
-3. The user receives an email with a password reset link valid for 24 hours.
-
-Users can also reset their own password from the login page by clicking **Forgot password?**.
-
-<Tip>
-  Use the **Analytics module → Audit Log** section to review user activity across your agency — who created reservations, processed payments, or modified settings, and when. This is especially useful for compliance reviews and investigating discrepancies.
-</Tip>
+  <Card title="Use Face Login" icon="camera">
+    For exposed posts (counter, boarding), enable Face Login on top of the password.
+  </Card>
+</CardGroup>

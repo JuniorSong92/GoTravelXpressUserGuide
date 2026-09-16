@@ -1,195 +1,121 @@
 ---
-title: "Rôles et Permissions Utilisateur : Contrôle d'Accès GoTravelXpress"
+title: "Rôles Utilisateur GoTravelXpress : Admin, Opérateur, Bagagiste, Hôtesse"
 sidebarTitle: "Rôles Utilisateur"
-description: "Assignez des rôles et permissions granulaires à votre équipe dans GoTravelXpress : contrôlez ce que chaque opérateur, agent et manager peut voir et faire."
+description: "Détail des quatre rôles GoTravelXpress : Administrateur, Opérateur d'Agence, Bagagiste et Hôtesse, avec leurs permissions et tableaux de bord."
 ---
 
-GoTravelXpress utilise un système de contrôle d'accès basé sur les rôles (RBAC) pour garantir que chaque membre de l'équipe dispose exactement du bon niveau d'accès : ni plus, ni moins. Vous assignez un rôle lorsque vous invitez un utilisateur, et ce rôle détermine les modules auxquels il peut accéder, les actions qu'il peut effectuer et les données de succursale d'agence qu'il peut consulter. Cette page décrit tous les rôles intégrés, explique comment inviter et assigner des utilisateurs, et couvre la configuration des permissions personnalisées disponible sur les licences Entreprise.
+GoTravelXpress fonctionne avec un modèle strict à quatre rôles. Chaque compte accède uniquement aux modules dont il a besoin, ce qui simplifie la formation, sécurise les opérations et sépare clairement les responsabilités.
 
-<Warning>
-  **Limitez les comptes Super Admin.** Le rôle Super Admin a un accès illimité à toutes les agences, toutes les données et tous les paramètres de la plateforme : y compris la facturation et la gestion des licences. Assignez ce rôle uniquement aux personnes qui en ont absolument besoin (généralement un ou deux administrateurs seniors). L'utilisation d'identifiants Super Admin partagés augmente considérablement votre exposition aux risques de sécurité.
-</Warning>
+## Vue d'ensemble
 
-## Rôles Intégrés
+| Rôle | Périmètre | Accès licence | Accès finances |
+| --- | --- | --- | --- |
+| Administrateur / Responsable | Toute la plateforme et toutes les agences | Oui — active la clé | Complet |
+| Opérateur d'Agence | Ventes, réservations, encaissements | Non | Caisse de son agence |
+| Bagagiste | Bagages, colis, étiquettes | Non | Aucun |
+| Hôtesse / Chef de bord | Embarquement, pointage équipage | Non | Aucun |
 
-GoTravelXpress propose six rôles prédéfinis. Vous pouvez les utiliser immédiatement sans aucune configuration.
+## Administrateur / Responsable
 
-<Accordion title="Super Admin : Accès complet à la plateforme">
-  Le Super Admin a un accès complet et illimité à l'ensemble du compte GoTravelXpress. Cela inclut :
+C'est le rôle propriétaire de la licence. Il configure toute la plateforme.
 
-  - Toutes les succursales d'agence et leurs données
-  - Gestion des utilisateurs sur toutes les succursales (créer, modifier, désactiver tout utilisateur)
-  - Paramètres de la plateforme, gestion des licences et configuration du marquage blanc (Entreprise)
-  - Analyses consolidées sur tous les sites
-  - Identifiants API et configuration des webhooks
-  - Facturation et gestion des clés de licence
+**Permissions clés :**
 
-  **Destiné à :** Propriétaire de la plateforme, directeur informatique ou responsable des opérations seniors supervisant toutes les succursales.
-</Accordion>
+- Activer et renouveler la clé de licence.
+- Créer, modifier ou supprimer des agences.
+- Créer les comptes Opérateur, Bagagiste et Hôtesse et leur assigner un rôle.
+- Gérer la flotte (bus), les itinéraires et les grilles tarifaires.
+- Planifier les voyages et affecter chauffeur + hôtesse.
+- Ouvrir et fermer les ventes.
+- Consulter toutes les statistiques et exporter les rapports.
+- Configurer les moyens de paiement (Mobile Money, cartes, espèces).
+- Accéder aux journaux de sécurité et aux réglages généraux.
 
-<Accordion title="Admin d'Agence : Accès complet à une succursale">
-  L'Admin d'Agence dispose de la même ampleur de permissions que le Super Admin, mais limitée à une seule succursale d'agence assignée. Il ne peut pas voir ou modifier les données d'autres succursales.
+**Tableau de bord :** vue globale avec KPIs (voyages, billets, revenus, taux de remplissage), alertes, activité récente et graphiques par agence.
 
-  Les capacités incluent :
+## Opérateur d'Agence
 
-  - Gestion des itinéraires, horaires, flotte et équipage pour leur succursale
-  - Invitation et désactivation d'utilisateurs au sein de leur succursale
-  - Consultation et exportation de toutes les analyses et rapports de paiement de la succursale
-  - Configuration des paramètres au niveau de la succursale (rayon de géolocalisation, points de départ, modes de paiement)
+Le rôle de comptoir. Il ouvre les ventes et encaisse les clients.
 
-  **Destiné à :** Responsable de succursale, chef des opérations régionales.
-</Accordion>
+**Permissions clés :**
 
-<Accordion title="Agent de Réservation : Réservations et billettique">
-  Les Agents de Réservation se concentrent sur le côté client des opérations. Ils peuvent :
+- Consulter les voyages ouverts de son agence.
+- Réserver un siège pour un client (au comptoir ou par téléphone).
+- Émettre un billet avec QR code.
+- Encaisser un paiement Mobile Money, carte bancaire ou espèces.
+- Générer une facture ou un reçu.
+- Annuler ou reporter un billet selon la politique définie par l'Admin.
+- Consulter l'historique des ventes de son poste.
 
-  - Rechercher les voyages disponibles et la disponibilité des sièges
-  - Créer, modifier et annuler des réservations au nom des passagers
-  - Émettre des billets avec code QR et les imprimer ou les envoyer par voie numérique
-  - Traiter les paiements (Mobile Money, carte, espèces) et générer des factures
-  - Consulter leur propre activité de vente et le résumé des transactions quotidiennes
+**Tableau de bord :** liste des voyages du jour, plan de sièges en temps réel, caisse ouverte, ventes récentes.
 
-  Les Agents de Réservation **ne peuvent pas** accéder à la gestion de flotte, à la planification de l'équipage, à la gestion des utilisateurs ou aux analyses détaillées au-delà de leur propre activité.
+<Tip>
+  Un opérateur ne peut pas modifier les prix, créer un itinéraire ou débloquer un module. Ces actions restent réservées à l'Administrateur.
+</Tip>
 
-  **Destiné à :** Personnel de billetterie, agents de comptoir, opérateurs de vente.
-</Accordion>
+## Bagagiste
 
-<Accordion title="Membre d'Équipage : Assignations de voyage et scan de billets">
-  Les Membres d'Équipage ont une vue opérationnelle ciblée adaptée aux tâches sur le terrain :
+Le rôle en charge des bagages et colis à l'enregistrement et à la livraison.
 
-  - Consulter leurs voyages assignés et les horaires de départ
-  - Scanner les billets avec code QR des passagers lors de l'embarquement via le module d'Enregistrement
-  - S'enregistrer pour leur propre shift en utilisant leur code QR personnel (avec géolocalisation)
-  - Consulter les manifests de voyage et les listes de passagers pour leurs trajets assignés
+**Permissions clés :**
 
-  Les Membres d'Équipage ne peuvent pas accéder à la gestion des réservations, aux enregistrements de paiement ou à aucun paramètre administratif.
+- Scanner le billet QR du passager pour l'associer à ses bagages.
+- Enregistrer chaque bagage ou colis avec poids, description et destinataire.
+- Générer et imprimer une étiquette avec code-barres ou QR.
+- Consulter la liste des bagages d'un voyage.
+- Marquer un bagage comme **Chargé**, **Livré** ou **Non réclamé**.
+- Rechercher un bagage par numéro d'étiquette ou par billet.
 
-  **Destiné à :** Chauffeurs, hôtesses, manutentionnaires de bagages, personnel d'embarquement.
-</Accordion>
+**Tableau de bord :** liste des voyages en enregistrement, compteur de bagages par voyage, scanner intégré.
 
-<Accordion title="Comptable : Enregistrements de paiement et factures">
-  Les Comptables ont un accès de lecture et d'exportation à toutes les données financières au sein de leur succursale assignée :
+## Hôtesse / Chef de bord
 
-  - Consulter toutes les transactions de paiement (Mobile Money, carte, espèces)
-  - Exporter les rapports de paiement, les résumés quotidiens et les factures en CSV ou PDF
-  - Accéder au module Analytics pour les tableaux de bord de revenus
-  - Consulter les enregistrements de réservation à des fins de rapprochement (lecture seule)
+Le rôle à bord du véhicule. Elle contrôle les billets et pointe l'équipage.
 
-  Les Comptables ne peuvent pas créer ou modifier des réservations, gérer des utilisateurs ou changer des paramètres.
+**Permissions clés :**
 
-  **Destiné à :** Personnel financier, auditeurs, comptables gérant le rapprochement de fin de journée.
-</Accordion>
+- Scanner chaque billet QR à l'embarquement pour valider l'accès.
+- Marquer un passager comme **Embarqué**, **Absent** ou **Retard**.
+- Pointer sa propre présence par QR géolocalisé.
+- Consulter la liste des passagers du voyage assigné.
+- Signaler un incident à bord (bouton d'alerte transmis à l'Admin).
+- Confirmer la clôture du voyage à l'arrivée.
 
-<Accordion title="Lecture Seule : Consultation uniquement pour le reporting">
-  Les utilisateurs avec le rôle Lecture Seule peuvent ouvrir et consulter toute section de la plateforme à laquelle ils ont été autorisés pour leur succursale, mais ne peuvent pas créer, modifier ou supprimer d'enregistrements. Ce rôle est idéal pour les parties prenantes ayant besoin de visibilité sans pouvoir apporter de modifications.
+**Tableau de bord :** voyage en cours, plan de sièges avec statut passager, module scanner, bouton d'alerte.
 
-  Capacités :
-
-  - Parcourir tous les modules (réservations, flotte, équipage, analyses, paiements) en mode consultation
-  - Exporter des rapports depuis le module Analytics
-  - Aucune action de création, modification, suppression ou configuration disponible
-
-  **Destiné à :** Superviseurs régionaux, investisseurs, réviseurs de conformité, consultants.
-</Accordion>
-
-## Assigner des Rôles
-
-Suivez ces étapes pour inviter un nouveau membre de l'équipe et lui assigner son rôle.
+## Créer un compte utilisateur
 
 <Steps>
-  <Step title="Ouvrir la Gestion des Utilisateurs">
-    Dans la navigation principale, allez dans **Gestion des Utilisateurs**. Vous verrez une liste de tous les utilisateurs actifs dans votre compte (ou dans votre succursale, si vous êtes Admin de Succursale).
+  <Step title="Ouvrir la gestion des utilisateurs">
+    Dans le tableau de bord Admin, allez dans **Utilisateurs > Nouveau**.
   </Step>
-  <Step title="Ajouter un Nouvel Utilisateur">
-    Cliquez sur **Ajouter un Utilisateur** dans le coin supérieur droit.
+  <Step title="Renseigner l'identité">
+    Nom complet, email professionnel, téléphone, agence de rattachement.
   </Step>
-  <Step title="Saisir les Détails de l'Utilisateur">
-    Remplissez le formulaire d'invitation :
-
-    | Champ | Requis | Description |
-    | --- | --- | --- |
-    | **Nom Complet** | Oui | Le nom d'affichage de l'utilisateur sur la plateforme |
-    | **Adresse Email** | Oui | Utilisée pour l'email d'invitation et la connexion |
-    | **Numéro de Téléphone** | Optionnel | Utile pour les membres d'équipage qui se connectent par téléphone |
-    | **Rôle** | Oui | Sélectionnez parmi les six rôles intégrés (ou un rôle personnalisé sur Entreprise) |
-    | **Succursale d'Agence** | Oui | Assignez l'utilisateur à une ou plusieurs succursales d'agence |
+  <Step title="Choisir le rôle">
+    Sélectionnez **Administrateur**, **Opérateur d'Agence**, **Bagagiste** ou **Hôtesse**. Les permissions sont appliquées automatiquement.
   </Step>
-  <Step title="Sélectionner le Rôle">
-    Choisissez le rôle approprié dans le menu déroulant **Rôle**. Une brève description des permissions de chaque rôle est affichée en ligne pour vous aider à décider.
-  </Step>
-  <Step title="Assigner à une Succursale d'Agence">
-    Sélectionnez la succursale (ou les succursales, pour les rôles Super Admin et Lecture Seule) auxquelles cet utilisateur doit avoir accès. Les Admins de Succursale ne peuvent assigner des utilisateurs qu'à leur propre succursale.
-  </Step>
-  <Step title="Envoyer l'Invitation">
-    Cliquez sur **Envoyer l'Invitation**. L'utilisateur reçoit un email avec un lien pour définir son mot de passe et activer son compte. Le lien d'invitation expire après 48 heures : vous pouvez le renvoyer depuis le profil de l'utilisateur si nécessaire.
+  <Step title="Définir le mot de passe initial">
+    Le compte reçoit un email d'activation avec un mot de passe temporaire à changer à la première connexion.
   </Step>
 </Steps>
 
-## Permissions Personnalisées
+## Bonnes pratiques
 
-Sur les licences **Entreprise**, vous pouvez aller au-delà des six rôles intégrés et définir précisément quels modules chaque rôle peut accéder.
+<CardGroup cols={2}>
+  <Card title="Principe du moindre privilège" icon="lock">
+    N'assignez le rôle Administrateur qu'aux personnes qui doivent réellement gérer la plateforme et la licence.
+  </Card>
 
-<Tabs>
-  <Tab title="Créer un Rôle Personnalisé">
-    <Steps>
-      <Step title="Accéder à la Configuration des Rôles">
-        Naviguez vers **Paramètres : Rôles & Permissions : Créer un Rôle Personnalisé**.
-      </Step>
-      <Step title="Nommer le Rôle">
-        Donnez au rôle un nom descriptif (par exemple, "Superviseur de Gare") et une description optionnelle pour la référence de votre équipe.
-      </Step>
-      <Step title="Définir les Permissions de Module">
-        Pour chaque module de la plateforme, basculez l'un des trois niveaux d'accès :
+  <Card title="Un compte par personne" icon="user">
+    Évitez les comptes partagés : la traçabilité par utilisateur est essentielle en cas d'incident ou de contrôle financier.
+  </Card>
 
-        | Niveau | Description |
-        | --- | --- |
-        | **Aucun Accès** | Le module est entièrement masqué pour ce rôle |
-        | **Consultation** | L'utilisateur peut lire les données mais ne peut pas créer ou modifier d'enregistrements |
-        | **Accès Complet** | L'utilisateur peut créer, modifier, supprimer et exporter au sein de ce module |
-      </Step>
-      <Step title="Enregistrer et Assigner">
-        Cliquez sur **Enregistrer le Rôle**. Le rôle personnalisé apparaît désormais dans le sélecteur de rôle lorsque vous ajoutez ou modifiez des utilisateurs.
-      </Step>
-    </Steps>
-  </Tab>
-  <Tab title="Modifier un Rôle Personnalisé Existant">
-    Allez dans **Paramètres : Rôles & Permissions**, trouvez le rôle personnalisé dans la liste et cliquez sur **Modifier**. Les modifications s'appliquent immédiatement à tous les utilisateurs actuellement assignés à ce rôle : pas besoin de réassigner les utilisateurs individuellement.
-  </Tab>
-  <Tab title="Cloner un Rôle Intégré">
-    Vous ne pouvez pas modifier directement les rôles intégrés, mais vous pouvez en cloner un comme point de départ pour un rôle personnalisé. Sur la page Rôles & Permissions, cliquez sur le menu **⋯** à côté de n'importe quel rôle intégré et sélectionnez **Cloner**. Renommez le clone et ajustez ses permissions de module selon vos besoins.
-  </Tab>
-</Tabs>
+  <Card title="Révoquer rapidement" icon="user-slash">
+    Désactivez immédiatement un compte lorsqu'un employé quitte l'agence, sans supprimer l'historique.
+  </Card>
 
-<Info>
-  Les rôles personnalisés sont une fonctionnalité **réservée aux licences Entreprise**. Sur les licences Premium et inférieures, vous ne pouvez assigner que les six rôles intégrés.
-</Info>
-
-## Gestion des Utilisateurs
-
-### Modifier le Rôle ou la Succursale d'un Utilisateur
-
-Pour changer le rôle ou l'assignation de succursale d'un utilisateur, allez dans **Gestion des Utilisateurs**, cliquez sur le nom de l'utilisateur pour ouvrir son profil et sélectionnez **Modifier**. Mettez à jour les champs de rôle ou de succursale et cliquez sur **Enregistrer**. Les changements prennent effet au prochain chargement de page de l'utilisateur.
-
-### Désactiver un Compte
-
-Pour retirer temporairement l'accès d'un utilisateur sans supprimer son historique :
-
-1. Ouvrez le profil de l'utilisateur dans **Gestion des Utilisateurs**.
-2. Cliquez sur **Désactiver le Compte**.
-3. Confirmez l'action. L'utilisateur est immédiatement déconnecté de toutes ses sessions actives et ne peut pas se connecter tant que le compte n'est pas réactivé.
-
-Les utilisateurs désactivés restent visibles dans la liste des utilisateurs avec un badge **Désactivé**. Réactivez-les à tout moment en ouvrant leur profil et en cliquant sur **Réactiver**.
-
-### Réinitialiser un Mot de Passe
-
-Si un utilisateur ne peut pas accéder à son compte :
-
-1. Allez dans **Gestion des Utilisateurs** et ouvrez le profil de l'utilisateur.
-2. Cliquez sur **Réinitialiser le Mot de Passe**.
-3. L'utilisateur reçoit un email avec un lien de réinitialisation du mot de passe valide pendant 24 heures.
-
-Les utilisateurs peuvent également réinitialiser leur propre mot de passe depuis la page de connexion en cliquant sur **Mot de passe oublié ?**.
-
-<Tip>
-  Utilisez la section **Module Analytics : Journal d'Audit** pour examiner l'activité des utilisateurs dans votre agence : qui a créé des réservations, traité des paiements ou modifié des paramètres, et quand. Cela est particulièrement utile pour les révisions de conformité et l'enquête sur les écarts.
-</Tip>
+  <Card title="Utiliser la connexion Face Login" icon="camera">
+    Pour les postes exposés (comptoir, embarquement), activez Face Login en complément du mot de passe.
+  </Card>
+</CardGroup>
