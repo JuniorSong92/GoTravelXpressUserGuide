@@ -1,87 +1,193 @@
 ---
-title: "Rôles Utilisateur GoTravelXpress : Admin, Opérateur, Bagagiste, Hôtesse"
-sidebarTitle: "Rôles Utilisateur"
-description: "Détail des quatre rôles GoTravelXpress : Administrateur, Opérateur d'Agence, Bagagiste et Hôtesse, avec leurs permissions et tableaux de bord."
+title: "Rôles Utilisateurs GoTravelXpress : Admin, Agents, Chauffeurs, Clients"
+sidebarTitle: "Rôles Utilisateurs"
+description: "Guide détaillé des 7 profils utilisateurs GoTravelXpress : Admin, Opérateur, Bagagiste, Hôtesse, Chauffeur, Client et Agent, avec permissions et espaces de travail."
 ---
 
-GoTravelXpress fonctionne avec un modèle strict à quatre rôles. Chaque compte accède uniquement aux modules dont il a besoin, ce qui simplifie la formation, sécurise les opérations et sépare clairement les responsabilités.
+GoTravelXpress structure ses utilisateurs autour de **7 profils clairement séparés**. Chaque profil ne voit que les modules dont il a besoin, ce qui simplifie la formation, sécurise l'exploitation et garantit une traçabilité propre. Cette page détaille les actions de chaque profil, son espace de travail (web ou mobile) et ses permissions.
 
 ## Vue d'ensemble
 
-| Rôle | Périmètre | Accès licence | Accès finances |
-| --- | --- | --- | --- |
-| Administrateur / Responsable | Toute la plateforme et toutes les agences | Oui — active la clé | Complet |
-| Opérateur d'Agence | Ventes, réservations, encaissements | Non | Caisse de son agence |
-| Bagagiste | Bagages, colis, étiquettes | Non | Aucun |
-| Hôtesse / Chef de bord | Embarquement, pointage équipage | Non | Aucun |
+<CardGroup cols={4}>
+  <Card title="Admin / Patron" icon="key" href="#admin-patron">
+    Contrôle total, propriétaire de la licence.
+  </Card>
 
-## Administrateur / Responsable
+  <Card title="Opérateur" icon="ticket" href="#opérateur">
+    Ventes comptoir et caisse.
+  </Card>
 
-C'est le rôle propriétaire de la licence. Il configure toute la plateforme.
+  <Card title="Bagagiste" icon="suitcase-rolling" href="#bagagiste">
+    Gestion des bagages et colis.
+  </Card>
 
-**Permissions clés :**
+  <Card title="Hôtesse / Chef de bord" icon="plane-departure" href="#hôtesse-chef-de-bord">
+    Contrôle embarquement et pointage.
+  </Card>
 
-- Activer et renouveler la clé de licence.
-- Créer, modifier ou supprimer des agences.
-- Créer les comptes Opérateur, Bagagiste et Hôtesse et leur assigner un rôle.
-- Gérer la flotte (bus), les itinéraires et les grilles tarifaires.
-- Planifier les voyages et affecter chauffeur + hôtesse.
-- Ouvrir et fermer les ventes.
-- Consulter toutes les statistiques et exporter les rapports.
-- Configurer les moyens de paiement (Mobile Money, cartes, espèces).
-- Accéder aux journaux de sécurité et aux réglages généraux.
+  <Card title="Chauffeur" icon="steering-wheel" href="#chauffeur">
+    Conduite du bus via app mobile.
+  </Card>
 
-**Tableau de bord :** vue globale avec KPIs (voyages, billets, revenus, taux de remplissage), alertes, activité récente et graphiques par agence.
+  <Card title="Client" icon="user" href="#client">
+    Réservation en ligne et billet mobile.
+  </Card>
 
-## Opérateur d'Agence
+  <Card title="Agent (polyvalent)" icon="users" href="#agent-polyvalent">
+    Employé terrain multi-casquettes.
+  </Card>
+</CardGroup>
 
-Le rôle de comptoir. Il ouvre les ventes et encaisse les clients.
+## Matrice des permissions
 
-**Permissions clés :**
+| Rôle | Web | Mobile | Finance | Licence | Créer utilisateurs |
+| --- | :-: | :-: | :-: | :-: | :-: |
+| **Admin / Patron** | ✅ | ✅ | Complète | ✅ | ✅ |
+| **Opérateur** | ✅ | ✅ | Sa caisse | ❌ | ❌ |
+| **Bagagiste** | ✅ | ✅ | ❌ | ❌ | ❌ |
+| **Hôtesse / Chef de bord** | ✅ | ✅ | ❌ | ❌ | ❌ |
+| **Chauffeur** | ❌ | ✅ | ❌ | ❌ | ❌ |
+| **Client** | ✅ | ✅ | Ses achats | ❌ | ❌ |
+| **Agent (polyvalent)** | ✅ | ✅ | Variable | ❌ | ❌ |
 
-- Consulter les voyages ouverts de son agence.
-- Réserver un siège pour un client (au comptoir ou par téléphone).
-- Émettre un billet avec QR code.
-- Encaisser un paiement Mobile Money, carte bancaire ou espèces.
-- Générer une facture ou un reçu.
-- Annuler ou reporter un billet selon la politique définie par l'Admin.
-- Consulter l'historique des ventes de son poste.
+## Détail des rôles
 
-**Tableau de bord :** liste des voyages du jour, plan de sièges en temps réel, caisse ouverte, ventes récentes.
+<Tabs>
+  <Tab title="Admin / Patron">
+    ### <Icon icon="key" iconType="solid" /> Administrateur / Patron
 
-<Tip>
-  Un opérateur ne peut pas modifier les prix, créer un itinéraire ou débloquer un module. Ces actions restent réservées à l'Administrateur.
-</Tip>
+    Propriétaire de la licence. Contrôle total de la plateforme.
 
-## Bagagiste
+    **Permissions clés :**
 
-Le rôle en charge des bagages et colis à l'enregistrement et à la livraison.
+    - Activer et renouveler la clé de licence.
+    - Créer, modifier ou supprimer des agences.
+    - Créer les comptes Opérateur, Bagagiste, Hôtesse et Chauffeur.
+    - Gérer la flotte (bus), les itinéraires et les grilles tarifaires.
+    - Planifier les voyages et affecter chauffeur + hôtesse.
+    - Ouvrir et clôturer les ventes.
+    - Configurer les moyens de paiement (Mobile Money, cartes, espèces).
+    - Consulter toutes les statistiques et exporter les rapports.
+    - Accéder aux logs de sécurité et aux paramètres généraux.
 
-**Permissions clés :**
+    **Espace de travail :** Tableau de bord global avec KPI (voyages, billets, revenus, taux de remplissage), alertes, activité récente et graphiques par agence.
 
-- Scanner le billet QR du passager pour l'associer à ses bagages.
-- Enregistrer chaque bagage ou colis avec poids, description et destinataire.
-- Générer et imprimer une étiquette avec code-barres ou QR.
-- Consulter la liste des bagages d'un voyage.
-- Marquer un bagage comme **Chargé**, **Livré** ou **Non réclamé**.
-- Rechercher un bagage par numéro d'étiquette ou par billet.
+    <Note>
+      Seul le compte Admin voit **Paramètres > Licence**. L'activation de licence n'est jamais déléguée.
+    </Note>
+  </Tab>
+  <Tab title="Opérateur">
+    ### <Icon icon="ticket" iconType="solid" /> Opérateur d'Agence
 
-**Tableau de bord :** liste des voyages en enregistrement, compteur de bagages par voyage, scanner intégré.
+    Le rôle comptoir. Ouvre les ventes et encaisse.
 
-## Hôtesse / Chef de bord
+    **Permissions clés :**
 
-Le rôle à bord du véhicule. Elle contrôle les billets et pointe l'équipage.
+    - Voir les voyages ouverts de son agence.
+    - Réserver un siège pour un client (au comptoir ou par téléphone).
+    - Émettre un billet avec QR code.
+    - Encaisser Mobile Money, carte ou espèces.
+    - Générer une facture ou un reçu.
+    - Annuler ou reprogrammer un billet selon les règles fixées par l'Admin.
+    - Consulter son propre historique de ventes.
 
-**Permissions clés :**
+    **Espace de travail :** Voyages du jour, plan des sièges en temps réel, caisse ouverte, ventes récentes.
 
-- Scanner chaque billet QR à l'embarquement pour valider l'accès.
-- Marquer un passager comme **Embarqué**, **Absent** ou **Retard**.
-- Pointer sa propre présence par QR géolocalisé.
-- Consulter la liste des passagers du voyage assigné.
-- Signaler un incident à bord (bouton d'alerte transmis à l'Admin).
-- Confirmer la clôture du voyage à l'arrivée.
+    <Tip>
+      Un Opérateur ne peut pas changer les prix, créer un itinéraire, ni débloquer un module. Ces actions restent chez l'Administrateur.
+    </Tip>
+  </Tab>
+  <Tab title="Bagagiste">
+    ### <Icon icon="suitcase-rolling" iconType="solid" /> Bagagiste
 
-**Tableau de bord :** voyage en cours, plan de sièges avec statut passager, module scanner, bouton d'alerte.
+    Responsable des bagages et colis à l'enregistrement et à la livraison.
+
+    **Permissions clés :**
+
+    - Scanner le QR du billet passager pour l'associer au bagage.
+    - Enregistrer chaque bagage ou colis (poids, description, destinataire).
+    - Générer et imprimer une étiquette code-barres ou QR.
+    - Voir la liste des bagages par voyage.
+    - Marquer un bagage **Chargé**, **Livré** ou **Non réclamé**.
+    - Rechercher un bagage par numéro de tag ou de billet.
+
+    **Espace de travail :** Voyages en cours d'enregistrement, compteur de bagages, scanner intégré.
+  </Tab>
+  <Tab title="Hôtesse / Chef de bord">
+    ### <Icon icon="plane-departure" iconType="solid" /> Hôtesse / Chef de bord
+
+    Le rôle à bord. Contrôle les billets et pointe l'équipage.
+
+    **Permissions clés :**
+
+    - Scanner chaque QR à l'embarquement.
+    - Marquer un passager **Embarqué**, **Absent** ou **Retard**.
+    - Pointer sa propre présence via QR géolocalisé.
+    - Voir la liste des passagers du voyage affecté.
+    - Signaler un incident à bord (alerte vers l'Admin).
+    - Confirmer la clôture du voyage à l'arrivée.
+
+    **Espace de travail :** Voyage courant, plan des sièges avec statuts, scanner, bouton d'alerte.
+  </Tab>
+  <Tab title="Chauffeur">
+    ### <Icon icon="steering-wheel" iconType="solid" /> Chauffeur
+
+    Conducteur du bus. Interface mobile uniquement.
+
+    **Permissions clés :**
+
+    - Se connecter à l'app mobile (identifiants ou Face Login).
+    - Consulter ses voyages du jour.
+    - Scanner le **QR de prise de service** (géolocalisé).
+    - Suivre les passagers embarqués, les arrêts et les alertes conflits.
+    - Scanner le **QR de fin de service** à l'arrivée.
+    - Recevoir les alertes de conflit de planning.
+
+    **Espace de travail :** App mobile exclusivement. Aucun accès web à la comptabilité.
+
+    <Warning>
+      Le profil Chauffeur n'a **pas de tableau de bord web**. Toute son activité passe par l'app mobile avec GPS obligatoire.
+    </Warning>
+  </Tab>
+  <Tab title="Client">
+    ### <Icon icon="user" iconType="solid" /> Client (Passager)
+
+    L'utilisateur final. Public.
+
+    **Accès web :**
+
+    - Rechercher un itinéraire.
+    - Choisir son siège sur le plan interactif.
+    - Payer en ligne (Mobile Money, carte).
+    - Recevoir le billet QR par email/SMS/WhatsApp.
+
+    **Accès app mobile :**
+
+    - Réservation directe depuis le téléphone.
+    - Billet QR stocké hors ligne pour le scan à l'embarquement.
+    - Suivi bagage/colis en temps réel (Enregistré → Chargé → Livré).
+    - Face Login pour se reconnecter rapidement.
+
+    **Espace de travail :** Compte personnel avec historique des réservations, billets actifs et reçus.
+  </Tab>
+  <Tab title="Agent">
+    ### <Icon icon="users" iconType="solid" /> Agent (polyvalent)
+
+    Profil générique qui regroupe **Opérateur + Bagagiste + Hôtesse** pour un employé polyvalent.
+
+    **Fonctionnement :** Dans l'app mobile, "Agent d'Agence" est un hub qui bascule entre trois activités selon les permissions accordées par l'Admin :
+
+    - Vente au comptoir mobile (mode Opérateur)
+    - Enregistrement bagage (mode Bagagiste)
+    - Contrôle embarquement (mode Hôtesse)
+
+    Les onglets visibles pour l'Agent dépendent directement du mélange de permissions attribuées dans sa fiche utilisateur.
+
+    <Tip>
+      Utilisez le profil Agent dans les petites agences où la même personne gère plusieurs étapes du voyage. Dans les grosses agences, préférez les rôles spécialisés (Opérateur, Bagagiste, Hôtesse) pour une traçabilité claire.
+    </Tip>
+  </Tab>
+</Tabs>
 
 ## Créer un compte utilisateur
 
@@ -90,10 +196,10 @@ Le rôle à bord du véhicule. Elle contrôle les billets et pointe l'équipage.
     Dans le tableau de bord Admin, allez dans **Utilisateurs > Nouveau**.
   </Step>
   <Step title="Renseigner l'identité">
-    Nom complet, email professionnel, téléphone, agence de rattachement.
+    Nom complet, email professionnel, téléphone et agence de rattachement.
   </Step>
   <Step title="Choisir le rôle">
-    Sélectionnez **Administrateur**, **Opérateur d'Agence**, **Bagagiste** ou **Hôtesse**. Les permissions sont appliquées automatiquement.
+    Sélectionnez **Admin**, **Opérateur**, **Bagagiste**, **Hôtesse**, **Chauffeur** ou **Agent (polyvalent)**. Les permissions s'appliquent automatiquement.
   </Step>
   <Step title="Définir le mot de passe initial">
     Le compte reçoit un email d'activation avec un mot de passe temporaire à changer à la première connexion.
@@ -104,18 +210,18 @@ Le rôle à bord du véhicule. Elle contrôle les billets et pointe l'équipage.
 
 <CardGroup cols={2}>
   <Card title="Principe du moindre privilège" icon="lock">
-    N'assignez le rôle Administrateur qu'aux personnes qui doivent réellement gérer la plateforme et la licence.
+    N'attribuez le rôle Administrateur qu'aux personnes qui doivent vraiment gérer la plateforme et la licence.
   </Card>
 
   <Card title="Un compte par personne" icon="user">
-    Évitez les comptes partagés : la traçabilité par utilisateur est essentielle en cas d'incident ou de contrôle financier.
+    Évitez les comptes partagés. La traçabilité individuelle est essentielle en cas d'audit financier ou d'incident.
   </Card>
 
   <Card title="Révoquer rapidement" icon="user-slash">
-    Désactivez immédiatement un compte lorsqu'un employé quitte l'agence, sans supprimer l'historique.
+    Désactivez immédiatement un compte lorsqu'un employé quitte l'agence. Ne supprimez pas son historique.
   </Card>
 
-  <Card title="Utiliser la connexion Face Login" icon="camera">
-    Pour les postes exposés (comptoir, embarquement), activez Face Login en complément du mot de passe.
+  <Card title="Utilisez Face Login" icon="camera">
+    Pour les postes exposés (comptoir, embarquement), activez Face Login en plus du mot de passe.
   </Card>
 </CardGroup>
