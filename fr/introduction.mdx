@@ -1,98 +1,114 @@
 ---
-title: "GoTravelXpress: La Plateforme Numérique pour Agences de Transport"
+title: "Introduction à GoTravelXpress : Plateforme SaaS pour Agences de Transport"
 sidebarTitle: "Introduction"
-description: "GoTravelXpress digitalise les agences de transport et de voyage avec 8 modules intégrés : réservations, billets QR, paiements, flotte, équipage, bagages et analytique."
+description: "Découvrez GoTravelXpress, la plateforme SaaS d'Eagle Tech pour digitaliser réservations, billets QR, paiements, flotte, bagages et analytique d'agence."
 ---
 
-GoTravelXpress est une plateforme cloud tout-en-un conçue spécifiquement pour les agences de transport et de voyage souhaitant abandonner les opérations papier et gérer l'ensemble de leur activité depuis un tableau de bord moderne et unique. Que vous exploitiez un service de navette unique ou un réseau d'autocars interurbains multi-sites, GoTravelXpress regroupe les réservations, la billetterie à code QR, les paiements, la gestion de flotte, la planification de l'équipage, le suivi des bagages et l'analytique en temps réel sous un même toit, le tout débloqué avec une licence perpétuelle unique. Vous l'achetez une fois, et vous conservez chaque module, chaque fonctionnalité et chaque future mise à jour, sans frais d'abonnement récurrents.
+GoTravelXpress est la plateforme SaaS conçue par Eagle Tech pour digitaliser les agences de transport et de voyage. Elle regroupe **8 modules intégrés** et **4 rôles utilisateur** dans un tableau de bord cloud unique, sous une **licence perpétuelle** unique : pas d'abonnement, pas de frais cachés.
 
-## Ce que Vous Pouvez Faire
+## Pour qui ?
+
+- Compagnies de bus et cars interurbains
+- Agences de voyages terrestres
+- Réseaux multi-agences en Afrique et au delà
+- Opérateurs de transport de colis
+
+## Les 4 rôles utilisateur
 
 <CardGroup cols={2}>
-  <Card title="Réservations" icon="ticket" href="/fr/modules/reservations">
-    Gérez les voyages, les sièges et les réservations de passagers depuis une interface unique. Traitez les réservations en agence, par téléphone et en ligne avec une disponibilité des sièges en temps réel.
+  <Card title="Administrateur / Responsable" icon="user-shield" href="/fr/agency/user-roles">
+    Active la licence, gère agences, itinéraires, tarifs, utilisateurs et voit toutes les statistiques.
   </Card>
 
-  <Card title="Billets à Code QR" icon="qrcode" href="/fr/modules/qr-tickets">
-    Émettez des billets numériques sécurisés et chiffrés avec des codes QR uniques que votre équipage peut valider en temps réel, éliminant ainsi la fraude et les entrées en double.
+  <Card title="Opérateur d'Agence" icon="ticket" href="/fr/agency/user-roles">
+    Vend les billets au comptoir, encaisse Mobile Money, carte ou espèces, imprime les billets QR.
+  </Card>
+
+  <Card title="Bagagiste" icon="suitcase-rolling" href="/fr/agency/user-roles">
+    Enregistre bagages et colis, imprime les étiquettes, scanne les QR à l'embarquement.
+  </Card>
+
+  <Card title="Hôtesse / Chef de bord" icon="user-check" href="/fr/agency/user-roles">
+    Scanne les billets QR à bord, pointe l'équipage par QR géolocalisé, signale les incidents.
+  </Card>
+</CardGroup>
+
+## Les 8 modules intégrés
+
+<CardGroup cols={2}>
+  <Card title="Planification Intelligente" icon="calendar-days" href="/fr/agency/intelligent-planning">
+    Vue calendrier, affectation automatique du personnel, détection de conflits.
+  </Card>
+
+  <Card title="Pointage QR & Équipage" icon="qrcode" href="/fr/agency/qr-checkin">
+    Contrôle des billets et pointage du personnel avec géolocalisation.
+  </Card>
+
+  <Card title="Bagagerie & Colis" icon="suitcase-rolling" href="/fr/modules/baggage-parcels">
+    Suivi complet de l'enregistrement à la livraison.
+  </Card>
+
+  <Card title="Réservations" icon="ticket" href="/fr/modules/reservations">
+    Gestion des voyages, des sièges et des billets.
+  </Card>
+
+  <Card title="Flotte & Personnel" icon="bus" href="/fr/modules/fleet-crew">
+    Bus, chauffeurs, hôtesses, bagagistes depuis un seul tableau de bord.
   </Card>
 
   <Card title="Paiements" icon="credit-card" href="/fr/modules/payments">
-    Acceptez les paiements Mobile Money (MTN, Orange Money, Wave), Visa/Mastercard, les virements bancaires et les espèces, avec génération automatique de factures et de relances pour chaque transaction.
+    Mobile Money (MTN, Orange, Wave), cartes bancaires, espèces, facturation.
   </Card>
 
-  <Card title="Flotte et Équipage" icon="bus" href="/fr/modules/fleet-crew">
-    Suivez vos autocars, assignez les chauffeurs et hôtesses, et gérez les manutentionnaires de bagages depuis un tableau de bord unifié. Gardez l'ensemble de votre opération coordonnée.
+  <Card title="Analytique" icon="chart-line" href="/fr/modules/analytics">
+    KPIs, dashboards temps réel, exports CSV/Excel/PDF.
   </Card>
 
-  <Card title="Bagages et Colis" icon="box" href="/fr/modules/baggage-parcels">
-    Enregistrez les bagages et colis, suivez-les du départ à la livraison, et consultez les statistiques complètes sur les volumes traités et les performances de livraison.
-  </Card>
-
-  <Card title="Analytique" icon="chart-bar" href="/fr/modules/analytics">
-    Accédez à des tableaux de bord et des statistiques en temps réel sur le chiffre d'affaires, le taux d'occupation, les itinéraires et les performances de l'équipage pour prendre des décisions plus rapides et éclairées.
-  </Card>
-
-  <Card title="Gestion d'Agence" icon="building" href="/fr/agency/multi-agency">
-    Gérez plusieurs agences depuis un seul compte. Configurez les rôles utilisateurs, assignez des permissions granulaires par site, et gardez chaque succursale totalement indépendante ou connectée.
-  </Card>
-
-  <Card title="API SaaS" icon="code" href="/fr/api/overview">
-    Intégrez GoTravelXpress à votre ERP, logiciel de comptabilité ou applications mobiles existants grâce à l'API REST entièrement documentée incluse avec les licences Premium et Entreprise.
+  <Card title="API SaaS" icon="plug" href="/fr/api/overview">
+    API REST documentée pour intégrer vos autres systèmes.
   </Card>
 </CardGroup>
 
-## Pourquoi Choisir GoTravelXpress
+## Pourquoi GoTravelXpress ?
+
+<CardGroup cols={3}>
+  <Card title="Une licence à vie" icon="infinity">
+    Achat unique, sans abonnement récurrent.
+  </Card>
+
+  <Card title="Support 24/7" icon="headset">
+    Une équipe réactive de l'installation au quotidien.
+  </Card>
+
+  <Card title="Sécurité d'abord" icon="shield-halved">
+    Chiffrement bout en bout, paiements sécurisés.
+  </Card>
+
+  <Card title="Évolue avec vous" icon="chart-line">
+    D'un véhicule à une flotte entière.
+  </Card>
+
+  <Card title="Prêt à l'emploi" icon="box-open">
+    Installation, formation et configuration prises en charge.
+  </Card>
+
+  <Card title="Pensé pour l'Afrique" icon="globe">
+    Mobile Money, connectivité mobile, multilingue.
+  </Card>
+</CardGroup>
+
+## Prochaines étapes
 
 <CardGroup cols={2}>
-  <Card title="Toujours Fiable" icon="shield-check" href="/fr/support/faq">
-    Vos données et opérations restent disponibles en permanence, où que vous soyez. L'architecture cloud assure le fonctionnement de votre agence sans interruption.
+  <Card title="Démarrage rapide" icon="rocket" href="/fr/quickstart">
+    Activez votre licence et lancez votre premier voyage.
   </Card>
 
-  <Card title="Assistance 24/7" icon="headset" href="/fr/support/contact">
-    Une équipe d'assistance réactive vous accompagne à chaque étape : de la configuration initiale et la formation de votre équipe jusqu'aux opérations quotidiennes et au dépannage.
-  </Card>
-
-  <Card title="Sécurité Avant Tout" icon="lock" href="/fr/account/security">
-    Chaque compte est protégé par des options d'authentification sécurisées incluant Face Login et la connexion Google. Tous les billets QR utilisent des codes chiffrés uniques, et chaque canal de paiement est sécurisé de bout en bout.
-  </Card>
-
-  <Card title="Évolue avec Vous" icon="arrows-up-to-line" href="/fr/license-types">
-    Que vous commenciez avec un seul véhicule ou que vous montiez en charge jusqu'à une flotte régionale entière, la plateforme s'étend en parallèle de votre activité sans nécessiter de changement de plan ou d'achat supplémentaire.
-  </Card>
-
-  <Card title="Une Licence, Tout Inclus" icon="infinity" href="/fr/license-types">
-    Pas d'abonnement. Pas de frais cachés. Achetez votre licence une fois et conservez l'accès à tous les systèmes pour toujours : réservations, paiements, API, analytique, et plus encore.
-  </Card>
-
-  <Card title="Prêt à l'Emploi" icon="rocket" href="/fr/quickstart">
-    L'installation, la configuration initiale et la formation de l'équipe sont prises en charge pour vous. Vous pouvez accepter des réservations et émettre des billets QR dès le premier jour.
+  <Card title="Types de licence" icon="key" href="/fr/license-types">
+    Comparez Gratuite, Essai, Basique, Premium et Entreprise.
   </Card>
 </CardGroup>
 
-## Régions et Langues Prises en Charge
-
-GoTravelXpress est conçu pour les marchés de transport africains. Il prend nativement en charge les fournisseurs de **Mobile Money** : MTN Mobile Money, Orange Money et Wave, qui sont les principaux canaux de paiement en Afrique centrale, de l'Ouest et de l'Est. La plateforme convient également aux agences traitant des paiements par Visa/Mastercard et en espèces partout dans le monde.
-
-L'interface est entièrement disponible en **9 langues** :
-
-| Langue | Langue | Langue |
-| --- | --- | --- |
-| 🇬🇧 English | 🇫🇷 Français | 🇪🇸 Español |
-| 🇸🇦 العربية | 🇮🇹 Italiano | 🇵🇹 Português |
-| 🇷🇺 Русский | 🇩🇪 Deutsch | 🇨🇳 中文 |
-
-Vous pouvez changer la langue de l'interface à tout moment depuis l'écran de connexion ou dans les paramètres de votre compte.
-
-## Exigences Système
-
-GoTravelXpress est entièrement basé sur le cloud : rien à télécharger ou à installer sur votre ordinateur. Tout ce dont vous avez besoin pour commencer est :
-
-- Un navigateur web moderne (Google Chrome, Mozilla Firefox, Microsoft Edge ou Safari)
-- Une connexion Internet stable
-
-Vos données sont stockées en toute sécurité dans le cloud, vous pouvez donc accéder à votre tableau de bord depuis n'importe quel appareil, depuis n'importe quel endroit, à tout moment.
-
 <Note>
-  Prêt à démarrer ? Rendez-vous sur le [guide de démarrage rapide](/fr/quickstart) pour demander votre licence, vous connecter pour la première fois, et émettre votre premier billet QR en quelques minutes.
+  Découvrez la présentation publique sur [gotravelxpress.wuaze.com/welcome.php](https://gotravelxpress.wuaze.com/welcome.php) et connectez-vous sur [gotravelxpress.wuaze.com/index.php](https://gotravelxpress.wuaze.com/index.php).
 </Note>

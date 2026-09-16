@@ -1,134 +1,76 @@
 ---
-title: "Gestion des Réservations : Voyages, Sièges et Billets"
+title: "Réservations"
 sidebarTitle: "Réservations"
-description: "Gérez les voyages, l'attribution des sièges et les billets passagers de bout en bout avec les réservations GoTravelXpress, de la création de la réservation à l'enregistrement."
+description: "Gérez les réservations de voyage avec GoTravelXpress : séléction de sièges, vente de billets, modifications et annulations."
 ---
 
-Le module Réservations est le coeur opérationnel de GoTravelXpress. Il donne à votre agence un contrôle total sur l'ensemble du cycle de vie de chaque voyage, de la planification d'un nouveau voyage et de l'ouverture des sièges à la vente, en passant par le traitement des réservations et la gestion des paiements, jusqu'à l'émission des billets numériques et la validation des passagers à l'embarquement. Cette page couvre tout ce dont vous avez besoin pour créer des voyages, gérer les réservations, contrôler le placement des sièges et comprendre comment les réservations confirmées s'intègrent de manière fluide à la génération de billets par code QR.
+GoTravelXpress permet aux Opérateurs d'Agence de gérer l'ensemble du cycle de vie des réservations : depuis la sélection d'un siège sur le plan interactif jusqu'à l'émission du billet et son remboursement. Cette page présente les étapes de vente au comptoir et les règles de modification/annulation définies par l'Administrateur.
 
----
+## États d'un billet
 
-## Créer un Voyage
+Un billet dans GoTravelXpress traverse plusieurs états selon son statut de paiement et d'utilisation :
 
-Avant que les passagers ne puissent réserver, vous devez définir un voyage. Un voyage regroupe un itinéraire, un horaire, un véhicule et une structure de tarification en une seule unité réservable.
+- **Réservé** : siège bloqué temporairement sans paiement.
+- **Payé** : billet confirmé et payé par le client ou l'opérateur.
+- **Embarqué** : passager validé à l'embarquement (pointage GPS ou scan QR).
+- **Annulé** : réservation annulée conformément à la politique en vigueur.
+- **Remboursé** : billet annulé avec remboursement effectué via le module de paiement.
 
 <Steps>
-  <Step title="Sélectionner un Itinéraire">
-    Accédez à **Réservations → Voyages → Nouveau Voyage** et choisissez l'origine et la destination parmi vos itinéraires enregistrés. Si l'itinéraire n'existe pas encore, créez-le d'abord sous **Paramètres → Itinéraires**.
+  <Step title="Rechercher un voyage">
+    Depuis le comptoir, saisissez la ville de départ, la destination et la date de voyage pour afficher les dessertes disponibles dans GoTravelXpress.
   </Step>
-  <Step title="Définir les Heures de Départ et d'Arrivée">
-    Saisissez la date et l'heure de départ prévues, puis l'heure d'arrivée estimée. Ces valeurs apparaissent sur le billet du passager et servent à filtrer la disponibilité en temps réel.
+  <Step title="Choisir un siège">
+    Le plan de sièges interactif affiche chaque place : libre, bloquée ou vendue. Sélectionnez un siège libre pour le client.
   </Step>
-  <Step title="Assigner un Véhicule">
-    Choisissez le véhicule pour ce voyage dans votre flotte. GoTravelXpress charge automatiquement la disposition des sièges en fonction de la configuration du véhicule sélectionné, aucun mappage manuel des sièges n'est nécessaire.
+  <Step title="Saisir le passager">
+    Renseignez les informations du passager : nom, prénom, téléphone, carte d'identité et choix de la catégorie si applicable.
   </Step>
-  <Step title="Configurer les Tarifs">
-    Définissez le tarif de base du voyage. Vous pouvez définir des paliers de prix séparés (par exemple, adulte, enfant, VIP) si votre agence les utilise. Les tarifs sont appliqués au moment de la réservation et reflétés sur la facture automatique.
-  </Step>
-  <Step title="Publier le Voyage">
-    Vérifiez le résumé et cliquez sur **Publier**. Le voyage devient immédiatement disponible pour réservation via le tableau de bord de l'agent. La disponibilité des sièges en temps réel est suivie à partir de ce moment.
+  <Step title="Payer et émettre le billet">
+    Procédez au paiement au guichet ou enregistrez une réservation en ligne pour paiement différé. Le billet est alors généré avec son QR code d'embarquement.
   </Step>
 </Steps>
 
-<Note>
-  La disponibilité des sièges se met à jour en temps réel dans toutes les sessions des agents. Lorsqu'un agent attribue un siège, il est instantanément marqué comme indisponible pour tous les autres agents travaillant sur le même voyage, ce qui évite les doubles réservations.
-</Note>
+## Réservation en ligne par le client
 
----
+Le client peut réserver en ligne depuis la page de recherche (welcome.php), sans intervention d'un opérateur. Après avoir choisi son voyage et son siège :
 
-## Gérer les Réservations
+- un délai de paiement est accordé (configurable par l'Administrateur via Paramètres) ;
+- sans paiement dans ce délai, le siège repasse automatiquement au statut **libre** ;
+- l'opérateur peut suivre ces réservations en attente et finaliser le paiement au comptoir.
 
-Une fois qu'un voyage est en ligne, les passagers peuvent être réservés soit par un agent via le tableau de bord, soit via votre site web ou votre application mobile si vous avez intégré l'API GoTravelXpress.
+## Plan de sièges interactif
 
-### Comment les Agents Traitent les Réservations
+Le plan de sièges est l'outil central des réservations. Il permet :
 
-Depuis **Réservations → Nouvelle Réservation**, un agent sélectionne le voyage, choisit un siège disponible, saisit les détails du passager (nom, contact, pièce d'identité si requis), sélectionne un mode de paiement et confirme la réservation. Le système crée l'enregistrement de la réservation et déclenche immédiatement le traitement du paiement.
+- d'afficher la disposition physique du véhicule (bus, mini-bus, car) ;
+- de repérer visuellement les sièges et leur statut ;
+- de bloquer temporairement une place pendant le processus de vente.
 
-### Statuts des Réservations
+### Statuts visuels
 
-Chaque réservation passe par un ensemble de statuts définis afin que vous sachiez exactement où en est une réservation :
-
-<Tabs>
-  <Tab title="En Attente">
-    La réservation a été créée mais le paiement n'a pas encore été confirmé. Une réservation en attente retient temporairement le siège. Si le paiement n'est pas effectué dans le délai d'attente configuré, le siège est automatiquement libéré.
-  </Tab>
-  <Tab title="Confirmée">
-    Le paiement a été reçu et validé. La réservation est verrouillée, le siège est définitivement attribué et le billet par code QR est généré et remis au passager.
-  </Tab>
-  <Tab title="Annulée">
-    La réservation a été annulée soit par le passager (via votre équipe d'assistance), soit par un agent. Le siège est remis dans le pool disponible. Consultez le [module Paiements](/fr/modules/payments) pour la gestion des remboursements.
-  </Tab>
-</Tabs>
-
-<Tip>
-  Pour les réservations de groupe, utilisez la fonctionnalité **Réservation en Masse** sous **Réservations → Réservation de Groupe**. Vous pouvez sélectionner plusieurs sièges consécutifs ou non consécutifs en une seule transaction, appliquer un code de réduction groupe et générer une facture consolidée pour tout le groupe.
-</Tip>
-
----
-
-## Gestion des Sièges
-
-Le plan de salle vous donne une vue visuelle et en direct de chaque siège sur un voyage, ce qui facilite la gestion de la disponibilité, la prise en compte des demandes spéciales et la prévention du surbooking.
-
-### Vue du Plan de Sièges
-
-Ouvrez n'importe quel voyage actif et cliquez sur **Voir le Plan de Sièges**. Chaque siège est codé par couleur :
-
-| Couleur | Statut |
+| Statut | Description |
 | --- | --- |
-| **Vert** | Disponible, peut être réservé |
-| **Jaune** | Retenu, délai de paiement en cours |
-| **Rouge** | Confirmé, déjà réservé |
-| **Gris** | Bloqué, retiré manuellement de la vente |
+| **Libre** | Siège disponible à la réservation. |
+| **Bloqué** | Réservation en cours ou paiement en attente. |
+| **Vendu** | Billet déjà payé et confirmé. |
 
-### Attribuer et Bloquer des Sièges
+## Modification et annulation
 
-Cliquez sur n'importe quel siège vert pour l'attribuer à une réservation en cours. Pour bloquer un siège (par exemple, pour un usage de l'équipage ou une attente VIP), faites un clic droit sur le siège et sélectionnez **Bloquer le Siège**. Les sièges bloqués n'apparaissent pas comme disponibles et ne peuvent pas être vendus par erreur.
+Les règles de modification et d'annulation sont définies par l'Administrateur dans le module licence et paramètres :
 
-### Gérer le Surbooking
+- **Modification** : changement de date, de voyage ou de siège, dans la limite des autorisations et disponibilités.
+- **Annulation** : génère un billet annulé et, si configuré, initie automatiquement un remboursement à traiter via le module [Paiements](/fr/modules/payments).
+- **Pénalité** : le montant de retenue et les délais sont fixés par l'Administateur.
 
-GoTravelXpress n'autorise pas le surbooking par défaut : le système impose une limite stricte correspondant au nombre total de sièges du véhicule. Si vous devez gérer une liste d'attente, utilisez l'indicateur **Liste d'Attente** lors de la création d'une réservation au-delà de la capacité; le système vous alertera automatiquement lorsqu'un siège confirmé deviendra disponible.
+## Liens connexes
 
----
+<CardGroup>
+  <Card title="Paiements" icon="credit-card" href="/fr/modules/payments">
+    Consultez les transactions, encaissements et remboursements associés aux billets.
+  </Card>
 
-## Génération des Billets
-
-Lorsqu'une réservation atteint le statut **Confirmée**, GoTravelXpress génère automatiquement un billet par code QR unique et crypté pour le passager. Aucune action manuelle n'est requise de la part de l'agent.
-
-Le billet est directement lié à l'enregistrement de la réservation et contient toutes les informations clés du voyage encodées dans le code QR. Les billets sont remis aux passagers par e-mail et sont également accessibles dans la plateforme pour que les agents puissent les renvoyer ou les réimprimer à la demande.
-
-<Info>
-  La génération, la livraison et le scan des billets à l'embarquement sont gérés par le module Billets QR. Consultez [Billets QR](/fr/modules/qr-tickets) pour tous les détails sur la manière dont les billets sont sécurisés, vérifiés et utilisés lors de l'enregistrement.
-</Info>
-
----
-
-## Cycle de Vie d'une Réservation
-
-Chaque réservation dans GoTravelXpress suit le même flux de bout en bout du moment où un passager demande un siège jusqu'au moment où il embarque :
-
-<Steps>
-  <Step title="Demande de Réservation">
-    Un agent (ou un canal de réservation intégré) crée une réservation pour un passager sur un voyage publié, en sélectionnant le siège et en saisissant les détails du passager.
-  </Step>
-  <Step title="Paiement">
-    L'agent traite le paiement via Mobile Money (MTN, Orange Money, Wave), Visa/Mastercard, virement bancaire ou espèces. Le système attend la confirmation du paiement avant de faire avancer la réservation.
-  </Step>
-  <Step title="Confirmation">
-    Une fois le paiement validé, le statut de la réservation passe à **Confirmée**. Le siège est verrouillé définitivement et ne peut pas être réattribué.
-  </Step>
-  <Step title="Émission du Billet QR">
-    La plateforme génère automatiquement un billet par code QR unique crypté et le remet au passager par e-mail. Le billet est également disponible pour que l'agent puisse le réimprimer depuis l'écran de détail de la réservation.
-  </Step>
-  <Step title="Enregistrement">
-    À l'embarquement, l'équipage scanne le code QR du passager à l'aide du module QR Check-in & Crew. Le système vérifie le billet en temps réel et marque le passager comme embarqué.
-  </Step>
-</Steps>
-
-<Accordion title="Que se passe-t-il si le paiement échoue ?">
-  Si le paiement n'est pas effectué ou est refusé, la réservation reste au statut **En Attente**. Le siège retenu est libéré après le délai d'attente configuré (défini par l'administrateur de votre agence sous **Paramètres → Politique de Réservation**). Vous pouvez également annuler manuellement une réservation en attente à tout moment pour libérer immédiatement le siège.
-</Accordion>
-
-<Accordion title="Puis-je modifier une réservation confirmée ?">
-  Les agents disposant des autorisations de rôle appropriées peuvent modifier les détails du passager (nom, contact) sur une réservation confirmée. Pour changer le siège ou le voyage, la réservation originale doit être annulée et une nouvelle doit être créée. Les règles de remboursement partiel s'appliquent : consultez le [module Paiements](/fr/modules/payments) pour plus de détails.
-</Accordion>
+  <Card title="Billets QR" icon="qrcode" href="/fr/modules/qr-tickets">
+    Découvrez le système de billets QR utilisé à l'embarquement.
+  </Card>
+</CardGroup>

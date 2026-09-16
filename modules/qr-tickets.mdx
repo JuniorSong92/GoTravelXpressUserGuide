@@ -1,149 +1,70 @@
 ---
-title: "QR Code Tickets: Boarding Verification and Security"
+title: "QR Tickets: Secure Issuance and Validation"
 sidebarTitle: "QR Tickets"
-description: "GoTravelXpress generates encrypted QR code tickets for each reservation. Verify tickets instantly at boarding with the real-time scanning system."
+description: "Learn about GoTravelXpress encrypted QR tickets: automatic generation at issuance, multichannel distribution, and secure validation at boarding by the Hostess and Baggage Handler."
 ---
 
-GoTravelXpress replaces paper tickets with secure, encrypted QR code tickets that are generated automatically the moment a reservation is confirmed. Each ticket is uniquely tied to a single passenger and a single trip — it cannot be duplicated, transferred, or reused. This page covers how QR tickets are generated, what security mechanisms protect them, how your crew scans and verifies them at boarding, and what the passenger experience looks like from booking to gate.
+GoTravelXpress automatically generates a unique encrypted QR code for every ticket issued. This ticket can be printed at the counter by the Agency Operator, or sent directly to the customer by email, SMS, or WhatsApp. The Hostess scans the QR at boarding to validate access, while the Baggage Handler uses it to associate luggage and parcels with the trip. Each QR token is single-use and can only be reissued by an Administrator.
 
----
-
-## How QR Tickets Work
-
-QR tickets follow a straightforward lifecycle that begins the instant payment is confirmed and ends when the passenger boards the vehicle.
+## Issuing a QR Ticket
 
 <Steps>
-  <Step title="Reservation Confirmed">
-    When a reservation moves to **Confirmed** status — meaning payment has been validated — GoTravelXpress immediately triggers ticket generation. No manual action is required from the agent.
+  <Step title="Issue the ticket">
+    At the counter sale, the Agency Operator finalizes the booking. GoTravelXpress then automatically generates the unique encrypted QR code associated with that ticket.
   </Step>
-  <Step title="Unique QR Code Generated">
-    The platform creates a unique, encrypted QR code for the reservation. The code encodes all essential journey data and a one-time cryptographic signature that cannot be forged or replicated.
+  <Step title="Deliver to customer">
+    The Agency Operator can print the ticket with its QR code, or send the digital ticket to the customer by email, SMS, or WhatsApp.
   </Step>
-  <Step title="Ticket Delivered to Passenger">
-    The QR code ticket is sent to the passenger by email. If your agency uses an integrated booking app or website, the ticket also appears in the passenger's account. Agents can resend or reprint the ticket from the reservation detail screen at any time.
-  </Step>
-  <Step title="Scanned at Boarding">
-    The passenger presents the ticket on their phone screen or as a printed copy. Crew scan the QR code using the GoTravelXpress QR Check-in & Crew interface. The system verifies the ticket against the server in real time and gives an immediate pass or reject response.
+  <Step title="Check the status">
+    The ticket status appears in the system as "issued" and ready for validation at boarding.
   </Step>
 </Steps>
 
----
+## Key Features
 
-## Ticket Security
+<CardGroup cols="2">
+  <Card title="Security" icon="lock">
+    Unique encrypted QR code per ticket. Single-use token with automatic invalidation after scanning, preventing any double use or counterfeiting.
+  </Card>
 
-GoTravelXpress uses multiple layers of protection to ensure every ticket is authentic, single-use, and tamper-proof.
+  <Card title="Distribution" icon="paper-plane">
+    Flexible distribution at the customer's choice: counter printing, or sending by email, SMS, or WhatsApp directly from the platform.
+  </Card>
 
-<CardGroup cols={2}>
-  <Card title="256-Bit Encryption" icon="lock" href="/modules/qr-tickets#ticket-security">
-    Every QR code is generated with 256-bit encryption. The encoded data cannot be read or altered without the platform's private key, making counterfeiting effectively impossible.
+  <Card title="Boarding" icon="qrcode">
+    The Hostess scans the QR at boarding via the mobile app. The status instantly switches to "validated" with geolocated check-in.
   </Card>
-  <Card title="Unique Per Reservation" icon="fingerprint" href="/modules/reservations">
-    No two tickets share the same QR code. Each ticket is cryptographically bound to a specific reservation ID, passenger, trip, seat, and timestamp — duplication is structurally prevented.
-  </Card>
-  <Card title="Real-Time Server Verification" icon="server" href="/agency/qr-checkin">
-    At scan time, the QR Check-in system sends the ticket ID to the GoTravelXpress server for live validation. The server checks the reservation status, boarding state, and code integrity before returning a result — offline screenshots and photocopies are rejected.
-  </Card>
-  <Card title="Single-Use Enforcement" icon="shield-check" href="/agency/qr-checkin">
-    Once a ticket has been successfully scanned and the passenger marked as boarded, any subsequent scan of the same QR code is flagged as already used and denied. This prevents ticket sharing between passengers.
+
+  <Card title="Status" icon="rotate">
+    Real-time tracking of the ticket lifecycle: issued, validated, invalidated. Reissue only by an Administrator via Settings > License.
   </Card>
 </CardGroup>
 
+## Boarding Workflow
+
+1. The customer presents their ticket (paper or digital) to the Hostess
+2. The Hostess scans the QR with their terminal
+3. GoTravelXpress verifies the token's authenticity and uniqueness
+4. The ticket status switches to "validated" with the location and time logged
+5. The customer is authorized to board
+
 <Warning>
-  **Never share your QR code ticket with another person.** Each ticket is single-use and linked to a specific passenger record. A ticket that has already been scanned at boarding will be rejected if presented again, even from a different device. If a passenger loses their ticket, the agent can resend it from the reservation screen — do not forward the original QR image.
+  Once scanned, the QR token is immediately invalidated and can no longer be reused. Any rescan attempt will show an already-used ticket alert. In case of a technical issue during scanning, contact an Administrator immediately to proceed with a reissue from the license management panel.
 </Warning>
 
----
+## Luggage and Parcel Tracking
 
-## Scanning & Verification
+The Baggage Handler uses the same ticket QR code to register and track the luggage and parcels associated with the journey:
 
-Crew use the **QR Check-in & Crew** module to manage boarding. The scanner interface is optimised for speed at the gate — a boarding crew member can process passengers continuously without navigating between screens.
+- Scan the ticket QR to associate each bag with the passenger
+- Record the number of parcels and weight
+- Verify matching during loading and delivery
+- Full traceability from traveler to personal belongings
 
-### Valid Ticket Response
+## Support
 
-When a ticket scans successfully, the interface shows:
+If you experience any issue with a QR ticket, contact ProzigZag support:
 
-- ✅ A clear **green confirmation screen**
-- Passenger name and seat number
-- Trip details (route, departure time)
-- Confirmation that the passenger has been marked as **Boarded**
-
-### Invalid or Rejected Ticket Responses
-
-The system returns a distinct response for each failure scenario so crew can take the right action immediately:
-
-<Accordion title="Ticket Already Scanned">
-  The QR code was validated earlier in the same boarding session. The passenger has already boarded. Display the original scan timestamp to crew to confirm.
-</Accordion>
-
-<Accordion title="Ticket Not Found">
-  The QR code does not match any reservation in the system. This may indicate a forged or manually altered code. Crew should direct the passenger to an agent desk for verification.
-</Accordion>
-
-<Accordion title="Reservation Cancelled">
-  The underlying reservation was cancelled after the ticket was issued. The passenger needs to resolve their booking at the agent desk before boarding.
-</Accordion>
-
-<Accordion title="Wrong Trip or Date">
-  The ticket is valid but belongs to a different trip or departure date. Crew should inform the passenger and direct them to the correct gate or departure.
-</Accordion>
-
-<Note>
-  Boarding management, crew assignments, and attendance tracking are handled in the **QR Check-in & Crew** module. That module integrates directly with the QR ticket system — scan results update the reservation record in real time so the dashboard always reflects the current boarding count.
-</Note>
-
----
-
-## Ticket Format
-
-Each QR code ticket encodes the following data. When crew scan the code, the verification screen displays all of this information at a glance:
-
-<ResponseField name="passenger_name" type="string">
-  Full name of the passenger as entered at booking time.
-</ResponseField>
-
-<ResponseField name="ticket_id" type="string">
-  A unique alphanumeric identifier for this specific ticket instance. Used for support lookups and audit logs.
-</ResponseField>
-
-<ResponseField name="trip_details" type="object">
-  Origin, destination, scheduled departure date and time, and estimated arrival time.
-</ResponseField>
-
-<ResponseField name="seat_number" type="string">
-  The seat assigned to the passenger on the vehicle.
-</ResponseField>
-
-<ResponseField name="reservation_status" type="string">
-  Current status at the time of scan: `confirmed`, `boarded`, or `cancelled`.
-</ResponseField>
-
-<ResponseField name="expiry" type="datetime">
-  The ticket is valid only for its scheduled departure window. Attempting to scan the ticket after the trip's departure has passed returns an expired status.
-</ResponseField>
-
----
-
-## Passenger Experience
-
-GoTravelXpress is designed to make the ticket experience as simple as possible for passengers, whether they are tech-savvy or prefer paper.
-
-### Receiving the Ticket
-
-After a confirmed booking, the passenger receives their QR code ticket:
-
-- **By email** — automatically sent to the email address entered at booking. The email contains the QR image as an attachment and embedded in the body for easy access.
-- **Via booking portal or app** — if your agency runs an integrated booking channel using the GoTravelXpress API, the ticket appears in the passenger's account under **My Bookings**.
-- **Agent reprint** — for passengers who did not receive their email or who prefer a physical copy, any agent can reprint the ticket from **Reservations → [Booking] → Reprint Ticket** and hand it over at the counter.
-
-### Presenting the Ticket at Boarding
-
-Passengers have two equally valid options for presenting their ticket:
-
-<Tabs>
-  <Tab title="Mobile Screen">
-    The passenger opens the ticket email (or booking app) on their smartphone and displays the QR code on screen. Crew point the scanner at the screen — no app installation is required on the passenger's side. Ensure the screen brightness is turned up in low-light boarding environments.
-  </Tab>
-  <Tab title="Printed Copy">
-    The passenger prints the ticket email or the attached QR image on any standard printer. A black-and-white print is fully accepted. The QR code must be printed at a minimum size of 3 × 3 cm and must not be folded across the code area to remain scannable.
-  </Tab>
-</Tabs>
+- Email: [contact@prozigzag.com](mailto:contact@prozigzag.com)
+- Phone: +237 695 602 293
+- Address: Yaoundé

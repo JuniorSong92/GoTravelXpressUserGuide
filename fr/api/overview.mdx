@@ -1,135 +1,86 @@
 ---
-title: "API REST GoTravelXpress — Vue d’ensemble et guide de référence"
-sidebarTitle: "Vue d’ensemble"
-description: "L’API SaaS de GoTravelXpress vous permet d’intégrer les réservations, billets, paiements et la gestion des agences dans vos propres applications via des points de terminaison REST."
+title: "GoTravelXpress API: REST JSON pour agences de transport"
+sidebarTitle: "Aperçu"
+description: "Découvrez l'API REST/JSON GoTravelXpress Premium et Entreprise. Authentification par Bearer, pagination classique et codes HTTP standards pour intégrer vos agences."
 ---
 
-L’API GoTravelXpress est une interface RESTful qui permet à vos applications de créer des réservations, de vérifier des billets QR code, de traiter des paiements et de gérer les données des agences par programmation. Que vous construisiez une application mobile, connectiez un système ERP ou automatisiez vos flux comptables, chaque capacité exposée dans le tableau de bord GoTravelXpress est également disponible via cette API. Cette page couvre l’URL de base, les formats de requête et de réponse, les codes de statut HTTP, la limitation de débit et le versionnage.
+Cette page présente l'API REST/JSON de GoTravelXpress réservée aux licences Premium et Entreprise d'Eagle Tech. Elle vous permet d'intégrer les opérations de transport (ventes, bagages, embarquement) directement dans vos systèmes métier. Avant de passer vos premiers appels, vous devez disposer d'une licence active et d'une clé API. Le contrat d'accès exact est disponible sur demande.
 
-<Note>
-  L’accès à l’API nécessite une licence **Premium** ou **Enterprise**. Les titulaires des licences Free, Trial et Basic ne peuvent pas s’authentifier auprès de l’API. [Contactez l’équipe GoTravelXpress](mailto:contact@prozigzag.com) pour mettre à niveau votre licence.
-</Note>
+## Points de terminaison
 
-## URL de base
-
-Tous les points de terminaison de l’API partagent l’URL de base suivante. Incluez-la comme préfixe pour chaque requête que vous effectuez.
+L'API est exposée sous la forme suivante :
 
 ```text
 https://gotravelxpress.wuaze.com/api/v1
 ```
 
-## Format de requête
+> Cette URL d'exemple est à confirmer avec l'équipe GoTravelXpress.
 
-Chaque requête doit inclure deux en-têtes :
+Toutes les requêtes et réponses utilisent le format JSON et l'encodage UTF-8.
 
-- **`Content-Type: application/json`** — indique à l’API que vous envoyez un corps JSON.
-- **`Authorization: Bearer {token}`** — authentifie votre requête. Consultez la page [Authentification](/fr/api/authentication) pour obtenir un jeton.
+## Codes HTTP
 
-**Exemple : requête authentifiée avec un corps JSON :**
+L'API renvoie des codes HTTP standards.
 
-```bash
-curl -X POST https://gotravelxpress.wuaze.com/api/v1/reservations \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer eyJhbGci..." \
-  -d '{
-    "trip_id": "trip_abc123",
-    "passenger_name": "Alice Mbarga",
-    "passenger_phone": "+237691000001",
-    "seat_number": "12A",
-    "payment_method": "mobile_money"
-  }'
-```
+| Code | Signification | Cas courant |
+| :-- | :-- | :-- |
+| 200 | OK | Requête réussie et réponse présente. |
+| 201 | Created | Ressource créée avec succès. |
+| 400 | Bad Request | Paramètres manquants ou invalides. |
+| 401 | Unauthorized | Token manquant ou invalide. |
+| 403 | Forbidden | Accès refusé pour ce rôle ou cette ressource. |
+| 404 | Not Found | Ressource introuvable. |
+| 409 | Conflict | Conflit métier (doublon, état incompatible). |
+| 429 | Too Many Requests | Limite de débit dépassée. |
+| 500 | Internal Server Error | Erreur interne du serveur. |
 
-## Format de réponse
+## Pagination
 
-Toutes les réponses retournent du JSON. Les réponses réussies suivent cette enveloppe :
+Les listes paginées acceptent deux paramètres de requête :
 
-```json
-{
-  "success": true,
-  "data": { },
-  "message": "Operation successful"
-}
-```
+| Paramètre | Type | Défaut | Description |
+| :-- | :-- | :-- | :-- |
+| `page` | entier | `1` | Numéro de la page demandée. |
+| `limit` | entier | `20` | Nombre d'éléments par page. |
 
-| Champ | Type | Description |
-| --- | --- | --- |
-| `success` | boolean | `true` lorsque l’opération s’est terminée sans erreur |
-| `data` | object \| array | La ressource ou la collection retournée |
-| `message` | string | Résumé lisible du résultat |
-
-Les réponses d’erreur utilisent la même enveloppe avec `success: false` et un objet `error` à la place de `data` :
+La réponse paginée type inclut un objet `meta` :
 
 ```json
 {
-  "success": false,
-  "error": {
-    "code": "RESERVATION_NOT_FOUND",
-    "message": "No reservation found with the given ID."
+  "data": [],
+  "meta": {
+    "page": 1,
+    "limit": 20,
+    "total": 0,
+    "total_pages": 0
   }
 }
 ```
 
-| Champ | Type | Description |
-| --- | --- | --- |
-| `success` | boolean | Toujours `false` pour les erreurs |
-| `error.code` | string | Identifiant d’erreur lisible par machine |
-| `error.message` | string | Description lisible de ce qui s’est mal passé |
+## Rate limiting
 
-## Codes de statut HTTP
+Un rate limiting est en place sur les points de terminaison de l'API. Les détails exacts (nombre de requêtes par minute et stratégie de fenêtre) sont à confirmer avec l'équipe GoTravelXpress.
 
-L’API utilise des codes de statut HTTP standard pour communiquer le résultat de chaque requête.
+<Note>
+  Pour obtenir le contrat exact d'accès à l'API et confirmer la base URL ainsi que les limites de débit, contactez l'équipe par email à [contact@prozigzag.com](mailto:contact@prozigzag.com).
+</Note>
 
-| Code | Nom | Quand vous le voyez |
-| --- | --- | --- |
-| `200` | OK | La requête a réussi et un corps de réponse est retourné |
-| `201` | Created | Une nouvelle ressource (réservation, billet, etc.) a été créée |
-| `400` | Bad Request | Votre requête était mal formée ou des champs obligatoires manquaient |
-| `401` | Unauthorized | Aucun jeton n’a été fourni, ou le jeton est invalide |
-| `403` | Forbidden | Votre jeton est valide mais vous n’avez pas la permission pour cette action |
-| `404` | Not Found | La ressource demandée n’existe pas |
-| `422` | Unprocessable Entity | La requête était bien formée mais a échoué aux règles de validation |
-| `429` | Too Many Requests | Vous avez dépassé la limite de débit de votre niveau de licence |
-| `500` | Internal Server Error | Une erreur inattendue s’est produite du côté serveur |
+## En savoir plus
 
-## Limitation de débit
+<CardGroup cols={2}>
+  <Card title="Authentification" icon="key" href="/fr/api/authentication">
+    Générez, utilisez et faites tourner vos clés API Bearer.
+  </Card>
 
-L’API applique des limites de débit pour assurer une utilisation équitable entre tous les clients. Votre volume de requêtes autorisé dépend de votre niveau de licence : les forfaits Premium et Enterprise bénéficient de limites plus élevées que les niveaux inférieurs.
+  <Card title="Ressources" icon="database" href="/fr/api/resources">
+    Points de terminaison principaux pour les ventes, bagages et embarquement.
+  </Card>
 
-Lorsque vous dépassez votre limite de débit, l’API retourne une réponse `429 Too Many Requests`. La réponse inclut un en-tête `Retry-After` qui indique combien de secondes attendre avant d’effectuer votre prochaine requête.
+  <Card title="Codes d'erreur" icon="triangle-exclamation" href="/fr/api/errors">
+    Guide des erreurs HTTP et du format de réponse en cas d'échec.
+  </Card>
 
-```http
-HTTP/1.1 429 Too Many Requests
-Retry-After: 30
-Content-Type: application/json
-
-{
-  "success": false,
-  "error": {
-    "code": "RATE_LIMIT_EXCEEDED",
-    "message": "Too many requests. Please wait 30 seconds before retrying."
-  }
-}
-```
-
-<Tip>
-  Implémentez une stratégie de back-off exponentiel dans votre intégration pour gérer les réponses `429` avec élégance. Lisez toujours la valeur de l’en-tête `Retry-After` plutôt qu’utiliser un temps d’attente fixe.
-</Tip>
-
-## Versionnage
-
-La version actuelle de l’API est **v1**, encodée directement dans le chemin de l’URL :
-
-```text
-https://gotravelxpress.wuaze.com/api/v1/...
-```
-
-GoTravelXpress introduira de nouvelles versions de l’API lorsque des changements majeurs seront nécessaires. Les versions antérieures restent disponibles pendant une période de dépréciation, vous laissant le temps de migrer. Les changements majeurs sont annoncés dans le journal des modifications et communiqués aux développeurs enregistrés avant leur prise d’effet.
-
-<Info>
-  Les ajouts non majeurs, tels que de nouveaux champs optionnels ou de nouveaux points de terminaison, peuvent être ajoutés à la version actuelle à tout moment sans changement de version.
-</Info>
-
----
-
-Prêt à effectuer votre premier appel ? Commencez par [obtenir un jeton d’authentification](/fr/api/authentication).
+  <Card title="Rate limiting" icon="gauge" href="/fr/api/rate-limiting">
+    Comportement des limites de débit et gestion des réponses 429.
+  </Card>
+</CardGroup>

@@ -1,152 +1,129 @@
 ---
-title: "Billets QR : Vérification à l'Embarquement et Sécurité"
+title: "Billets QR : Émission et Validation Sécurisée"
 sidebarTitle: "Billets QR"
-description: "GoTravelXpress génère des billets par code QR cryptés pour chaque réservation. Vérifiez les billets instantanément à l'embarquement avec le système de scan en temps réel."
+description: "Découvrez les billets QR chiffrés de GoTravelXpress : génération automatique à l'émission, distribution multicanal et validation sécurisée en embarquement par l'Hôtesse et le Bagagiste."
 ---
 
-GoTravelXpress remplace les billets papier par des billets par code QR sécurisés et cryptés, générés automatiquement au moment où une réservation est confirmée. Chaque billet est attaché de manière unique à un seul passager et à un seul voyage : il ne peut pas être dupliqué, transféré ou réutilisé. Cette page explique comment les billets QR sont générés, quels mécanismes de sécurité les protègent, comment votre équipage les scanne et les vérifie à l'embarquement, et à quoi ressemble l'expérience passager de la réservation à la porte d'embarquement.
+GoTravelXpress génère automatiquement un QR code chiffré unique pour chaque billet émis. Ce billet peut être imprimé au comptoir par l'Opérateur d'Agence, ou envoyé directement au client par email, SMS ou WhatsApp. L'Hôtesse scanne le QR à l'embarquement pour valider l'accès, tandis que le Bagagiste l'utilise pour associer les bagages et colis au voyage. Chaque jeton QR est à usage unique et peut être réémis uniquement par un Administrateurgénère automatiquement un QR code chiffré unique pour chaque billet émis. Ce billet peut être imprimé au comptoir par l'Opérateur d'Agence, ou envoyé directement au client par email, SMS ou WhatsApp. L'Hôtesse scanne le QR à l'embarquement pour valider l'accès, tandis que le Bagagiste l'utilise pour associer les bagages et colis au voyage. Chaque jeton QR est à usage unique et peut être réémis uniquement par un Administrateur.
 
----
-
-## Fonctionnement des Billets QR
-
-Les billets QR suivent un cycle de vie simple qui commence à l'instant où le paiement est confirmé et se termine lorsque le passager embarque dans le véhicule.
+## Émission d'un billet QR
 
 <Steps>
-  <Step title="Réservation Confirmée">
-    Lorsqu'une réservation passe au statut **Confirmée**, ce qui signifie que le paiement a été validé, GoTravelXpress déclenche immédiatement la génération du billet. Aucune action manuelle n'est requise de la part de l'agent.
+  <Step title="Émission du billet">
+    Lors de la vente au comptoir, l'Opérateur d'Agence finalise la réservation. GoTravelXpress génère alors automatiquement le QR code unique et chiffré associé au billet.
   </Step>
-  <Step title="Code QR Unique Généré">
-    La plateforme crée un code QR unique et crypté pour la réservation. Le code encode toutes les données essentielles du voyage et une signature cryptographique à usage unique qui ne peut être ni contrefaite ni reproduite.
+  <Step title="Distribution au client">
+    L'Opérateur d'Agence peut imprimer le billet avec son QR, ou envoyer le billet numérique au client par email, SMS ou WhatsApp.
   </Step>
-  <Step title="Billet Remis au Passager">
-    Le billet par code QR est envoyé au passager par e-mail. Si votre agence utilise une application ou un site de réservation intégré, le billet apparaît également dans le compte du passager. Les agents peuvent renvoyer ou réimprimer le billet à tout moment depuis l'écran de détail de la réservation.
-  </Step>
-  <Step title="Scanné à l'Embarquement">
-    Le passager présente le billet sur l'écran de son téléphone ou sous forme de copie imprimée. L'équipage scanne le code QR à l'aide de l'interface QR Check-in & Crew de GoTravelXpress. Le système vérifie le billet auprès du serveur en temps réel et renvoie immédiatement une réponse de validation ou de refus.
+  <Step title="Vérification du statut">
+    Le statut du billet apparaît dans le système comme "émis" et prêt pour la validation lors de l'embarquement.
   </Step>
 </Steps>
 
----
+## Fonctionnalités clés
 
-## Sécurité des Billets
-
-GoTravelXpress utilise plusieurs couches de protection pour garantir que chaque billet est authentique, à usage unique et inviolable.
-
-<CardGroup cols={2}>
-  <Card title="Cryptage 256 Bits" icon="lock" href="/fr/modules/qr-tickets#sécurité-des-billets">
-    Chaque code QR est généré avec un cryptage 256 bits. Les données encodées ne peuvent être lues ni altérées sans la clé privée de la plateforme, rendant la contrefaçon pratiquement impossible.
+<CardGroup cols="2">
+  <Card title="Sécurité" icon="lock">
+    QR code chiffré unique par billet. Jeton à usage unique avec invalidation automatique après scan, empêchant toute double utilisation ou contrefaçon.
   </Card>
 
-  <Card title="Unique par Réservation" icon="fingerprint" href="/fr/modules/reservations">
-    Aucun billet ne partage le même code QR. Chaque billet est cryptographiquement lié à un identifiant de réservation spécifique, un passager, un voyage, un siège et un horodatage : la duplication est structurellement empêchée.
+  <Card title="Distribution" icon="paper-plane">
+    Distribution flexible au choix du client : impression au comptoir, envoi par email, SMS ou WhatsApp directement depuis la plateforme.
   </Card>
 
-  <Card title="Vérification Serveur en Temps Réel" icon="server" href="/fr/agency/qr-checkin">
-    Au moment du scan, le système QR Check-in envoie l'identifiant du billet au serveur GoTravelXpress pour une validation en direct. Le serveur vérifie le statut de la réservation, l'état de l'embarquement et l'intégrité du code avant de renvoyer un résultat : les captures d'écran hors ligne et les photocopies sont rejetées.
+  <Card title="Embarquement" icon="qrcode">
+    L'Hôtesse scanne le QR à l'embarquement via l'application mobile. Le statut passe instantanément à "validé" avec pointage géolocalisé.
   </Card>
 
-  <Card title="Application de l'Usage Unique" icon="shield-check" href="/fr/agency/qr-checkin">
-    Une fois qu'un billet a été scanné avec succès et le passager marqué comme embarqué, tout scan ultérieur du même code QR est signalé comme déjà utilisé et refusé. Cela empêche le partage de billet entre passagers.
+  <Card title="Statut" icon="rotate">
+    Suivi en temps réel du cycle de vie du billet : émis, validé, invalidé. Réémission uniquement par un Administrateur via Paramètres > Licence.
   </Card>
 </CardGroup>
 
+## Workflow d'embarquement
+
+1. Le client présente son billet (papier ou numérique) à l'Hôtesse
+2. L'Hôtesse scanne le QR avec son terminal
+3. GoTravelXpress vérifie l'authenticité et l'unicité du jeton
+4. Le statut du billet passe à "validé" avec enregistrement du lieu et de l'heure
+5. Le client est autorisé à embarquer
+
 <Warning>
-  **Ne partagez jamais votre billet par code QR avec une autre personne.** Chaque billet est à usage unique et lié à un enregistrement passager spécifique. Un billet qui a déjà été scanné à l'embarquement sera rejeté s'il est présenté à nouveau, même depuis un autre appareil. Si un passager perd son billet, l'agent peut le renvoyer depuis l'écran de la réservation : ne transférez pas l'image QR originale.
+  Une fois scanné, le jeton QR est immédiatement invalidé et ne peut plus être réutilisé. Toute tentative de rescan affichera une alerte de billet déjà utilisé. En cas de problème technique lors du scan, contactez immédiatement un Administrateur pour procéder à une réémission depuis le panneau de gestion des licences.
 </Warning>
 
----
+## Tracking bagages et colis
 
-## Scan et Vérification
+Le Bagagiste utilise le même QR code billet pour enregistrer et suivre les bagages et colis associés au voyage :
 
-L'équipage utilise le module **QR Check-in & Crew** pour gérer l'embarquement. L'interface du scanneur est optimisée pour la rapidité à la porte : un membre de l'équipage d'embarquement peut traiter les passagers en continu sans naviguer entre les écrans.
+- Scan du QR billet pour associer chaque bagage au passager
+- Enregistrement du nombre de colis et du poids
+- Vérification de la correspondance lors du chargement et de la livraison
+- Traçabilité complète du voyageur à ses effets personnels
 
-### Réponse pour un Billet Valide
+## Émission d'un billet QR
 
-Lorsqu'un billet est scanné avec succès, l'interface affiche :
+<Steps>
+  <Step title="Émission du billet">
+    Lors de la vente au comptoir, l'Opérateur d'Agence finalise la réservation. GoTravelXpress génère alors automatiquement le QR code unique et chiffré associé au billet.
+  </Step>
+  <Step title="Distribution au client">
+    L'Opérateur d'Agence peut imprimer le billet avec son QR, ou envoyer le billet numérique au client par email, SMS ou WhatsApp.
+  </Step>
+  <Step title="Vérification du statut">
+    Le statut du billet apparaît dans le système comme "émis" et prêt pour la validation lors de l'embarquement.
+  </Step>
+</Steps>
 
-- ✅ Un **écran de confirmation vert** clair
-- Le nom du passager et le numéro de siège
-- Les détails du voyage (itinéraire, heure de départ)
-- La confirmation que le passager a été marqué comme **Embarqué**
+## Fonctionnalités clés
 
-### Réponses pour les Billets Invalides ou Refusés
+<CardGroup cols="2">
+  <Card title="Sécurité" icon="lock">
+    QR code chiffré unique par billet. Jeton à usage unique avec invalidation automatique après scan, empêchant toute double utilisation ou contrefaçon.
+  </Card>
 
-Le système renvoie une réponse distincte pour chaque scénario d'échec afin que l'équipage puisse agir immédiatement de manière appropriée :
+  <Card title="Distribution" icon="paper-plane">
+    Distribution flexible au choix du client : impression au comptoir, envoi par email, SMS ou WhatsApp directement depuis la plateforme.
+  </Card>
 
-<Accordion title="Billet Déjà Scanné">
-  Le code QR a été validé plus tôt dans la même session d'embarquement. Le passager a déjà embarqué. Affichez l'horodatage du scan original à l'équipage pour confirmation.
-</Accordion>
+  <Card title="Embarquement" icon="qrcode">
+    L'Hôtesse scanne le QR à l'embarquement via l'application mobile. Le statut passe instantanément à "validé" avec pointage géolocalisé.
+  </Card>
 
-<Accordion title="Billet Non Trouvé">
-  Le code QR ne correspond à aucune réservation dans le système. Cela peut indiquer un code contrefait ou modifié manuellement. L'équipage doit diriger le passager vers un bureau d'agent pour vérification.
-</Accordion>
+  <Card title="Statut" icon="rotate">
+    Suivi en temps réel du cycle de vie du billet : émis, validé, invalidé. Réémission uniquement par un Administrateur via Paramètres > Licence.
+  </Card>
+</CardGroup>
 
-<Accordion title="Réservation Annulée">
-  La réservation sous-jacente a été annulée après l'émission du billet. Le passager doit régler sa réservation au bureau de l'agent avant l'embarquement.
-</Accordion>
+## Workflow d'embarquement
 
-<Accordion title="Mauvais Voyage ou Date">
-  Le billet est valide mais appartient à un autre voyage ou à une autre date de départ. L'équipage doit informer le passager et le diriger vers la bonne porte ou le bon départ.
-</Accordion>
+1. Le client présente son billet (papier ou numérique) à l'Hôtesse
+2. L'Hôtesse scanne le QR avec son terminal
+3. GoTravelXpress vérifie l'authenticité et l'unicité du jeton
+4. Le statut du billet passe à "validé" avec enregistrement du lieu et de l'heure
+5. Le client est autorisé à embarquer
 
-<Note>
-  La gestion de l'embarquement, les attributions d'équipage et le suivi de présence sont gérés dans le module **QR Check-in & Crew**. Ce module s'intègre directement au système de billet QR : les résultats des scans mettent à jour l'enregistrement de la réservation en temps réel afin que le tableau de bord reflète toujours le nombre d'embarquements en cours.
-</Note>
+<Warning>
+  Une fois scanné, le jeton QR est immédiatement invalidé et ne peut plus être réutilisé. Toute tentative de rescan affichera une alerte de billet déjà utilisé. En cas de problème technique lors du scan, contactez immédiatement un Administrateur pour procéder à une réémission depuis le panneau de gestion des licences.
+</Warning>
 
----
+## Tracking bagages et colis
 
-## Format du Billet
+Le Bagagiste utilise le même QR code billet pour enregistrer et suivre les bagages et colis associés au voyage :
 
-Chaque billet par code QR encode les données suivantes. Lorsque l'équipage scanne le code, l'écran de vérification affiche toutes ces informations en un coup d'oeil :
+- Scan du QR billet pour associer chaque bagage au passager
+- Enregistrement du nombre de colis et du poids
+- Vérification de la correspondance lors du chargement et de la livraison
+- Traçabilité complète du voyageur à ses effets personnels
 
-<ResponseField name="passenger_name" type="string">
-  Nom complet du passager tel que saisi lors de la réservation.
-</ResponseField>
+## Supportupport
 
-<ResponseField name="ticket_id" type="string">
-  Un identifiant alphanumérique unique pour cette instance de billet. Utilisé pour les recherches d'assistance et les journaux d'audit.
-</ResponseField>
+En cas de problème avec un billet QR, contactez le support ProzigZag :En cas de problème avec un billet QR, contactez le support ProzigZag :
 
-<ResponseField name="trip_details" type="object">
-  Origine, destination, date et heure de départ prévues, et heure d'arrivée estimée.
-</ResponseField>
+- Email : [contact@prozigzag.com](mailto:contact@prozigzag.com)
+- Téléphone : +237 695 602 293
+- Adresse : Yaoundé
 
-<ResponseField name="seat_number" type="string">
-  Le siège attribué au passager sur le véhicule.
-</ResponseField>
-
-<ResponseField name="reservation_status" type="string">
-  Statut actif au moment du scan : `confirmed`, `boarded`, ou `cancelled`.
-</ResponseField>
-
-<ResponseField name="expiry" type="datetime">
-  Le billet n'est valide que pour la fenêtre de départ prévue. Tenter de scanner le billet après le départ du voyage renvoie un statut expiré.
-</ResponseField>
-
----
-
-## Expérience Passager
-
-GoTravelXpress est conçu pour rendre l'expérience du billet aussi simple que possible pour les passagers, qu'ils soient à l'aise avec la technologie ou qu'ils préfèrent le papier.
-
-### Réception du Billet
-
-Après une réservation confirmée, le passager reçoit son billet par code QR :
-
-- **Par e-mail** : envoyé automatiquement à l'adresse e-mail saisie lors de la réservation. L'e-mail contient l'image QR en pièce jointe et intégrée dans le corps pour un accès facile.
-- **Via le portail de réservation ou l'application** : si votre agence exploite un canal de réservation intégré utilisant l'API GoTravelXpress, le billet apparaît dans le compte du passager sous **Mes Réservations**.
-- **Réimpression par l'agent** : pour les passagers qui n'ont pas reçu leur e-mail ou qui préfèrent une copie physique, tout agent peut réimprimer le billet depuis **Réservations → [Réservation] → Réimprimer le Billet** et le remettre au comptoir.
-
-### Présentation du Billet à l'Embarquement
-
-Les passagers ont deux options également valides pour présenter leur billet :
-
-<Tabs>
-  <Tab title="Écran Mobile">
-    Le passager ouvre l'e-mail contenant le billet (ou l'application de réservation) sur son smartphone et affiche le code QR à l'écran. L'équipage pointe le scanneur vers l'écran : aucune installation d'application n'est requise côté passager. Assurez-vous que la luminosité de l'écran est augmentée dans les environnements d'embarquement peu éclairés.
-  </Tab>
-  <Tab title="Copie Imprimée">
-    Le passager imprime l'e-mail contenant le billet ou l'image QR jointe sur n'importe quelle imprimante standard. Une impression en noir et blanc est pleinement acceptée. Le code QR doit être imprimé à une taille minimale de 3 × 3 cm et ne doit pas être plié sur la zone du code pour rester lisible.
-  </Tab>
-</Tabs>
+- Email : [contact@prozigzag.com](mailto:contact@prozigzag.com)
+- Téléphone : +237 695 602 293
+- Adresse : Yaoundé

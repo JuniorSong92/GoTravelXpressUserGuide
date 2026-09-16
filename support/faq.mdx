@@ -1,126 +1,56 @@
 ---
-title: "GoTravelXpress FAQ: Licensing, Payments & API Questions"
+title: "GoTravelXpress FAQ: Common questions for transport agencies"
 sidebarTitle: "FAQ"
-description: "Find answers to common questions about GoTravelXpress — licensing, payment methods, API access, multi-agency support, and QR ticket security."
+description: "Find answers to common questions about GoTravelXpress: roles, licensing, payment methods, ticket security, API, and support for transport agencies."
 ---
 
-Here are answers to the most common questions agencies ask about GoTravelXpress — covering everything from payment methods and ticket security to licensing options and API access. If you don't find what you're looking for, reach out to the support team directly via the [Contact page](/support/contact).
+This page collects the most frequently asked questions from transport agencies using GoTravelXpress. It covers internal roles, license activation, key ticketing features, and support and contact options.
 
 <AccordionGroup>
 
-  <Accordion title="Does GoTravelXpress work in Africa?">
-    Yes. GoTravelXpress is built with African markets in mind. The platform is fully compatible with **Mobile Money** payments — including MTN Mobile Money, Orange Money, and Wave — alongside Visa/Mastercard, bank transfers, and cash. All payment flows generate automatic invoices, so your accounting stays accurate regardless of how a customer pays.
+  <Accordion title="Is GoTravelXpress a SaaS built for transport in Africa?">
+    Yes. GoTravelXpress is a SaaS platform developed by Eagle Tech specifically for African transport agencies. The software addresses local realities: intermittent connectivity, multi-agency operations, counter workflows, and the need for luggage and parcel traceability.
   </Accordion>
 
-  <Accordion title="Can I manage multiple agencies?">
-    Yes. GoTravelXpress supports **multi-agency management** out of the box. You can create and configure multiple agency sites under a single account, assign customizable user roles to staff, and apply granular permissions to control exactly what each user can see and do.
-
-    Multi-agency support is available on **Premium** and **Enterprise** licenses. Enterprise additionally includes white-label branding so each agency can operate under its own identity.
-
-    See the [License Types](/license-types) page for a full feature comparison.
+  <Accordion title="Can I manage multiple agencies with a single account?">
+    Yes. GoTravelXpress supports multi-agency management. The administrator can structure multiple counters within the system and assign specific operators to each site. This centralizes sales, reporting, and inventory while maintaining a local logic per agency.
   </Accordion>
 
-  <Accordion title="What payment methods are accepted?">
-    GoTravelXpress supports the following payment methods for passenger and agency transactions:
-
-    - **Mobile Money** — MTN Mobile Money, Orange Money, Wave
-    - **Bank cards** — Visa and Mastercard
-    - **Bank transfers**
-    - **Cash**
-
-    Every transaction automatically generates an invoice, keeping your financial records clean and audit-ready without any manual entry.
+  <Accordion title="What payment methods are supported?">
+    GoTravelXpress integrates payment methods suited to the African context, including cash collection at the counter, mobile payments (Mobile Money), and bank transfers depending on the integration in place. All collections are tracked and centralized for budget reporting.
   </Accordion>
 
-  <Accordion title="Are the tickets secure?">
-    Yes. Every digital ticket issued through GoTravelXpress contains a **unique, encrypted QR code**. Boarding staff can verify the code in real time at check-in, which prevents fraud and ensures each ticket can only be used once. The system flags duplicate scan attempts immediately so your crew can act on them.
+  <Accordion title="Are issued tickets secure and verifiable?">
+    Yes. Every ticket issued by GoTravelXpress carries a secure identifiable code. The hostess can scan a QR code at boarding to validate ticket authenticity, prevent duplication, and ensure full passenger traceability.
   </Accordion>
 
-  <Accordion title="Do you offer an API?">
-    Yes. GoTravelXpress includes a **fully documented REST API** that lets you connect the platform with your existing tools — including ERP systems, accounting software, and mobile applications. You can automate reservation creation, query trip data, trigger payment flows, and more.
-
-    API access is included in the **Premium** and **Enterprise** licenses. Refer to the [API Reference](/api/overview) section for endpoint documentation, authentication details, and code examples.
+  <Accordion title="Does GoTravelXpress provide an API for third-party integrations?">
+    Yes. An API is available to connect GoTravelXpress with other systems: online booking platforms, accounting solutions, or external business tools. To obtain documentation or request access, contact our team on the [Support](/support/contact) page.
   </Accordion>
 
-  <Accordion title="What is the difference between license types?">
-    GoTravelXpress offers five license tiers to match agencies of every size:
-
-    | License | Best for | Key highlights |
-    |---|---|---|
-    | **Free** | Evaluation | Basic access, limited features |
-    | **14-day Trial** | Testing before buying | Full-featured, time-limited |
-    | **Basic** | Small agencies | Core reservation and payment modules |
-    | **Premium** | Growing agencies | All modules, including REST API access |
-    | **Enterprise** | Multi-site operations | Multi-agency, white-label, priority support |
-
-    All licenses are **perpetual** — you pay once and keep full access to your tier forever, with no recurring subscription fees.
-
-    See [License Types](/license-types) for a detailed side-by-side comparison.
+  <Accordion title="Who is authorized to activate the agency license?">
+    Only the **Administrator** can activate the agency license. This activation is done in the **Settings > License** menu. No other role (Operator, Baggage Handler, Hostess) has access to this function.
   </Accordion>
 
-  <Accordion title="Is there a recurring subscription fee?">
-    No. GoTravelXpress uses a **perpetual license model**. You purchase your license once and retain full access to all features included in that tier — forever. There are no monthly or annual renewal fees, and no hidden charges.
+  <Accordion title="What does each role do in GoTravelXpress?">
+    The platform defines four essential operational roles:
 
-    <Tip>
-      If your agency grows and you need more features, you can upgrade to a higher license tier at any time by contacting the support team.
-    </Tip>
+    <ul>
+  <li><strong>Administrator</strong>: manages the license, global configuration, users, and agency settings.</li>
+  <li><strong>Agency Operator</strong>: handles counter sales, ticket issuance, and departure monitoring from the central interface.</li>
+  <li><strong>Baggage Handler</strong>: registers luggage and parcels, assigns tags, and oversees freight traceability on board.</li>
+  <li><strong>Hostess</strong>: manages boarding via QR code scanning and records the geolocated attendance of each traveler.</li>
+</ul>
+
+    For more details, see the [User roles](/agency/user-roles) page.
   </Accordion>
 
-  <Accordion title="What languages is the platform available in?">
-    GoTravelXpress supports the following interface languages:
-
-    - English
-    - French
-    - Spanish
-    - Arabic
-    - Italian
-    - Portuguese
-    - Russian
-    - German
-    - Chinese
-
-    You can switch the platform language from your account settings. This makes GoTravelXpress suitable for international agencies and operators serving multilingual passengers.
+  <Accordion title="What happens if my license expires?">
+    If the license expires, access to operational features is suspended. The administrator can renew the license in **Settings > License** by contacting commercial support. Read-only access generally remains available to view history, but sales and boarding are blocked.
   </Accordion>
 
-  <Accordion title="What happens if I need support?">
-    The GoTravelXpress support team is available **24/7** to help you with setup, configuration, technical issues, or any questions about using the platform.
-
-    You can reach the team through the following channels:
-
-    - **Email:** [contact@prozigzag.com](mailto:contact@prozigzag.com)
-    - **Phone:** [+237 695 602 293](tel:+237695602293)
-
-    For full contact details and guidance on what to include in your message, see the [Contact](/support/contact) page.
-  </Accordion>
-
-  <Accordion title="How is my data protected?">
-    GoTravelXpress takes data security seriously. Your agency data is protected with:
-
-    - **256-bit encryption** for data at rest and in transit
-    - **GDPR-compliant** data handling practices
-    - **Dedicated servers** so your data is never mixed with other tenants
-
-    For full details on how your data is collected, stored, and used, review the [Privacy Policy](/account/privacy-policy).
-  </Accordion>
-
-  <Accordion title="Can I upgrade my license?">
-    Yes. You can upgrade from any license tier to a higher one at any time. To request an upgrade — for example from **Basic** to **Premium**, or from **Premium** to **Enterprise** — contact the support team directly:
-
-    - **Email:** [contact@prozigzag.com](mailto:contact@prozigzag.com)
-    - **Phone:** [+237 695 602 293](tel:+237695602293)
-
-    The team will guide you through the upgrade process and ensure your existing data and configuration are preserved.
-  </Accordion>
-
-  <Accordion title="Is there a demo available?">
-    Yes. You can watch a full product demo on the official GoTravelXpress YouTube channel to see the platform's features in action before requesting a license.
-
-    [Watch the demo on YouTube →](https://www.youtube.com/channel/UCXoAoIQr7brw_1NChZE1uQg)
-
-    You can also request a **14-day Trial license** at [gotravelxpress.wuaze.com](https://gotravelxpress.wuaze.com) to try the full platform yourself at no cost.
+  <Accordion title="How do I contact GoTravelXpress support?">
+    Support is reachable by email, phone, and WhatsApp. Our team provides 24/7 assistance for operational emergencies. Find all contact details and topics on the [Contact](/support/contact) page.
   </Accordion>
 
 </AccordionGroup>
-
-<Note>
-  Can't find the answer you're looking for? Contact the support team at [contact@prozigzag.com](mailto:contact@prozigzag.com) or call [+237 695 602 293](tel:+237695602293) — available 24/7.
-</Note>

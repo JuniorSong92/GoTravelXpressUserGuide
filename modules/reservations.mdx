@@ -1,134 +1,76 @@
 ---
-title: "Reservation Management — Trips, Seats, and Tickets"
+title: "Reservations"
 sidebarTitle: "Reservations"
-description: "Manage trips, seat assignments, and passenger tickets end-to-end with GoTravelXpress reservations — from booking creation to check-in."
+description: "Manage trip reservations with GoTravelXpress : seat selection, ticket sales, modifications, and cancellations in the transport agency platform."
 ---
 
-The Reservations module is the operational heart of GoTravelXpress. It gives your agency complete control over the full lifecycle of every journey — from scheduling a new trip and opening seats for sale, through processing bookings and handling payments, to issuing digital tickets and validating passengers at the gate. This page covers everything you need to create trips, manage reservations, control seating, and understand how confirmed bookings flow seamlessly into QR code ticket generation.
+GoTravelXpress enables Agency Operators to manage the full reservation lifecycle: from selecting a seat on the interactive seat map to issuing the ticket and processing its refund. This page covers the in-person sales steps and the modification/cancellation rules set by the Administrator.
 
----
+## Ticket statuses
 
-## Creating a Trip
+A ticket in GoTravelXpress moves through several statuses based on its payment and usage:
 
-Before passengers can book, you need to define a trip. A trip bundles a route, a schedule, a vehicle, and a pricing structure into a single bookable unit.
+- **Reserved**: seat temporarily held without payment.
+- **Paid**: ticket confirmed and paid by the customer or the operator.
+- **Boarded**: passenger validated at boarding (GPS check-in or QR scan).
+- **Canceled**: reservation canceled according to the current policy.
+- **Refunded**: canceled ticket with a refund issued through the Payments module.
 
 <Steps>
-  <Step title="Select a Route">
-    Navigate to **Reservations → Trips → New Trip** and choose the origin and destination from your saved routes. If the route does not exist yet, create it first under **Settings → Routes**.
+  <Step title="Search for a trip">
+    From the counter, enter the departure city, destination, and travel date to display available routes in GoTravelXpress.
   </Step>
-  <Step title="Set Departure and Arrival Times">
-    Enter the scheduled departure date and time, then the estimated arrival time. These values appear on the passenger's ticket and are used to filter real-time availability.
+  <Step title="Choose a seat">
+    The interactive seat map displays each seat as free, held, or sold. Select a free seat for the customer.
   </Step>
-  <Step title="Assign a Vehicle">
-    Pick the vehicle for this trip from your fleet. GoTravelXpress loads the seat layout automatically based on the selected vehicle's configuration — no manual seat mapping required.
+  <Step title="Enter passenger details">
+    Fill in the passenger information: first name, last name, phone, ID card, and category if applicable.
   </Step>
-  <Step title="Configure Pricing">
-    Set the base fare for the trip. You can define separate price tiers (e.g., adult, child, VIP) if your agency uses them. Pricing is applied at booking time and reflected in the automatic invoice.
-  </Step>
-  <Step title="Publish the Trip">
-    Review the summary and click **Publish**. The trip immediately becomes available for booking through the agent dashboard. Real-time seat availability is tracked from this moment forward.
+  <Step title="Pay and issue the ticket">
+    Process payment at the counter or record an online reservation for deferred payment. The ticket is then generated with its boarding QR code.
   </Step>
 </Steps>
 
-<Note>
-  Seat availability updates in real time across all agent sessions. When one agent assigns a seat, it is instantly marked unavailable to all other agents working on the same trip — preventing double-bookings.
-</Note>
+## Online booking by the customer
 
----
+The customer can book online from the search page (welcome.php) without operator intervention. After selecting the trip and seat:
 
-## Managing Reservations
+- a payment deadline is granted (configurable by the Administrator in Settings) ;
+- if payment is not made within this period, the seat automatically reverts to **free** ;
+- the operator can monitor these pending reservations and finalize payment at the counter.
 
-Once a trip is live, passengers can be booked either by an agent through the dashboard or via your website or mobile app if you have integrated the GoTravelXpress API.
+## Interactive seat map
 
-### How Agents Process Reservations
+The seat map is the central tool for reservations. It allows you to:
 
-From **Reservations → New Booking**, an agent selects the trip, chooses an available seat, enters passenger details (name, contact, ID if required), selects a payment method, and confirms the booking. The system creates the reservation record and triggers payment processing immediately.
+- display the physical layout of the vehicle (bus, minibus, coach) ;
+- visually identify seats and their status ;
+- temporarily block a seat during the sales process.
 
-### Reservation Statuses
+### Visual statuses
 
-Every reservation moves through a defined set of statuses so you always know exactly where a booking stands:
+| Status | Description |
+| --- | --- |
+| **Free** | Seat available for reservation. |
+| **Held** | Reservation in progress or payment pending. |
+| **Sold** | Ticket already paid and confirmed. |
 
-<Tabs>
-  <Tab title="Pending">
-    The booking has been created but payment has not yet been confirmed. A pending reservation holds the seat temporarily. If payment is not completed within the configured timeout window, the seat is automatically released.
-  </Tab>
-  <Tab title="Confirmed">
-    Payment has been received and validated. The reservation is locked in, the seat is permanently assigned, and the QR code ticket is generated and delivered to the passenger.
-  </Tab>
-  <Tab title="Cancelled">
-    The reservation was cancelled either by the passenger (via your support team) or by an agent. The seat is released back to the available pool. See the [Payments module](/modules/payments) for refund handling.
-  </Tab>
-</Tabs>
+## Modifications and cancellations
 
-<Tip>
-  For group bookings, use the **Bulk Reservation** feature under **Reservations → Group Booking**. You can select multiple consecutive or non-consecutive seats in a single transaction, apply a group discount code, and generate one consolidated invoice for the entire party.
-</Tip>
+Modification and cancellation rules are defined by the Administrator through the license and settings module:
 
----
+- **Modification**: change of date, trip, or seat, subject to permissions and availability.
+- **Cancellation**: generates a canceled ticket and, if configured, initiates an automatic refund to be processed through the [Payments](/modules/payments) module.
+- **Penalty**: the withholding amount and deadlines are set by the Administrator.
 
-## Seat Management
+## Related modules
 
-The seat map gives you a live, visual overview of every seat on a trip — making it easy to manage availability, handle special requests, and prevent overbooking.
+<CardGroup>
+  <Card title="Payments" icon="credit-card" href="/modules/payments">
+    View transactions, collections, and refunds linked to tickets.
+  </Card>
 
-### Seat Map View
-
-Open any active trip and click **View Seat Map**. Each seat is colour-coded:
-
-| Colour | Status |
-|--------|--------|
-| **Green** | Available — can be booked |
-| **Yellow** | Held — pending payment timeout |
-| **Red** | Confirmed — already booked |
-| **Grey** | Blocked — manually taken out of sale |
-
-### Assigning and Blocking Seats
-
-Click any green seat to assign it to an in-progress booking. To block a seat (for example, for crew use or a VIP hold), right-click the seat and select **Block Seat**. Blocked seats do not appear as available and cannot be accidentally sold.
-
-### Handling Overbooking
-
-GoTravelXpress does not allow overbooking by default — the system enforces a hard cap equal to the vehicle's total seat count. If you need to manage a waitlist, use the **Waitlist** flag when creating a reservation beyond capacity; the system will alert you automatically when a confirmed seat becomes available.
-
----
-
-## Ticket Generation
-
-When a reservation reaches **Confirmed** status, GoTravelXpress automatically generates a unique, encrypted QR code ticket for the passenger. No manual step is required from the agent.
-
-The ticket is linked directly to the reservation record and contains all the key journey information encoded in the QR code. Tickets are delivered to passengers by email and are also accessible within the platform for agents to resend or reprint on demand.
-
-<Info>
-  Ticket generation, delivery, and scanning at boarding are handled by the QR Tickets module. See [QR Code Tickets](/modules/qr-tickets) for full details on how tickets are secured, verified, and used at check-in.
-</Info>
-
----
-
-## Reservation Lifecycle
-
-Every booking in GoTravelXpress follows the same end-to-end flow from the moment a passenger requests a seat to the moment they board:
-
-<Steps>
-  <Step title="Booking Request">
-    An agent (or integrated booking channel) creates a reservation for a passenger on a published trip, selecting the seat and entering passenger details.
-  </Step>
-  <Step title="Payment">
-    The agent processes payment via Mobile Money (MTN, Orange Money, Wave), Visa/Mastercard, bank transfer, or cash. The system awaits payment confirmation before advancing the reservation.
-  </Step>
-  <Step title="Confirmation">
-    Once payment is validated, the reservation status changes to **Confirmed**. The seat is permanently locked and cannot be reassigned.
-  </Step>
-  <Step title="QR Ticket Issued">
-    The platform automatically generates a unique encrypted QR code ticket and delivers it to the passenger by email. The ticket is also available for the agent to reprint from the reservation detail screen.
-  </Step>
-  <Step title="Check-in">
-    At boarding, crew scan the passenger's QR code using the QR Check-in & Crew module. The system verifies the ticket in real time and marks the passenger as boarded.
-  </Step>
-</Steps>
-
-<Accordion title="What happens if payment fails?">
-  If payment is not completed or is declined, the reservation remains in **Pending** status. The held seat is released after the configured timeout (set by your agency administrator under **Settings → Booking Policy**). You can also manually cancel a pending reservation at any time to release the seat immediately.
-</Accordion>
-
-<Accordion title="Can I modify a confirmed reservation?">
-  Agents with the appropriate role permissions can edit passenger details (name, contact) on a confirmed reservation. To change the seat or trip, the original reservation must be cancelled and a new one created. Partial refund rules apply — see the [Payments module](/modules/payments) for details.
-</Accordion>
+  <Card title="QR Tickets" icon="qrcode" href="/modules/qr-tickets">
+    Learn about the QR ticket system used at boarding.
+  </Card>
+</CardGroup>

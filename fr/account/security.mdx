@@ -1,121 +1,106 @@
 ---
-title: "Bonnes Pratiques de Sécurité pour GoTravelXpress"
+title: "GoTravelXpress : Sécurité et Protection des Données"
 sidebarTitle: "Sécurité"
-description: "Protégez votre compte agence GoTravelXpress avec des mots de passe robustes, des contrôles d'accès et une gestion sécurisée des paiements : découvrez les pratiques recommandées."
+description: "Sécurité de GoTravelXpress : chiffrement TLS, mots de passe hashés, Face Login biométrique, sessions, journaux d'audit, bonnes pratiques utilisateurs et conformité RGPD."
 ---
 
-GoTravelXpress protège les données de votre agence par un chiffrement 256 bits et plusieurs couches de sécurité côté serveur. Même avec ces protections en place, les mesures que vous prenez de votre côté font une différence significative. Cette page présente les pratiques que chaque administrateur d'agence et membre de l'équipe doit suivre pour garder les comptes, les paiements et les données opérationnelles en sécurité.
+GoTravelXpress, la plateforme SaaS d'Eagle Tech pour agences de transport, applique des mesures de sécurité strictes pour protéger les données des passagers, des collaborateurs et des opérations. Cette page détaille les mécanismes techniques et organisationnels mis en place, ainsi que les bonnes pratiques à adopter.
 
-## Bonnes Pratiques pour les Mots de Passe
-
-Un mot de passe fort est votre première ligne de défense contre les accès non autorisés.
+## Vue d'ensemble des mesures de sécurité
 
 <CardGroup cols={2}>
-  <Card title="Utiliser un mot de passe fort" icon="lock">
-    Votre mot de passe doit comporter au moins 12 caractères et inclure un mélange de lettres majuscules, de lettres minuscules, de chiffres et de caractères spéciaux (par exemple, `@`, `#`, `!`). Évitez les mots du dictionnaire, les noms ou les dates.
+  <Card title="Chiffrement TLS" icon="lock">
+    Toutes les communications entre votre navigateur et les serveurs GoTravelXpress sont chiffrées via le protocole TLS. Cela garantit la confidentialité des identifiants, des paiements et des données passagers pendant leur transit.
   </Card>
 
-  <Card title="Utiliser un mot de passe unique" icon="key">
-    Ne réutilisez jamais un mot de passe d'un autre service. Si ce service est compromis, les attaquants essaieront les mêmes identifiants sur GoTravelXpress.
+  <Card title="Mots de passe hashés" icon="key">
+    Les mots de passe utilisateurs ne sont jamais stockés en clair. GoTravelXpress utilise des algorithmes de hachage sécurisés avec salage pour protéger chaque mot de passe en base de données.
   </Card>
 
-  <Card title="Utiliser un gestionnaire de mots de passe" icon="shield">
-    Un gestionnaire de mots de passe réputé (tel que Bitwarden ou 1Password) génère et stocke des mots de passe forts pour vous, pour que vous n'ayez jamais à les mémoriser ou à les noter.
+  <Card title="Face Login biométrique" icon="camera">
+    La reconnaissance faciale est disponible pour les postes exposés, comme les comptoirs d'agence et les postes d'embarquement. Les données biométriques sont traitées de manière sécurisée et ne quittent pas l'infrastructure contrôlée.
   </Card>
 
-  <Card title="Changer les mots de passe régulièrement" icon="arrows-rotate">
-    Mettez à jour votre mot de passe périodiquement, surtout après tout incident de sécurité suspecté ou lorsqu'un membre de l'équipe ayant accès au compte quitte votre organisation.
+  <Card title="Journaux d'audit" icon="clipboard-list">
+    L'Administrateur de l'agence dispose de journaux d'audit qui recensent les connexions, les modifications de configuration et les actions sensibles réalisées dans GoTravelXpress.
   </Card>
 </CardGroup>
 
-<Warning>
-  GoTravelXpress ne vous demandera **jamais** votre mot de passe par e-mail, SMS ou appel téléphonique. Si vous recevez une telle demande, considérez-la comme une tentative d'hameçonnage et ne répondez pas. Signalez-la immédiatement à [contact@prozigzag.com](mailto:contact@prozigzag.com).
-</Warning>
+## Chiffrement et transport des données
 
-## Limitation de l'Accès par les Rôles
+Chaque échange entre votre poste et la plateforme GoTravelXpress passe par une connexion sécurisée TLS. Cela s'applique à :
 
-GoTravelXpress inclut un système complet de contrôle d'accès basé sur les rôles (RBAC) qui vous permet de définir exactement ce que chaque membre de l'équipe peut voir et faire.
+- la page de connexion ([https://gotravelxpress.wuaze.com/index.php](https://gotravelxpress.wuaze.com/index.php))
+- la page d'accueil publique ([https://gotravelxpress.wuaze.com/welcome.php](https://gotravelxpress.wuaze.com/welcome.php))
+- tous les tableaux de bord et formulaires internes
 
-**Principe du moindre privilège :** accordez à chaque utilisateur uniquement les permissions dont il a besoin pour faire son travail, rien de plus. Un agent qui gère la vente de billets n'a pas besoin d'accéder aux rapports financiers ou aux écrans d'administration des utilisateurs.
+Le chiffrement empêche l'interception des identifiants, des informations de paiement et des données personnelles des passagers sur les réseaux publics ou partagés.
 
-Étapes recommandées pour gérer l'accès :
+## Authentification et sessions
 
-<Steps>
-  <Step title="Créer des comptes individuels pour chaque membre de l'équipe">
-    Ne partagez jamais une même connexion entre plusieurs personnes. Les comptes individuels vous donnent une traçabilité précise et facilitent la révocation de l'accès lorsqu'une personne part.
-  </Step>
-  <Step title="Assigner le rôle le plus restrictif permettant à l'utilisateur de travailler">
-    Commencez avec un rôle limité et élargissez les permissions uniquement lorsqu'il y a un besoin métier clair.
-  </Step>
-  <Step title="Réviser régulièrement les rôles des utilisateurs">
-    Planifiez une révision trimestrielle de tous les comptes actifs et de leurs rôles attribués. Supprimez ou rétrogradez tout compte qui n'est plus nécessaire.
-  </Step>
-  <Step title="Révoquer l'accès immédiatement à un départ">
-    Lorsqu'un membre de l'équipe quitte votre agence, désactivez ou supprimez son compte GoTravelXpress le jour même.
-  </Step>
-</Steps>
+### Mots de passe hashés
 
-<Info>
-  Consultez la page [Rôles et Permissions des Utilisateurs](/fr/agency/user-roles) pour un détail complet des rôles disponibles et de leur configuration pour votre agence.
-</Info>
+Lors de la création ou de la modification d'un mot de passe, GoTravelXpress applique un hachage irréversible avec salage unique. En cas d'accès illicite à la base de données, les mots de passe restent protégés.
 
-## Gestion Sécurisée des Paiements
+### Expiration des sessions
 
-GoTravelXpress prend en charge les paiements Mobile Money (MTN Mobile Money, Orange Money, Wave), Visa/Mastercard et les paiements en espèces. Toutes les transactions transitent par des canaux sécurisés et chiffrés.
+Les sessions utilisateurs expirent automatiquement en cas d'inactivité prolongée. Cette mesure réduit le risque d'utilisation frauduleuse d'une session laissée ouverte sur un poste partagé ou exposé, notamment dans les agences de transport à fort passage.
 
-**Ce que GoTravelXpress fait pour protéger les paiements :**
+### Verrouillage par échecs
 
-- Toutes les transactions de paiement sont chiffrées de bout en bout avec un chiffrement 256 bits.
-- GoTravelXpress ne stocke **pas** les numéros complets de carte. Seules des références tokenisées ou masquées sont conservées à des fins de reporting.
-- Les transactions Mobile Money sont traitées via des intégrations sécurisées et certifiées officiellement avec chaque opérateur.
-- La génération automatique de factures crée une piste de vérification pour chaque transaction.
+Après plusieurs tentatives de connexion échouées consécutives, le compte est temporairement verrouillé. Le délai de verrouillage augmente avec les tentatives répétées. Cette protection s'applique à toutes les méthodes d'authentification, y compris Face Login.
 
-**Ce que vous devez faire :**
+## Face Login biométrique
 
-- Ne traitez les paiements que via les écrans de paiement officiels de GoTravelXpress, ne collectez jamais les détails de carte verbalement ou par écrit en dehors de la plateforme.
-- Assurez-vous que les appareils utilisés aux points de paiement sont verrouillés lorsqu'ils sont laissés sans surveillance.
-- Signalez immédiatement toute transaction inexpliquée à l'administrateur de votre agence.
+<Card title="Conseil pour les postes de comptoir" icon="lightbulb" horizontal>
+  Le Face Login est particulièrement utile pour les Opérateurs d'Agence travaillant au comptoir. Il accélère l'authentification tout en réduisant le risque d'usurpation lié au partage de mots de passe sur des postes accessibles au public.
+</Card>
 
-## Gestion des Sessions
+La reconnaissance faciale est proposée pour les postes exposés (comptoir, embarquement). Les caractéristiques faciales sont capturées, transformées en empreinte numérique sécurisée et comparées lors de chaque authentification. Cette méthode est optionnelle et peut être désactivée par l'Administrateur dans les paramètres de l'agence.
 
-Les sessions actives laissées sans surveillance sont un moyen courant pour les utilisateurs non autorisés d'obtenir l'accès.
+## Journaux d'audit Administrateur
 
-- **Les sessions expirent automatiquement** après une période d'inactivité. Vous serez invité à vous reconnecter lorsque votre session expirera.
-- **Déconnectez-vous toujours des appareils partagés**, tels que les ordinateurs d'agence, les kiosques ou les tablettes utilisés par plusieurs membres du personnel, lorsque vous avez fini de travailler. Utilisez le menu du compte dans la navigation supérieure pour sélectionner **Se Déconnecter**.
-- **Évitez de vous connecter sur des appareils publics ou non fiables** (ordinateurs d'hôtel, cybercafés). Si vous devez le faire, assurez-vous de vous déconnecter et de vider le cache du navigateur avant de partir.
+L'Administrateur d'une agence GoTravelXpress peut consulter les journaux d'audit depuis son espace de gestion. Ces journaux incluent :
 
-<Tip>
-  Si vous soupçonnez que quelqu'un utilise votre compte sans autorisation, changez immédiatement votre mot de passe et informez l'administrateur de votre agence afin qu'il puisse examiner l'activité récente.
-</Tip>
+- les dates et heures de connexion par utilisateur
+- les modifications de configuration critique (licences, paramètres agence)
+- les actions sur les données sensibles (validation de billets, pointage d'embarquement, gestion des bagages)
+- les alertes de verrouillage de compte
 
-## Chiffrement des Données
+Ces traces facilitent la détection d'activités anormales et répondent aux besoins de traçabilité des agences de transport.
 
-GoTravelXpress stocke toutes les données de l'agence, y compris les réservations, les informations des passagers, les dossiers de l'équipage et les enregistrements financiers, sous forme chiffrée sur des serveurs dédiés.
+## Bonnes pratiques de sécurité
 
-- Un **chiffrement 256 bits** est appliqué aux données au repos et en transit.
-- Les serveurs sont hébergés dans des installations situées dans des pays dotés de lois strictes de protection des données, offrant des contrôles techniques et physiques.
-- En cas d'incident au niveau des serveurs, aucun journal d'utilisateur détaillé ni donnée sensible identifiable n'est exposé, car GoTravelXpress minimise par conception la conservation de ces informations.
+Adoptez les recommandations suivantes pour renforcer la sécurité de votre agence :
 
-<Info>
-  GoTravelXpress est conforme aux normes du RGPD (Règlement Général sur la Protection des Données). Les données de votre agence sont traitées conformément aux principes internationalement reconnus de protection des données. Consultez la page [Politique de Confidentialité](/fr/account/privacy-policy) pour tous les détails.
-</Info>
+- **Mot de passe fort** : utilisez au minimum 12 caractères, avec des majuscules, des minuscules, des chiffres et des symboles. Ne réutilisez pas un mot de passe déjà utilisé sur un autre service.
+- **Ne partagez pas vos identifiants** : chaque utilisateur GoTravelXpress doit disposer de son propre compte, même au comptoir.
+- **Verrouillez votre poste** : verrouillez votre session ou déconnectez-vous lorsque vous quittez un poste exposé.
+- **Révoquez les accès des ex-employés** : l'Administrateur doit immédiatement désactiver les comptes des collaborateurs qui quittent l'agence.
+- **Surveillez les journaux d'audit** : consultez régulièrement les journaux pour détecter toute connexion inhabituelle.
 
-## Signalement d'un Problème de Sécurité
+## Conformité RGPD
 
-Si vous découvrez une vulnérabilité, suspectez un accès non autorisé à votre compte, ou avez toute préoccupation de sécurité liée à GoTravelXpress, signalez-la rapidement.
+GoTravelXpress traite les données personnelles des passagers et des utilisateurs dans le respect du RGPD. Pour consulter la politique de confidentialité détaillée :
+
+<Card title="Politique de confidentialité" icon="shield" horizontal href="/fr/account/privacy-policy">
+  Lien vers la politique de confidentialité et les droits des personnes concernées.
+</Card>
+
+## Assistance en ligne
+
+Pour toute question relative à la sécurité de votre compte ou de votre agence :
 
 <CardGroup cols={2}>
-  <Card title="E-mail" icon="envelope">
+  <Card title="Email" icon="envelope">
     [contact@prozigzag.com](mailto:contact@prozigzag.com)
-
-    Décrivez le problème avec le plus de détails possible, y compris les étapes de reproduction si applicable.
   </Card>
 
   <Card title="Téléphone" icon="phone">
-    **+237 695 602 293**
+    +237 695 602 293
+  </Card>
 
-    Pour les problèmes urgents, appelez directement l'équipe d'assistance GoTravelXpress.
+  <Card title="Adresse" icon="map-pin">
+    Yaoundé
   </Card>
 </CardGroup>
-
-GoTravelXpress prend au sérieux tous les problèmes de sécurité signalés et accusera réception de votre signalement rapidement. Ne divulguez pas publiquement les vulnérabilités potentielles avant d'avoir donné à l'équipe un délai raisonnable pour enquêter et remédier.
