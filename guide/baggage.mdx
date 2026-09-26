@@ -1,54 +1,271 @@
 ---
-title: "GoTravelXpress Baggage Handler Illustrated Guide: Bags and Parcels"
-sidebarTitle: "Baggage Handler Guide"
-description: "Illustrated guide for the GoTravelXpress Baggage Handler: bag registration, parcel management, labels, statuses, and clock-in."
+title: "GoTravelXpress Porter Illustrated Guide: Parcels, Baggage and Tracking"
+sidebarTitle: "Porter Guide"
+description: "Illustrated guide for the GoTravelXpress Porter: dashboard, parcels, planning, baggage tracking, trip report, profile and leave."
 ---
 
-This illustrated guide walks the **GoTravelXpress Baggage Handler** through the registration of bags and parcels for every trip.
-
-## Table of contents
+This illustrated guide walks the **GoTravelXpress Porter** (baggage handler) through parcel management, baggage tracking, shift check-in and daily reporting. Each section contains annotated screenshots of the key actions.
 
 <CardGroup cols={2}>
-  <Card title="Sign in and clock-in" icon="right-to-bracket" href="#sign-in-and-clock-in">
-    Sign in and clock in for your shift.
+  <Card icon="chart-line" href="#dashboard">
+    Dashboard
   </Card>
-  <Card title="Register a bag" icon="suitcase-rolling" href="#register-a-bag">
-    Scan the ticket and register a bag.
+  <Card icon="box" href="#parcels">
+    Parcels
   </Card>
-  <Card title="Register a parcel" icon="box" href="#register-a-parcel">
-    Attach a parcel to a route.
+  <Card icon="calendar" href="#my-workspace-planning">
+    My Workspace & Planning
   </Card>
-  <Card title="Print labels" icon="print" href="#print-labels">
-    Generate and print QR labels.
+  <Card icon="suitcase" href="#baggage-tracking">
+    Baggage Tracking
   </Card>
-  <Card title="Track statuses" icon="list-check" href="#track-statuses">
-    Mark Loaded, Delivered, or Unclaimed.
+  <Card icon="file-lines" href="#trip-report">
+    Trip Report
   </Card>
-  <Card title="End of shift" icon="clock" href="#end-of-shift">
-    Clock out at the end of shift.
+  <Card icon="user" href="#my-profile-leave">
+    My Profile & Leave
   </Card>
 </CardGroup>
 
-## Sign in and clock-in
+## Dashboard
 
-<Info>Screenshots will be added soon.</Info>
+<Info>Screenshots coming soon (Dashboard).</Info>
 
-## Register a bag
+The Dashboard is the first screen you see when opening the app. It summarizes the porter's workload for the current day and provides quick access to the trips they are assigned to.
 
-<Info>Screenshots will be added soon.</Info>
+### Today's View
 
-## Register a parcel
+The top section displays today's counters:
 
-<Info>Screenshots will be added soon.</Info>
+- **Total parcels**: number of parcels handled today.
+- **Pending**: parcels registered but not yet loaded.
+- **In transit**: parcels currently on board a bus.
+- **Parcels delivered**: parcels already handed to the recipient.
+- **Today's trips**: number of trips assigned to the porter.
+- **Total baggage**: number of baggage items registered across all today's trips.
 
-## Print labels
+These indicators help you prioritize morning actions (loading) and afternoon actions (unloading and delivery).
 
-<Info>Screenshots will be added soon.</Info>
+### Assigned Trips
 
-## Track statuses
+The list of **trips assigned to the porter** shows, for each departure:
 
-<Info>Screenshots will be added soon.</Info>
+- The assigned driver.
+- The number of passengers and parcels on board.
+- The trip status (scheduled, in progress, completed).
 
-## End of shift
+Tapping a trip opens an overlay panel with the detailed passenger list and their respective stops. This helps the porter prepare loading in the right order and verify connections at each stop.
 
-<Info>Screenshots will be added soon.</Info>
+## Parcels
+
+<Info>Screenshots coming soon (Parcels).</Info>
+
+The **Parcels** module centralizes the management of shipments under the porter's care. It covers the list of parcels to process, status updates and access to the detailed record of each shipment.
+
+### Parcel List to Manage
+
+This screen lists **parcels assigned to the porter** in a table. Each row shows:
+
+- The parcel reference.
+- The itinerary (departure city / arrival city).
+- The sender and recipient.
+- The weight.
+- The current status (registered, pending, in transit, delivered).
+
+Use the filters at the top of the page to narrow the list by status, itinerary or date range.
+
+### Detail & Status Update
+
+The complete parcel record gathers all useful information:
+
+- Reference and route.
+- Weight and content description.
+- Sender and recipient contact details.
+
+A **dropdown menu** lets you change the parcel status (for example: _Dispatched_). Press the **Save** button to record the update. The status change is immediately visible to the operator and the customer.
+
+## My Workspace & Planning
+
+<Info>Screenshots coming soon (My Workspace & Planning).</Info>
+
+This module lets the porter view their schedule, know their work zones and clock in and out of shifts using the **Check In** and **Check Out** buttons.
+
+### Work Zones & Planning
+
+The home screen of this section gives an overview of:
+
+- **Active and upcoming shifts** (date, start time, end time).
+- **Available work zones** (bus stations, depots, transfer points).
+- The porter's **weekly schedule**, with working days and days off.
+
+This view helps you anticipate travel and quickly report any scheduling conflict.
+
+### Shift Detail
+
+The planned shift record displays:
+
+- The job title (for example: _Morning Loading, North Station_).
+- The period (exact date and times).
+- The duty location.
+- The shift status (scheduled, in progress, completed, absent).
+
+Two main buttons are available:
+
+- **Check In**: press at the start of the shift to confirm attendance.
+- **Check Out**: press at the end of the shift to validate the end of service.
+
+These clock-ins feed the timesheet and the daily trip report.
+
+## Baggage Tracking
+
+<Info>
+  Screenshots coming soon (Baggage Tracking).
+</Info>
+
+The **Baggage Tracking** module is the porter's core operational tool. It covers baggage registration, movement scanning, incident management and passenger-baggage reconciliation on board each bus.
+
+### Baggage List
+
+The **Baggage List** screen offers **multi-criteria search**:
+
+- Passenger (name or phone number).
+- City (departure or arrival).
+- Baggage type (suitcase, bag, box...).
+- Bus / trip.
+- Status (registered, loaded, in transit, arrived, delivered, incident).
+
+The results table lists all registered baggage items with, for each one:
+
+- A photo thumbnail.
+- The weight.
+- The destination.
+- The current status.
+
+### Baggage Detail
+
+The complete baggage record contains:
+
+- Its **barcode** (format `BAG-...`).
+- Its characteristics: weight, color, material, current location.
+- The state of the associated **QR code**.
+- A **printable QR** to stick on the baggage for future scans.
+
+This QR code speeds up loading and unloading operations without manual entry.
+
+### Add Baggage
+
+The add form unfolds in several sections (scroll down):
+
+1. **Reservation / trip / passenger information**: link the baggage to an existing ticket or identified passenger.
+2. **Baggage information**: type, description, special characteristics (fragile, oversized, pet...).
+3. **Notes**: remarks useful for loading or delivery.
+4. **Photo**: take a photo of the baggage for the record.
+5. **Payment information and price**: extra baggage fee, payment method.
+
+Submit the form to automatically generate the `BAG-...` barcode and the QR code.
+
+### Scan Baggage
+
+The **Scan Baggage** screen lets you record a movement by scanning the baggage tag:
+
+- **Scan type**: loading, unloading, transfer, delivery.
+- **Location**: station, stop, depot (geolocated or manually selected).
+- **Notes**: any observation on the baggage condition during the scan.
+
+At the bottom of the screen, the **recent scan history** displays recent movements for immediate verification.
+
+### Baggage Incidents: List
+
+This screen lists **reported incidents** on baggage items:
+
+- Incident type: lost, damaged, delayed, refused.
+- Severity: low, medium, high, critical.
+- Resolution status: open, in progress, resolved, closed.
+
+Filters by type and status help you quickly locate a case.
+
+### Report an Incident (Add Baggage Incident)
+
+The declaration form (scroll down) consists of:
+
+1. **Search for the affected baggage**: enter the `BAG-...` barcode or scan the QR code.
+2. **Incident details**: type, severity, date, location, detailed description.
+3. **Passenger contact details**: phone and email for follow-up.
+4. **Photos**: add images of the baggage condition before registering the incident.
+
+Press **Save** to create the incident ticket. The baggage status automatically changes to _Incident_.
+
+### Trip Baggage View
+
+For a given bus or trip (scroll down), this screen shows:
+
+- **Counters**: total baggage, loaded, in transit, arrived.
+- **Breakdown by destination**: how many baggage items get off at each stop.
+- **Loading / unloading check-list**: list of expected baggage items with checkboxes.
+- **Passenger-baggage reconciliation**: verify that each passenger on board retrieves their baggage at drop-off.
+
+This view is used just before departure and at each intermediate stop.
+
+### Baggage Statistics
+
+Over a selected period (day, week, month), the statistics dashboard displays:
+
+- **Total** registered baggage.
+- **Delivered**, **lost**, **damaged**, **delayed**.
+- **On-time delivery rate**.
+- **Breakdown by status** and by **incident type** (bar or pie charts).
+
+This data helps the porter and the operator identify watch points and improve service quality.
+
+## Trip Report
+
+<Info>
+  Screenshots coming soon (Trip Report).
+</Info>
+
+The **Trip Report** is the end-of-day document the porter completes to account for their activity and validate the data entered in the app.
+
+### Daily Report
+
+The day's view (scroll down) presents:
+
+- The **number of trips** completed.
+- **Parcels processed** and **delivered**.
+- **Registered baggage**.
+- **Total weight** transported.
+
+Further down, the **validation summary** shows:
+
+- The number of stops completed.
+- A **porter signature area**: sign electronically to attest the accuracy of the data.
+- A **supervisor signature area**: the operator or agency manager validates in turn.
+
+This report is archived and accessible by the operator for performance tracking.
+
+## My Profile & Leave
+
+<Info>
+  Screenshots coming soon (My Profile & Leave).
+</Info>
+
+This module gathers the porter's personal information, facial recognition setup and leave request management.
+
+### Porter Profile
+
+The **Porter Profile** record shows:
+
+- Last name, first name, date of birth.
+- Phone number and email address.
+- Internal identifiers (staff number, home agency).
+
+An option lets you **enroll facial recognition** to secure Check In / Check Out clocking and app access on shared terminals.
+
+### Leave Request
+
+The **leave request** form is identical to the hostess module:
+
+- Leave type (annual, sick, unpaid...).
+- Start date and end date.
+- Reason (free text).
+
+After submission, the request appears in the **sent requests tracker** with its status (pending, approved, refused). You receive a push notification when the operator responds.

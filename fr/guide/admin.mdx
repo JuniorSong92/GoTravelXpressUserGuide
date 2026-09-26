@@ -1,7 +1,7 @@
 ---
 title: "Guide Illustré Admin GoTravelXpress : Configuration Pas à Pas"
 sidebarTitle: "Guide Admin"
-description: "Guide illustré pour l'Administrateur GoTravelXpress : activation licence, agences, utilisateurs, flotte, planning, analytique et abonnement."
+description: "Guide illustré complet pour l'Administrateur GoTravelXpress : agences, planning, colis, bannières, villes, opérateurs, rapports, paramètres."
 ---
 
 Ce guide illustré accompagne l'**Administrateur GoTravelXpress** dans la configuration complète de la plateforme, écran par écran. Chaque section contient les captures d'écran commentées des actions clés.
@@ -9,60 +9,531 @@ Ce guide illustré accompagne l'**Administrateur GoTravelXpress** dans la config
 ## Sommaire
 
 <CardGroup cols={2}>
-  <Card title="Connexion et licence" icon="key" href="#connexion-et-activation-licence">
-    Se connecter et activer sa clé de licence.
-  </Card>
   <Card title="Tableau de bord" icon="chart-line" href="#tableau-de-bord">
-    Comprendre le tableau de bord global.
+    Vue synthétique de la plateforme.
   </Card>
-  <Card title="Agences" icon="building" href="#gestion-des-agences">
+
+  <Card title="Analytique" icon="chart-bar" href="#analytique-visuelle">
+    Graphiques mensuels et répartitions.
+  </Card>
+
+  <Card title="Abonnement & Agences" icon="building" href="#gestion-des-agences">
     Créer et gérer les agences.
   </Card>
-  <Card title="Utilisateurs" icon="users" href="#gestion-des-utilisateurs">
-    Créer Opérateurs, Bagagistes, Hôtesses, Chauffeurs.
-  </Card>
-  <Card title="Flotte" icon="bus" href="#gestion-de-la-flotte">
-    Ajouter des bus et gérer le parc.
-  </Card>
+
   <Card title="Planning intelligent" icon="calendar" href="#planning-intelligent">
-    Planifier les voyages et affecter les équipages.
+    Piloter la présence et le planning.
   </Card>
-  <Card title="Analytique" icon="chart-bar" href="#plan-analytique">
-    Consulter les KPI et exporter les rapports.
+
+  <Card title="Hôtesses" icon="user-tie" href="#gestion-des-hotesses">
+    Créer et gérer les hôtesses.
   </Card>
-  <Card title="Abonnement" icon="credit-card" href="#abonnement">
-    Gérer l'abonnement et le renouvellement.
+
+  <Card title="Porteurs" icon="briefcase" href="#gestion-des-porteurs">
+    Créer et gérer les porteurs (bagagistes).
+  </Card>
+
+  <Card title="Colis" icon="box" href="#colis-parcel-order">
+    Historique global des colis.
+  </Card>
+
+  <Card title="Bannières" icon="image" href="#bannieres">
+    Bannières publicitaires.
+  </Card>
+
+  <Card title="Villes" icon="city" href="#villes">
+    Villes desservies.
+  </Card>
+
+  <Card title="Points d'embarquement" icon="map-pin" href="#points-dembarquement--debarquement">
+    Points d'embarquement et de débarquement.
+  </Card>
+
+  <Card title="Opérateurs de bus" icon="bus" href="#operateurs-de-bus">
+    Opérateurs, commissions et payouts.
+  </Card>
+
+  <Card title="Installations" icon="gear" href="#installations-facility">
+    Équipements et services.
+  </Card>
+
+  <Card title="FAQ" icon="circle-question" href="#faq">
+    Foire aux questions publiée.
+  </Card>
+
+  <Card title="Politique d'annulation" icon="shield" href="#politique-dannulation">
+    Règles d'annulation et remboursement.
+  </Card>
+
+  <Card title="Rapports" icon="chart-line" href="#rapports">
+    Rapports journaliers, réservations et ventes.
+  </Card>
+
+  <Card title="Passerelles de paiement" icon="credit-card" href="#passerelles-de-paiement">
+    Moyens de paiement disponibles.
+  </Card>
+
+  <Card title="Rapport de voyage & paiements" icon="file-lines" href="#rapport-de-voyage--paiements-agents">
+    Rapports de voyage et paiements agents.
+  </Card>
+
+  <Card title="Pages du site (CMS)" icon="file" href="#pages-du-site-cms">
+    Pages statiques du site public.
+  </Card>
+
+  <Card title="Utilisateurs & sécurité" icon="lock" href="#utilisateurs--securite">
+    Comptes, audit et actions utilisateurs.
+  </Card>
+
+  <Card title="Paramètres généraux" icon="sliders" href="#parametres-generaux">
+    Configuration du site, SMS et langues.
   </Card>
 </CardGroup>
 
-## Connexion et activation licence
-
-<Info>Les captures d'écran seront ajoutées prochainement.</Info>
-
 ## Tableau de bord
 
-<Info>Les captures d'écran seront ajoutées prochainement.</Info>
+Une fois connecté, l'Admin arrive sur le **Dashboard (Report Data)** qui affiche une vue synthétique de toute l'activité GoTravelXpress sous forme de cartes KPI.
+
+<Frame caption="Dashboard Admin : nombre de bannières, villes, bus, installations, FAQ, passerelles de paiement, pages dynamiques, utilisateurs, agents, opérateurs, gains cumulés et taxes perçues">
+  ![Tableau de bord Admin GoTravelXpress](/images/guide/admin/dashboard.png)
+</Frame>
+
+C'est l'écran d'accueil après connexion. Il regroupe :
+
+- **Éléments de contenu** : bannières, villes, bus, installations, FAQ, pages dynamiques, passerelles de paiement.
+- **Utilisateurs de la plateforme** : Total Users, Total Agents, Total Operators.
+- **Revenus** : Operator Earning (self-book / non self-book), Agent Earning, Admin Earning, Tax Received.
+
+<Tip>
+  Le menu latéral gauche donne accès à tous les modules : Dashboard, Analytics, Subscription, Agency, Planning, Hostess, Porters, Parcel Order, Banner, City, Drop/Pick Point, Bus Operator, Facility, FAQ, Cancel Policy, Reports.
+</Tip>
+
+## Analytique visuelle
+
+Le module **Analytics** propose des graphiques d'évolution mensuelle pour l'année en cours.
+
+<Frame caption="Analytics : User Register, Agent Register, Total Booking, Total Earning, Agent Earning, Operator Earning (par mois)">
+  ![Analytics mensuel GoTravelXpress](/images/guide/admin/analytics-1.png)
+</Frame>
+
+<Frame caption="Analytics : répartition par agence, par ville, Sales By Vendor (camembert), Daily Bookings sur 20 jours">
+  ![Analytics répartitions GoTravelXpress](/images/guide/admin/analytics-2.png)
+</Frame>
+
+Ces vues permettent de suivre :
+
+- Les taux d'inscription des utilisateurs et agents.
+- Le total des réservations et les gains par agent/opérateur.
+- La répartition des ventes par vendeur.
+- Les réservations quotidiennes sur les 20 derniers jours.
 
 ## Gestion des agences
 
-<Info>Les captures d'écran seront ajoutées prochainement.</Info>
+L'Admin est le seul rôle habilité à créer, modifier et publier les agences partenaires.
 
-## Gestion des utilisateurs
+### Ajouter une agence
 
-<Info>Les captures d'écran seront ajoutées prochainement.</Info>
+<Frame caption="Formulaire Add Agency : nom, pays, ville, quartier, adresse, téléphone, email, statut, numéro de licence, nombre de bus, description, année de création">
+  ![Ajouter une agence](/images/guide/admin/agency-add.png)
+</Frame>
 
-## Gestion de la flotte
+Champs à renseigner :
 
-<Info>Les captures d'écran seront ajoutées prochainement.</Info>
+- **Agency Name**, **Phone**, **Email**
+- **Country**, **City Name**, **Neighborhood** (listes déroulantes)
+- **Agency Status** (Publish / Unpublish)
+- **Adresse complète**, **Numéro de licence** commerciale
+- **Nombre de bus**, **Description**, **Année de création**
+
+Cliquez sur **Add Agency** pour enregistrer.
+
+### Liste des agences
+
+<Frame caption="Agency Management : tableau des agences enregistrées avec logo, nom, pays, ville, contact et statut de publication">
+  ![Liste des agences](/images/guide/admin/agency-list.png)
+</Frame>
+
+Depuis ce tableau, l'Admin peut :
+
+- **Rechercher** et **trier** les agences.
+- Consulter le **statut** (Actif / Inactif, Publish / Unpublish).
+- **Éditer**, **activer/désactiver** ou **supprimer** chaque agence.
 
 ## Planning intelligent
 
-<Info>Les captures d'écran seront ajoutées prochainement.</Info>
+Le module **Smart Planning** (premium) permet à l'Admin de piloter la présence des Hôtesses et Bagagistes et de générer automatiquement les plannings.
 
-## Plan analytique
+<Frame caption="Smart Planning : KPIs (taux de présence, présents du jour, retards, congés en attente, heures de pointe, couverture) et notifications de planning">
+  ![Smart Planning Admin](/images/guide/admin/planning-smart.png)
+</Frame>
 
-<Info>Les captures d'écran seront ajoutées prochainement.</Info>
+**Actions rapides en haut de page :**
+
+- **Request Leave** : demander un congé.
+- **Team Rotation** : gérer les rotations d'équipes.
+- **Auto Generate** : générer automatiquement un planning optimisé.
+
+**KPI affichés :** Presence Rate, Present Today, Late Today, Leave Pending, Peak Hours, Coverage.
+
+**Notifications de planning** : nouvelles demandes de congé, congés approuvés, avec date/heure et bouton **Voir**.
+
+### Vue calendrier
+
+<Frame caption="Calendrier mensuel : services planifiés par jour avec code couleur Hôtesse / Bagagiste et statut (Présent, Retard)">
+  ![Calendrier planning](/images/guide/admin/planning-calendar.png)
+</Frame>
+
+Grille hebdomadaire/mensuelle montrant, jour par jour, les créneaux de service affectés à chaque membre du personnel (hôtesses, porteurs).
+
+Onglets disponibles : **Calendar**, **Timeline**, **Teams & Rotations**, **Analytics**, **Holidays & Forecasts**, **Notifications**.
+
+### Vue Timeline
+
+<Frame caption="Timeline : services du jour (matin / après-midi / soir) avec statut Présent / Retard, section Leaves & Absences (Approved / Pending / Rejected)">
+  ![Timeline planning](/images/guide/admin/planning-timeline.png)
+</Frame>
+
+Vue chronologique de la journée sélectionnée avec la liste des congés et absences en cours à traiter (panneau en bas).
+
+### Équipes et rotations
+
+<Frame caption="Teams & Rotations : rotations actives (Team A Week 1), préférences du personnel, génération automatique en modes Balanced / Peak">
+  ![Équipes et rotations](/images/guide/admin/planning-teams-rotations.png)
+</Frame>
+
+- **Active Rotations** : composition des équipes actives par semaine.
+- **Staff Preferences** : préférences horaires du personnel.
+- **Auto Generation** : génération automatique selon deux modes :
+  - **Balanced** : répartition équilibrée entre agents.
+  - **Peak** : couverture prioritaire des heures de pointe.
+
+### Analytique du planning
+
+<Frame caption="Analytics : taux de présence sur 30 jours, Top Performers, détail par agent (présent / en retard / absent)">
+  ![Analytique planning](/images/guide/admin/planning-analytics.png)
+</Frame>
+
+Suivez la performance du planning : taux de présence sur 30 jours, classement des meilleurs performeurs, détail de ponctualité par agent.
+
+### Jours fériés et prévisions
+
+<Frame caption="Holidays & Forecasts : total 23 jours fériés, tableau des congés récurrents avec dates et multiplicateurs">
+  ![Jours fériés et prévisions](/images/guide/admin/planning-holidays.png)
+</Frame>
+
+Liste des jours fériés et événements spéciaux impactant le planning, avec possibilité d'ajouter une nouvelle date et un multiplicateur de charge.
+
+### Notifications de planning
+
+<Frame caption="Notifications de planning : demandes de congé approuvées, refusées ou en attente avec bouton 'Mark all as read'">
+  ![Notifications planning](/images/guide/admin/planning-notifications.png)
+</Frame>
+
+Historique de toutes les notifications générées par le module de planning (demandes, approbations, rejets).
+
+## Gestion des hôtesses
+
+L'Admin ajoute et gère les Hôtesses depuis le menu **Hostess**.
+
+### Ajouter une hôtesse
+
+<Frame caption="Formulaire Add Hostess : nom d'utilisateur, genre, date de naissance, téléphone, email, adresse, carte d'identité, date d'embauche, statut, mot de passe, agence, photo">
+  ![Ajouter une hôtesse](/images/guide/admin/hostess-add.png)
+</Frame>
+
+Champs : **Username**, **Gender**, **Birth Date**, **Fix Phone**, **Email**, **Address**, **ID Card**, **Date of Hire**, **Status**, **Password**, **Agency**, **Cover Picture**.
+
+### Liste des hôtesses
+
+<Frame caption="Hostess Management : tableau des hôtesses avec nom, genre, téléphone, email, carte d'identité, date d'embauche et actions">
+  ![Liste des hôtesses](/images/guide/admin/hostess-list.png)
+</Frame>
+
+Recherche, tri, statut (Active / Inactif) et actions (activer/désactiver, modifier, supprimer).
+
+## Gestion des porteurs
+
+Même logique que pour les hôtesses : informations personnelles, identifiants de connexion et photo.
+
+### Ajouter un porteur
+
+<Info>
+  Captures à venir (Add Porter).
+</Info>
+
+### Liste des porteurs
+
+<Info>
+  Captures à venir (Porter Management).
+</Info>
+
+## Colis (Parcel Order)
+
+Vue globale, tous opérateurs confondus, de tous les colis expédiés sur la plateforme.
+
+### Historique des colis
+
+<Info>
+  Captures à venir (Parcel Order — historique).
+</Info>
+
+Informations affichées : expéditeur, destinataire, bus utilisé, statut, avec actions de suivi.
+
+## Bannières
+
+### Ajouter / gérer une bannière
+
+<Info>
+  Captures à venir (Add Banner).
+</Info>
+
+Upload d'une image de bannière publicitaire et activation de son statut.
+
+### Liste des bannières
+
+<Info>
+  Captures à venir (Banner list).
+</Info>
+
+Toutes les bannières actives avec aperçu miniature et actions (modifier/supprimer).
+
+## Villes
+
+### Ajouter une ville
+
+<Info>
+  Captures à venir (Add City).
+</Info>
+
+Ajout d'une nouvelle ville desservie par le réseau (nom + statut).
+
+### Liste des villes
+
+<Info>
+  Captures à venir (City list).
+</Info>
+
+Table de toutes les villes disponibles pour la réservation (Yaoundé, Douala, Ngaoundéré, Bertoua, Kribi, Bafoussam, etc.).
+
+## Points d'embarquement / débarquement
+
+### Ajouter un point
+
+<Info>
+  Captures à venir (Add Drop/Pick Point).
+</Info>
+
+Sélection d'une ville, saisie du nom du point, numéro de téléphone du responsable local, puis positionnement précis sur la carte interactive.
+
+### Liste des points
+
+<Info>
+  Captures à venir (Drop/Pick Point list).
+</Info>
+
+Tous les points d'embarquement/débarquement enregistrés, classés par ville, avec leur statut.
+
+## Opérateurs de bus
+
+### Ajouter un opérateur
+
+<Info>
+  Captures à venir (Add Bus Operator — formulaire complet).
+</Info>
+
+Ce formulaire est long : faites défiler pour voir toutes les sections.
+
+- **Partie haute :** informations de l'opérateur (nom, logo, statut), note et commission agence/admin, puis identifiants de connexion (email/mot de passe).
+- **Partie basse :** adresse du bureau avec latitude/longitude sur carte, et informations de paiement (nom de banque, code SWIFT/RIB, bénéficiaire, n° de compte, PayPal, UPI).
+
+### Liste des opérateurs
+
+<Info>
+  Captures à venir (Bus Operator list).
+</Info>
+
+Vue de tous les opérateurs avec leur commission (réservée/reçue), statut et actions.
+
+### Paiements aux opérateurs (Payout)
+
+<Info>
+  Captures à venir (Operator Payout).
+</Info>
+
+Historique des transferts d'argent effectués vers les opérateurs (montant, type de transfert, justificatif, statut).
+
+## Installations (Facility)
+
+### Ajouter une installation
+
+<Info>
+  Captures à venir (Add Facility).
+</Info>
+
+Création d'un équipement/service (ex : WiFi, prise, climatisation) associable à un point d'embarquement.
+
+### Liste des installations
+
+<Info>
+  Captures à venir (Facility list).
+</Info>
+
+Toutes les installations disponibles avec leur icône et statut.
+
+## FAQ
+
+### Ajouter une FAQ
+
+<Info>
+  Captures à venir (Add FAQ).
+</Info>
+
+Saisie d'une question et de sa réponse, avec statut de publication.
+
+### Liste des FAQ
+
+<Info>
+  Captures à venir (FAQ list).
+</Info>
+
+Ensemble des questions/réponses publiées, modifiables ou supprimables individuellement.
+
+## Politique d'annulation
+
+### Ajouter une règle d'annulation
+
+<Info>
+  Captures à venir (Add Cancel Policy).
+</Info>
+
+Définition du délai (en heures) avant le départ à partir duquel l'annulation est possible, du délai de traitement, et du pourcentage remboursé.
+
+### Liste des règles
+
+<Info>
+  Captures à venir (Cancel Policy list).
+</Info>
+
+Règles d'annulation actuellement appliquées sur la plateforme.
+
+## Rapports
+
+### Rapports journaliers
+
+<Info>
+  Captures à venir (Daily Report).
+</Info>
+
+Recherche par date : total des billets réservés, complétés, annulés et total des ventes pour le jour choisi.
+
+### Réservations totales
+
+<Info>
+  Captures à venir (Total Bookings).
+</Info>
+
+Liste filtrable de toutes les réservations (bus, point d'embarquement, statut, réservé par) avec accès au détail.
+
+### Rapport des ventes
+
+<Info>
+  Captures à venir (Sales Report).
+</Info>
+
+Détail comptable de chaque billet vendu : sous-total, taxe, solde portefeuille, coupon, commission agent/admin/opérateur, total et vendeur.
+
+## Passerelles de paiement
+
+### Liste des passerelles
+
+<Info>
+  Captures à venir (Payment Gateways).
+</Info>
+
+Activation/désactivation des moyens de paiement disponibles pour les clients : Razorpay, PayPal, Stripe, Flutterwave, Paystack, Paymob, GerongPay.
+
+## Rapport de voyage & paiements agents
+
+### Rapport de voyage (Trip Report)
+
+<Info>
+  Captures à venir (Trip Report).
+</Info>
+
+Table listant, pour chaque bus/chauffeur, le rapport de voyage soumis et sa date.
+
+### Paiements aux agents
+
+<Info>
+  Captures à venir (Agent Payout).
+</Info>
+
+Historique des versements effectués aux agents partenaires.
+
+## Pages du site (CMS)
+
+### Créer une page
+
+<Info>
+  Captures à venir (Add Page).
+</Info>
+
+Éditeur de texte enrichi pour rédiger le contenu d'une page statique (titre, statut, description).
+
+### Liste des pages
+
+<Info>
+  Captures à venir (Pages list).
+</Info>
+
+Pages existantes : Politique de confidentialité, Conditions générales, Contactez-nous, Politique d'annulation.
+
+## Utilisateurs & sécurité
+
+### Liste des utilisateurs
+
+<Info>
+  Captures à venir (Users list).
+</Info>
+
+Tous les comptes clients/agents inscrits sur la plateforme, avec statut, type et actions de modération (suspendre, supprimer).
+
+### Journaux d'audit (Audit Logs)
+
+<Info>
+  Captures à venir (Audit Logs).
+</Info>
+
+Historique détaillé de chaque action effectuée dans le back-office : méthode, statut, rôle, adresse IP, appareil — filtrable par période.
+
+### Actions utilisateurs (User Actions)
+
+<Info>
+  Captures à venir (User Actions).
+</Info>
+
+Journal des actions effectuées par les utilisateurs côté application/site, filtrable par type d'action, rôle et date.
+
+## Paramètres généraux
+
+### Informations générales & configuration
+
+<Info>
+  Captures à venir (General Settings).
+</Info>
+
+Nom du site, devise, fuseau horaire, logo ; limites de retrait pour agents/opérateurs ; affichage de la fiche de paie ; paramètres du programme de parrainage (crédit d'inscription, crédit de parrainage, commission).
+
+### SMS & langues
+
+<Info>
+  Captures à venir (SMS & Languages).
+</Info>
+
+Configuration du fournisseur SMS pour l'envoi des codes (Msg91 ou Twilio, avec clés API), activation de l'OTP à l'inscription, et choix des langues disponibles dans l'application (français, anglais, arabe, italien, portugais, néerlandais, espagnol...).
 
 ## Abonnement
 
-<Info>Les captures d'écran seront ajoutées prochainement.</Info>
+<Info>
+  Captures à venir (Subscription).
+</Info>

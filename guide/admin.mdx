@@ -1,7 +1,7 @@
 ---
 title: "GoTravelXpress Admin Illustrated Guide: Step-by-Step Setup"
 sidebarTitle: "Admin Guide"
-description: "Illustrated guide for the GoTravelXpress Administrator: license activation, agencies, users, fleet, planning, analytics and subscription."
+description: "Complete illustrated guide for the GoTravelXpress Administrator: agencies, planning, parcels, banners, cities, operators, reports and settings."
 ---
 
 This illustrated guide walks the **GoTravelXpress Administrator** through the complete platform setup, screen by screen. Each section contains annotated screenshots of the key actions.
@@ -9,60 +9,531 @@ This illustrated guide walks the **GoTravelXpress Administrator** through the co
 ## Table of contents
 
 <CardGroup cols={2}>
-  <Card title="Sign in and license" icon="key" href="#sign-in-and-license-activation">
-    Sign in and activate your license key.
-  </Card>
   <Card title="Dashboard" icon="chart-line" href="#dashboard">
-    Understand the global dashboard.
+    Synthetic view of the platform.
   </Card>
-  <Card title="Agencies" icon="building" href="#agency-management">
+
+  <Card title="Analytics" icon="chart-bar" href="#visual-analytics">
+    Monthly charts and breakdowns.
+  </Card>
+
+  <Card title="Subscription & Agencies" icon="building" href="#agency-management">
     Create and manage agencies.
   </Card>
-  <Card title="Users" icon="users" href="#user-management">
-    Create Operators, Baggage Handlers, Hostesses, Drivers.
-  </Card>
-  <Card title="Fleet" icon="bus" href="#fleet-management">
-    Add buses and manage the fleet.
-  </Card>
+
   <Card title="Intelligent planning" icon="calendar" href="#intelligent-planning">
-    Plan trips and assign crews.
+    Steer presence and scheduling.
   </Card>
-  <Card title="Analytics" icon="chart-bar" href="#analytics-dashboard">
-    Consult KPIs and export reports.
+
+  <Card title="Hostesses" icon="user-tie" href="#hostess-management">
+    Create and manage hostesses.
   </Card>
-  <Card title="Subscription" icon="credit-card" href="#subscription">
-    Manage the subscription and renewals.
+
+  <Card title="Porters" icon="briefcase" href="#porter-management">
+    Create and manage porters (baggage handlers).
+  </Card>
+
+  <Card title="Parcels" icon="box" href="#parcels-parcel-order">
+    Global parcel history.
+  </Card>
+
+  <Card title="Banners" icon="image" href="#banners">
+    Advertising banners.
+  </Card>
+
+  <Card title="Cities" icon="city" href="#cities">
+    Cities served by the network.
+  </Card>
+
+  <Card title="Pick / Drop points" icon="map-pin" href="#pick--drop-points">
+    Pickup and drop-off points.
+  </Card>
+
+  <Card title="Bus operators" icon="bus" href="#bus-operators">
+    Operators, commissions and payouts.
+  </Card>
+
+  <Card title="Facilities" icon="gear" href="#facilities">
+    Equipment and services.
+  </Card>
+
+  <Card title="FAQ" icon="circle-question" href="#faq">
+    Published Frequently Asked Questions.
+  </Card>
+
+  <Card title="Cancellation policy" icon="shield" href="#cancellation-policy">
+    Cancellation and refund rules.
+  </Card>
+
+  <Card title="Reports" icon="chart-line" href="#reports">
+    Daily reports, bookings and sales.
+  </Card>
+
+  <Card title="Payment gateways" icon="credit-card" href="#payment-gateways">
+    Available payment methods.
+  </Card>
+
+  <Card title="Trip report & agent payouts" icon="file-lines" href="#trip-report--agent-payouts">
+    Trip reports and agent payouts.
+  </Card>
+
+  <Card title="Site pages (CMS)" icon="file" href="#site-pages-cms">
+    Static pages of the public site.
+  </Card>
+
+  <Card title="Users & security" icon="lock" href="#users--security">
+    Accounts, audit and user actions.
+  </Card>
+
+  <Card title="General settings" icon="sliders" href="#general-settings">
+    Site configuration, SMS and languages.
   </Card>
 </CardGroup>
 
-## Sign in and license activation
-
-<Info>Screenshots will be added soon.</Info>
-
 ## Dashboard
 
-<Info>Screenshots will be added soon.</Info>
+Once signed in, the Admin lands on the **Dashboard (Report Data)**, which shows a synthetic view of all GoTravelXpress activity through KPI cards.
+
+<Frame caption="Admin Dashboard: banners, cities, buses, facilities, FAQ, payment gateways, dynamic pages, users, agents, operators, cumulative earnings and taxes received">
+  ![GoTravelXpress Admin dashboard](/images/guide/admin/dashboard.png)
+</Frame>
+
+This is the home screen after signing in. It groups:
+
+- **Content items**: banners, cities, buses, facilities, FAQ, dynamic pages, payment gateways.
+- **Platform users**: Total Users, Total Agents, Total Operators.
+- **Earnings**: Operator Earning (self-book / non self-book), Agent Earning, Admin Earning, Tax Received.
+
+<Tip>
+  The left sidebar gives access to every module: Dashboard, Analytics, Subscription, Agency, Planning, Hostess, Porters, Parcel Order, Banner, City, Drop/Pick Point, Bus Operator, Facility, FAQ, Cancel Policy, Reports.
+</Tip>
+
+## Visual analytics
+
+The **Analytics** module provides monthly evolution charts for the current year.
+
+<Frame caption="Analytics: User Register, Agent Register, Total Booking, Total Earning, Agent Earning, Operator Earning (monthly)">
+  ![GoTravelXpress monthly analytics](/images/guide/admin/analytics-1.png)
+</Frame>
+
+<Frame caption="Analytics: agency and city breakdowns, Sales By Vendor (pie chart), Daily Bookings over 20 days">
+  ![GoTravelXpress analytics breakdowns](/images/guide/admin/analytics-2.png)
+</Frame>
+
+These views let you track:
+
+- User and agent sign-up trends.
+- Total bookings and per-agent / per-operator earnings.
+- Sales breakdown by vendor.
+- Daily bookings over the last 20 days.
 
 ## Agency management
 
-<Info>Screenshots will be added soon.</Info>
+The Admin is the only role allowed to create, edit and publish partner agencies.
 
-## User management
+### Add an agency
 
-<Info>Screenshots will be added soon.</Info>
+<Frame caption="Add Agency form: name, country, city, neighborhood, address, phone, email, status, license number, number of buses, description, creation year">
+  ![Add an agency](/images/guide/admin/agency-add.png)
+</Frame>
 
-## Fleet management
+Fields to fill in:
 
-<Info>Screenshots will be added soon.</Info>
+- **Agency Name**, **Phone**, **Email**
+- **Country**, **City Name**, **Neighborhood** (dropdowns)
+- **Agency Status** (Publish / Unpublish)
+- **Full address**, **Commercial license number**
+- **Number of buses**, **Description**, **Creation year**
+
+Click **Add Agency** to save.
+
+### Agency list
+
+<Frame caption="Agency Management: table of registered agencies with logo, name, country, city, contact and publish status">
+  ![Agency list](/images/guide/admin/agency-list.png)
+</Frame>
+
+From this table, the Admin can:
+
+- **Search** and **sort** agencies.
+- Check the **status** (Active / Inactive, Publish / Unpublish).
+- **Edit**, **enable/disable** or **delete** each agency.
 
 ## Intelligent planning
 
-<Info>Screenshots will be added soon.</Info>
+The **Smart Planning** module (premium) lets the Admin steer Hostess and Baggage Handler presence and auto-generate schedules.
 
-## Analytics dashboard
+<Frame caption="Smart Planning: KPIs (presence rate, present today, late, leave pending, peak hours, coverage) and schedule notifications">
+  ![Smart Planning Admin](/images/guide/admin/planning-smart.png)
+</Frame>
 
-<Info>Screenshots will be added soon.</Info>
+**Quick actions at the top of the page:**
+
+- **Request Leave**: submit a leave request.
+- **Team Rotation**: manage team rotations.
+- **Auto Generate**: automatically generate an optimized schedule.
+
+**KPIs displayed:** Presence Rate, Present Today, Late Today, Leave Pending, Peak Hours, Coverage.
+
+**Schedule notifications**: new leave requests, approved leaves, with date/time and a **View** button.
+
+### Calendar view
+
+<Frame caption="Monthly calendar: scheduled services per day with Hostess / Baggage Handler color coding and status (Present, Late)">
+  ![Planning calendar](/images/guide/admin/planning-calendar.png)
+</Frame>
+
+Weekly/monthly grid showing, day by day, the service slots assigned to each staff member (hostesses, porters).
+
+Available tabs: **Calendar**, **Timeline**, **Teams & Rotations**, **Analytics**, **Holidays & Forecasts**, **Notifications**.
+
+### Timeline view
+
+<Frame caption="Timeline: services of the day (morning / afternoon / evening) with Present / Late status, Leaves & Absences section (Approved / Pending / Rejected)">
+  ![Planning timeline](/images/guide/admin/planning-timeline.png)
+</Frame>
+
+Chronological view of the selected day with the list of leaves and absences to process (bottom panel).
+
+### Teams and rotations
+
+<Frame caption="Teams & Rotations: active rotations (Team A Week 1), staff preferences, auto generation in Balanced / Peak modes">
+  ![Teams and rotations](/images/guide/admin/planning-teams-rotations.png)
+</Frame>
+
+- **Active Rotations**: team composition per week.
+- **Staff Preferences**: individual time preferences.
+- **Auto Generation**: automatic schedule generation with two modes:
+  - **Balanced**: even distribution across staff.
+  - **Peak**: priority coverage of peak hours.
+
+### Planning analytics
+
+<Frame caption="Analytics: 30-day presence rate, Top Performers, per-agent detail (present / late / absent)">
+  ![Planning analytics](/images/guide/admin/planning-analytics.png)
+</Frame>
+
+Track planning performance: 30-day presence rate, top performers ranking, per-agent punctuality detail.
+
+### Holidays and forecasts
+
+<Frame caption="Holidays & Forecasts: total 23 holidays, table of recurring days with dates and multipliers">
+  ![Holidays and forecasts](/images/guide/admin/planning-holidays.png)
+</Frame>
+
+List of holidays and special events impacting the schedule, with the option to add a new date and a load multiplier.
+
+### Planning notifications
+
+<Frame caption="Planning notifications: approved, rejected or pending leave requests with 'Mark all as read' button">
+  ![Planning notifications](/images/guide/admin/planning-notifications.png)
+</Frame>
+
+Full history of all notifications generated by the planning module (requests, approvals, rejections).
+
+## Hostess management
+
+The Admin adds and manages Hostesses from the **Hostess** menu.
+
+### Add a hostess
+
+<Frame caption="Add Hostess form: username, gender, birth date, phone, email, address, ID card, date of hire, status, password, agency, cover picture">
+  ![Add a hostess](/images/guide/admin/hostess-add.png)
+</Frame>
+
+Fields: **Username**, **Gender**, **Birth Date**, **Fix Phone**, **Email**, **Address**, **ID Card**, **Date of Hire**, **Status**, **Password**, **Agency**, **Cover Picture**.
+
+### Hostess list
+
+<Frame caption="Hostess Management: table of hostesses with username, gender, phone, email, ID card, date of hire and actions">
+  ![Hostess list](/images/guide/admin/hostess-list.png)
+</Frame>
+
+Search, sort, status (Active / Inactive) and actions (enable/disable, edit, delete).
+
+## Porter management
+
+Same logic as for hostesses: personal information, login credentials and photo.
+
+### Add a porter
+
+<Info>
+  Screenshots coming soon (Add Porter).
+</Info>
+
+### Porter list
+
+<Info>
+  Screenshots coming soon (Porter Management).
+</Info>
+
+## Parcels (Parcel Order)
+
+Global view, all operators combined, of every parcel shipped on the platform.
+
+### Parcel history
+
+<Info>
+  Screenshots coming soon (Parcel Order history).
+</Info>
+
+Fields displayed: sender, recipient, assigned bus, status, with tracking actions.
+
+## Banners
+
+### Add / manage a banner
+
+<Info>
+  Screenshots coming soon (Add Banner).
+</Info>
+
+Upload an advertising banner image and toggle its status.
+
+### Banner list
+
+<Info>
+  Screenshots coming soon (Banner list).
+</Info>
+
+All active banners with a thumbnail preview and actions (edit/delete).
+
+## Cities
+
+### Add a city
+
+<Info>
+  Screenshots coming soon (Add City).
+</Info>
+
+Add a new city served by the network (name + status).
+
+### City list
+
+<Info>
+  Screenshots coming soon (City list).
+</Info>
+
+Table of every city available for booking (Yaoundé, Douala, Ngaoundéré, Bertoua, Kribi, Bafoussam, etc.).
+
+## Pick / Drop points
+
+### Add a point
+
+<Info>
+  Screenshots coming soon (Add Drop/Pick Point).
+</Info>
+
+Select a city, enter the point name and the local manager's phone number, then place it precisely on the interactive map.
+
+### Point list
+
+<Info>
+  Screenshots coming soon (Drop/Pick Point list).
+</Info>
+
+All pickup and drop-off points registered, sorted by city, with their status.
+
+## Bus operators
+
+### Add an operator
+
+<Info>
+  Screenshots coming soon (Add Bus Operator — full form).
+</Info>
+
+This form is long: scroll to see every section.
+
+- **Top part:** operator info (name, logo, status), rating and agency/admin commission, then login credentials (email/password).
+- **Bottom part:** office address with latitude/longitude on a map, and payment information (bank name, SWIFT/IBAN, beneficiary, account number, PayPal, UPI).
+
+### Operator list
+
+<Info>
+  Screenshots coming soon (Bus Operator list).
+</Info>
+
+View of all operators with their commission (reserved/received), status and actions.
+
+### Operator payouts
+
+<Info>
+  Screenshots coming soon (Operator Payout).
+</Info>
+
+History of money transfers made to operators (amount, transfer type, proof, status).
+
+## Facilities
+
+### Add a facility
+
+<Info>
+  Screenshots coming soon (Add Facility).
+</Info>
+
+Create an equipment/service (e.g. WiFi, power outlet, air conditioning) that can be linked to a pickup point.
+
+### Facility list
+
+<Info>
+  Screenshots coming soon (Facility list).
+</Info>
+
+All available facilities with icon and status.
+
+## FAQ
+
+### Add a FAQ
+
+<Info>
+  Screenshots coming soon (Add FAQ).
+</Info>
+
+Enter a question and its answer, with a publication status.
+
+### FAQ list
+
+<Info>
+  Screenshots coming soon (FAQ list).
+</Info>
+
+Every published question/answer, individually editable or deletable.
+
+## Cancellation policy
+
+### Add a cancellation rule
+
+<Info>
+  Screenshots coming soon (Add Cancel Policy).
+</Info>
+
+Define the delay (in hours) before departure at which cancellation is allowed, the processing delay, and the refund percentage.
+
+### Rule list
+
+<Info>
+  Screenshots coming soon (Cancel Policy list).
+</Info>
+
+Cancellation rules currently applied on the platform.
+
+## Reports
+
+### Daily reports
+
+<Info>
+  Screenshots coming soon (Daily Report).
+</Info>
+
+Search by date: total tickets booked, completed, cancelled, and total sales for the chosen day.
+
+### Total bookings
+
+<Info>
+  Screenshots coming soon (Total Bookings).
+</Info>
+
+Filterable list of every booking (bus, pickup point, status, booked by) with access to the detail.
+
+### Sales report
+
+<Info>
+  Screenshots coming soon (Sales Report).
+</Info>
+
+Accounting detail of every ticket sold: subtotal, tax, wallet balance, coupon, agent/admin/operator commission, total and vendor.
+
+## Payment gateways
+
+### Gateway list
+
+<Info>
+  Screenshots coming soon (Payment Gateways).
+</Info>
+
+Enable/disable payment methods available to customers: Razorpay, PayPal, Stripe, Flutterwave, Paystack, Paymob, GerongPay.
+
+## Trip report & agent payouts
+
+### Trip report
+
+<Info>
+  Screenshots coming soon (Trip Report).
+</Info>
+
+Table listing the trip report submitted for each bus/driver and its date.
+
+### Agent payouts
+
+<Info>
+  Screenshots coming soon (Agent Payout).
+</Info>
+
+History of payments made to partner agents.
+
+## Site pages (CMS)
+
+### Create a page
+
+<Info>
+  Screenshots coming soon (Add Page).
+</Info>
+
+Rich-text editor to write the content of a static page (title, status, description).
+
+### Page list
+
+<Info>
+  Screenshots coming soon (Pages list).
+</Info>
+
+Existing pages: Privacy Policy, Terms & Conditions, Contact Us, Cancellation Policy.
+
+## Users & security
+
+### User list
+
+<Info>
+  Screenshots coming soon (Users list).
+</Info>
+
+All customer/agent accounts registered on the platform, with status, type and moderation actions (suspend, delete).
+
+### Audit Logs
+
+<Info>
+  Screenshots coming soon (Audit Logs).
+</Info>
+
+Detailed history of every action performed in the back-office: method, status, role, IP address, device — filterable by period.
+
+### User Actions
+
+<Info>
+  Screenshots coming soon (User Actions).
+</Info>
+
+Log of actions performed by users on the app/site, filterable by action type, role and date.
+
+## General settings
+
+### General information & configuration
+
+<Info>
+  Screenshots coming soon (General Settings).
+</Info>
+
+Site name, currency, timezone, logo; withdrawal limits for agents/operators; payslip display; referral program settings (sign-up credit, referral credit, commission).
+
+### SMS & languages
+
+<Info>
+  Screenshots coming soon (SMS & Languages).
+</Info>
+
+SMS provider setup for verification codes (Msg91 or Twilio, with API keys), OTP toggle at sign-up, and choice of languages available in the app (French, English, Arabic, Italian, Portuguese, Dutch, Spanish...).
 
 ## Subscription
 
-<Info>Screenshots will be added soon.</Info>
+<Info>
+  Screenshots coming soon (Subscription).
+</Info>
