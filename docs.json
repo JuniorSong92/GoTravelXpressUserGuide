@@ -88,6 +88,23 @@
             ]
           },
           {
+            "tab": "Guide Illustré",
+            "groups": [
+              {
+                "group": "Guide Illustré",
+                "pages": [
+                  "fr/guide/index",
+                  "fr/guide/admin",
+                  "fr/guide/operator",
+                  "fr/guide/baggage",
+                  "fr/guide/hostess",
+                  "fr/guide/driver",
+                  "fr/guide/client"
+                ]
+              }
+            ]
+          },
+          {
             "tab": "Référence API",
             "groups": [
               {
@@ -160,6 +177,23 @@
                 "pages": [
                   "support/faq",
                   "support/contact"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Illustrated Guide",
+            "groups": [
+              {
+                "group": "Illustrated Guide",
+                "pages": [
+                  "guide/index",
+                  "guide/admin",
+                  "guide/operator",
+                  "guide/baggage",
+                  "guide/hostess",
+                  "guide/driver",
+                  "guide/client"
                 ]
               }
             ]
