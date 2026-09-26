@@ -105,6 +105,28 @@
             ]
           },
           {
+            "tab": "Guide Illustré",
+            "groups": [
+              {
+                "group": "Vue d'ensemble",
+                "pages": [
+                  "fr/guide/index"
+                ]
+              },
+              {
+                "group": "Guides par Rôle",
+                "pages": [
+                  "fr/guide/admin",
+                  "fr/guide/operator",
+                  "fr/guide/baggage",
+                  "fr/guide/hostess",
+                  "fr/guide/driver",
+                  "fr/guide/client"
+                ]
+              }
+            ]
+          },
+          {
             "tab": "Référence API",
             "groups": [
               {
@@ -188,6 +210,28 @@
                 "group": "Illustrated Guide",
                 "pages": [
                   "guide/index",
+                  "guide/admin",
+                  "guide/operator",
+                  "guide/baggage",
+                  "guide/hostess",
+                  "guide/driver",
+                  "guide/client"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Illustrated Guide",
+            "groups": [
+              {
+                "group": "Overview",
+                "pages": [
+                  "guide/index"
+                ]
+              },
+              {
+                "group": "Guides by Role",
+                "pages": [
                   "guide/admin",
                   "guide/operator",
                   "guide/baggage",
